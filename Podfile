@@ -1,0 +1,11 @@
+platform :ios, '7.0'
+
+pod 'AFNetworking', '~> 2.0'
+pod 'BaiduMapAPI', '~> 2.8.1'
+pod 'MBProgressHUD', '~> 0.9.1'
+pod 'JPush-SDK-iOS', '~> 1.8.3.1'
+pod 'RESideMenu-onlyLeft', '~> 4.0.7'
+pod 'IQKeyboardManager'
+pod 'EaseMobSDK', '~>2.1.8'
+pod 'DownPicker'
+#pod 'UILabelWithUnderline', '~> 0.3'

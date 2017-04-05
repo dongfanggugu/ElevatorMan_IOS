@@ -1,0 +1,47 @@
+/* CSS Document */
+
+body { margin:0; padding:0;color:#f1f1f1;  font-family:"Microsoft YaHei"; font-size:16px; color:#000;}
+
+.clear{ clear:both;}
+.clearfix:after{ content:"."; display:block; clear:both; font-size:0; height:0; overflow:hidden;}
+.clearfix{zoom:1;}
+
+
+/*head*/
+header{ height:88px; background:#007ec5; }
+header span{ display:block; color:#fff; font-size:2.1em; margin:0 auto; text-align:center; line-height:88px;}
+#return{ width:24px; height:44px;margin:21px 30px; line-height:88px; float:left; background:url(../img/rt.png)no-repeat;}
+
+/*content*/
+.ti{ display:block; height:40px; line-height:40px; color:#007ec5; padding-left:30px; font-size:1.2em;}
+#content ul{ background:#fff; padding:0;margin:0;}
+#content ul li{ position:relative; height:60px; line-height:60px; font-size:1.2em; border-bottom:1px solid #ccc; list-style-type:none; padding-left:30px;}
+#content ul li a{ display:block; height:60px; width:100%;  color:#333;text-decoration:none; font-weight:normal;}
+#content ul li span{ position:absolute; top:16px; right:30px;  display:block; width:16px; height:29px;line-height:60px; float:right; background:url(../img/r1.png)no-repeat;}
+
+
+
+
+
+@media (max-width: 360px) {
+	
+}
+
+@media (min-width: 320px) and (max-width: 800px) {
+	
+}
+@media (min-width: 320px) and (max-width:980px) {
+	
+}
+@media (min-width: 768px) and (max-width: 800px) {
+	
+	header span{ width:184px; height:57px; margin:15px 0 16px 30%; float:left;padding-left:150px; background:url(../img/h/logo.png) no-repeat;}
+}
+@media (min-width: 800px) and (max-width: 980px) {
+	
+	header span{ width:184px; height:57px; margin:15px 0 16px 33%; float:left;padding-left:150px; background:url(../img/h/logo.png) no-repeat;}
+}
+@media (min-width: 980px) and (max-width: 1280px) {
+	
+	header span{ width:184px; height:57px; margin:15px 0 16px 37%; float:left;padding-left:150px; background:url(../img/h/logo.png) no-repeat;}
+}
