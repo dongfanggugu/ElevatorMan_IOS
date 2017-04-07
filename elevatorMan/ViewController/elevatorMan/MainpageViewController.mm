@@ -210,6 +210,13 @@
 
 - (void)repair
 {
+
+    NSString *region =  [[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"];
+    if ([region isEqualToString:@"上海"]
+        || [region isEqualToString:@"北京"]) {
+        
+        [HUDClass showHUDWithLabel:@"该功能暂未开放"];
+    }
     UIViewController *controller = [[WRepairTabBarController alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -322,10 +329,8 @@
      {
          
          
-         if (data.length > 0 && nil == connectionError)
-         {
-             if (success != nil)
-             {
+         if (data.length > 0 && nil == connectionError) {
+             if (success != nil) {
                  success();
              }
          }
