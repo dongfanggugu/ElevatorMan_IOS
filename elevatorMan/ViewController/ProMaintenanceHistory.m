@@ -11,22 +11,7 @@
 #import "HttpClient.h"
 #import "PullTableView.h"
 #import "ProMaintenanceDetail.h"
-
-#pragma mark -- HistoryCell
-
-@interface HistoryCell : UITableViewCell
-
-@property (weak, nonatomic) IBOutlet UILabel *labelProject;
-
-@property (weak, nonatomic) IBOutlet UILabel *labelDate;
-
-@end
-
-@implementation HistoryCell
-
-
-@end
-
+#import "MaintInfoCell.h"
 
 
 
@@ -36,7 +21,7 @@
 
 @property (strong, nonatomic) NSMutableArray *historyArray;
 
-@property (weak, nonatomic) IBOutlet PullTableView *pullTableView;
+@property (strong, nonatomic) UITableView *tableView;
 
 @property NSInteger currentPage;
 
@@ -49,24 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //设置菜单按钮
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[UIImage imageNamed:@"icon_menu.png"] forState:UIControlStateNormal];
-    [button setFrame:CGRectMake(0, 0, 30, 30)];
-    [button addTarget:self action:@selector(presentLeftMenuViewController:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
-    
-    [self setTitleString:@"维保管理"];
-    
-    self.pullTableView.pullArrowImage = [UIImage imageNamed:@"blackArrow"];
-    self.pullTableView.pullBackgroundColor = [UIColor whiteColor];
-    self.pullTableView.pullTextColor = [UIColor blackColor];
-
-
-    
-    self.historyArray = [NSMutableArray arrayWithCapacity:1];
-
+    [self initView];
+    [self initData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -79,22 +48,34 @@
 }
 
 
-/**
- *  根据输入信息查询维保历史
- *
- *  @param page     <#page description#>
- *  @param project  <#project description#>
- *  @param building <#building description#>
- *  @param unit     <#unit description#>
- *  @param litfId   <#litfId description#>
- */
+- (void)initView
+{
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64 - 49)];
+    
+    [self.view addSubview:_tableView];
+    
+    
+    _tableView.delegate = self;
+    
+    _tableView.dataSource = self;
+    
+    _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (void)initData
+{
+    _historyArray = [NSMutableArray array];
+}
+
 - (void)getHistoryArrayByPage:(NSInteger)page project:(NSString *)project building:(NSString *)building
                          unit:(NSString *)unit lift:(NSString *)litfId {
     
     NSLog(@"currentPage:%ld", page);
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
     
-    [param setValue:[NSNumber numberWithLong:page] forKey:@"page"];
+    [param setValue:[NSNumber numberWithLong:-1] forKey:@"page"];
     [param setValue:project forKey:@"communityName"];
     [param setValue:building forKey:@"buildingCode"];
     [param setValue:unit forKey:@"unitCode"];
@@ -105,31 +86,10 @@
     [[HttpClient sharedClient] view:self.view post:@"getHistoryMainList" parameter:param
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                 
-                                
-                                
-                                if (YES == weakSelf.pullTableView.pullTableIsLoadingMore)
-                                {
-                                    
-                                    //上拉加载更多请求完数据
-                                    weakSelf.pullTableView.pullTableIsLoadingMore = NO;
-                                    
-                                    //如果已经没有数据，将页数恢复
-                                    NSArray *array = [responseObject objectForKey:@"body"];
-                                    if (nil == array || 0 == array.count)
-                                    {
-                                        weakSelf.currentPage--;
-                                    }
-                                    
-                                }
-                                else if (YES == weakSelf.pullTableView.pullTableIsRefreshing)
-                                {
-                                    //下拉刷新请求完数据
-                                    weakSelf.pullTableView.pullTableIsRefreshing = NO;
-                                    
-                                }
-                                //加载数据
                                 [weakSelf.historyArray addObjectsFromArray:[responseObject objectForKey:@"body"] ];
-                                [weakSelf.pullTableView reloadData];
+                                
+                                
+                                [weakSelf.tableView reloadData];
                                 
                             }];
 }
@@ -137,16 +97,23 @@
 
 #pragma mark -- TableView data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.historyArray.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryCell"];
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MaintInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:[MaintInfoCell identifier]];
+    
+    if (!cell) {
+        cell = [MaintInfoCell cellFromNib];
+    }
     
     NSString *community = [[self.historyArray objectAtIndex:indexPath.row] objectForKey:@"communityName"];
     NSString *building = [[self.historyArray objectAtIndex:indexPath.row] objectForKey:@"buildingCode"];
@@ -160,7 +127,8 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     ProMaintenanceDetail *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"planDetail"];
     
@@ -189,46 +157,39 @@
 }
 
 
-#pragma mark - PullTableViewDelegate
-
-- (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView {
-    NSLog(@"refresh");
-    //[self.pullTableView setContentOffset:CGPointMake(0, 88) animated:YES];
-    [self performSelector:@selector(refreshTable) withObject:nil afterDelay:2.0f];
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [MaintInfoCell cellHeight];
 }
 
-- (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView {
-     NSLog(@"load more");
-    //[self.pullTableView setContentOffset:CGPointMake(0, -64) animated:YES];
-    [self performSelector:@selector(loadMoreDataToTable) withObject:nil afterDelay:2.0f];
+
+#pragma mark - PullTableViewDelegate
+
+- (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
+{
+    [self refreshTable];
+}
+
+- (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
+{
+    [self loadMoreDataToTable];
 }
 
 
 #pragma mark - PullTableViewDelegate callback
 
-- (void)refreshTable {
-    
-    NSLog(@"refreshTable");
+- (void)refreshTable
+{
     [self.historyArray removeAllObjects];
     self.currentPage = 1;
     [self getHistoryArrayByPage:self.currentPage project:nil building:nil unit:nil lift:nil];
 }
 
-- (void)loadMoreDataToTable {
-    NSLog(@"loadMoreDataToTable");
-
+- (void)loadMoreDataToTable
+{
     self.currentPage++;
     [self getHistoryArrayByPage:self.currentPage project:nil building:nil unit:nil lift:nil];
     
-}
-
-- (void)setTitleString:(NSString *)title
-{
-    UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-    labelTitle.text = title;
-    labelTitle.font = [UIFont fontWithName:@"System" size:17];
-    labelTitle.textColor = [UIColor whiteColor];
-    [self.navigationItem setTitleView:labelTitle];
 }
 
 @end

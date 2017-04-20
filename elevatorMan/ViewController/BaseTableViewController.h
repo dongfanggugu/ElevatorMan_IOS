@@ -19,6 +19,15 @@
 
 - (void)hideBackIcon;
 
+- (void)setNavRightWithText:(NSString *)text;
+
+- (void)onClickNavRight;
+
+@property (assign, nonatomic) CGFloat screenWidth;
+
+@property (assign, nonatomic) CGFloat screenHeight;
+
+
 @end
 
 

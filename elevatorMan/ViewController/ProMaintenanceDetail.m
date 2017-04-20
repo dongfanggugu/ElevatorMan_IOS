@@ -49,11 +49,14 @@
 @implementation ProMaintenanceDetail
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
+     [self setNavTitle:@"维保详情"];
+    
     //设置图片加载的初始化数据
-    self.imageViewDic = [NSMutableDictionary dictionaryWithCapacity:1];
+    self.imageViewDic = [NSMutableDictionary dictionary];
     self.imageViewDeviceCode.tag = 0;
     self.imageViewMainBefore.tag = 1;
     self.imageViewMainAfter.tag = 2;
@@ -68,32 +71,33 @@
 /**
  *  初始化视图
  */
-- (void)initView {
+- (void)initView
+{
     
     if ([self.enterFlag isEqualToString:@"finish"]) {
-        UIButton *btnSubmit = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
-        [btnSubmit setTitle:@"提交" forState:UIControlStateNormal];
-        [btnSubmit setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        btnSubmit.titleLabel.font = [UIFont fontWithName:@"System" size:15.0f];
-        [btnSubmit addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:btnSubmit];
-        self.navigationItem.rightBarButtonItem = rightItem;
+        [self setNavRightWithText:@"提交"];
     }
     
-    [self setTitleString:@"维保详情"];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     self.labelNum.text = self.liftNum;
     self.labelAddress.text = self.address;
     self.labelDate.text = self.mainDate;
     self.labelType.text = [self getDescriptionByType:self.mainType];
 }
 
+- (void)onClickNavRight
+{
+    [self submit];
+}
 
 /**
  *  根据维保id获取维保提交的照片路径
  *
  *  @param liftId mainId description
  */
-- (void)getPicUrlByMainId:(NSString *)mainId {
+- (void)getPicUrlByMainId:(NSString *)mainId
+{
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
     [param setObject:mainId forKey:@"mainId"];
     
@@ -128,7 +132,8 @@
  *  @param imageView <#imageView description#>
  */
 - (void)getPictureFromUrlString:(NSString *)urlString imageview:(UIImageView *) imageView
-                      cachePath:(NSString *)cachePath fileName:(NSString *)fileName {
+                      cachePath:(NSString *)cachePath fileName:(NSString *)fileName
+{
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0f];
     
@@ -152,7 +157,8 @@
  *
  *  @return <#return value description#>
  */
-- (NSString *)getDescriptionByType:(NSString *)type {
+- (NSString *)getDescriptionByType:(NSString *)type
+{
     NSString *description = nil;
     if ([type isEqualToString:@"hm"]) {
         description = @"半月保";
@@ -169,25 +175,14 @@
 }
 
 /**
- *  设置标题
- *
- *  @param title <#title description#>
- */
-- (void)setTitleString:(NSString *)title {
-    UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-    labelTitle.text = title;
-    labelTitle.font = [UIFont fontWithName:@"System" size:17];
-    labelTitle.textColor = [UIColor whiteColor];
-    [self.navigationItem setTitleView:labelTitle];
-}
-
-/**
  *  维保完成确认提交
  */
-- (void)submit {
+- (void)submit
+{
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
     param[@"mainId"] = self.mainId;
     param[@"verify"] = [NSNumber numberWithInt:2];
+    
     
     [[HttpClient sharedClient] view:self.view post:@"verifyMainPlan" parameter:param
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -203,7 +198,8 @@
  *
  *  @return <#return value description#>
  */
-- (NSString *)getFileNameByUrl:(NSString *)url {
+- (NSString *)getFileNameByUrl:(NSString *)url
+{
     NSString *fileName = nil;
     NSArray *array = [url componentsSeparatedByString:@"/"];
     if (array != nil && array.count > 0){
@@ -219,7 +215,8 @@
  *
  *  @return <#return value description#>
  */
-- (UIImage *)getImageFromLocalByPath:(NSString *)filePath {
+- (UIImage *)getImageFromLocalByPath:(NSString *)filePath
+{
     UIImage *image = [UIImage imageWithContentsOfFile:filePath];
     return image;
 }
@@ -229,7 +226,8 @@
  *
  *  @return <#return value description#>
  */
-- (NSString *)getLocalCacheDir {
+- (NSString *)getLocalCacheDir
+{
     NSString *privateDir = [[NSString alloc] initWithFormat:@"/tmp/Maintenance/%@/", self.liftNum];
     
     NSString *cacheDir = [NSHomeDirectory() stringByAppendingString:privateDir];
@@ -242,7 +240,8 @@
  *  @param imageView <#imageView description#>
  *  @param url       <#url description#>
  */
-- (void)setImageView:(UIImageView *)imageView WithUrl:(NSString *)url {
+- (void)setImageView:(UIImageView *)imageView WithUrl:(NSString *)url
+{
     NSString *fileName = [self getFileNameByUrl:url];
     NSString *cachePath = [self getLocalCacheDir];
     
@@ -288,7 +287,8 @@
  *  @param fileName  <#fileName description#>
  */
 - (void)setImageView:(UIImageView *)imageView data:(NSData *)data url:(NSString *)urlString
-CachePath:(NSString *)cachePath fileName:(NSString *)fileName  {
+CachePath:(NSString *)cachePath fileName:(NSString *)fileName
+{
     NSFileManager *manager = [NSFileManager defaultManager];
     [manager createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];
     
@@ -304,13 +304,13 @@ CachePath:(NSString *)cachePath fileName:(NSString *)fileName  {
     
 }
 
-
 /**
  *  显示图片的预览
  *
- *  @param gestureRecognizer <#gestureRecognizer description#>
+ *  @param gestureRecognizer
  */
-- (void)showOverView:(UIGestureRecognizer *)gestureRecognizer {
+- (void)showOverView:(UIGestureRecognizer *)gestureRecognizer
+{
     UIView *view = [gestureRecognizer view];
     NSInteger tag = view.tag;
     NSString *filePath = [self.imageViewDic objectForKey:[NSNumber numberWithLong:tag]];
@@ -339,7 +339,35 @@ CachePath:(NSString *)cachePath fileName:(NSString *)fileName  {
 /**
  *  隐藏预览图
  */
-- (void)hideOverView {
+- (void)hideOverView
+{
     [self.ivOverView removeFromSuperview];
 }
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (1 == indexPath.row) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth - 80 - 8 - 8 - 8, 0)];
+        label.font = [UIFont systemFontOfSize:14];
+        
+        label.numberOfLines = 0;
+        
+        label.text = _address;
+        
+        [label sizeToFit];
+        
+        return label.frame.size.height + 10 + 10;
+        
+    } else if (4 == indexPath.row) {
+        return 210;
+    
+    } else {
+        return 44;
+    }
+    
+}
+
+
 @end

@@ -19,6 +19,11 @@
 #import "User.h"
 #import "RESideMenu.h"
 #import "StaticHeader.h"
+#import "Utils.h"
+#import "AppDelegate.h"
+#import "HttpClient.h"
+
+#import "DateUtil.h"
 
 
 #define ALARM_ASSIGN_TIME_OUT 300

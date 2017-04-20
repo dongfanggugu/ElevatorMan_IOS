@@ -56,6 +56,8 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.bounces = NO;
+    
+    _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -69,6 +71,7 @@
 {
     
     __weak typeof(self) weakSelf = self;
+    
     [[HttpClient sharedClient] view:self.view post:@"getMainElevatorList" parameter:nil
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                 NSLog(@"result:%@", responseObject);

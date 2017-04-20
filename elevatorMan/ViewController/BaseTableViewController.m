@@ -73,8 +73,7 @@
 
 - (void)setNavTitle:(NSString *)title
 {
-    if (!self.navigationController)
-    {
+    if (!self.navigationController) {
         return;
     }
     
@@ -128,6 +127,37 @@
         notice.frame = frame;
         [self.view addSubview:notice];
     }
+}
+
+
+- (void)setTitleString:(NSString *)title
+{
+    if (!self.navigationController) {
+        return;
+    }
+    
+    UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
+    labelTitle.text = title;
+    labelTitle.font = [UIFont fontWithName:@"System" size:17];
+    labelTitle.textColor = [UIColor whiteColor];
+    [self.navigationItem setTitleView:labelTitle];
+}
+
+- (void)setNavRightWithText:(NSString *)text
+{
+    UIButton *btnSubmit = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    [btnSubmit setTitle:text forState:UIControlStateNormal];
+    [btnSubmit setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btnSubmit.titleLabel.font = [UIFont systemFontOfSize:14];
+    [btnSubmit addTarget:self action:@selector(onClickNavRight) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:btnSubmit];
+    self.navigationItem.rightBarButtonItem = rightItem;
+}
+
+
+- (void)onClickNavRight
+{
+    
 }
 
 #pragma mark --  UIAlertViewDelegate

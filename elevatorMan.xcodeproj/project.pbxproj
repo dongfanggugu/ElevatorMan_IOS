@@ -275,6 +275,10 @@
 		65FCA4FD1E14D9FE0086720D /* chat_keyboard_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 65FCA4FB1E14D9FD0086720D /* chat_keyboard_normal.png */; };
 		65FCA4FE1E14D9FE0086720D /* chat_voice_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 65FCA4FC1E14D9FE0086720D /* chat_voice_normal.png */; };
 		65FCA5011E14E68C0086720D /* BaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FCA5001E14E68C0086720D /* BaseCollectionViewController.m */; };
+		65FE08B21EA87FEB002C9397 /* DatePickerDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FE08B11EA87FEB002C9397 /* DatePickerDialog.xib */; };
+		65FE08B51EA87FFB002C9397 /* DatePickerDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08B41EA87FFB002C9397 /* DatePickerDialog.m */; };
+		65FE08B71EA89EDE002C9397 /* MaintInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FE08B61EA89EDE002C9397 /* MaintInfoCell.xib */; };
+		65FE08BA1EA89F62002C9397 /* MaintInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08B91EA89F62002C9397 /* MaintInfoCell.m */; };
 		65FEDC251C1FAB2700DB339B /* MantenanceTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FEDC241C1FAB2700DB339B /* MantenanceTabBarController.m */; };
 		BF0296951AC88E6600ED4AF1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0296941AC88E6600ED4AF1 /* MapKit.framework */; };
 		BF0296A01ACBFE1B00ED4AF1 /* ElevatorManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF02969F1ACBFE1B00ED4AF1 /* ElevatorManViewController.m */; };
@@ -710,6 +714,12 @@
 		65FCA4FC1E14D9FE0086720D /* chat_voice_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_voice_normal.png; sourceTree = "<group>"; };
 		65FCA4FF1E14E6780086720D /* BaseCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewController.h; sourceTree = "<group>"; };
 		65FCA5001E14E68C0086720D /* BaseCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewController.m; sourceTree = "<group>"; };
+		65FE08B11EA87FEB002C9397 /* DatePickerDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerDialog.xib; sourceTree = "<group>"; };
+		65FE08B31EA87FFB002C9397 /* DatePickerDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerDialog.h; sourceTree = "<group>"; };
+		65FE08B41EA87FFB002C9397 /* DatePickerDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerDialog.m; sourceTree = "<group>"; };
+		65FE08B61EA89EDE002C9397 /* MaintInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaintInfoCell.xib; sourceTree = "<group>"; };
+		65FE08B81EA89F62002C9397 /* MaintInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintInfoCell.h; sourceTree = "<group>"; };
+		65FE08B91EA89F62002C9397 /* MaintInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintInfoCell.m; sourceTree = "<group>"; };
 		65FEDC231C1FAB1700DB339B /* MantenanceTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MantenanceTabBarController.h; sourceTree = "<group>"; };
 		65FEDC241C1FAB2700DB339B /* MantenanceTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MantenanceTabBarController.m; sourceTree = "<group>"; };
 		BF0296941AC88E6600ED4AF1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -1249,6 +1259,7 @@
 			children = (
 				65D1FAD81E10ABE300F2F6EC /* ProjectMainCell.xib */,
 				655ADF5F1E274A3100F1F036 /* EvaluateView.xib */,
+				65FE08B11EA87FEB002C9397 /* DatePickerDialog.xib */,
 				65D1FAE51E10E4BE00F2F6EC /* FilterView.xib */,
 				65D1FAEA1E10E69F00F2F6EC /* ListDialogView.xib */,
 				658E904B1DC6E3C400B1BD39 /* ExceptionView.xib */,
@@ -1256,6 +1267,7 @@
 				651A0F6E1DC86A5C0042E51B /* PersonHeaderView.xib */,
 				655ADF4F1E27230100F1F036 /* WRepairCell.xib */,
 				655ADF5A1E272C1600F1F036 /* WRepairView.xib */,
+				65FE08B61EA89EDE002C9397 /* MaintInfoCell.xib */,
 			);
 			name = xib;
 			sourceTree = "<group>";
@@ -1267,6 +1279,8 @@
 				65D1FAEC1E10E6AD00F2F6EC /* ListDialogView.h */,
 				65D1FAED1E10E6AD00F2F6EC /* ListDialogView.m */,
 				65D1FADA1E10ACEC00F2F6EC /* ProjectMainCell.h */,
+				65FE08B31EA87FFB002C9397 /* DatePickerDialog.h */,
+				65FE08B41EA87FFB002C9397 /* DatePickerDialog.m */,
 				65D1FADB1E10ACFD00F2F6EC /* ProjectMainCell.m */,
 				65D1FAE71E10E4CD00F2F6EC /* FilterView.h */,
 				65D1FAE81E10E4DA00F2F6EC /* FilterView.m */,
@@ -1285,6 +1299,8 @@
 				655ADF521E27253200F1F036 /* WRepairCell.m */,
 				655ADF5C1E272C2100F1F036 /* WRepairView.h */,
 				655ADF5D1E272C2D00F1F036 /* WRepairView.m */,
+				65FE08B81EA89F62002C9397 /* MaintInfoCell.h */,
+				65FE08B91EA89F62002C9397 /* MaintInfoCell.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -1831,6 +1847,7 @@
 				654B0BE81D250B6400ED0064 /* login.html in Resources */,
 				650AFDAC1CAA7EA80074CC86 /* knowledge.db in Resources */,
 				655ADF6C1E275A3E00F1F036 /* icon_repair_report.png in Resources */,
+				65FE08B71EA89EDE002C9397 /* MaintInfoCell.xib in Resources */,
 				65385F0D1C16BF5A00EAF4EB /* icon_edit.png in Resources */,
 				BFD8436A1B3146B6008E7118 /* icon_project_3.png in Resources */,
 				65D1FB0E1E1238E800F2F6EC /* ReceiverTextNodeBkg.png in Resources */,
@@ -1865,6 +1882,7 @@
 				65D1FAD71E10A4FF00F2F6EC /* MaintenanceManager.storyboard in Resources */,
 				654B0B951D23727100ED0064 /* icon_year_check.png in Resources */,
 				652545141E23765D0027B28B /* icon_project.png in Resources */,
+				65FE08B21EA87FEB002C9397 /* DatePickerDialog.xib in Resources */,
 				65B0A4401C292B50008E58B8 /* Person.storyboard in Resources */,
 				658748C51D2CE9EC006406AD /* logo1.png in Resources */,
 				655ADF601E274A3100F1F036 /* EvaluateView.xib in Resources */,
@@ -2088,6 +2106,7 @@
 				BFADFD081B406F0A002664B2 /* location.m in Sources */,
 				6547E6731E1C90AA0075B532 /* PropertyMainPageController.m in Sources */,
 				65D1FAEE1E10E6AD00F2F6EC /* ListDialogView.m in Sources */,
+				65FE08B51EA87FFB002C9397 /* DatePickerDialog.m in Sources */,
 				650AFDA71CAA72510074CC86 /* KnDetailViewController.m in Sources */,
 				65FCA5011E14E68C0086720D /* BaseCollectionViewController.m in Sources */,
 				655053531CCF11390095FAB3 /* AlarmAssignedViewController.mm in Sources */,
@@ -2100,6 +2119,7 @@
 				650B797F1C2006D900182D1E /* ProMaintenanceFinish.m in Sources */,
 				BFD9F45C1B54B66F001A4D29 /* UnderLineLabel.m in Sources */,
 				654B0B671D20F98200ED0064 /* AlarmTabBarController.m in Sources */,
+				65FE08BA1EA89F62002C9397 /* MaintInfoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

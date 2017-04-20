@@ -59,7 +59,6 @@
     
     [hud show:YES];
     
-    
     [[delegate window] bringSubviewToFront:hud];
     
     return hud;

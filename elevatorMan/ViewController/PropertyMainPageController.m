@@ -77,7 +77,6 @@
     _viewPerson.userInteractionEnabled = YES;
     [_viewPerson addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(person)]];
 
-    
 }
 
 - (void)rescue

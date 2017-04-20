@@ -13,7 +13,7 @@
 #import "SwipeableCell.h"
 #import "MaintenanceReminder.h"
 
-@interface MaintenanceViewController()<SwipeableCellDelegate>
+@interface MaintenanceViewController() <SwipeableCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *planDoneList;
 
@@ -29,12 +29,14 @@
 
 @implementation MaintenanceViewController
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     [self getElevatorList];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     //设置菜单按钮
@@ -58,84 +60,84 @@
     }];
 }
 
-- (long long)setPlanDoneReminder {
-    
-    long long deadLineMin = LONG_LONG_MAX;
-    
-    if (0 == self.planDoneList.count) {
-        return deadLineMin;
-    }
-    
-    long long planDoneMin = LONG_LONG_MAX;
-    
-    //查找维保待完成的电梯距离现在最近的时间间隔
-    for (NSDictionary *dic in self.planDoneList) {
-        NSString *planMainDateString = [dic objectForKey:@"planMainTime"];
-        NSDate *planMainDate = [DateUtil yyyyMMddFromString:planMainDateString];
-        long long planDoneinterval = [MaintenanceReminder
-                                      getPlanDoneReminderIntervalSecondsFromNowToDeadDate:planMainDate];
-        if (planDoneinterval < planDoneMin) {
-            planDoneMin = planDoneinterval;
-        }
-        
-        //查找距离最近的维保过期电梯
-        NSString *lastMainDateString = [dic objectForKey:@"lastMainTime"];
-        if (lastMainDateString.length != 0) {
-            NSDate *lastMainDate = [DateUtil yyyyMMddFromString:lastMainDateString];
-            long long deadLineInterval = [MaintenanceReminder
-                                          getDeadLineReminderIntervalSecondsFromNowByLastFinishedDate:lastMainDate];
-            if (deadLineInterval < deadLineMin) {
-                deadLineMin = deadLineInterval;
-            }
-        }
-    }
-    
-    [MaintenanceReminder setPlanDoneReminderByIntervalSecons:planDoneMin];
-    return deadLineMin;
-}
+//- (long long)setPlanDoneReminder {
+//    
+//    long long deadLineMin = LONG_LONG_MAX;
+//    
+//    if (0 == self.planDoneList.count) {
+//        return deadLineMin;
+//    }
+//    
+//    long long planDoneMin = LONG_LONG_MAX;
+//    
+//    //查找维保待完成的电梯距离现在最近的时间间隔
+//    for (NSDictionary *dic in self.planDoneList) {
+//        NSString *planMainDateString = [dic objectForKey:@"planMainTime"];
+//        NSDate *planMainDate = [DateUtil yyyyMMddFromString:planMainDateString];
+//        long long planDoneinterval = [MaintenanceReminder
+//                                      getPlanDoneReminderIntervalSecondsFromNowToDeadDate:planMainDate];
+//        if (planDoneinterval < planDoneMin) {
+//            planDoneMin = planDoneinterval;
+//        }
+//        
+//        //查找距离最近的维保过期电梯
+//        NSString *lastMainDateString = [dic objectForKey:@"lastMainTime"];
+//        if (lastMainDateString.length != 0) {
+//            NSDate *lastMainDate = [DateUtil yyyyMMddFromString:lastMainDateString];
+//            long long deadLineInterval = [MaintenanceReminder
+//                                          getDeadLineReminderIntervalSecondsFromNowByLastFinishedDate:lastMainDate];
+//            if (deadLineInterval < deadLineMin) {
+//                deadLineMin = deadLineInterval;
+//            }
+//        }
+//    }
+//    
+//    [MaintenanceReminder setPlanDoneReminderByIntervalSecons:planDoneMin];
+//    return deadLineMin;
+//}
+//
+//- (long long)setPlanMakeReminder {
+//    
+//    long long deadLineMin = LONG_LONG_MAX;
+//    if (0 == self.planUndoList.count) {
+//        return deadLineMin;
+//    }
+//    
+//    long long planMakeMin = LONG_LONG_MAX;
+//    for (NSDictionary *dic in self.planUndoList) {
+//        //查找需要制定计划的电梯距离现在最近的时间间隔
+//        NSString *lastMainDateString = [dic objectForKey:@"lastMainTime"];
+//        if (lastMainDateString.length != 0) {
+//            NSDate *lastMainDate = [DateUtil yyyyMMddFromString:lastMainDateString];
+//            long long planMakeInterval = [MaintenanceReminder
+//                                          getPlanMakeReminderIntervalSecondsFromNowByLastFinishedDate:lastMainDate];
+//            if (planMakeInterval < planMakeMin) {
+//                planMakeMin = planMakeInterval;
+//            }
+//            
+//            //查找距离最近的维保过期电梯
+//            long long deadLineInterval = [MaintenanceReminder
+//                                          getDeadLineReminderIntervalSecondsFromNowByLastFinishedDate:lastMainDate];
+//            if (deadLineInterval < deadLineMin) {
+//                deadLineMin = deadLineInterval;
+//            }
+//        }
+//    }
+//    
+//    [MaintenanceReminder setPlanMakeReminderByIntervalSecons:planMakeMin];
+//    return deadLineMin;
+//}
 
-- (long long)setPlanMakeReminder {
-    
-    long long deadLineMin = LONG_LONG_MAX;
-    if (0 == self.planUndoList.count) {
-        return deadLineMin;
-    }
-    
-    long long planMakeMin = LONG_LONG_MAX;
-    for (NSDictionary *dic in self.planUndoList) {
-        //查找需要制定计划的电梯距离现在最近的时间间隔
-        NSString *lastMainDateString = [dic objectForKey:@"lastMainTime"];
-        if (lastMainDateString.length != 0) {
-            NSDate *lastMainDate = [DateUtil yyyyMMddFromString:lastMainDateString];
-            long long planMakeInterval = [MaintenanceReminder
-                                          getPlanMakeReminderIntervalSecondsFromNowByLastFinishedDate:lastMainDate];
-            if (planMakeInterval < planMakeMin) {
-                planMakeMin = planMakeInterval;
-            }
-            
-            //查找距离最近的维保过期电梯
-            long long deadLineInterval = [MaintenanceReminder
-                                          getDeadLineReminderIntervalSecondsFromNowByLastFinishedDate:lastMainDate];
-            if (deadLineInterval < deadLineMin) {
-                deadLineMin = deadLineInterval;
-            }
-        }
-    }
-    
-    [MaintenanceReminder setPlanMakeReminderByIntervalSecons:planMakeMin];
-    return deadLineMin;
-}
-
-- (void)setReminder {
-    long long deadLineMin = MIN([self setPlanDoneReminder], [self setPlanMakeReminder]);
-    //设置维保待完成，维保计划指定和维保过期的提醒
-    [MaintenanceReminder setDeadLineReminderByIntervalSecons:deadLineMin];
-}
+//- (void)setReminder {
+//    long long deadLineMin = MIN([self setPlanDoneReminder], [self setPlanMakeReminder]);
+//    //设置维保待完成，维保计划指定和维保过期的提醒
+//    [MaintenanceReminder setDeadLineReminderByIntervalSecons:deadLineMin];
+//}
 
 /**
  *  将电梯维保信息分类并展示
  *
- *  @param array <#array description#>
+ *  @param array
  */
 - (void)dealHttpData:(NSArray *)array {
     self.planDoneList = [NSMutableArray arrayWithCapacity:1];
@@ -154,7 +156,7 @@
             
         } 
     }
-    [self setReminder];
+    //[self setReminder];
     [self.tableView reloadData];
 }
 
@@ -215,13 +217,13 @@
         }
         
         if (days <= 3) {
-            [[cell labelDays] setBackgroundColor:[self getColorByRGB:@"#ee7651"]];
+            [[cell labelDays] setBackgroundColor:[Utils getColorByRGB:@"#ee7651"]];
             
         } else if (days <= 8) {
-            [[cell labelDays] setBackgroundColor:[self getColorByRGB:@"#ebe084"]];
+            [[cell labelDays] setBackgroundColor:[Utils getColorByRGB:@"#ebe084"]];
             
         } else {
-            [[cell labelDays] setBackgroundColor:[self getColorByRGB:@"#9ac25f"]];
+            [[cell labelDays] setBackgroundColor:[Utils getColorByRGB:@"#9ac25f"]];
         }
         
         if ([proFlag isEqualToString:@"3"]) {
@@ -250,7 +252,7 @@
         [cell labelTian].hidden = YES;
         [cell labelDays].text = @"未制定";
         
-        [[cell labelDays] setBackgroundColor:[self getColorByRGB:@"#e1e1e1"]];
+        [[cell labelDays] setBackgroundColor:[Utils getColorByRGB:@"#e1e1e1"]];
         
     }
     
@@ -375,7 +377,7 @@
                                     [self.planDoneList removeObjectAtIndex:tag];
                                     
                                     //重新设置提醒事件
-                                    [self setReminder];
+                                    //[self setReminder];
                                     
                                     [self.tableView reloadData];
                                 
@@ -420,40 +422,6 @@
         [fileManager removeItemAtPath:path error:&error];
     }
 }
-
-- (UIColor *)getColorByRGB:(NSString *)RGB {
-    
-    if (RGB.length != 7) {
-        NSLog(@"illegal RGB value!");
-        return [UIColor clearColor];
-    }
-    
-    if (![RGB hasPrefix:@"#"]) {
-        NSLog(@"illegal RGB value!");
-        return [UIColor clearColor];
-    }
-    
-    NSString *colorString = [RGB substringFromIndex:1];
-    
-    NSRange range;
-    range.location = 0;
-    range.length = 2;
-    
-    NSString *red = [colorString substringWithRange:range];
-    
-    range.location = 2;
-    NSString *green = [colorString substringWithRange:range];
-    
-    range.location = 4;
-    NSString *blue = [colorString substringWithRange:range];
-    
-    unsigned int r, g, b;
-    [[NSScanner scannerWithString:red] scanHexInt:&r];
-    [[NSScanner scannerWithString:green] scanHexInt:&g];
-    [[NSScanner scannerWithString:blue] scanHexInt:&b];
-    return [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:1.0];
-}
-
 
 
 @end

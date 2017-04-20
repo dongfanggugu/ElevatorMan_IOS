@@ -14,6 +14,14 @@
 
 @interface DateUtil : NSObject
 
+
+/**
+ 获取两个时间相差天数
+
+ @param start <#start description#>
+ @param end <#end description#>
+ @return <#return value description#>
+ */
 + (NSInteger)getIntervalDaysFromStart:(NSDate *)start end:(NSDate *)end;
 
 + (NSDate *)yyyyMMddFromString:(NSString *)dateStr;

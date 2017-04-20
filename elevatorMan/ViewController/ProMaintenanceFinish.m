@@ -38,29 +38,30 @@
 
 @implementation ProMaintenanceFinish
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    
-    //设置菜单按钮
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[UIImage imageNamed:@"icon_menu.png"] forState:UIControlStateNormal];
-    [button setFrame:CGRectMake(0, 0, 30, 30)];
-    [button addTarget:self action:@selector(presentLeftMenuViewController:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
-    
-    [self setTitleString:@"维保管理"];
+    [self setNavTitle:@"维保管理"];
+    [self initView];
 }
 
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     [self getFinishedPlanList];
+}
+
+- (void)initView
+{
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 /**
  *  请求完成待确认的维保列表
  */
-- (void)getFinishedPlanList {
+- (void)getFinishedPlanList
+{
     [[HttpClient sharedClient] view:self.view post:@"getFinishedMainList" parameter:nil
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                 self.planArray = [responseObject objectForKey:@"body"];
@@ -93,12 +94,7 @@
     return cell;
 }
 
-/**
- *  跳转到详情页面，同时把TabBar隐藏
- *
- *  @param tableView <#tableView description#>
- *  @param indexPath <#indexPath description#>
- */
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ProMaintenanceDetail *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"planDetail"];
@@ -125,19 +121,6 @@
     
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
-}
-
-/**
- *  设置标题
- *
- *  @param title <#title description#>
- */
-- (void)setTitleString:(NSString *)title {
-    UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-    labelTitle.text = title;
-    labelTitle.font = [UIFont fontWithName:@"System" size:17];
-    labelTitle.textColor = [UIColor whiteColor];
-    [self.navigationItem setTitleView:labelTitle];
 }
 
 

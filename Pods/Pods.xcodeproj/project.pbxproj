@@ -1399,6 +1399,7 @@
 			baseConfigurationReference = 61E532C9AD376D34852679A2875308AE /* DownPicker.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Target Support Files/Pods/Pods-acknowledgements.plist";
 				PRODUCT_NAME = DownPicker;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1446,6 +1447,7 @@
 			baseConfigurationReference = 61E532C9AD376D34852679A2875308AE /* DownPicker.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Target Support Files/Pods/Pods-acknowledgements.plist";
 				PRODUCT_NAME = DownPicker;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

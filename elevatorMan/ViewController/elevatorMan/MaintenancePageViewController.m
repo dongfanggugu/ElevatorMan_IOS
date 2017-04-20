@@ -10,6 +10,8 @@
 #import "MaintenancePageViewController.h"
 #import "MyLiftViewController.h"
 #import "RecordViewController.h"
+#import "MaintenanceReminder.h"
+#import "DateUtil.h"
 
 @interface MaintenancePageViewController()
 
@@ -21,7 +23,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitleString:@"电梯维保"];
+    [self setNavTitle:@"电梯维保"];
     [self initView];
 }
 
@@ -29,53 +31,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //[self initNavi];
 }
 
-- (void)setTitleString:(NSString *)title
-{
-    UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-    labelTitle.text = title;
-    labelTitle.font = [UIFont fontWithName:@"System" size:17];
-    labelTitle.textColor = [UIColor whiteColor];
-    [self.navigationItem setTitleView:labelTitle];
-}
 
 - (void)initView
 {
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.bounces = NO;
 }
-
-//- (void)initNavi
-//{
-//    if (!self.navigationController)
-//    {
-//        return;
-//    }
-//    
-//    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-//    titleLable.text = @"维保管理";
-//    titleLable.font = [UIFont systemFontOfSize:15];
-//    titleLable.textAlignment = NSTextAlignmentCenter;
-//    titleLable.textColor = [UIColor whiteColor];
-//    self.navigationItem.titleView = titleLable;
-//    
-//    UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-//    [backBtn setImage:[UIImage imageNamed:@"back_normal"] forState:UIControlStateNormal];
-//    [backBtn addTarget:self action:@selector(popup) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
-//    self.navigationItem.leftBarButtonItem = backItem;
-//    
-//    self.navigationController.interactivePopGestureRecognizer.delegate = self;
-//    
-//}
-//
-//- (void)popup
-//{
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
 
 - (void)myLift
 {
@@ -110,6 +72,11 @@
 {
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -117,26 +84,132 @@
     
     //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     //cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if (0 == row)
-    {
+    if (0 == row) {
         [self myLift];
-    }
-    else if (1 == row)
-    {
+        
+    } else if (1 == row) {
         [self mainPlan];
-    }
-    else if (2 == row)
-    {
+        
+    } else if (2 == row) {
         [self uploadRecord];
-    }
-    else if (3 == row)
-    {
+        
+    } else if (3 == row) {
         [self mainReminder];
-    }
-    else if (4 == row)
-    {
+        
+    } else if (4 == row) {
         [self yearCheck];
     }
+}
+
+
+
+
+- (void)getElevatorList
+{
     
+    [[HttpClient sharedClient] view:self.view post:@"getMainElevatorList" parameter:nil
+                            success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                [self setReminder:[responseObject objectForKey:@"body"]];
+                            }];
+}
+
+- (void)setReminder:(NSArray *)array
+{
+    NSMutableArray *arrayPlan = [NSMutableArray array];
+    NSMutableArray *arrayMake = [NSMutableArray array];
+    
+    for (NSDictionary *obj in array) {
+        NSString *plan = obj[@"planMainTime"];
+        
+        if (0 == plan.length) {
+            [arrayMake addObject:obj];
+    
+        } else {
+            [arrayPlan addObject:obj];
+        }
+    }
+    
+    long long deadLineMin = MIN([self setPlanDoneReminder:arrayPlan], [self setPlanMakeReminder:arrayMake]);
+    
+    //设置维保待完成，维保计划指定和维保过期的提醒
+    [MaintenanceReminder setDeadLineReminderByIntervalSecons:deadLineMin];
+}
+
+- (long long)setPlanDoneReminder:(NSArray *)array
+{
+
+    long long deadLineMin = LONG_LONG_MAX;
+
+    if (0 == array.count) {
+        return deadLineMin;
+    }
+
+    long long planDoneMin = LONG_LONG_MAX;
+
+    //查找维保待完成的电梯距离现在最近的时间间隔
+    for (NSDictionary *dic in array) {
+        NSString *planMainTime = [dic objectForKey:@"planMainTime"];
+        
+        if (0 == planMainTime.length) {
+            return planDoneMin;
+        }
+        NSString *planMainDateString = [dic objectForKey:@"planMainTime"];
+        NSDate *planMainDate = [DateUtil yyyyMMddFromString:planMainDateString];
+        long long planDoneinterval = [MaintenanceReminder
+                                      getPlanDoneReminderIntervalSecondsFromNowToDeadDate:planMainDate];
+        if (planDoneinterval < planDoneMin) {
+            planDoneMin = planDoneinterval;
+        }
+
+        //查找距离最近的维保过期电梯
+        NSString *lastMainDateString = [dic objectForKey:@"lastMainTime"];
+        if (lastMainDateString.length != 0) {
+            NSDate *lastMainDate = [DateUtil yyyyMMddFromString:lastMainDateString];
+            long long deadLineInterval = [MaintenanceReminder
+                                          getDeadLineReminderIntervalSecondsFromNowByLastFinishedDate:lastMainDate];
+            if (deadLineInterval < deadLineMin) {
+                deadLineMin = deadLineInterval;
+            }
+        }
+    }
+
+    [MaintenanceReminder setPlanDoneReminderByIntervalSecons:planDoneMin];
+    return deadLineMin;
+}
+
+- (long long)setPlanMakeReminder:(NSArray *)array
+{
+
+    long long deadLineMin = LONG_LONG_MAX;
+    
+    if (0 == array.count) {
+        return deadLineMin;
+    }
+
+    long long planMakeMin = LONG_LONG_MAX;
+    for (NSDictionary *dic in array) {
+        
+        //查找需要制定计划的电梯距离现在最近的时间间隔
+        NSString *lastMainDateString = [dic objectForKey:@"lastMainTime"];
+        if (lastMainDateString.length != 0) {
+            NSDate *lastMainDate = [DateUtil yyyyMMddFromString:lastMainDateString];
+            
+            long long planMakeInterval = [MaintenanceReminder
+                                          getPlanMakeReminderIntervalSecondsFromNowByLastFinishedDate:lastMainDate];
+            if (planMakeInterval < planMakeMin) {
+                planMakeMin = planMakeInterval;
+            }
+
+            //查找距离最近的维保过期电梯
+            long long deadLineInterval = [MaintenanceReminder
+                                          getDeadLineReminderIntervalSecondsFromNowByLastFinishedDate:lastMainDate];
+            if (deadLineInterval < deadLineMin) {
+                deadLineMin = deadLineInterval;
+            }
+        }
+    }
+
+    [MaintenanceReminder setPlanMakeReminderByIntervalSecons:planMakeMin];
+    return deadLineMin;
 }
 @end

@@ -9,9 +9,9 @@
 #ifndef ProMaintenanceHistory_h
 #define ProMaintenanceHistory_h
 
-#import "ProBaseTableViewController.h"
+#import "BaseViewController.h"
 
-@interface ProMaintenanceHistory : ProBaseTableViewController
+@interface ProMaintenanceHistory : BaseViewController
 
 @end
 

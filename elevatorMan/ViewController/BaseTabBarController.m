@@ -182,6 +182,11 @@
     
 }
 
+- (void)dealloc
+{
+    NSLog(@"%@ dealloc", [self class]);
+}
+
 
 #pragma mark -- 设置状态栏字体为白色
 - (UIStatusBarStyle)preferredStatusBarStyle

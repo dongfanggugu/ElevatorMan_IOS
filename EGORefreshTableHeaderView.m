@@ -291,7 +291,7 @@
     NSLog(@"content inset top:%f", scrollView.frame.origin.y);
     
     UIEdgeInsets currentInsets = scrollView.contentInset;
-    //currentInsets.top = 0;
+    currentInsets.top = 0;
     scrollView.contentInset = currentInsets;
 	[UIView commitAnimations];
 	

@@ -22,6 +22,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self setNavTitle:@"维保管理"];
+    [self setNavTitle:@"维保管理"];
 }
 @end

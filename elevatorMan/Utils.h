@@ -58,4 +58,6 @@
  */
 + (NSString *)md5:(NSString *)str;
 
++ (NSString *)stringFromDate:(NSDate *)date;
+
 @end

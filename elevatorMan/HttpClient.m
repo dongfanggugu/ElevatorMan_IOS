@@ -75,14 +75,7 @@
      success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
         failed:(void (^)(id responseObject))failed {
     
-    MBProgressHUD *hud = nil;
-    
-    if (view)
-    {
-        hud = [HUDClass showLoadingHUD:view];
-    }
-    
-    
+    MBProgressHUD *hud = [HUDClass showLoadingHUD:view];
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithCapacity:1];
     NSMutableDictionary *head = [NSMutableDictionary dictionaryWithCapacity:1];
@@ -115,8 +108,7 @@
        success:^(AFHTTPRequestOperation *operation, id responseObject) {
            NSLog(@"response:%@", responseObject);
            
-           if (hud)
-           {
+           if (hud) {
                [HUDClass hideLoadingHUD:hud];
            }
          

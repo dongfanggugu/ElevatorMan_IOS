@@ -25,11 +25,10 @@
 @end
 
 #pragma mark -- LiftDetailViewController
+
 @interface LiftDetailViewController()<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-//@property (strong, nonatomic) NSMutableDictionary *dataDic;
 
 @end
 
@@ -41,13 +40,12 @@
 {
     [super viewDidLoad];
     [self setNavTitle:@"电梯详情"];
-    //[self ];
-    //[self initDic];
+    [self initView];
 }
 
 - (void)initView
 {
-    
+    _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 #pragma mark -- UITableViewDataSource
@@ -107,4 +105,27 @@
     
     return cell;
 }
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (2 == indexPath.row) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth - 8 - 100 - 8 - 8, 0)];
+        
+        label.text = _address;
+        
+        label.font = [UIFont systemFontOfSize:14];
+        
+        label.numberOfLines = 0;
+        
+        [label sizeToFit];
+        
+        return label.frame.size.height + 10 + 10;
+        
+    }
+    
+    return 44;
+}
+
 @end

@@ -11,8 +11,9 @@
 #import "DownPicker.h"
 #import "HttpClient.h"
 #import "ImageUtils.h"
+#import "DatePickerDialog.h"
 
-@interface PlanViewController()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface PlanViewController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate, DatePickerDialogDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *labelCode;
 
@@ -65,69 +66,44 @@
 
 @synthesize imageViewDic;
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
-    //设置标题栏右侧
-    UIButton *btnSubmit = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
-    [btnSubmit setTitle:@"提交" forState:UIControlStateNormal];
-    [btnSubmit setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    btnSubmit.titleLabel.font = [UIFont fontWithName:@"System" size:17];
-    [btnSubmit addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:btnSubmit];
-    self.navigationItem.rightBarButtonItem = rightItem;
-    
-    [self initViewByFlag:self.flag];
-    
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.bounces = NO;
+    [self setNavRightWithText:@"提交"];
+    [self initView];
 }
-
-
-//- (void)setNavIcon
-//{
-//    if (!self.navigationController)
-//    {
-//        return;
-//    }
-//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-//    imageView.image = [UIImage imageNamed:@"back_normal"];
-//    [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(popup)]];
-//    
-//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:imageView];
-//    self.navigationItem.leftBarButtonItem = item;
-//}
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-//    //设置回退icon
-//    [self setNavIcon];
-//    self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 
-//- (void)popup
-//{
-//    [self.navigationController popViewControllerAnimated:YES];
-//    
-//}
+- (void)onClickNavRight
+{
+    [self submit];
+}
 
 /**
  根据进入的flag展示不同的页面
  **/
-- (void)initViewByFlag:(NSString *)enterFlag {
-    if ([enterFlag isEqualToString:@"add"]) {
+- (void)initView
+{
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.bounces = NO;
+    
+    if ([_flag isEqualToString:@"add"]) {
         
         //[self setTitleString:@"计划制定"];
-        [self setTitleString:@"计划制定"];
+        [self setNavTitle:@"计划制定"];
         
         self.labelCode.text = self.liftNum;
         self.labelAddress.text = self.address;
         self.labelMainDate.text = (0 == self.mainDate.length ? @"无" : self.mainDate);
         self.labelMainType.text = (0 == self.mainType.length ? @"无" : [self getDescriptionByType:self.mainType]);
         
-        self.labelPlanDate.text = [self stringFromDate:[NSDate date]];
+        self.labelPlanDate.text = [Utils stringFromDate:[NSDate date]];
         self.labelPlanType.text = @"半月保";
         
         NSArray *typeArray = [[NSArray alloc] initWithObjects:@"半月保", @"月保", @"季度保", @"半年保", @"年保", nil];
@@ -136,12 +112,8 @@
         [self.typePicker setToolbarDoneButtonText:@"确定"];
         [self.typePicker setToolbarCancelButtonText:@"取消"];
         
-//        [self.imageView1 removeFromSuperview];
-//        [self.imageView2 removeFromSuperview];
-//        [self.imageView3 removeFromSuperview];
-        
-    } else if ([enterFlag isEqualToString:@"complete"]) {
-        [self setTitleString:@"电梯维保"];
+    } else if ([_flag isEqualToString:@"complete"]) {
+        [self setNavTitle:@"电梯维保"];
         self.labelCode.text = self.liftNum;
         self.labelAddress.text = self.address;
         self.labelMainDate.text = (0 == self.mainDate.length ? @"无" : self.mainDate);
@@ -169,8 +141,8 @@
         
         [self.labelPlanType setEnabled:NO];
         
-    } else if ([enterFlag isEqualToString:@"edit"]) {
-        [self setTitleString:@"计划修改"];
+    } else if ([_flag isEqualToString:@"edit"]) {
+        [self setNavTitle:@"计划修改"];
         
         self.labelCode.text = self.liftNum;
         self.labelAddress.text = self.address;
@@ -199,86 +171,28 @@
  **/
 - (IBAction)popDatePicker:(id)sender {
     
-    //解决重复点击时，时间框的弹出问题
-    if (self.datePickerView != nil && self.datePickerView.window != nil) {
-        NSLog(@"date picker view is showing");
-        return;
-    }
+    DatePickerDialog *dialog = [DatePickerDialog viewFromNib];
     
-    if (self.datePickerView != nil && nil == self.datePickerView.window) {
-        NSLog(@"do not need to create date picker view, just to show it");
-        [self.view addSubview:self.datePickerView];
-        return;
-    }
+    dialog.delegate = self;
     
-    NSLog(@"create date picker view and to show it");
-    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
-    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-    
-    self.datePickerView = [[UIView alloc] initWithFrame:CGRectMake(0, screenHeight - 200, screenWidth, 180)];
-    [self.datePickerView setBackgroundColor:[UIColor grayColor]];
-    [self.view addSubview:self.datePickerView];
-    
-    UIButton *btnConfirm = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth - 90, 5, 50, 20)];
-    [btnConfirm setTitle:@"确定" forState:UIControlStateNormal];
-    [self.datePickerView addSubview:btnConfirm];
-    [btnConfirm setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    btnConfirm.tag = 1;
-    [btnConfirm addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *btnCancel = [[UIButton alloc] initWithFrame:CGRectMake(0, 5, 50, 20)];
-    [btnCancel setTitle:@"取消" forState:UIControlStateNormal];
-    [btnCancel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.datePickerView addSubview:btnCancel];
-    btnCancel.tag = 0;
-    [btnCancel addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 30, screenWidth, 150)];
-    self.datePicker.timeZone = [NSTimeZone defaultTimeZone];
-    [self.datePicker setDate:[NSDate date] animated:YES];
-    
-    [self.datePicker setDatePickerMode:UIDatePickerModeDate];
-    [self.datePicker setBackgroundColor:[UIColor whiteColor]];
-    
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"yyyy-MM-DD HH:mm:ss"];
-    
-    NSDate* minDate = [format dateFromString:@"1900-01-01 00:00:00 +0000"];
-    NSDate* maxDate = [format dateFromString:@"2099-01-01 00:00:00 +0000"];
-    
-    self.datePicker.minimumDate = minDate;
-    self.datePicker.maximumDate = maxDate;
-    
-    [self.datePickerView addSubview:self.datePicker];
+    [dialog show];
 }
 
-- (NSString *)stringFromDate:(NSDate *)date {
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    
-    NSString *destDateString = [dateFormatter stringFromDate:date];
-    
-    return destDateString;
+#pragma mark - DatePickerDialogDelegate
+
+- (void)onPickerDate:(NSDate *)date
+{
+    _labelPlanDate.text = [Utils stringFromDate:date];
 }
 
-- (void)buttonClicked:(id)sender {
-    UIButton *button = (UIButton *)sender;
-    NSInteger tag = button.tag;
-    if (0 == tag) {
-        [self.datePickerView removeFromSuperview];
-    } else {
-        self.labelPlanDate.text = [self stringFromDate:[self.datePicker date]];
-        [self.datePickerView removeFromSuperview];
-    }
-}
-
-- (void)submit {
+- (void)submit
+{
     if ([self.flag isEqualToString:@"add"]) {
         [self addPlan];
+        
     } else if ([self.flag isEqualToString:@"edit"]) {
         [self modifyPlan];
+        
     } else if ([self.flag isEqualToString:@"complete"]) {
         [self completePlan];
     }
@@ -317,18 +231,11 @@
     return type;
 }
 
-- (void)setTitleString:(NSString *)title {
-    UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-    labelTitle.text = title;
-    labelTitle.font = [UIFont fontWithName:@"System" size:17];
-    labelTitle.textColor = [UIColor whiteColor];
-    [self.navigationItem setTitleView:labelTitle];
-}
-
 /**
  拍摄照片
  **/
-- (void)takePhoto:(UIGestureRecognizer *)gestureRecognizer {
+- (void)takePhoto:(UIGestureRecognizer *)gestureRecognizer
+{
     
     UIImageView *imageView = (UIImageView *)[gestureRecognizer view];
     self.curSelectIndex = imageView.tag;
@@ -346,7 +253,8 @@
 }
 
 /** 当选择一张图片后调用此方法**/
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
     
     NSString *fileName = [self getFileName];
     if (0 == fileName.length) {
@@ -393,7 +301,8 @@
     }
 }
 
-- (NSString *)getFileName {
+- (NSString *)getFileName
+{
     NSString *fileName = nil;
     
     NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
@@ -406,7 +315,8 @@
 }
 
 /** 按照给定尺寸压缩图片 **/
-- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize
+{
     
     UIGraphicsBeginImageContext(newSize);
     
@@ -420,7 +330,8 @@
 }
 
 /** 图片转换为base64码 **/
-- (NSString *)image2Base64From:(NSString *)path {
+- (NSString *)image2Base64From:(NSString *)path
+{
     UIImage *image = [UIImage imageWithContentsOfFile:path];
     NSData *data = UIImageJPEGRepresentation(image, 1);
     NSString *base64Code = [data base64Encoding];
@@ -686,14 +597,38 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([_flag isEqualToString:@"add"] || [_flag isEqualToString:@"edit"])
-    {
+    if ([_flag isEqualToString:@"add"] || [_flag isEqualToString:@"edit"]) {
         return 6;
-    }
-    else
-    {
+        
+    } else {
         return 7;
     }
+}
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (1 == indexPath.row) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth - 8 - 100 - 8 - 8, 0)];
+        
+        label.text = _address;
+        
+        label.font = [UIFont systemFontOfSize:14];
+        
+        label.numberOfLines = 0;
+        
+        [label sizeToFit];
+        
+        return label.frame.size.height + 10 + 10;
+        
+    } else if (6 == indexPath.row) {
+        return 188;
+    
+    } else {
+        return 44;
+    }
+
 }
 
 @end

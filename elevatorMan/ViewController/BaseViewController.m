@@ -14,7 +14,7 @@
 
 
 
-@interface BaseViewController()<UIAlertViewDelegate>
+@interface BaseViewController() <UIAlertViewDelegate>
 
 @end
 
@@ -27,10 +27,16 @@
     
     CGRect frame = [UIScreen mainScreen].bounds;
     
-    _screenWidth = frame.size.width;
-    
-    _screenHeight = frame.size.height;
-    
+}
+
+- (CGFloat)screenWidth
+{
+    return [UIScreen mainScreen].bounds.size.width;
+}
+
+- (CGFloat)screenHeight
+{
+    return [UIScreen mainScreen].bounds.size.height;
 }
 
 

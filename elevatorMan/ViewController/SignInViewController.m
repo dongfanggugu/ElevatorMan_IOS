@@ -340,15 +340,13 @@
         NSString *err = [NSString stringWithFormat:@"%d:注册消息服务器失败，请重新再试", iResCode];
         NSLog(@"zhenhao:%@", err);
     
-        if (_jpushCount < 5)
-        {
+        if (_jpushCount < 5) {
             _jpushCount++;
             [APService setAlias:alias callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
-        }
-        else
-        {
-            [HUDClass showHUDWithLabel:@"消息推送服务注册失败，请重新登录!" view:self.view];
-            [self logoutBackTosignIn];
+            
+        } else {
+//            [HUDClass showHUDWithLabel:@"消息推送服务注册失败，请重新登录!" view:self.view];
+//            [self logoutBackTosignIn];
         }
     }
     

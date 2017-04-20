@@ -7,10 +7,9 @@
 //
 
 #ifndef MaintenanceReminder_h
+
 #define MaintenanceReminder_h
 
-
-#endif /* MaintenanceReminder_h */
 
 /**
  ** 指定维保计划的提醒时间，包括维保计划完成提醒，维保计划制定提醒以及维保超期提醒。
@@ -77,3 +76,5 @@
 + (void)cancelMaintenanceNofity;
 
 @end
+
+#endif /* MaintenanceReminder_h */

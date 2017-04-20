@@ -184,8 +184,7 @@
 + (void)setDeadLineReminderByIntervalSecons:(long long)intervale {
     
     NSArray *notificationArray = [[UIApplication sharedApplication] scheduledLocalNotifications];
-    
-    
+        
     //取消之前的通知
     if (notificationArray != nil && notificationArray.count > 0) {
         for (UILocalNotification *notify in notificationArray) {

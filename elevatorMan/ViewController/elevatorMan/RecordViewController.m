@@ -52,9 +52,15 @@
 {
     [super viewDidLoad];
     [self setNavTitle:@"记录上传"];
+    [self initView];
     _dataArray = [[NSMutableArray alloc] init];
 }
 
+
+- (void)initView
+{
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
 
 - (void)getElevatorList
 {
@@ -105,51 +111,13 @@
     return description;
 }
 
-//- (void)setNavIcon
-//{
-//    if (!self.navigationController)
-//    {
-//        return;
-//    }
-//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-//    imageView.image = [UIImage imageNamed:@"back_normal"];
-//    [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(popup)]];
-//    
-//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:imageView];
-//    self.navigationItem.leftBarButtonItem = item;
-//}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    //设置回退icon
-//    [self setNavIcon];
-//    self.navigationController.interactivePopGestureRecognizer.delegate = self;
     [self getElevatorList];
 }
 
-//- (void)popup
-//{
-//    [self.navigationController popViewControllerAnimated:YES];
-//    
-//}
-//
-//
-//- (void)setNavTitle:(NSString *)title
-//{
-//    if (!self.navigationController)
-//    {
-//        return;
-//    }
-//    
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-//    label.text = title;
-//    label.font = [UIFont fontWithName:@"System" size:17];
-//    label.textColor = [UIColor whiteColor];
-//    [label setTextAlignment:NSTextAlignmentCenter];
-//    [self.navigationItem setTitleView:label];
-//}
 
 #pragma mark -- UITableViewDataSource
 
@@ -163,6 +131,20 @@
     PlanCell *cell = [tableView dequeueReusableCellWithIdentifier:@"plan_cell"];
     
     NSDictionary *info = _dataArray[indexPath.row];
+    
+    NSDate *now = [NSDate date];
+    
+    NSDate *planDate = [DateUtil yyyyMMddFromString:info[@"planMainTime"]];
+    
+    NSInteger intervalDay = [DateUtil getIntervalDaysFromStart:now end:planDate];
+    
+    NSString *intervalStr = [NSString stringWithFormat:@"%ld", intervalDay];
+    
+    if (-1 == intervalDay) {
+        intervalStr = @"过期";
+    }
+    
+    cell.dayLabel.text = intervalStr;
     
     cell.codeLabel.text = [info objectForKey:@"num"];
     cell.addressLabel.text = [info objectForKey:@"address"];
@@ -316,38 +298,5 @@
         NSError *error;
         [fileManager removeItemAtPath:path error:&error];
     }
-}
-
-- (UIColor *)getColorByRGB:(NSString *)RGB {
-    
-    if (RGB.length != 7) {
-        NSLog(@"illegal RGB value!");
-        return [UIColor clearColor];
-    }
-    
-    if (![RGB hasPrefix:@"#"]) {
-        NSLog(@"illegal RGB value!");
-        return [UIColor clearColor];
-    }
-    
-    NSString *colorString = [RGB substringFromIndex:1];
-    
-    NSRange range;
-    range.location = 0;
-    range.length = 2;
-    
-    NSString *red = [colorString substringWithRange:range];
-    
-    range.location = 2;
-    NSString *green = [colorString substringWithRange:range];
-    
-    range.location = 4;
-    NSString *blue = [colorString substringWithRange:range];
-    
-    unsigned int r, g, b;
-    [[NSScanner scannerWithString:red] scanHexInt:&r];
-    [[NSScanner scannerWithString:green] scanHexInt:&g];
-    [[NSScanner scannerWithString:blue] scanHexInt:&b];
-    return [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:1.0];
 }
 @end
