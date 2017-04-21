@@ -121,8 +121,13 @@
     
     NSString *project = [NSString stringWithFormat:@"%@%@号楼%@单元", community, building, unit];
     
+    NSString *date = [self.historyArray[indexPath.row] objectForKey:@"planMainTime"];
+    
+    NSString *worker = [self.historyArray[indexPath.row] objectForKey:@"workerName"];
+    
     cell.labelProject.text = project;
-    cell.labelDate.text = [[self.historyArray objectAtIndex:indexPath.row] objectForKey:@"planMainTime"];
+    cell.labelDate.text = [NSString stringWithFormat:@"%@      维保人:%@", date, worker];
+    
     
     return cell;
 }
@@ -145,12 +150,16 @@
     NSString *mainDate = [mainInfo objectForKey:@"mainTime"];
     NSString *mainType = [mainInfo objectForKey:@"mainType"];
     
+    NSString *worker = [mainInfo objectForKey:@"workerName"];
+    
     
     [controller setValue:mainId forKey:@"mainId"];
     [controller setValue:liftNum forKey:@"liftNum"];
     [controller setValue:address forKey:@"address"];
     [controller setValue:mainDate forKey:@"mainDate"];
     [controller setValue:mainType forKey:@"mainType"];
+    
+    controller.worker = worker;
     
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];

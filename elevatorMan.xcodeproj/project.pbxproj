@@ -279,6 +279,9 @@
 		65FE08B51EA87FFB002C9397 /* DatePickerDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08B41EA87FFB002C9397 /* DatePickerDialog.m */; };
 		65FE08B71EA89EDE002C9397 /* MaintInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FE08B61EA89EDE002C9397 /* MaintInfoCell.xib */; };
 		65FE08BA1EA89F62002C9397 /* MaintInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08B91EA89F62002C9397 /* MaintInfoCell.m */; };
+		65FE08C41EA9AD61002C9397 /* PaintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08BD1EA9AD61002C9397 /* PaintViewController.m */; };
+		65FE08C61EA9AD61002C9397 /* PainterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08C11EA9AD61002C9397 /* PainterView.m */; };
+		65FE08C71EA9AD61002C9397 /* Squiggle.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08C31EA9AD61002C9397 /* Squiggle.m */; };
 		65FEDC251C1FAB2700DB339B /* MantenanceTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FEDC241C1FAB2700DB339B /* MantenanceTabBarController.m */; };
 		BF0296951AC88E6600ED4AF1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0296941AC88E6600ED4AF1 /* MapKit.framework */; };
 		BF0296A01ACBFE1B00ED4AF1 /* ElevatorManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF02969F1ACBFE1B00ED4AF1 /* ElevatorManViewController.m */; };
@@ -720,6 +723,12 @@
 		65FE08B61EA89EDE002C9397 /* MaintInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaintInfoCell.xib; sourceTree = "<group>"; };
 		65FE08B81EA89F62002C9397 /* MaintInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintInfoCell.h; sourceTree = "<group>"; };
 		65FE08B91EA89F62002C9397 /* MaintInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintInfoCell.m; sourceTree = "<group>"; };
+		65FE08BC1EA9AD61002C9397 /* PaintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaintViewController.h; path = ../../HandPainter/PaintViewController.h; sourceTree = "<group>"; };
+		65FE08BD1EA9AD61002C9397 /* PaintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaintViewController.m; path = ../../HandPainter/PaintViewController.m; sourceTree = "<group>"; };
+		65FE08C01EA9AD61002C9397 /* PainterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PainterView.h; sourceTree = "<group>"; };
+		65FE08C11EA9AD61002C9397 /* PainterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PainterView.m; sourceTree = "<group>"; };
+		65FE08C21EA9AD61002C9397 /* Squiggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Squiggle.h; sourceTree = "<group>"; };
+		65FE08C31EA9AD61002C9397 /* Squiggle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Squiggle.m; sourceTree = "<group>"; };
 		65FEDC231C1FAB1700DB339B /* MantenanceTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MantenanceTabBarController.h; sourceTree = "<group>"; };
 		65FEDC241C1FAB2700DB339B /* MantenanceTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MantenanceTabBarController.m; sourceTree = "<group>"; };
 		BF0296941AC88E6600ED4AF1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -1336,6 +1345,8 @@
 		65B0A43C1C292A8B008E58B8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				65FE08BC1EA9AD61002C9397 /* PaintViewController.h */,
+				65FE08BD1EA9AD61002C9397 /* PaintViewController.m */,
 				65D1FABE1E0CC07A00F2F6EC /* MaintenanceManager */,
 				65B0A43E1C292B13008E58B8 /* PersonalCenter */,
 				65B0A43D1C292AE6008E58B8 /* Register */,
@@ -1521,6 +1532,17 @@
 			path = lame;
 			sourceTree = "<group>";
 		};
+		65FE08BB1EA9AD61002C9397 /* HandPainter */ = {
+			isa = PBXGroup;
+			children = (
+				65FE08C01EA9AD61002C9397 /* PainterView.h */,
+				65FE08C11EA9AD61002C9397 /* PainterView.m */,
+				65FE08C21EA9AD61002C9397 /* Squiggle.h */,
+				65FE08C31EA9AD61002C9397 /* Squiggle.m */,
+			);
+			path = HandPainter;
+			sourceTree = "<group>";
+		};
 		65FEDC221C1FA63500DB339B /* Maintenance */ = {
 			isa = PBXGroup;
 			children = (
@@ -1569,6 +1591,7 @@
 		BF36D2E51AB5C13C00A549AF = {
 			isa = PBXGroup;
 			children = (
+				65FE08BB1EA9AD61002C9397 /* HandPainter */,
 				6582A4071E24B71B00B75E57 /* CDPGifScrollView */,
 				650B79931C20747A00182D1E /* EGOTableViewPullRefresh */,
 				65D1FAF31E1206DE00F2F6EC /* JZLocationConverter */,
@@ -2020,6 +2043,7 @@
 				651A0F6D1DC830450042E51B /* ProPersonCenterViewController.m in Sources */,
 				65A98D7E1C192ACE00BB4674 /* PlanViewController.m in Sources */,
 				6547E6811E1DD2FC0075B532 /* ProBaseTabBarController.m in Sources */,
+				65FE08C61EA9AD61002C9397 /* PainterView.m in Sources */,
 				BFD843561B301BAA008E7118 /* BuildingsViewController.m in Sources */,
 				658559C11C228983004C253F /* Utils.m in Sources */,
 				658E90511DC6E7A300B1BD39 /* ExceptionView.m in Sources */,
@@ -2027,6 +2051,7 @@
 				655ADF591E2729CB00F1F036 /* WRepairDetailController.m in Sources */,
 				651B7ED21C23AE7D00D08C9B /* ImageUtils.m in Sources */,
 				655ADF4E1E27226E00F1F036 /* WRepairTabBarController.m in Sources */,
+				65FE08C71EA9AD61002C9397 /* Squiggle.m in Sources */,
 				BF3869231B4D1FCC009F6E05 /* HUDClass.m in Sources */,
 				650B799E1C2074A600182D1E /* MessageInterceptor.m in Sources */,
 				658748B01D2B5493006406AD /* ConfirmProcessViewController.m in Sources */,
@@ -2078,6 +2103,7 @@
 				6547E6841E1DD34A0075B532 /* BaseTabBarController.m in Sources */,
 				65D1FACA1E10A2A800F2F6EC /* MainBaseViewController.m in Sources */,
 				650B799F1C2074A600182D1E /* PullTableView.m in Sources */,
+				65FE08C41EA9AD61002C9397 /* PaintViewController.m in Sources */,
 				BF3869201B4CF927009F6E05 /* TrackingViewController.mm in Sources */,
 				BFADFD051B3D1148002664B2 /* FinishedReportViewController.m in Sources */,
 				654D57631C1F078700B0A4DB /* MaintenanceReminder.m in Sources */,

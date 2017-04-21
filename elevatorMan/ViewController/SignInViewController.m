@@ -18,6 +18,7 @@
 #import <KeyboardManager.h>
 #import "FileUtils.h"
 #import "GuideViewController.h"
+#import "PaintViewController.h"
 
 #define PROVINCE 1002
 #define CITY 1003
@@ -120,19 +121,7 @@
     {
         _textField_userName.text = userName;
     }
-    
-    //self.navigationController.navigationBarHidden = YES;
-    
-    returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
-    
-    //设置地区
-//    if(![[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"]){
-//        self.labelCity.text = @"Azure";
-//        [[NSUserDefaults standardUserDefaults] setObject:@"Azure" forKey:@"urlString"];
-//        
-//    } else {
-//        self.labelCity.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"];
-//    }
+
     
 }
 
@@ -200,11 +189,15 @@
 
 - (void)userRegister
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"用户注册" message:nil delegate:self
-                                          cancelButtonTitle:@"取消" otherButtonTitles:@"维修工", @"物业人员", nil];
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"用户注册" message:nil delegate:self
+//                                          cancelButtonTitle:@"取消" otherButtonTitles:@"维修工", @"物业人员", nil];
+//    
+//     alertView.tag = 10001;
+//    [alertView show];
     
-     alertView.tag = 10001;
-    [alertView show];
+    PaintViewController *controller = [[PaintViewController alloc] init];
+    
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)workerRegister
@@ -230,7 +223,7 @@
 - (void)popInnerServer:(UILongPressGestureRecognizer *)recognizer {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"服务器选择" message:nil delegate:self
-                                                  cancelButtonTitle:@"取消" otherButtonTitles:@"北京",@"全国", @"上海", @"马晓明", @"Azure", nil];
+                                                  cancelButtonTitle:@"取消" otherButtonTitles:@"北京",@"全国", @"上海", @"马晓明", @"张明锁", @"Azure", nil];
         
         [alertView show];
         

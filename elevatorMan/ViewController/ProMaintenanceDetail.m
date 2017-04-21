@@ -21,6 +21,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *labelType;
 
+@property (weak, nonatomic) IBOutlet UILabel *lbWorker;
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewDeviceCode;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewMainBefore;
@@ -84,6 +86,7 @@
     self.labelAddress.text = self.address;
     self.labelDate.text = self.mainDate;
     self.labelType.text = [self getDescriptionByType:self.mainType];
+    self.lbWorker.text = _worker;
 }
 
 - (void)onClickNavRight
@@ -179,6 +182,49 @@
  */
 - (void)submit
 {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认维保结果" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"合格" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self checkOk];
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"不合格" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self showFailRemark];
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }]];
+    
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)showFailRemark
+{
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"请填写填写不合格理由" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UITextField *textField = [controller.textFields objectAtIndex:0];
+        NSString *text = textField.text;
+        
+        [self checkFailed:text];
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    
+    }]];
+    
+    [controller addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.font = [UIFont systemFontOfSize:13];
+        
+    }];
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+
+- (void)checkOk
+{
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
     param[@"mainId"] = self.mainId;
     param[@"verify"] = [NSNumber numberWithInt:2];
@@ -186,6 +232,26 @@
     
     [[HttpClient sharedClient] view:self.view post:@"verifyMainPlan" parameter:param
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                [HUDClass showHUDWithLabel:@"维保记录已经确认"];
+                                [self.navigationController popViewControllerAnimated:YES];
+                            }];
+}
+
+
+- (void)checkFailed:(NSString *)remark
+{
+    if (0 == remark.length) {
+        [HUDClass showHUDWithLabel:@"请填写不合格理由"];
+        return;
+    }
+    NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
+    param[@"mainId"] = self.mainId;
+    param[@"backReason"] = remark;
+    
+    
+    [[HttpClient sharedClient] view:self.view post:@"backMaint" parameter:param
+                            success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                [HUDClass showHUDWithLabel:@"维保记录已经返回给维修工"];
                                 [self.navigationController popViewControllerAnimated:YES];
                             }];
 }
@@ -358,9 +424,16 @@ CachePath:(NSString *)cachePath fileName:(NSString *)fileName
         
         [label sizeToFit];
         
-        return label.frame.size.height + 10 + 10;
+        NSInteger lines = label.frame.size.height / label.font.lineHeight;
         
-    } else if (4 == indexPath.row) {
+        if (1 == lines) {
+            return 44;
+            
+        } else {
+            return label.frame.size.height + 10 + 10;
+        }
+        
+    } else if (5 == indexPath.row) {
         return 210;
     
     } else {

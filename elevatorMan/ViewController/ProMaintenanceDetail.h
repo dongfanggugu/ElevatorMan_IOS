@@ -13,6 +13,8 @@
 
 @interface ProMaintenanceDetail : ProBaseTableViewController
 
+@property (nonatomic, copy) NSString *worker;
+
 @end
 
 #endif /* ProMaintenanceDetail_h */
