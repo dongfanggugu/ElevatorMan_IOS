@@ -27,6 +27,10 @@
 
 - (void)initNavRightWithImage:(UIImage *)image;
 
+- (void)onClickNavRight;
+
+- (void)landscapeRight;
+
 @property (assign, nonatomic) CGFloat screenWidth;
 
 @property (assign, nonatomic) CGFloat screenHeight;

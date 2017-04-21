@@ -28,14 +28,19 @@
     [self initView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self landscapeRight];
+}
 
 - (void)initView
 {
-    _painterView = [[PainterView alloc] initWithFrame:CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64 - 40)];
+    _painterView = [[PainterView alloc] initWithFrame:CGRectMake(0, 32, self.screenHeight, self.screenWidth - 32 - 40)];
     
     [self.view addSubview:_painterView];
     
-    _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.screenHeight - 40, self.screenWidth, 40)];
+    _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.screenWidth - 40, self.screenHeight, 40)];
     
     _toolbar.barStyle = UIBarStyleBlack;
     
@@ -63,6 +68,7 @@
     [_toolbar setItems:[NSArray arrayWithObjects:space, eraseButton, space, clearButton, space, finishButton, space, nil]];
 }
 
+
 -(void)erase
 {
 	[_painterView erase];
@@ -76,13 +82,32 @@
 
 -(void)finish
 {
-    [_painterView save];
+    UIImage *image = [_painterView save];
+    
+    NSString *code = [Utils image2Base64:image];
+    
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    
+    param[@"autograph"] = code;
+    
+    [[HttpClient sharedClient] view:self.view post:@"updateLoadAutograph" parameter:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSString *signUrl = [responseObject[@"body"] objectForKey:@"autograph"];
+        
+        [self saveSign:signUrl];
+        
+    } failed:^(id responseObject) {
+        
+    }];
 }
 
-- (void)save
+- (void)saveSign:(NSString *)signUrl;
 {
-    [_painterView save];
+    [User sharedUser].signUrl = signUrl;
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 - (void)dealloc 
 {

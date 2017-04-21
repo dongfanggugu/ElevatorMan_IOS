@@ -50,7 +50,7 @@
 
 
 
-@interface SignInViewController()<UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface SignInViewController()<UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
     IQKeyboardReturnKeyHandler *returnKeyHandler;
 }
@@ -122,7 +122,28 @@
         _textField_userName.text = userName;
     }
 
+    [self portrait];
     
+}
+
+- (void)portrait
+{
+    if([[UIDevice currentDevice]respondsToSelector:@selector(setOrientation:)]) {
+        
+        SEL selector = NSSelectorFromString(@"setOrientation:");
+        
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        
+        [invocation setSelector:selector];
+        
+        [invocation setTarget:[UIDevice currentDevice]];
+        
+        int val = UIInterfaceOrientationPortrait;
+        
+        [invocation setArgument:&val atIndex:2];
+        
+        [invocation invoke];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -165,6 +186,7 @@
     self.view_password.layer.borderWidth = 1;
     self.view_password.layer.borderColor = [[UIColor whiteColor] CGColor];
     
+    
     //设置登录按钮的背景颜色效果
     [self.button_login setBackgroundColor:UIColorFromRGB(0xfff3c434) forState:UIControlStateNormal];
     [self.button_login setBackgroundColor:UIColorFromRGB(0xffe9b516) forState:UIControlStateHighlighted];
@@ -172,6 +194,10 @@
     //textfield tint color
     self.textField_userName.tintColor = [UIColor whiteColor];
     self.textField_userPWD.tintColor = [UIColor whiteColor];
+    
+    self.textField_userPWD.delegate = self;
+    
+    self.textField_userName.delegate = self;
     
     //内部服务器
     self.ivLogo.userInteractionEnabled = YES;
@@ -288,6 +314,7 @@
                                 [User sharedUser].branch = [loginInfo objectForKey:@"branchName"];
                                 [User sharedUser].branchId = [loginInfo objectForKey:@"branchId"];
                                 [User sharedUser].picUrl = [loginInfo objectForKey:@"pic"];
+                                [User sharedUser].signUrl = [loginInfo objectForKey:@"autograph"];
                                 
                                
                                 NSDictionary *userAttach = [loginInfo objectForKey:@"userAttach"];
@@ -708,6 +735,16 @@
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return NO;
 }
 
 @end

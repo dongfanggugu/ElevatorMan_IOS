@@ -12,6 +12,7 @@
 #import "HttpClient.h"
 #import "ImageUtils.h"
 #import "DatePickerDialog.h"
+#import "PaintViewController.h"
 
 @interface PlanViewController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate, DatePickerDialogDelegate>
 
@@ -187,6 +188,13 @@
 
 - (void)submit
 {
+    NSString *signUrl = [User sharedUser].signUrl;
+    
+    if (0 == signUrl.length) {
+        [self showSignAlert];
+        return;
+    }
+    
     if ([self.flag isEqualToString:@"add"]) {
         [self addPlan];
         
@@ -198,6 +206,25 @@
     }
 }
 
+- (void)showSignAlert
+{
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有设置您的个人签名,无法提交" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self jumpPaint];
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"取消 " style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+}
+
+- (void)jumpPaint
+{
+    PaintViewController *controller = [[PaintViewController alloc] init];
+    
+    [self.navigationController pushViewController:controller animated:YES];
+}
 /**根据类型返回维保类型的描述**/
 - (NSString *)getDescriptionByType:(NSString *)type {
     NSString *description = nil;
@@ -480,6 +507,7 @@
 - (void)completePlan {
     if (self.imageViewDic.count != 3) {
         [HUDClass showHUDWithLabel:@"请拍摄三张照片!" view:self.view];
+    
         return;
     }
     
@@ -512,6 +540,14 @@
                                 [self.navigationController popViewControllerAnimated:YES];
                             }];
 }
+
+- (void)afterComplete
+{
+    
+}
+
+
+
 
 /**
  根据路径获取文件名称
@@ -602,6 +638,7 @@
         
     } else {
         return 7;
+        
     }
 }
 

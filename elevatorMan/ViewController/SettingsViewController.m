@@ -10,6 +10,7 @@
 #import "SettingsViewController.h"
 #import "Utils.h"
 #import "AlarmViewController.h"
+#import "PersonSignController.h"
 
 #pragma mark -- SettingsCell
 
@@ -124,7 +125,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -133,16 +134,16 @@
     
     NSInteger row = indexPath.row;
     
-    if (0 == row)
-    {
+    if (0 == row) {
         cell.label.text = @"修改密码";
-    }
-    else if (1 ==  row)
-    {
+        
+    } else if (1 ==  row) {
         cell.label.text = @"检查更新";
-    }
-    else if (2 ==  row)
-    {
+        
+    } else if (2 ==  row) {
+        cell.label.text = @"我的签名";
+        
+    } else if (3 == row) {
         cell.label.text = @"关于";
     }
     
@@ -153,21 +154,23 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger row = indexPath.row;
-    if (0 == row)
-    {
+    if (0 == row) {
         UIStoryboard *board = [UIStoryboard storyboardWithName:@"Person" bundle:nil];
         UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"PasswordPage"];
         [self.navigationController pushViewController:controller animated:YES];
-    }
-    else if (1 == row)
-    {
+        
+    } else if (1 == row) {
         [self checkUpdate];
-    }
-    else if (2 == row)
-    {
+        
+    } else if (2 == row) {
+        PersonSignController *controller = [[PersonSignController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
+        
+    } else if (3 == row) {
         UIStoryboard *board = [UIStoryboard storyboardWithName:@"Person" bundle:nil];
         UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"settings_about"];
         [self.navigationController pushViewController:controller animated:YES];
+        
     }
 }
 
@@ -181,22 +184,19 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     //升级，跳转到app下载页面
-    if (ALARM_RECEIVED == alertView.tag || ALARM_ASSIGNED == alertView.tag)
-    {
-        if (1 == buttonIndex)
-        {
+    if (ALARM_RECEIVED == alertView.tag || ALARM_ASSIGNED == alertView.tag) {
+        
+        if (1 == buttonIndex) {
             UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
             AlarmViewController *controller = [board instantiateViewControllerWithIdentifier:@"alarm_process"];
             controller.alarmId = self.notifyAlarmId;
             
             [self.navigationController pushViewController:controller animated:YES];
         }
-    }
-    else
-    {
-        if (1 == buttonIndex)
-        {
+    } else {
+        if (1 == buttonIndex) {
             [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"http://fir.im/ElevatorMan"]];
+            
         }
     }
 }

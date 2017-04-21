@@ -24,9 +24,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    CGRect frame = [UIScreen mainScreen].bounds;
-    
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (CGFloat)screenWidth
@@ -69,6 +67,8 @@
     //监听报警相关通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedAlarmNotify:)
                                                  name:@"alarmNotification" object:nil];
+    
+    [self portrait];
 }
 
 
@@ -112,8 +112,7 @@
  **/
 -  (void)initNavRightWithText:(NSString *)text
 {
-    if (!self.navigationController)
-    {
+    if (!self.navigationController) {
         return;
     }
     
@@ -127,6 +126,11 @@
     self.navigationItem.rightBarButtonItem = rightButton;
     
     [btnRight addTarget:self action:@selector(onClickNavRight) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)onClickNavRight
+{
+    
 }
 
 /**
@@ -149,10 +153,6 @@
     [btnRight addTarget:self action:@selector(onClickNavRight) forControlEvents:UIControlEventTouchUpInside];
 }
 
-
-- (void)onClickNavRight
-{
-}
 
 - (void)receivedAlarmNotify:(NSNotification *)notification
 {
@@ -232,6 +232,46 @@
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+- (void)portrait
+{
+    if([[UIDevice currentDevice]respondsToSelector:@selector(setOrientation:)]) {
+        
+        SEL selector = NSSelectorFromString(@"setOrientation:");
+        
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        
+        [invocation setSelector:selector];
+        
+        [invocation setTarget:[UIDevice currentDevice]];
+        
+        int val = UIInterfaceOrientationPortrait;
+        
+        [invocation setArgument:&val atIndex:2];
+        
+        [invocation invoke];
+    }
+}
+
+- (void)landscapeRight
+{
+    if([[UIDevice currentDevice]respondsToSelector:@selector(setOrientation:)]) {
+        
+        SEL selector = NSSelectorFromString(@"setOrientation:");
+        
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        
+        [invocation setSelector:selector];
+        
+        [invocation setTarget:[UIDevice currentDevice]];
+        
+        int val = UIInterfaceOrientationLandscapeRight;
+        
+        [invocation setArgument:&val atIndex:2];
+        
+        [invocation invoke];
+    }
 }
 
 @end

@@ -35,6 +35,6 @@
 
 - (void)setColor:(UIColor *)color;
 
-- (void)save;
+- (UIImage *)save;
 
 @end

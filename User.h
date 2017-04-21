@@ -58,6 +58,8 @@
 
 @property (strong, nonatomic) NSString *branchId;
 
+@property (copy, nonatomic) NSString *signUrl;
+
 +(instancetype)sharedUser;
 
 - (void)setUserInfo;

@@ -152,4 +152,13 @@
     return destDateString;
 }
 
+
+/** 图片转换为base64码 **/
++ (NSString *)image2Base64:(UIImage *)image
+{
+    NSData *data = UIImageJPEGRepresentation(image, 1);
+    NSString *base64Code = [data base64Encoding];
+    return base64Code;
+}
+
 @end

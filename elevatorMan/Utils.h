@@ -60,4 +60,7 @@
 
 + (NSString *)stringFromDate:(NSDate *)date;
 
+
++ (NSString *)image2Base64:(UIImage *)image;
+
 @end

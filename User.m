@@ -52,6 +52,8 @@
     [[NSUserDefaults standardUserDefaults] setObject:_workCity forKey:@"work_city"];
     [[NSUserDefaults standardUserDefaults] setObject:_workZone forKey:@"work_zone"];
     [[NSUserDefaults standardUserDefaults] setObject:_workAddress forKey:@"work_address"];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_signUrl forKey:@"sign_url"];
 
 }
 
@@ -82,7 +84,7 @@
     _workZone = [[NSUserDefaults standardUserDefaults] objectForKey:@"work_zone"];
     _workAddress = [[NSUserDefaults standardUserDefaults] objectForKey:@"work_address"];
 
-
+    _signUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"sign_url"];
 }
 
 - (void)clearUserInfo
@@ -111,6 +113,8 @@
     _workZone = nil;
     _workAddress = nil;
     
+    _signUrl = nil;
+    
     //[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userName"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userType"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userId"];
@@ -134,6 +138,8 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"work_city"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"work_zone"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"work_address"];
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sign_url"];
     
 }
 

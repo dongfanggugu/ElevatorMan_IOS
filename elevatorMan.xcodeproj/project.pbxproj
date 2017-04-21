@@ -282,6 +282,7 @@
 		65FE08C41EA9AD61002C9397 /* PaintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08BD1EA9AD61002C9397 /* PaintViewController.m */; };
 		65FE08C61EA9AD61002C9397 /* PainterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08C11EA9AD61002C9397 /* PainterView.m */; };
 		65FE08C71EA9AD61002C9397 /* Squiggle.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08C31EA9AD61002C9397 /* Squiggle.m */; };
+		65FE08CA1EA9EA59002C9397 /* PersonSignController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08C91EA9EA59002C9397 /* PersonSignController.m */; };
 		65FEDC251C1FAB2700DB339B /* MantenanceTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FEDC241C1FAB2700DB339B /* MantenanceTabBarController.m */; };
 		BF0296951AC88E6600ED4AF1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0296941AC88E6600ED4AF1 /* MapKit.framework */; };
 		BF0296A01ACBFE1B00ED4AF1 /* ElevatorManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF02969F1ACBFE1B00ED4AF1 /* ElevatorManViewController.m */; };
@@ -729,6 +730,8 @@
 		65FE08C11EA9AD61002C9397 /* PainterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PainterView.m; sourceTree = "<group>"; };
 		65FE08C21EA9AD61002C9397 /* Squiggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Squiggle.h; sourceTree = "<group>"; };
 		65FE08C31EA9AD61002C9397 /* Squiggle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Squiggle.m; sourceTree = "<group>"; };
+		65FE08C81EA9EA59002C9397 /* PersonSignController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonSignController.h; sourceTree = "<group>"; };
+		65FE08C91EA9EA59002C9397 /* PersonSignController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonSignController.m; sourceTree = "<group>"; };
 		65FEDC231C1FAB1700DB339B /* MantenanceTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MantenanceTabBarController.h; sourceTree = "<group>"; };
 		65FEDC241C1FAB2700DB339B /* MantenanceTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MantenanceTabBarController.m; sourceTree = "<group>"; };
 		BF0296941AC88E6600ED4AF1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -1345,6 +1348,8 @@
 		65B0A43C1C292A8B008E58B8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				65FE08C81EA9EA59002C9397 /* PersonSignController.h */,
+				65FE08C91EA9EA59002C9397 /* PersonSignController.m */,
 				65FE08BC1EA9AD61002C9397 /* PaintViewController.h */,
 				65FE08BD1EA9AD61002C9397 /* PaintViewController.m */,
 				65D1FABE1E0CC07A00F2F6EC /* MaintenanceManager */,
@@ -2114,6 +2119,7 @@
 				6582A40C1E24B71B00B75E57 /* CDPGifScrollView.m in Sources */,
 				65D6FEDD1CABC08E00CEB203 /* AlarmResultViewController.m in Sources */,
 				65FEDC251C1FAB2700DB339B /* MantenanceTabBarController.m in Sources */,
+				65FE08CA1EA9EA59002C9397 /* PersonSignController.m in Sources */,
 				65C065731C2BBED3007EA068 /* PersonModifyController.m in Sources */,
 				658748CB1D2CF811006406AD /* GuideViewController.m in Sources */,
 				BFD920C61B39576600AA5C00 /* propertyMenuViewController.m in Sources */,

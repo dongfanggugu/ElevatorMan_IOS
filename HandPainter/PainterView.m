@@ -154,7 +154,7 @@
 	
 }
 
-- (void)save
+- (UIImage *)save
 {
     UIGraphicsBeginImageContext(self.bounds.size);
     
@@ -164,7 +164,9 @@
     
     UIGraphicsEndImageContext();
     
-    UIImageWriteToSavedPhotosAlbum(viewImage, nil, nil, nil);
+    return viewImage;
+    
+   // UIImageWriteToSavedPhotosAlbum(viewImage, nil, nil, nil);
 }
 
 - (void)dealloc
