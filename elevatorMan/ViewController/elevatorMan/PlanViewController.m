@@ -13,8 +13,12 @@
 #import "ImageUtils.h"
 #import "DatePickerDialog.h"
 #import "PaintViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface PlanViewController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate, DatePickerDialogDelegate>
+{
+    BOOL _hasSubmit;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *labelCode;
 
@@ -70,7 +74,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    _hasSubmit = NO;
     [self setNavRightWithText:@"提交"];
     [self initView];
 }
@@ -78,9 +82,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    if (_hasSubmit) {
+        [self deleteFileAndCleanDic];
+    }
+}
 - (void)onClickNavRight
 {
     [self submit];
@@ -188,13 +199,7 @@
 
 - (void)submit
 {
-    NSString *signUrl = [User sharedUser].signUrl;
-    
-    if (0 == signUrl.length) {
-        [self showSignAlert];
-        return;
-    }
-    
+   
     if ([self.flag isEqualToString:@"add"]) {
         [self addPlan];
         
@@ -202,19 +207,20 @@
         [self modifyPlan];
         
     } else if ([self.flag isEqualToString:@"complete"]) {
+    
         [self completePlan];
     }
 }
 
 - (void)showSignAlert
 {
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有设置您的个人签名,无法提交" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有设置您的个人签名,\n请到个人中心->设置->我的签名中设置" preferredStyle:UIAlertControllerStyleAlert];
     
-    [controller addAction:[UIAlertAction actionWithTitle:@"设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self jumpPaint];
-    }]];
+//    [controller addAction:[UIAlertAction actionWithTitle:@"设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        [self jumpPaint];
+//    }]];
     
-    [controller addAction:[UIAlertAction actionWithTitle:@"取消 " style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    [controller addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
     }]];
 }
@@ -504,10 +510,17 @@
     }];
 }
 
-- (void)completePlan {
+- (void)completePlan
+{
+    NSString *signUrl = [User sharedUser].signUrl;
+    
+    if (0 == signUrl.length) {
+        [self showSignAlert];
+        return;
+    }
+    
     if (self.imageViewDic.count != 3) {
         [HUDClass showHUDWithLabel:@"请拍摄三张照片!" view:self.view];
-    
         return;
     }
     
@@ -536,16 +549,29 @@
     
     [[HttpClient sharedClient] view:self.view post:@"finishMain" parameter:param
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                [self deleteFileAndCleanDic];
-                                [self.navigationController popViewControllerAnimated:YES];
+                                [self afterComplete];
+                                _hasSubmit = YES;
                             }];
 }
 
+
 - (void)afterComplete
 {
+    [self setNavRightWithText:@""];
     
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 100)];
+    
+    //footerView.backgroundColor = [UIColor redColor];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 100)];
+    
+    [footerView addSubview:imageView];
+    
+    [imageView setImageWithURL:[NSURL URLWithString:[User sharedUser].signUrl]];
+    
+    
+    [self.tableView setTableFooterView:imageView];
 }
-
 
 
 
@@ -667,5 +693,10 @@
     }
 
 }
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    return 100;
+//}
 
 @end

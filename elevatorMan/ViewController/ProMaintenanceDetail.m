@@ -10,6 +10,8 @@
 #import "ProMaintenanceDetail.h"
 #import "HttpClient.h"
 #import "ImageUtils.h"
+#import "UIImageView+AFNetworking.h"
+
 
 @interface ProMaintenanceDetail()
 
@@ -225,6 +227,12 @@
 
 - (void)checkOk
 {
+    NSString *url = [User sharedUser].signUrl;
+    if (0 == url.length) {
+        [HUDClass showHUDWithLabel:@"您还没有设置手写签名,\n请到个人中心->设置->我的签名设置你的呢签名"];
+        return;
+    }
+    
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
     param[@"mainId"] = self.mainId;
     param[@"verify"] = [NSNumber numberWithInt:2];
@@ -233,10 +241,24 @@
     [[HttpClient sharedClient] view:self.view post:@"verifyMainPlan" parameter:param
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                 [HUDClass showHUDWithLabel:@"维保记录已经确认"];
-                                [self.navigationController popViewControllerAnimated:YES];
+                                [self afterConfirm];
                             }];
 }
 
+- (void)afterConfirm
+{
+    [self setNavRightWithText:@""];
+    
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 100)];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 100)];
+    
+    [imageView setImageWithURL:[NSURL URLWithString:[User sharedUser].signUrl]];
+    
+    [footerView addSubview:imageView];
+    
+    [self.tableView setTableFooterView:imageView];
+}
 
 - (void)checkFailed:(NSString *)remark
 {

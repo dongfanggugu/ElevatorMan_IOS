@@ -2251,6 +2251,7 @@
 				CODE_SIGN_ENTITLEMENTS = elevatorMan/elevatorMan.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6LK27K74LE;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/elevatorMan/PrefixHeader.pch";
@@ -2300,6 +2301,7 @@
 				CODE_SIGN_ENTITLEMENTS = elevatorMan/elevatorMan.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6LK27K74LE;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/elevatorMan/PrefixHeader.pch";
