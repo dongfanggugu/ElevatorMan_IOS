@@ -31,7 +31,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewMainAfter;
 
-@property (strong, nonatomic) NSString *enterFlag;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewWorker;
 
 @property (strong, nonatomic) NSString *mainId;
 
@@ -89,6 +89,21 @@
     self.labelDate.text = self.mainDate;
     self.labelType.text = [self getDescriptionByType:self.mainType];
     self.lbWorker.text = _worker;
+    
+    [self.imageViewWorker setImageWithURL:[NSURL URLWithString:self.workerSign]];
+    
+    if ([self.enterFlag isEqualToString:@"history"]) {
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 100)];
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 100)];
+        
+        [imageView setImageWithURL:[NSURL URLWithString:self.propertySign]];
+        
+        [footerView addSubview:imageView];
+        
+        [self.tableView setTableFooterView:imageView];
+    }
+    
 }
 
 - (void)onClickNavRight
@@ -458,6 +473,9 @@ CachePath:(NSString *)cachePath fileName:(NSString *)fileName
     } else if (5 == indexPath.row) {
         return 210;
     
+    } else if (6 == indexPath.row) {
+        return 100;
+        
     } else {
         return 44;
     }

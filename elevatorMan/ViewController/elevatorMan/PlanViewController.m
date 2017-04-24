@@ -212,19 +212,6 @@
     }
 }
 
-- (void)showSignAlert
-{
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还没有设置您的个人签名,\n请到个人中心->设置->我的签名中设置" preferredStyle:UIAlertControllerStyleAlert];
-    
-//    [controller addAction:[UIAlertAction actionWithTitle:@"设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        [self jumpPaint];
-//    }]];
-    
-    [controller addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        
-    }]];
-}
-
 - (void)jumpPaint
 {
     PaintViewController *controller = [[PaintViewController alloc] init];
@@ -515,7 +502,7 @@
     NSString *signUrl = [User sharedUser].signUrl;
     
     if (0 == signUrl.length) {
-        [self showSignAlert];
+        [HUDClass showHUDWithLabel:@"您还没有设置手写签名,\n请到个人中心->设置->我的签名设置你的呢签名"];
         return;
     }
     
@@ -636,7 +623,6 @@
     NSString *fileName = nil;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *fileArray = [fileManager contentsOfDirectoryAtPath:path error:nil];
-    NSLog(@"file count:%ld", fileArray.count);
     if (fileArray != nil && fileArray.count > 0) {
         fileName = [fileArray objectAtIndex:0];
     }

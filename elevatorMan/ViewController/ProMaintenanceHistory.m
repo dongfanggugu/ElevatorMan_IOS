@@ -75,7 +75,8 @@
     NSLog(@"currentPage:%ld", page);
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
     
-    [param setValue:[NSNumber numberWithLong:-1] forKey:@"page"];
+    [param setValue:[NSNumber numberWithLong:1] forKey:@"page"];
+    [param setValue:[NSNumber numberWithLong:100] forKey:@"pageSize"];
     [param setValue:project forKey:@"communityName"];
     [param setValue:building forKey:@"buildingCode"];
     [param setValue:unit forKey:@"unitCode"];
@@ -152,6 +153,10 @@
     
     NSString *worker = [mainInfo objectForKey:@"workerName"];
     
+    NSString *workerSign = [mainInfo objectForKey:@"workerAutograph"];
+    
+    NSString *propertySign = [mainInfo objectForKey:@"propertyAutograph"];
+    
     
     [controller setValue:mainId forKey:@"mainId"];
     [controller setValue:liftNum forKey:@"liftNum"];
@@ -160,6 +165,13 @@
     [controller setValue:mainType forKey:@"mainType"];
     
     controller.worker = worker;
+    
+    controller.workerSign = workerSign;
+    
+    controller.propertySign = propertySign;
+    
+    controller.enterFlag = @"history";
+    
     
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];

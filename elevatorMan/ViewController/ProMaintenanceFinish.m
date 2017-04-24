@@ -117,6 +117,10 @@
     
     NSString *worker = [mainInfo objectForKey:@"workerName"];
     
+    NSString *workerSign = [mainInfo objectForKey:@"workerAutograph"];
+    
+    NSString *propertySign = [mainInfo objectForKey:@"propertyAutograph"];
+    
     
     [controller setValue:@"finish" forKey:@"enterFlag"];
     [controller setValue:mainId forKey:@"mainId"];
@@ -124,6 +128,10 @@
     [controller setValue:address forKey:@"address"];
     [controller setValue:mainDate forKey:@"mainDate"];
     [controller setValue:mainType forKey:@"mainType"];
+    
+    controller.workerSign = workerSign;
+    
+    controller.propertySign = propertySign;
     
     controller.worker = worker;
     

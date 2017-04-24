@@ -15,6 +15,12 @@
 
 @property (nonatomic, copy) NSString *worker;
 
+@property (copy, nonatomic) NSString *workerSign;
+
+@property (copy, nonatomic) NSString *propertySign;
+
+@property (copy, nonatomic) NSString *enterFlag;
+
 @end
 
 #endif /* ProMaintenanceDetail_h */
