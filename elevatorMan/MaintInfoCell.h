@@ -16,9 +16,13 @@
 
 + (CGFloat)cellHeight;
 
++ (CGFloat)cellHeightWithText:(NSString *)text;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *labelProject;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelDate;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelInfo;
 
 @end

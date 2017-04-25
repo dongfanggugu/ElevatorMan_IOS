@@ -14,14 +14,16 @@
 #import "MaintInfoCell.h"
 
 
+#define PAGE_SIZE 2
+
 
 #pragma mark -- ProMaintenanceHistory
 
-@interface ProMaintenanceHistory()<UITableViewDelegate, UITableViewDataSource>
+@interface ProMaintenanceHistory()<UITableViewDelegate, UITableViewDataSource, PullTableViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *historyArray;
 
-@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) PullTableView *tableView;
 
 @property NSInteger currentPage;
 
@@ -42,9 +44,8 @@
 {
     [super viewDidAppear:animated];
     
-    [self.historyArray removeAllObjects];
     self.currentPage = 1;
-    [self getHistoryArrayByPage:self.currentPage project:nil building:nil unit:nil lift:nil];
+    [self getHistory];
 }
 
 
@@ -52,7 +53,7 @@
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64 - 49)];
+    _tableView = [[PullTableView alloc] initWithFrame:CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64 - 49)];
     
     [self.view addSubview:_tableView];
     
@@ -60,6 +61,8 @@
     _tableView.delegate = self;
     
     _tableView.dataSource = self;
+    
+    _tableView.pullDelegate = self;
     
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
@@ -69,14 +72,61 @@
     _historyArray = [NSMutableArray array];
 }
 
-- (void)getHistoryArrayByPage:(NSInteger)page project:(NSString *)project building:(NSString *)building
-                         unit:(NSString *)unit lift:(NSString *)litfId {
-    
-    NSLog(@"currentPage:%ld", page);
+- (void)getHistory
+{
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
     
     [param setValue:[NSNumber numberWithLong:1] forKey:@"page"];
-    [param setValue:[NSNumber numberWithLong:100] forKey:@"pageSize"];
+    
+    __weak ProMaintenanceHistory *weakSelf = self;
+    
+    [[HttpClient sharedClient] view:self.view post:@"getHistoryMainList" parameter:param
+                            success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                
+                                if (_tableView.pullTableIsRefreshing) {
+                                    _tableView.pullTableIsRefreshing = NO;
+                                }
+                                
+                                [weakSelf.historyArray removeAllObjects];
+                                
+                                [weakSelf.historyArray addObjectsFromArray:[responseObject objectForKey:@"body"] ];
+                                
+                                [weakSelf.tableView reloadData];
+                                
+                            }];
+}
+
+
+- (void)getMoreHistory
+{
+    NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
+    
+    [param setValue:[NSNumber numberWithLong:self.currentPage] forKey:@"page"];
+    
+    __weak ProMaintenanceHistory *weakSelf = self;
+    
+    [[HttpClient sharedClient] view:self.view post:@"getHistoryMainList" parameter:param
+                            success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                
+                                if (_tableView.pullTableIsLoadingMore) {
+                                    _tableView.pullTableIsLoadingMore = NO;
+                                }
+                                
+                                [weakSelf.historyArray addObjectsFromArray:[responseObject objectForKey:@"body"] ];
+                                
+                                [weakSelf.tableView reloadData];
+                                
+                            }];
+}
+
+- (void)getHistoryArrayByPage:(NSInteger)page project:(NSString *)project building:(NSString *)building
+                         unit:(NSString *)unit lift:(NSString *)litfId
+{
+    
+    NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
+    
+    [param setValue:[NSNumber numberWithLong:1] forKey:@"page"];
+    [param setValue:[NSNumber numberWithLong:PAGE_SIZE] forKey:@"pageSize"];
     [param setValue:project forKey:@"communityName"];
     [param setValue:building forKey:@"buildingCode"];
     [param setValue:unit forKey:@"unitCode"];
@@ -87,9 +137,8 @@
     [[HttpClient sharedClient] view:self.view post:@"getHistoryMainList" parameter:param
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                 
+                                [weakSelf.historyArray removeAllObjects];
                                 [weakSelf.historyArray addObjectsFromArray:[responseObject objectForKey:@"body"] ];
-                                
-                                
                                 [weakSelf.tableView reloadData];
                                 
                             }];
@@ -120,17 +169,29 @@
     NSString *building = [[self.historyArray objectAtIndex:indexPath.row] objectForKey:@"buildingCode"];
     NSString *unit = [[self.historyArray objectAtIndex:indexPath.row] objectForKey:@"unitCode"];
     
+    NSString *confirmTime = [[self.historyArray objectAtIndex:indexPath.row] objectForKey:@"propertyFinishedTime"];
+    
     NSString *project = [NSString stringWithFormat:@"%@%@号楼%@单元", community, building, unit];
     
-    NSString *date = [self.historyArray[indexPath.row] objectForKey:@"planMainTime"];
+    NSString *mainTime = [self.historyArray[indexPath.row] objectForKey:@"mainTime"];
     
     NSString *worker = [self.historyArray[indexPath.row] objectForKey:@"workerName"];
     
     cell.labelProject.text = project;
-    cell.labelDate.text = [NSString stringWithFormat:@"%@      维保人:%@", date, worker];
-    
+    cell.labelInfo.text = [NSString stringWithFormat:@"维保时间:%@ 维保人:%@", mainTime, worker];
+    cell.labelDate.text = confirmTime;
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *community = [[self.historyArray objectAtIndex:indexPath.row] objectForKey:@"communityName"];
+    NSString *building = [[self.historyArray objectAtIndex:indexPath.row] objectForKey:@"buildingCode"];
+    NSString *unit = [[self.historyArray objectAtIndex:indexPath.row] objectForKey:@"unitCode"];
+    NSString *project = [NSString stringWithFormat:@"%@%@号楼%@单元", community, building, unit];
+    
+    return [MaintInfoCell cellHeightWithText:project];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -178,12 +239,6 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [MaintInfoCell cellHeight];
-}
-
-
 #pragma mark - PullTableViewDelegate
 
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
@@ -201,15 +256,13 @@
 
 - (void)refreshTable
 {
-    [self.historyArray removeAllObjects];
-    self.currentPage = 1;
-    [self getHistoryArrayByPage:self.currentPage project:nil building:nil unit:nil lift:nil];
+    [self getHistory];
 }
 
 - (void)loadMoreDataToTable
 {
     self.currentPage++;
-    [self getHistoryArrayByPage:self.currentPage project:nil building:nil unit:nil lift:nil];
+    [self getMoreHistory];
     
 }
 

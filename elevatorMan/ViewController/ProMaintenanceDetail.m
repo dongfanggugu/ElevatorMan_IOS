@@ -33,6 +33,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewWorker;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewProperty;
+
 @property (strong, nonatomic) NSString *mainId;
 
 @property (strong, nonatomic) NSString *liftNum;
@@ -92,17 +94,17 @@
     
     [self.imageViewWorker setImageWithURL:[NSURL URLWithString:self.workerSign]];
     
-    if ([self.enterFlag isEqualToString:@"history"]) {
-        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 100)];
-        
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 100)];
-        
-        [imageView setImageWithURL:[NSURL URLWithString:self.propertySign]];
-        
-        [footerView addSubview:imageView];
-        
-        [self.tableView setTableFooterView:imageView];
-    }
+//    if ([self.enterFlag isEqualToString:@"history"]) {
+//        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 100)];
+//        
+//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 100)];
+//        
+//        [imageView setImageWithURL:[NSURL URLWithString:self.propertySign]];
+//        
+//        [footerView addSubview:imageView];
+//        
+//        [self.tableView setTableFooterView:imageView];
+//    }
     
 }
 
@@ -264,15 +266,11 @@
 {
     [self setNavRightWithText:@""];
     
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 100)];
+    self.enterFlag = @"history";
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 100)];
+    self.propertySign = [User sharedUser].signUrl;
     
-    [imageView setImageWithURL:[NSURL URLWithString:[User sharedUser].signUrl]];
-    
-    [footerView addSubview:imageView];
-    
-    [self.tableView setTableFooterView:imageView];
+    [self.tableView reloadData];
 }
 
 - (void)checkFailed:(NSString *)remark
@@ -447,6 +445,20 @@ CachePath:(NSString *)cachePath fileName:(NSString *)fileName
     [self.ivOverView removeFromSuperview];
 }
 
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if ([self.enterFlag isEqualToString:@"history"]) {
+        
+        [self.imageViewProperty setImageWithURL:[NSURL URLWithString:self.propertySign]];
+        return 8;
+        
+    } else {
+        return 7;
+    }
+}
+
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -473,7 +485,7 @@ CachePath:(NSString *)cachePath fileName:(NSString *)fileName
     } else if (5 == indexPath.row) {
         return 210;
     
-    } else if (6 == indexPath.row) {
+    } else if (6 == indexPath.row || 7 == indexPath.row) {
         return 100;
         
     } else {

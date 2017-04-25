@@ -10,21 +10,8 @@
 #import "ProMaintenanceFinish.h"
 #import "HttpClient.h"
 #import "ProMaintenanceDetail.h"
+#import "MaintInfoCell.h"
 
-#pragma mark -- PlanFinishCell
-
-@interface PlanFinshCell : UITableViewCell
-
-@property (weak, nonatomic) IBOutlet UILabel *labelProject;
-
-@property (weak, nonatomic) IBOutlet UILabel *labelDate;
-
-@end
-
-@implementation PlanFinshCell
-
-
-@end
 
 #pragma mark -- ProMaintenanceFinish
 
@@ -56,7 +43,7 @@
 {
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
-
+  
 /**
  *  请求完成待确认的维保列表
  */
@@ -80,22 +67,41 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PlanFinshCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlanFinishedCell"];
+    MaintInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:[MaintInfoCell identifier]];
+    
+    if (!cell) {
+        cell = [MaintInfoCell cellFromNib];
+    }
+    
     
     NSString *community = [[self.planArray objectAtIndex:indexPath.row] objectForKey:@"communityName"];
     NSString *building = [[self.planArray objectAtIndex:indexPath.row] objectForKey:@"buildingCode"];
     NSString *unit = [[self.planArray objectAtIndex:indexPath.row] objectForKey:@"unitCode"];
-    
     NSString *project = [NSString stringWithFormat:@"%@%@号楼%@单元", community, building, unit];
     
-    NSString *date = [_planArray[indexPath.row] objectForKey:@"planMainTime"];
+    NSString *submitTime = [[self.planArray objectAtIndex:indexPath.row] objectForKey:@"postTime"];
+    
+    
+    
+    NSString *date = [_planArray[indexPath.row] objectForKey:@"mainTime"];
     
     NSString *worker = [_planArray[indexPath.row] objectForKey:@"workerName"];
     
     cell.labelProject.text = project;
-    cell.labelDate.text = [NSString stringWithFormat:@"%@      维保人:%@", date, worker];
+    cell.labelInfo.text = [NSString stringWithFormat:@"维保时间:%@ 维保人:%@", date, worker];
+    cell.labelDate.text = submitTime;
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *community = [[self.planArray objectAtIndex:indexPath.row] objectForKey:@"communityName"];
+    NSString *building = [[self.planArray objectAtIndex:indexPath.row] objectForKey:@"buildingCode"];
+    NSString *unit = [[self.planArray objectAtIndex:indexPath.row] objectForKey:@"unitCode"];
+    NSString *project = [NSString stringWithFormat:@"%@%@号楼%@单元", community, building, unit];
+    
+    return [MaintInfoCell cellHeightWithText:project];
 }
 
 
