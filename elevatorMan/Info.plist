@@ -19,9 +19,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>V4.3</string>
+	<string>V1.41</string>
 	<key>CFBundleVersion</key>
-	<string>43</string>
+	<string>141</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>

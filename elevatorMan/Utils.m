@@ -66,7 +66,7 @@
         string = @"http://211.147.152.6:8080/lift/mobile/";
         
     } else if ([urlTextString isEqualToString:@"全国"]) {
-        string = @"http://123.57.10.16:8081/lift/mobile/";
+        string = @"http://123.57.10.16:8080/lift/mobile/";
         
     } else if ([urlTextString isEqualToString:@"上海"]) {
         string = @"http://47.93.123.2:8080/lift/mobile/";
