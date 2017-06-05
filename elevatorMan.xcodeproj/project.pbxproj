@@ -162,6 +162,13 @@
 		655ADF851E287C8200F1F036 /* pro_alarm_project.png in Resources */ = {isa = PBXBuildFile; fileRef = 655ADF831E287C8200F1F036 /* pro_alarm_project.png */; };
 		655ADF871E287C9500F1F036 /* icon_repair_history.png in Resources */ = {isa = PBXBuildFile; fileRef = 655ADF861E287C9500F1F036 /* icon_repair_history.png */; };
 		655ADF891E288F0A00F1F036 /* icon_login_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 655ADF881E288F0A00F1F036 /* icon_login_logo.png */; };
+		6574F2291EE5308700B8F17A /* MaintInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6574F2281EE5308700B8F17A /* MaintInfoView.xib */; };
+		6574F22F1EE5462D00B8F17A /* MaintInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F22E1EE5462D00B8F17A /* MaintInfoView.m */; };
+		6574F2321EE546AA00B8F17A /* MaintInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F2311EE546AA00B8F17A /* MaintInfoController.m */; };
+		6574F2341EE558A300B8F17A /* MaintExceptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6574F2331EE558A300B8F17A /* MaintExceptionView.xib */; };
+		6574F2371EE55AC600B8F17A /* MaintExceptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F2361EE55AC600B8F17A /* MaintExceptionView.m */; };
+		6574F23A1EE5600500B8F17A /* MaintExceptionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F2391EE5600500B8F17A /* MaintExceptionController.m */; };
+		6574F23D1EE57A9700B8F17A /* MaintSubmitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F23C1EE57A9700B8F17A /* MaintSubmitController.m */; };
 		657977A91CB14C5A00E9E4BD /* libchorstar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 657977A81CB14C5A00E9E4BD /* libchorstar.a */; };
 		657C8C8A1CA518FC00288D30 /* AlarmHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657C8C891CA518FC00288D30 /* AlarmHistoryViewController.m */; };
 		657E20381CB382B100ED51A9 /* KnTitleListViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 657E20371CB382B100ED51A9 /* KnTitleListViewController.mm */; };
@@ -563,6 +570,18 @@
 		655ADF831E287C8200F1F036 /* pro_alarm_project.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pro_alarm_project.png; sourceTree = "<group>"; };
 		655ADF861E287C9500F1F036 /* icon_repair_history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_repair_history.png; sourceTree = "<group>"; };
 		655ADF881E288F0A00F1F036 /* icon_login_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_login_logo.png; sourceTree = "<group>"; };
+		6574F2281EE5308700B8F17A /* MaintInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaintInfoView.xib; sourceTree = "<group>"; };
+		6574F22D1EE5462D00B8F17A /* MaintInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintInfoView.h; sourceTree = "<group>"; };
+		6574F22E1EE5462D00B8F17A /* MaintInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintInfoView.m; sourceTree = "<group>"; };
+		6574F2301EE546AA00B8F17A /* MaintInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintInfoController.h; sourceTree = "<group>"; };
+		6574F2311EE546AA00B8F17A /* MaintInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintInfoController.m; sourceTree = "<group>"; };
+		6574F2331EE558A300B8F17A /* MaintExceptionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaintExceptionView.xib; sourceTree = "<group>"; };
+		6574F2351EE55AC600B8F17A /* MaintExceptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintExceptionView.h; sourceTree = "<group>"; };
+		6574F2361EE55AC600B8F17A /* MaintExceptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintExceptionView.m; sourceTree = "<group>"; };
+		6574F2381EE5600500B8F17A /* MaintExceptionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintExceptionController.h; sourceTree = "<group>"; };
+		6574F2391EE5600500B8F17A /* MaintExceptionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintExceptionController.m; sourceTree = "<group>"; };
+		6574F23B1EE57A9700B8F17A /* MaintSubmitController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintSubmitController.h; sourceTree = "<group>"; };
+		6574F23C1EE57A9700B8F17A /* MaintSubmitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintSubmitController.m; sourceTree = "<group>"; };
 		657977A81CB14C5A00E9E4BD /* libchorstar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libchorstar.a; path = "../../Library/Developer/Xcode/DerivedData/elevatorMan-baxotyrsogakzhcsioahocsvfdju/Build/Products/Debug-iphoneos/libchorstar.a"; sourceTree = "<group>"; };
 		657C8C881CA518E400288D30 /* AlarmHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlarmHistoryViewController.h; sourceTree = "<group>"; };
 		657C8C891CA518FC00288D30 /* AlarmHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmHistoryViewController.m; sourceTree = "<group>"; };
@@ -1067,7 +1086,7 @@
 			name = Repair;
 			sourceTree = "<group>";
 		};
-		655ADF481E2720A500F1F036 /* storyboard */ = {
+		655ADF481E2720A500F1F036 /* nib */ = {
 			isa = PBXGroup;
 			children = (
 				BFD920BC1B39547300AA5C00 /* Property.storyboard */,
@@ -1077,7 +1096,7 @@
 				6582A40E1E24BD3500B75E57 /* Launch Screen.storyboard */,
 				655ADF4A1E27223700F1F036 /* WorkerRepair.storyboard */,
 			);
-			name = storyboard;
+			name = nib;
 			sourceTree = "<group>";
 		};
 		655ADF491E2721AA00F1F036 /* ViewControllers */ = {
@@ -1088,6 +1107,35 @@
 				BFD8433E1B2FC330008E7118 /* Worker */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6574F2251EE52FB800B8F17A /* House */ = {
+			isa = PBXGroup;
+			children = (
+				6574F2271EE52FFE00B8F17A /* Repair */,
+				6574F2261EE52FF400B8F17A /* Manit */,
+			);
+			name = House;
+			sourceTree = "<group>";
+		};
+		6574F2261EE52FF400B8F17A /* Manit */ = {
+			isa = PBXGroup;
+			children = (
+				6574F2301EE546AA00B8F17A /* MaintInfoController.h */,
+				6574F2311EE546AA00B8F17A /* MaintInfoController.m */,
+				6574F2381EE5600500B8F17A /* MaintExceptionController.h */,
+				6574F2391EE5600500B8F17A /* MaintExceptionController.m */,
+				6574F23B1EE57A9700B8F17A /* MaintSubmitController.h */,
+				6574F23C1EE57A9700B8F17A /* MaintSubmitController.m */,
+			);
+			name = Manit;
+			sourceTree = "<group>";
+		};
+		6574F2271EE52FFE00B8F17A /* Repair */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Repair;
 			sourceTree = "<group>";
 		};
 		6582A4071E24B71B00B75E57 /* CDPGifScrollView */ = {
@@ -1259,7 +1307,7 @@
 		658E904A1DC6E2C600B1BD39 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				655ADF481E2720A500F1F036 /* storyboard */,
+				655ADF481E2720A500F1F036 /* nib */,
 				658E904E1DC6E76D00B1BD39 /* src */,
 				658E904D1DC6E76400B1BD39 /* xib */,
 			);
@@ -1280,6 +1328,8 @@
 				655ADF4F1E27230100F1F036 /* WRepairCell.xib */,
 				655ADF5A1E272C1600F1F036 /* WRepairView.xib */,
 				65FE08B61EA89EDE002C9397 /* MaintInfoCell.xib */,
+				6574F2281EE5308700B8F17A /* MaintInfoView.xib */,
+				6574F2331EE558A300B8F17A /* MaintExceptionView.xib */,
 			);
 			name = xib;
 			sourceTree = "<group>";
@@ -1313,6 +1363,10 @@
 				655ADF5D1E272C2D00F1F036 /* WRepairView.m */,
 				65FE08B81EA89F62002C9397 /* MaintInfoCell.h */,
 				65FE08B91EA89F62002C9397 /* MaintInfoCell.m */,
+				6574F22D1EE5462D00B8F17A /* MaintInfoView.h */,
+				6574F22E1EE5462D00B8F17A /* MaintInfoView.m */,
+				6574F2351EE55AC600B8F17A /* MaintExceptionView.h */,
+				6574F2361EE55AC600B8F17A /* MaintExceptionView.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -1664,6 +1718,7 @@
 		BFD8433E1B2FC330008E7118 /* Worker */ = {
 			isa = PBXGroup;
 			children = (
+				6574F2251EE52FB800B8F17A /* House */,
 				655ADF471E27203300F1F036 /* Repair */,
 				654B0BA51D25092800ED0064 /* HelpCenter */,
 				650AFD9E1CAA2EBD0074CC86 /* Knowledge */,
@@ -1863,10 +1918,12 @@
 				650B798D1C20746C00182D1E /* blueArrow.png in Resources */,
 				65D1FAE61E10E4BE00F2F6EC /* FilterView.xib in Resources */,
 				BFADFD001B3D0CCF002664B2 /* finishedBackground.png in Resources */,
+				6574F2291EE5308700B8F17A /* MaintInfoView.xib in Resources */,
 				658559BE1C2288A4004C253F /* icon_waiting.png in Resources */,
 				BFD920AB1B39139D00AA5C00 /* icon_elevator3.png in Resources */,
 				655ADF4B1E27223700F1F036 /* WorkerRepair.storyboard in Resources */,
 				65D1FAEB1E10E69F00F2F6EC /* ListDialogView.xib in Resources */,
+				6574F2341EE558A300B8F17A /* MaintExceptionView.xib in Resources */,
 				65D1FB121E1238E800F2F6EC /* ReceiverVoiceNodePlaying.png in Resources */,
 				65BEBB4A1C102B7A00B9EA17 /* operation.png in Resources */,
 				65FCA4FE1E14D9FE0086720D /* chat_voice_normal.png in Resources */,
@@ -2048,6 +2105,8 @@
 				651A0F6D1DC830450042E51B /* ProPersonCenterViewController.m in Sources */,
 				65A98D7E1C192ACE00BB4674 /* PlanViewController.m in Sources */,
 				6547E6811E1DD2FC0075B532 /* ProBaseTabBarController.m in Sources */,
+				6574F2371EE55AC600B8F17A /* MaintExceptionView.m in Sources */,
+				6574F22F1EE5462D00B8F17A /* MaintInfoView.m in Sources */,
 				65FE08C61EA9AD61002C9397 /* PainterView.m in Sources */,
 				BFD843561B301BAA008E7118 /* BuildingsViewController.m in Sources */,
 				658559C11C228983004C253F /* Utils.m in Sources */,
@@ -2085,6 +2144,7 @@
 				653922871E948CEF00A8B69A /* ChatRightController.m in Sources */,
 				651A0F721DC86B150042E51B /* PersonHeaderView.m in Sources */,
 				BFD843591B301BE1008E7118 /* ElevatorsViewController.m in Sources */,
+				6574F23D1EE57A9700B8F17A /* MaintSubmitController.m in Sources */,
 				650B799C1C2074A600182D1E /* EGORefreshTableHeaderView.m in Sources */,
 				650B799D1C2074A600182D1E /* LoadMoreTableFooterView.m in Sources */,
 				BFD8435C1B301C3E008E7118 /* ReportAlarmViewController.m in Sources */,
@@ -2113,11 +2173,13 @@
 				BFADFD051B3D1148002664B2 /* FinishedReportViewController.m in Sources */,
 				654D57631C1F078700B0A4DB /* MaintenanceReminder.m in Sources */,
 				657C8C8A1CA518FC00288D30 /* AlarmHistoryViewController.m in Sources */,
+				6574F23A1EE5600500B8F17A /* MaintExceptionController.m in Sources */,
 				658559B81C2250FF004C253F /* ProMaintenanceDetail.m in Sources */,
 				65D1FADC1E10ACFD00F2F6EC /* ProjectMainCell.m in Sources */,
 				655053551CCF12B30095FAB3 /* AlarmReceivedViewController.mm in Sources */,
 				6582A40C1E24B71B00B75E57 /* CDPGifScrollView.m in Sources */,
 				65D6FEDD1CABC08E00CEB203 /* AlarmResultViewController.m in Sources */,
+				6574F2321EE546AA00B8F17A /* MaintInfoController.m in Sources */,
 				65FEDC251C1FAB2700DB339B /* MantenanceTabBarController.m in Sources */,
 				65FE08CA1EA9EA59002C9397 /* PersonSignController.m in Sources */,
 				65C065731C2BBED3007EA068 /* PersonModifyController.m in Sources */,

@@ -16,6 +16,7 @@
 #import "../../../chorstar/chorstar/Chorstar.h"
 #import "WRepairTabBarController.h"
 #import "HttpClient.h"
+#import "MaintInfoController.h"
 
 
 
@@ -210,15 +211,16 @@
 
 - (void)repair
 {
-
-    NSString *region =  [[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"];
-    if ([region isEqualToString:@"上海"]
-        || [region isEqualToString:@"北京"]) {
-        
-        [HUDClass showHUDWithLabel:@"该功能暂未开放"];
-    }
-    UIViewController *controller = [[WRepairTabBarController alloc] init];
+    
+    MaintInfoController *controller = [[MaintInfoController alloc] init];
+    
+    controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
+
+    //NSString *region =  [[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"];
+   
+//    UIViewController *controller = [[WRepairTabBarController alloc] init];
+//    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)wiki
