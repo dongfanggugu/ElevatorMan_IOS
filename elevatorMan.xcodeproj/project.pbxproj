@@ -169,6 +169,9 @@
 		6574F2371EE55AC600B8F17A /* MaintExceptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F2361EE55AC600B8F17A /* MaintExceptionView.m */; };
 		6574F23A1EE5600500B8F17A /* MaintExceptionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F2391EE5600500B8F17A /* MaintExceptionController.m */; };
 		6574F23D1EE57A9700B8F17A /* MaintSubmitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F23C1EE57A9700B8F17A /* MaintSubmitController.m */; };
+		6574F23F1EE57C7400B8F17A /* MaintResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6574F23E1EE57C7400B8F17A /* MaintResultView.xib */; };
+		6574F2421EE57C9200B8F17A /* MaintResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F2411EE57C9200B8F17A /* MaintResultView.m */; };
+		6574F2441EE57D7700B8F17A /* icon_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6574F2431EE57D7700B8F17A /* icon_photo.png */; };
 		657977A91CB14C5A00E9E4BD /* libchorstar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 657977A81CB14C5A00E9E4BD /* libchorstar.a */; };
 		657C8C8A1CA518FC00288D30 /* AlarmHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657C8C891CA518FC00288D30 /* AlarmHistoryViewController.m */; };
 		657E20381CB382B100ED51A9 /* KnTitleListViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 657E20371CB382B100ED51A9 /* KnTitleListViewController.mm */; };
@@ -582,6 +585,10 @@
 		6574F2391EE5600500B8F17A /* MaintExceptionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintExceptionController.m; sourceTree = "<group>"; };
 		6574F23B1EE57A9700B8F17A /* MaintSubmitController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintSubmitController.h; sourceTree = "<group>"; };
 		6574F23C1EE57A9700B8F17A /* MaintSubmitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintSubmitController.m; sourceTree = "<group>"; };
+		6574F23E1EE57C7400B8F17A /* MaintResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaintResultView.xib; sourceTree = "<group>"; };
+		6574F2401EE57C9200B8F17A /* MaintResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintResultView.h; sourceTree = "<group>"; };
+		6574F2411EE57C9200B8F17A /* MaintResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintResultView.m; sourceTree = "<group>"; };
+		6574F2431EE57D7700B8F17A /* icon_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_photo.png; sourceTree = "<group>"; };
 		657977A81CB14C5A00E9E4BD /* libchorstar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libchorstar.a; path = "../../Library/Developer/Xcode/DerivedData/elevatorMan-baxotyrsogakzhcsioahocsvfdju/Build/Products/Debug-iphoneos/libchorstar.a"; sourceTree = "<group>"; };
 		657C8C881CA518E400288D30 /* AlarmHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlarmHistoryViewController.h; sourceTree = "<group>"; };
 		657C8C891CA518FC00288D30 /* AlarmHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmHistoryViewController.m; sourceTree = "<group>"; };
@@ -1086,7 +1093,7 @@
 			name = Repair;
 			sourceTree = "<group>";
 		};
-		655ADF481E2720A500F1F036 /* nib */ = {
+		655ADF481E2720A500F1F036 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
 				BFD920BC1B39547300AA5C00 /* Property.storyboard */,
@@ -1096,7 +1103,7 @@
 				6582A40E1E24BD3500B75E57 /* Launch Screen.storyboard */,
 				655ADF4A1E27223700F1F036 /* WorkerRepair.storyboard */,
 			);
-			name = nib;
+			name = storyboard;
 			sourceTree = "<group>";
 		};
 		655ADF491E2721AA00F1F036 /* ViewControllers */ = {
@@ -1307,16 +1314,17 @@
 		658E904A1DC6E2C600B1BD39 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				655ADF481E2720A500F1F036 /* nib */,
+				655ADF481E2720A500F1F036 /* storyboard */,
 				658E904E1DC6E76D00B1BD39 /* src */,
-				658E904D1DC6E76400B1BD39 /* xib */,
+				658E904D1DC6E76400B1BD39 /* nib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
 		};
-		658E904D1DC6E76400B1BD39 /* xib */ = {
+		658E904D1DC6E76400B1BD39 /* nib */ = {
 			isa = PBXGroup;
 			children = (
+				6574F23E1EE57C7400B8F17A /* MaintResultView.xib */,
 				65D1FAD81E10ABE300F2F6EC /* ProjectMainCell.xib */,
 				655ADF5F1E274A3100F1F036 /* EvaluateView.xib */,
 				65FE08B11EA87FEB002C9397 /* DatePickerDialog.xib */,
@@ -1331,12 +1339,14 @@
 				6574F2281EE5308700B8F17A /* MaintInfoView.xib */,
 				6574F2331EE558A300B8F17A /* MaintExceptionView.xib */,
 			);
-			name = xib;
+			name = nib;
 			sourceTree = "<group>";
 		};
 		658E904E1DC6E76D00B1BD39 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				6574F2401EE57C9200B8F17A /* MaintResultView.h */,
+				6574F2411EE57C9200B8F17A /* MaintResultView.m */,
 				658E904F1DC6E79200B1BD39 /* ExceptionView.h */,
 				65D1FAEC1E10E6AD00F2F6EC /* ListDialogView.h */,
 				65D1FAED1E10E6AD00F2F6EC /* ListDialogView.m */,
@@ -1703,6 +1713,7 @@
 		BFD71D211B2987B700CCE9E1 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				6574F2431EE57D7700B8F17A /* icon_photo.png */,
 				655ADF671E27574A00F1F036 /* icon_star_normal.png */,
 				655ADF681E27574A00F1F036 /* icon_star_sel.png */,
 				655ADF6B1E275A3E00F1F036 /* icon_repair_report.png */,
@@ -1996,6 +2007,7 @@
 				655ADF871E287C9500F1F036 /* icon_repair_history.png in Resources */,
 				65E1FB141CA3C21000D1510E /* history_normal.png in Resources */,
 				658559B31C224B1E004C253F /* device_code.png in Resources */,
+				6574F23F1EE57C7400B8F17A /* MaintResultView.xib in Resources */,
 				654B0BEB1D250B6400ED0064 /* sign.html in Resources */,
 				6526F7651C2A700600C9F172 /* icon_pwd_modify.png in Resources */,
 				655ADF721E275C1D00F1F036 /* guide_new.png in Resources */,
@@ -2029,6 +2041,7 @@
 				65E1FB131CA3C21000D1510E /* assigned_normal.png in Resources */,
 				658559B41C224B1E004C253F /* main_after.png in Resources */,
 				655ADF841E287C8200F1F036 /* pro_alarm_process.png in Resources */,
+				6574F2441EE57D7700B8F17A /* icon_photo.png in Resources */,
 				654B0BE01D250B6400ED0064 /* 6.png in Resources */,
 				65D1FB141E1238E800F2F6EC /* SenderAppNodeBkg_HL.png in Resources */,
 				BFD920AC1B39139D00AA5C00 /* icon_elevator4.png in Resources */,
@@ -2110,6 +2123,7 @@
 				65FE08C61EA9AD61002C9397 /* PainterView.m in Sources */,
 				BFD843561B301BAA008E7118 /* BuildingsViewController.m in Sources */,
 				658559C11C228983004C253F /* Utils.m in Sources */,
+				6574F2421EE57C9200B8F17A /* MaintResultView.m in Sources */,
 				658E90511DC6E7A300B1BD39 /* ExceptionView.m in Sources */,
 				65B0A4451C2933F3008E58B8 /* PersonalCenterController.m in Sources */,
 				655ADF591E2729CB00F1F036 /* WRepairDetailController.m in Sources */,
