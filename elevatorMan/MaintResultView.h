@@ -8,22 +8,40 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MaintResultViewDelegate <NSObject>
+
+- (void)onClickBeforeImage;
+
+- (void)onClickAfterImage;
+
+- (void)onClickDelBefore;
+
+- (void)onClickDelAfter;
+
+- (void)onClickSubmit;
+
+@end
+
 @interface MaintResultView : UIView
 
 + (id)viewFromNib;
 
 @property (weak, nonatomic) IBOutlet UITextView *tvContent;
 
+@property (weak, nonatomic) UIImage *imageBefore;
+
+@property (weak, nonatomic) UIImage *imageAfter;
+
+@property (assign, nonatomic) BOOL hasBefore;
+
+@property (assign, nonatomic) BOOL hasAfter;
+
+@property (assign, nonatomic) BOOL showMode;
+
 @property (weak, nonatomic) IBOutlet UIImageView *ivBefore;
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivAfter;
 
-@property (weak, nonatomic) IBOutlet UIButton *btnMore;
-
-@property (weak, nonatomic) IBOutlet UIButton *btnBefore;
-
-@property (weak, nonatomic) IBOutlet UIButton *btnAfter;
-
-@property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
+@property (weak, nonatomic) id<MaintResultViewDelegate> delegate;
 
 @end

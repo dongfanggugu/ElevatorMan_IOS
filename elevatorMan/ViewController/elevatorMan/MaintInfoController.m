@@ -10,6 +10,8 @@
 #import <BaiduMapAPI/BMapKit.h>
 #import "MaintInfoView.h"
 #import "MaintExceptionController.h"
+#import "MaintSubmitController.h"
+#import "MaintResultShowController.h"
 
 @interface MaintInfoController () <MaintInfoViewDelegate>
 
@@ -193,6 +195,9 @@
 
 - (void)onClickException
 {
+    [self maintResult];
+    
+    return;
     if (1 == self.state) {
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认无法出发完成当前维保任务?" preferredStyle:UIAlertControllerStyleAlert];
         
@@ -251,7 +256,14 @@
 - (void)completePlan
 {
     NSLog(@"完成维保计划");
-    [self state4];
+    MaintSubmitController *controller = [[MaintSubmitController alloc] init];
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[@"id"] = @"13131";
+    controller.maintInfo = dic;
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
+    //[self state4];
 }
 
 
@@ -261,6 +273,17 @@
 - (void)maintResult
 {
     NSLog(@"查看维保结果");
+    
+    MaintResultShowController *controller = [[MaintResultShowController alloc] init];
+    
+    controller.content = @"维保完成";
+    
+    controller.urlBefore = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1496651112189&di=84d87604a1c275ad9a4b6954e5ce8c5f&imgtype=0&src=http%3A%2F%2Fimage.tianjimedia.com%2FuploadImages%2F2015%2F156%2F44%2F891VW0Q49W96.jpg";
+    
+    controller.urlAfter = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1496651135858&di=7bccb2d14a6660d7d0552d5f38e35755&imgtype=0&src=http%3A%2F%2Fimg.meimi.cc%2Fmeinv%2F20170506%2Fvfvuvqlc5ec1476.jpg";
+    
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 /**

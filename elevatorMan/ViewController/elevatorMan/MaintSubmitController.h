@@ -10,4 +10,6 @@
 
 @interface MaintSubmitController : BaseViewController
 
+@property (strong, nonatomic) NSDictionary *maintInfo;
+
 @end

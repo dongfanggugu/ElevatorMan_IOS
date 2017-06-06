@@ -172,6 +172,8 @@
 		6574F23F1EE57C7400B8F17A /* MaintResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6574F23E1EE57C7400B8F17A /* MaintResultView.xib */; };
 		6574F2421EE57C9200B8F17A /* MaintResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F2411EE57C9200B8F17A /* MaintResultView.m */; };
 		6574F2441EE57D7700B8F17A /* icon_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6574F2431EE57D7700B8F17A /* icon_photo.png */; };
+		6574F2471EE64E4F00B8F17A /* ImageOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F2461EE64E4F00B8F17A /* ImageOverViewController.m */; };
+		6574F24C1EE655AB00B8F17A /* MaintResultShowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F24B1EE655AB00B8F17A /* MaintResultShowController.m */; };
 		657977A91CB14C5A00E9E4BD /* libchorstar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 657977A81CB14C5A00E9E4BD /* libchorstar.a */; };
 		657C8C8A1CA518FC00288D30 /* AlarmHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657C8C891CA518FC00288D30 /* AlarmHistoryViewController.m */; };
 		657E20381CB382B100ED51A9 /* KnTitleListViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 657E20371CB382B100ED51A9 /* KnTitleListViewController.mm */; };
@@ -589,6 +591,12 @@
 		6574F2401EE57C9200B8F17A /* MaintResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintResultView.h; sourceTree = "<group>"; };
 		6574F2411EE57C9200B8F17A /* MaintResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintResultView.m; sourceTree = "<group>"; };
 		6574F2431EE57D7700B8F17A /* icon_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_photo.png; sourceTree = "<group>"; };
+		6574F2451EE64E4F00B8F17A /* ImageOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageOverViewController.h; sourceTree = "<group>"; };
+		6574F2461EE64E4F00B8F17A /* ImageOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageOverViewController.m; sourceTree = "<group>"; };
+		6574F2481EE6533B00B8F17A /* Colors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
+		6574F2491EE6533B00B8F17A /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		6574F24A1EE655AB00B8F17A /* MaintResultShowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintResultShowController.h; sourceTree = "<group>"; };
+		6574F24B1EE655AB00B8F17A /* MaintResultShowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintResultShowController.m; sourceTree = "<group>"; };
 		657977A81CB14C5A00E9E4BD /* libchorstar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libchorstar.a; path = "../../Library/Developer/Xcode/DerivedData/elevatorMan-baxotyrsogakzhcsioahocsvfdju/Build/Products/Debug-iphoneos/libchorstar.a"; sourceTree = "<group>"; };
 		657C8C881CA518E400288D30 /* AlarmHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlarmHistoryViewController.h; sourceTree = "<group>"; };
 		657C8C891CA518FC00288D30 /* AlarmHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmHistoryViewController.m; sourceTree = "<group>"; };
@@ -1134,6 +1142,8 @@
 				6574F2391EE5600500B8F17A /* MaintExceptionController.m */,
 				6574F23B1EE57A9700B8F17A /* MaintSubmitController.h */,
 				6574F23C1EE57A9700B8F17A /* MaintSubmitController.m */,
+				6574F24A1EE655AB00B8F17A /* MaintResultShowController.h */,
+				6574F24B1EE655AB00B8F17A /* MaintResultShowController.m */,
 			);
 			name = Manit;
 			sourceTree = "<group>";
@@ -1439,6 +1449,8 @@
 				65D1FB1B1E12391600F2F6EC /* ChatController.m */,
 				6547E6821E1DD33D0075B532 /* BaseTabBarController.h */,
 				6547E6831E1DD34A0075B532 /* BaseTabBarController.m */,
+				6574F2451EE64E4F00B8F17A /* ImageOverViewController.h */,
+				6574F2461EE64E4F00B8F17A /* ImageOverViewController.m */,
 			);
 			name = Common;
 			path = ViewController;
@@ -1700,6 +1712,8 @@
 		BF36D2F11AB5C13C00A549AF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6574F2481EE6533B00B8F17A /* Colors.h */,
+				6574F2491EE6533B00B8F17A /* Constant.h */,
 				BF36D3011AB5C13C00A549AF /* Images.xcassets */,
 				BF1887F21AB9DB5800F1C8AF /* PushConfig.plist */,
 				BF1887D01AB5C6A800F1C8AF /* .gitignore */,
@@ -2165,6 +2179,7 @@
 				658748C81D2CEAC9006406AD /* AboutViewController.m in Sources */,
 				6524623A1C05AEA000E930FC /* UIRegisterTwoViewController.m in Sources */,
 				655ADF631E274A3700F1F036 /* EvaluateView.m in Sources */,
+				6574F2471EE64E4F00B8F17A /* ImageOverViewController.m in Sources */,
 				65EA239A1E1E271300F2BE18 /* ProLocationController.m in Sources */,
 				6547E6781E1C94AB0075B532 /* ProBaseTableViewController.m in Sources */,
 				654B0B641D20C62700ED0064 /* MainpageViewController.mm in Sources */,
@@ -2224,6 +2239,7 @@
 				65EA23971E1E15CE00F2BE18 /* AroundController.m in Sources */,
 				65D1FADF1E10AF9500F2F6EC /* MainTodayController.m in Sources */,
 				65385F051C16ADD800EAF4EB /* MaintenanceViewController.m in Sources */,
+				6574F24C1EE655AB00B8F17A /* MaintResultShowController.m in Sources */,
 				650B797F1C2006D900182D1E /* ProMaintenanceFinish.m in Sources */,
 				BFD9F45C1B54B66F001A4D29 /* UnderLineLabel.m in Sources */,
 				654B0B671D20F98200ED0064 /* AlarmTabBarController.m in Sources */,
