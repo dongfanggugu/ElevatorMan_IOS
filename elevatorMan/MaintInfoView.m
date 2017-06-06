@@ -120,6 +120,7 @@
     format.dateFormat = @"yyyy-MM-dd HH:mm";
     NSString *dateStr = [format stringFromDate:date];
     _lbPlan.text = dateStr;
-
 }
+
+
 @end

@@ -21,7 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnStar5;
 
-@property (weak, nonatomic) IBOutlet UITextField *tfContent;
+@property (weak, nonatomic) IBOutlet UITextView *tvContent;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
 
@@ -35,8 +35,7 @@
 {
     NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"EvaluateView" owner:nil options:nil];
     
-    if (0 == array)
-    {
+    if (0 == array.count) {
         return nil;
     }
     
@@ -51,7 +50,7 @@
 - (void)setModeShow
 {
     _btnSubmit.hidden = YES;
-    _tfContent.enabled = false;
+    _tvContent.userInteractionEnabled = NO;
     _btnStar1.enabled = false;
     _btnStar2.enabled = false;
     _btnStar3.enabled = false;
@@ -62,7 +61,7 @@
 
 - (void)setContent:(NSString *)content
 {
-    _tfContent.text = content;
+    _tvContent.text = content;
 }
 
 - (void)setStar:(NSInteger)star
@@ -117,6 +116,9 @@
     [super awakeFromNib];
     _starCount = 0;
     
+    _btnSubmit.layer.masksToBounds = YES;
+    _btnSubmit.layer.cornerRadius = 3;
+    
     [_btnStar1 addTarget:self action:@selector(clickBtn1) forControlEvents:UIControlEventTouchUpInside];
     [_btnStar2 addTarget:self action:@selector(clickBtn2) forControlEvents:UIControlEventTouchUpInside];
     [_btnStar3 addTarget:self action:@selector(clickBtn3) forControlEvents:UIControlEventTouchUpInside];
@@ -124,6 +126,11 @@
     [_btnStar5 addTarget:self action:@selector(clickBtn5) forControlEvents:UIControlEventTouchUpInside];
     
     [_btnSubmit addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];
+    
+    _tvContent.layer.masksToBounds = YES;
+    _tvContent.layer.cornerRadius = 5;
+    _tvContent.layer.borderWidth = 1;
+    _tvContent.layer.borderColor = [UIColor grayColor].CGColor;
     
 }
 
@@ -182,9 +189,8 @@
 }
 - (void)submit
 {
-    if (_delegate)
-    {
-        [_delegate onSubmit:_starCount content:_tfContent.text];
+    if (_delegate) {
+        [_delegate onSubmit:_starCount content:_tvContent.text];
     }
 }
 
@@ -195,7 +201,7 @@
 
 - (NSString *)getContent
 {
-    return _tfContent.text;
+    return _tvContent.text;
 }
 
 @end

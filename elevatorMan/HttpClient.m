@@ -45,7 +45,12 @@
     return _sharedClient;
 }
 
-
+- (void)post:(NSString *)URLString
+   parameter:(id)parameter
+     success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failed:(void(^)(id responseObject))failed
+{
+     [self view:nil post:URLString parameter:parameter success:success failed:failed];
+}
 
 - (void)post:(NSString *)URLString
                       parameter:(id)parameter
@@ -60,6 +65,9 @@
     
     [self view:view post:URLString parameter:parameter success:success failed:nil];
 }
+
+
+
 
 /**
  *  请求网络，需要使用页面的view用户阻塞用户界面的操作

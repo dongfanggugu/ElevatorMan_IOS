@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Nru-Dt-MHM" customClass="MainTaskCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nru-Dt-MHM" id="H8i-Kf-mTN">
+                <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kq-ls-cyO">
+                        <rect key="frame" x="16" y="19.5" width="40" height="40"/>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.3921568627" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Tfl-KD-wEz"/>
+                            <constraint firstAttribute="width" constant="40" id="pPj-pK-A8B"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="任务单:20171121143456" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ed6-Wb-Ves">
+                        <rect key="frame" x="72" y="14" width="262" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="770-qp-JR5"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="待确认" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5L-Df-FMp">
+                        <rect key="frame" x="302" y="16.5" width="40" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="aHp-XN-DPa"/>
+                            <constraint firstAttribute="height" constant="16" id="xtX-s5-fju"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.21176470589999999" green="0.69019607839999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="维保人员: 张长浩" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaT-aM-Deg">
+                        <rect key="frame" x="72" y="43" width="226" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="JLz-vg-1Xa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="NaT-aM-Deg" firstAttribute="leading" secondItem="2kq-ls-cyO" secondAttribute="trailing" constant="16" id="605-33-qBn"/>
+                    <constraint firstItem="W5L-Df-FMp" firstAttribute="leading" secondItem="NaT-aM-Deg" secondAttribute="trailing" constant="4" id="EfG-FM-34O"/>
+                    <constraint firstItem="2kq-ls-cyO" firstAttribute="leading" secondItem="H8i-Kf-mTN" secondAttribute="leading" constant="16" id="MgT-Yb-I6F"/>
+                    <constraint firstAttribute="trailing" secondItem="W5L-Df-FMp" secondAttribute="trailing" id="NUV-Ab-unE"/>
+                    <constraint firstItem="NaT-aM-Deg" firstAttribute="top" secondItem="Ed6-Wb-Ves" secondAttribute="bottom" constant="8" id="R8l-6e-Mjh"/>
+                    <constraint firstAttribute="trailing" secondItem="Ed6-Wb-Ves" secondAttribute="trailing" constant="8" id="iOh-c6-f7x"/>
+                    <constraint firstItem="Ed6-Wb-Ves" firstAttribute="top" secondItem="H8i-Kf-mTN" secondAttribute="top" constant="14" id="lJj-Ek-8Qy"/>
+                    <constraint firstItem="2kq-ls-cyO" firstAttribute="centerY" secondItem="H8i-Kf-mTN" secondAttribute="centerY" id="nrS-LV-UeP"/>
+                    <constraint firstItem="W5L-Df-FMp" firstAttribute="centerY" secondItem="Ed6-Wb-Ves" secondAttribute="centerY" id="wA3-L3-ebS"/>
+                    <constraint firstItem="Ed6-Wb-Ves" firstAttribute="leading" secondItem="2kq-ls-cyO" secondAttribute="trailing" constant="16" id="x8Q-Fg-W4O"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lbCode" destination="Ed6-Wb-Ves" id="HzN-UP-IAH"/>
+                <outlet property="lbIndex" destination="2kq-ls-cyO" id="6Vh-Yy-Y16"/>
+                <outlet property="lbState" destination="W5L-Df-FMp" id="Wzc-z3-Mmg"/>
+                <outlet property="lbWorker" destination="NaT-aM-Deg" id="zs4-x1-vV9"/>
+            </connections>
+            <point key="canvasLocation" x="6" y="18"/>
+        </tableViewCell>
+    </objects>
+</document>

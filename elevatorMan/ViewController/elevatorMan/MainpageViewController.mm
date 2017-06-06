@@ -14,10 +14,9 @@
 #import "AVFoundation/AVFoundation.h"
 #import "AppDelegate.h"
 #import "../../../chorstar/chorstar/Chorstar.h"
-#import "WRepairTabBarController.h"
 #import "HttpClient.h"
-#import "MaintInfoController.h"
-
+#import "MaintOrderController.h"
+#import "RepairOrderController.h"
 
 
 @interface MainpageViewController()<AVAudioPlayerDelegate>
@@ -197,8 +196,13 @@
 
 - (void)help
 {
-    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
-    UIViewController *controller = [story instantiateViewControllerWithIdentifier:@"help_center"];
+//    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
+//    UIViewController *controller = [story instantiateViewControllerWithIdentifier:@"help_center"];
+//    [self.navigationController pushViewController:controller animated:YES];
+    
+    RepairOrderController *controller = [[RepairOrderController alloc] init];
+    
+    controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -212,7 +216,7 @@
 - (void)repair
 {
     
-    MaintInfoController *controller = [[MaintInfoController alloc] init];
+    MaintOrderController *controller = [[MaintOrderController alloc] init];
     
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];

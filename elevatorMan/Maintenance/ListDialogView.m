@@ -42,12 +42,26 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.bounces = NO;
+    _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
-- (void)setData:(NSArray<ListDialogDataDelegate> *)arrayData
+- (void)setData:(NSArray<id<ListDialogDataDelegate>> *)arrayData
 {
     _arrayData = arrayData;
     [_tableView reloadData];
+}
+
+- (void)show
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    UIWindow *window = appDelegate.window;
+    
+    self.frame = window.bounds;
+    
+    [window addSubview:self];
+    
+    [window bringSubviewToFront:self];
 }
 
 #pragma mark - UITableDataSource

@@ -28,14 +28,16 @@
 @interface ListDialogView : UIView
 
 
-@property (strong, nonatomic) NSArray<ListDialogDataDelegate> *arrayData;
+@property (strong, nonatomic) NSArray<id<ListDialogDataDelegate>> *arrayData;
 
 @property (weak, nonatomic) id<ListDialogViewDelegate> delegate;
 
 
 + (id)viewFromNib;
 
-- (void)setData:(NSArray<ListDialogDataDelegate> *)arrayData;
+- (void)setData:(NSArray<id<ListDialogDataDelegate>> *)arrayData;
+
+- (void)show;
 
 
 @end

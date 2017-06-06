@@ -38,6 +38,10 @@
    parameter:(id)parameter
      success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failed:(void(^)(id responseObject))failed;
 
+- (void)post:(NSString *)URLString
+   parameter:(id)parameter
+     success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failed:(void(^)(id responseObject))failed;
+
 - (void)resetUrl;
 
 - (void)logoutBackTosignIn;

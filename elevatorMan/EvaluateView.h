@@ -27,10 +27,6 @@
 
 - (void)setStar:(NSInteger)star;
 
-//- (NSInteger)getStarCount;
-//
-//- (NSString *)getContent;
-
 @property (weak, nonatomic) id<EvaluateViewDelegate> delegate;
 
 

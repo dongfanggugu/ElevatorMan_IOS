@@ -195,9 +195,10 @@
 
 - (void)onClickException
 {
-    [self maintResult];
+    [self completePlan];
     
     return;
+    
     if (1 == self.state) {
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认无法出发完成当前维保任务?" preferredStyle:UIAlertControllerStyleAlert];
         
