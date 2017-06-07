@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="cbE-Km-Pvx" customClass="ImageViewDelView">
+            <rect key="frame" x="0.0" y="0.0" width="90" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_photo.png" translatesAutoresizingMaskIntoConstraints="NO" id="9IV-1c-uNY">
+                    <rect key="frame" x="0.0" y="0.0" width="90" height="120"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qaj-i3-IE1">
+                    <rect key="frame" x="65" y="0.0" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="1qU-vp-bpW"/>
+                        <constraint firstAttribute="height" constant="25" id="nWq-Da-hhH"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="icon_del_img.png"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="9IV-1c-uNY" firstAttribute="top" secondItem="cbE-Km-Pvx" secondAttribute="top" id="Dlb-mW-34v"/>
+                <constraint firstItem="9IV-1c-uNY" firstAttribute="leading" secondItem="cbE-Km-Pvx" secondAttribute="leading" id="TUs-9x-mol"/>
+                <constraint firstAttribute="trailing" secondItem="9IV-1c-uNY" secondAttribute="trailing" id="cig-Gi-uNk"/>
+                <constraint firstAttribute="bottom" secondItem="9IV-1c-uNY" secondAttribute="bottom" id="fUD-D9-iml"/>
+                <constraint firstItem="qaj-i3-IE1" firstAttribute="trailing" secondItem="9IV-1c-uNY" secondAttribute="trailing" id="gm6-kO-JdI"/>
+                <constraint firstItem="qaj-i3-IE1" firstAttribute="top" secondItem="9IV-1c-uNY" secondAttribute="top" id="gsP-tO-JKB"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnDel" destination="qaj-i3-IE1" id="D5E-nJ-tWA"/>
+                <outlet property="ivPhoto" destination="9IV-1c-uNY" id="wDz-V5-I5Q"/>
+            </connections>
+            <point key="canvasLocation" x="-7" y="-327"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_del_img.png" width="128" height="128"/>
+        <image name="icon_photo.png" width="90" height="120"/>
+    </resources>
+</document>

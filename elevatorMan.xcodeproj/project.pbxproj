@@ -172,6 +172,15 @@
 		6574F2511EE6760000B8F17A /* MainOrderInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F2501EE6760000B8F17A /* MainOrderInfoView.m */; };
 		6574F2531EE6762200B8F17A /* icon_house.png in Resources */ = {isa = PBXBuildFile; fileRef = 6574F2521EE6762200B8F17A /* icon_house.png */; };
 		6574F2561EE6794100B8F17A /* MaintOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F2551EE6794100B8F17A /* MaintOrderController.m */; };
+		6576CF631EE79DB60046E80F /* RepairPayAddView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576CF621EE79DB60046E80F /* RepairPayAddView.m */; };
+		6576CF651EE7A0FB0046E80F /* RepairPayHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6576CF641EE7A0FB0046E80F /* RepairPayHeaderView.xib */; };
+		6576CF681EE7A18E0046E80F /* RepairPayHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576CF671EE7A18D0046E80F /* RepairPayHeaderView.m */; };
+		6576CF6A1EE7C68D0046E80F /* RepairPayFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6576CF691EE7C68D0046E80F /* RepairPayFooterView.xib */; };
+		6576CF6C1EE7C7030046E80F /* icon_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 6576CF6B1EE7C7030046E80F /* icon_delete.png */; };
+		6576CF6F1EE7C7AB0046E80F /* RepairPayFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576CF6E1EE7C7AB0046E80F /* RepairPayFooterView.m */; };
+		6576CF721EE7D4520046E80F /* RepairSubmitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576CF711EE7D4520046E80F /* RepairSubmitController.m */; };
+		6576CF741EE7DB7A0046E80F /* ImageViewDelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6576CF731EE7DB7A0046E80F /* ImageViewDelView.xib */; };
+		6576CF771EE7DC890046E80F /* ImageViewDelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576CF761EE7DC890046E80F /* ImageViewDelView.m */; };
 		657977A91CB14C5A00E9E4BD /* libchorstar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 657977A81CB14C5A00E9E4BD /* libchorstar.a */; };
 		657C8C8A1CA518FC00288D30 /* AlarmHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657C8C891CA518FC00288D30 /* AlarmHistoryViewController.m */; };
 		657E20381CB382B100ED51A9 /* KnTitleListViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 657E20371CB382B100ED51A9 /* KnTitleListViewController.mm */; };
@@ -246,6 +255,10 @@
 		65C2EE2B1EE6C80200AF7EDC /* RepairTaskMakeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65C2EE2A1EE6C80200AF7EDC /* RepairTaskMakeView.xib */; };
 		65C2EE2E1EE6C90C00AF7EDC /* RepairTaskMakeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C2EE2D1EE6C90C00AF7EDC /* RepairTaskMakeView.m */; };
 		65C2EE311EE6CABE00AF7EDC /* RepairTaskMakeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C2EE301EE6CABE00AF7EDC /* RepairTaskMakeController.m */; };
+		65CA98AD1EE795EF00E2CF02 /* RepairPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65CA98AC1EE795EF00E2CF02 /* RepairPayCell.xib */; };
+		65CA98B01EE7974000E2CF02 /* RepairPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CA98AF1EE7974000E2CF02 /* RepairPayCell.m */; };
+		65CA98B31EE7990A00E2CF02 /* RepairPayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CA98B21EE7990A00E2CF02 /* RepairPayController.m */; };
+		65CA98B51EE799B200E2CF02 /* RepairPayAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65CA98B41EE799B200E2CF02 /* RepairPayAddView.xib */; };
 		65D1FAB11E08D52700F2F6EC /* icon_alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D1FAB01E08D52700F2F6EC /* icon_alarm.png */; };
 		65D1FAB81E0A13A900F2F6EC /* 1b.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D1FAB21E0A13A900F2F6EC /* 1b.png */; };
 		65D1FAB91E0A13A900F2F6EC /* 2b.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D1FAB31E0A13A900F2F6EC /* 2b.png */; };
@@ -610,6 +623,20 @@
 		6574F2521EE6762200B8F17A /* icon_house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_house.png; sourceTree = "<group>"; };
 		6574F2541EE6794100B8F17A /* MaintOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintOrderController.h; sourceTree = "<group>"; };
 		6574F2551EE6794100B8F17A /* MaintOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintOrderController.m; sourceTree = "<group>"; };
+		6576CF611EE79DB60046E80F /* RepairPayAddView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepairPayAddView.h; sourceTree = "<group>"; };
+		6576CF621EE79DB60046E80F /* RepairPayAddView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepairPayAddView.m; sourceTree = "<group>"; };
+		6576CF641EE7A0FB0046E80F /* RepairPayHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepairPayHeaderView.xib; sourceTree = "<group>"; };
+		6576CF661EE7A18D0046E80F /* RepairPayHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepairPayHeaderView.h; sourceTree = "<group>"; };
+		6576CF671EE7A18D0046E80F /* RepairPayHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepairPayHeaderView.m; sourceTree = "<group>"; };
+		6576CF691EE7C68D0046E80F /* RepairPayFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepairPayFooterView.xib; sourceTree = "<group>"; };
+		6576CF6B1EE7C7030046E80F /* icon_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_delete.png; sourceTree = "<group>"; };
+		6576CF6D1EE7C7AB0046E80F /* RepairPayFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepairPayFooterView.h; sourceTree = "<group>"; };
+		6576CF6E1EE7C7AB0046E80F /* RepairPayFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepairPayFooterView.m; sourceTree = "<group>"; };
+		6576CF701EE7D4520046E80F /* RepairSubmitController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepairSubmitController.h; sourceTree = "<group>"; };
+		6576CF711EE7D4520046E80F /* RepairSubmitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepairSubmitController.m; sourceTree = "<group>"; };
+		6576CF731EE7DB7A0046E80F /* ImageViewDelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewDelView.xib; sourceTree = "<group>"; };
+		6576CF751EE7DC890046E80F /* ImageViewDelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewDelView.h; sourceTree = "<group>"; };
+		6576CF761EE7DC890046E80F /* ImageViewDelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewDelView.m; sourceTree = "<group>"; };
 		657977A81CB14C5A00E9E4BD /* libchorstar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libchorstar.a; path = "../../Library/Developer/Xcode/DerivedData/elevatorMan-baxotyrsogakzhcsioahocsvfdju/Build/Products/Debug-iphoneos/libchorstar.a"; sourceTree = "<group>"; };
 		657C8C881CA518E400288D30 /* AlarmHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlarmHistoryViewController.h; sourceTree = "<group>"; };
 		657C8C891CA518FC00288D30 /* AlarmHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmHistoryViewController.m; sourceTree = "<group>"; };
@@ -716,6 +743,12 @@
 		65C2EE2D1EE6C90C00AF7EDC /* RepairTaskMakeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepairTaskMakeView.m; sourceTree = "<group>"; };
 		65C2EE2F1EE6CABE00AF7EDC /* RepairTaskMakeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepairTaskMakeController.h; sourceTree = "<group>"; };
 		65C2EE301EE6CABE00AF7EDC /* RepairTaskMakeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepairTaskMakeController.m; sourceTree = "<group>"; };
+		65CA98AC1EE795EF00E2CF02 /* RepairPayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepairPayCell.xib; sourceTree = "<group>"; };
+		65CA98AE1EE7974000E2CF02 /* RepairPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepairPayCell.h; sourceTree = "<group>"; };
+		65CA98AF1EE7974000E2CF02 /* RepairPayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepairPayCell.m; sourceTree = "<group>"; };
+		65CA98B11EE7990A00E2CF02 /* RepairPayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepairPayController.h; sourceTree = "<group>"; };
+		65CA98B21EE7990A00E2CF02 /* RepairPayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepairPayController.m; sourceTree = "<group>"; };
+		65CA98B41EE799B200E2CF02 /* RepairPayAddView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepairPayAddView.xib; sourceTree = "<group>"; };
 		65D1FAB01E08D52700F2F6EC /* icon_alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_alarm.png; sourceTree = "<group>"; };
 		65D1FAB21E0A13A900F2F6EC /* 1b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1b.png; sourceTree = "<group>"; };
 		65D1FAB31E0A13A900F2F6EC /* 2b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2b.png; sourceTree = "<group>"; };
@@ -1193,6 +1226,10 @@
 				65C2EE281EE6BFE200AF7EDC /* RepairProcessController.m */,
 				65C2EE2F1EE6CABE00AF7EDC /* RepairTaskMakeController.h */,
 				65C2EE301EE6CABE00AF7EDC /* RepairTaskMakeController.m */,
+				65CA98B11EE7990A00E2CF02 /* RepairPayController.h */,
+				65CA98B21EE7990A00E2CF02 /* RepairPayController.m */,
+				6576CF701EE7D4520046E80F /* RepairSubmitController.h */,
+				6576CF711EE7D4520046E80F /* RepairSubmitController.m */,
 			);
 			name = Repair;
 			sourceTree = "<group>";
@@ -1396,6 +1433,11 @@
 				6574F2331EE558A300B8F17A /* MaintExceptionView.xib */,
 				65C2EE061EE6925E00AF7EDC /* RepairOrderCell.xib */,
 				65C2EE2A1EE6C80200AF7EDC /* RepairTaskMakeView.xib */,
+				65CA98AC1EE795EF00E2CF02 /* RepairPayCell.xib */,
+				65CA98B41EE799B200E2CF02 /* RepairPayAddView.xib */,
+				6576CF641EE7A0FB0046E80F /* RepairPayHeaderView.xib */,
+				6576CF691EE7C68D0046E80F /* RepairPayFooterView.xib */,
+				6576CF731EE7DB7A0046E80F /* ImageViewDelView.xib */,
 			);
 			name = nib;
 			sourceTree = "<group>";
@@ -1447,6 +1489,16 @@
 				655ADF5D1E272C2D00F1F036 /* WRepairView.m */,
 				65C2EE2C1EE6C90C00AF7EDC /* RepairTaskMakeView.h */,
 				65C2EE2D1EE6C90C00AF7EDC /* RepairTaskMakeView.m */,
+				65CA98AE1EE7974000E2CF02 /* RepairPayCell.h */,
+				65CA98AF1EE7974000E2CF02 /* RepairPayCell.m */,
+				6576CF611EE79DB60046E80F /* RepairPayAddView.h */,
+				6576CF621EE79DB60046E80F /* RepairPayAddView.m */,
+				6576CF661EE7A18D0046E80F /* RepairPayHeaderView.h */,
+				6576CF671EE7A18D0046E80F /* RepairPayHeaderView.m */,
+				6576CF6D1EE7C7AB0046E80F /* RepairPayFooterView.h */,
+				6576CF6E1EE7C7AB0046E80F /* RepairPayFooterView.m */,
+				6576CF751EE7DC890046E80F /* ImageViewDelView.h */,
+				6576CF761EE7DC890046E80F /* ImageViewDelView.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -1797,6 +1849,7 @@
 		BFD71D211B2987B700CCE9E1 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				6576CF6B1EE7C7030046E80F /* icon_delete.png */,
 				65C2EE151EE6A0EE00AF7EDC /* icon_red.png */,
 				65C2EE131EE6A0E400AF7EDC /* icon_blue.png */,
 				6574F2431EE57D7700B8F17A /* icon_photo.png */,
@@ -1955,9 +2008,11 @@
 				650B79901C20746C00182D1E /* grayArrow@2x.png in Resources */,
 				654B0BDE1D250B6400ED0064 /* 4.png in Resources */,
 				65D1FB0B1E1238E800F2F6EC /* photo@2x.png in Resources */,
+				6576CF6C1EE7C7030046E80F /* icon_delete.png in Resources */,
 				65385F0C1C16BF5A00EAF4EB /* icon_del.png in Resources */,
 				6532AFF41C27DFDF00CA5F1E /* icon_plan_list.png in Resources */,
 				654B0B861D22136300ED0064 /* AlarmInfoView.xib in Resources */,
+				6576CF6A1EE7C68D0046E80F /* RepairPayFooterView.xib in Resources */,
 				6532AFF31C27DFDF00CA5F1E /* icon_plan_history.png in Resources */,
 				654B0BA31D24E26B00ED0064 /* icon_home.png in Resources */,
 				6532AFF21C27DFDF00CA5F1E /* icon_plan_confirm.png in Resources */,
@@ -1975,6 +2030,7 @@
 				BFD920B91B39402B00AA5C00 /* icon_homePage.png in Resources */,
 				658748D61D2CFB51006406AD /* nav_7.png in Resources */,
 				652545201E23795F0027B28B /* icon_around.png in Resources */,
+				65CA98AD1EE795EF00E2CF02 /* RepairPayCell.xib in Resources */,
 				BFADFCF91B3B2E60002664B2 /* icon_annotation_alarm.png in Resources */,
 				BFD9209D1B32A19600AA5C00 /* icon_currentPoint.png in Resources */,
 				654B0B601D20BB5200ED0064 /* icon_rescue.png in Resources */,
@@ -2062,6 +2118,7 @@
 				654B0BD01D250B6400ED0064 /* build.css in Resources */,
 				65D3EACB1CAB6B950079A140 /* icon_query.png in Resources */,
 				65C2EE141EE6A0E400AF7EDC /* icon_blue.png in Resources */,
+				6576CF741EE7DB7A0046E80F /* ImageViewDelView.xib in Resources */,
 				654B0B921D23727100ED0064 /* icon_my_lift.png in Resources */,
 				BFD8433C1B2EB265008E7118 /* icon_username.png in Resources */,
 				654B0BCF1D250B6400ED0064 /* bk.css in Resources */,
@@ -2137,8 +2194,10 @@
 				658559B41C224B1E004C253F /* main_after.png in Resources */,
 				655ADF841E287C8200F1F036 /* pro_alarm_process.png in Resources */,
 				6574F2441EE57D7700B8F17A /* icon_photo.png in Resources */,
+				65CA98B51EE799B200E2CF02 /* RepairPayAddView.xib in Resources */,
 				654B0BE01D250B6400ED0064 /* 6.png in Resources */,
 				65D1FB141E1238E800F2F6EC /* SenderAppNodeBkg_HL.png in Resources */,
+				6576CF651EE7A0FB0046E80F /* RepairPayHeaderView.xib in Resources */,
 				BFD920AC1B39139D00AA5C00 /* icon_elevator4.png in Resources */,
 				655ADF6E1E275A6200F1F036 /* guide.gif in Resources */,
 				65D1FAF21E10EC2F00F2F6EC /* icon_search.png in Resources */,
@@ -2218,6 +2277,7 @@
 				6574F22F1EE5462D00B8F17A /* MaintInfoView.m in Sources */,
 				65C2EE1E1EE6BB4500AF7EDC /* RepairTaskCell.m in Sources */,
 				65FE08C61EA9AD61002C9397 /* PainterView.m in Sources */,
+				65CA98B01EE7974000E2CF02 /* RepairPayCell.m in Sources */,
 				BFD843561B301BAA008E7118 /* BuildingsViewController.m in Sources */,
 				658559C11C228983004C253F /* Utils.m in Sources */,
 				6574F2421EE57C9200B8F17A /* MaintResultView.m in Sources */,
@@ -2233,6 +2293,7 @@
 				654B0B841D22133600ED0064 /* AlarmInfoView.m in Sources */,
 				65F0680E1C0453F000628BA7 /* UIRegisterOneViewControllor.m in Sources */,
 				65C2EE191EE6B81A00AF7EDC /* RepairOrderDetailController.m in Sources */,
+				6576CF6F1EE7C7AB0046E80F /* RepairPayFooterView.m in Sources */,
 				657E20381CB382B100ED51A9 /* KnTitleListViewController.mm in Sources */,
 				658748B81D2B98AD006406AD /* LocationViewController.m in Sources */,
 				BF36D2F71AB5C13C00A549AF /* AppDelegate.mm in Sources */,
@@ -2259,6 +2320,7 @@
 				650B799C1C2074A600182D1E /* EGORefreshTableHeaderView.m in Sources */,
 				650B799D1C2074A600182D1E /* LoadMoreTableFooterView.m in Sources */,
 				BFD8435C1B301C3E008E7118 /* ReportAlarmViewController.m in Sources */,
+				6576CF681EE7A18E0046E80F /* RepairPayHeaderView.m in Sources */,
 				65C2EE311EE6CABE00AF7EDC /* RepairTaskMakeController.m in Sources */,
 				658748C81D2CEAC9006406AD /* AboutViewController.m in Sources */,
 				6524623A1C05AEA000E930FC /* UIRegisterTwoViewController.m in Sources */,
@@ -2274,6 +2336,7 @@
 				650B79821C20105E00182D1E /* ProMaintenanceHistory.m in Sources */,
 				BFADFCFC1B3C6B37002664B2 /* AlarmProcessViewController.m in Sources */,
 				65C2EE0A1EE6969F00AF7EDC /* RepairOrderCell.m in Sources */,
+				6576CF631EE79DB60046E80F /* RepairPayAddView.m in Sources */,
 				65F5B7391C46362F004F47A4 /* ResetPwdViewController.m in Sources */,
 				65D1FB1C1E12391600F2F6EC /* ChatController.m in Sources */,
 				654B0BA81D25099500ED0064 /* HelpViewController.m in Sources */,
@@ -2282,6 +2345,7 @@
 				65D1FACA1E10A2A800F2F6EC /* MainBaseViewController.m in Sources */,
 				650B799F1C2074A600182D1E /* PullTableView.m in Sources */,
 				65FE08C41EA9AD61002C9397 /* PaintViewController.m in Sources */,
+				6576CF771EE7DC890046E80F /* ImageViewDelView.m in Sources */,
 				BF3869201B4CF927009F6E05 /* TrackingViewController.mm in Sources */,
 				BFADFD051B3D1148002664B2 /* FinishedReportViewController.m in Sources */,
 				654D57631C1F078700B0A4DB /* MaintenanceReminder.m in Sources */,
@@ -2301,7 +2365,9 @@
 				BFD920C61B39576600AA5C00 /* propertyMenuViewController.m in Sources */,
 				BFD8434D1B301051008E7118 /* AlarmListEmergencyTableViewController.m in Sources */,
 				65C2EE291EE6BFE200AF7EDC /* RepairProcessController.m in Sources */,
+				65CA98B31EE7990A00E2CF02 /* RepairPayController.m in Sources */,
 				65FC13B01C1142C3005B3B86 /* UIRegisterThreeViewController.m in Sources */,
+				6576CF721EE7D4520046E80F /* RepairSubmitController.m in Sources */,
 				65C2EE121EE6A0B500AF7EDC /* RepairInfoView.m in Sources */,
 				654B0B7E1D2210A600ED0064 /* CalloutMapAnnotation.m in Sources */,
 				654B0B9B1D239D0A00ED0064 /* LiftDetailViewController.m in Sources */,

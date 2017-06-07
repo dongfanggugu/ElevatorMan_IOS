@@ -9,6 +9,9 @@
 #ifndef Colors_h
 #define Colors_h
 
+
+#define TITLE_COLOR @"#36b0f3"
+
 //字体灰色
 #define FONT_GRAY @"#999999"
 

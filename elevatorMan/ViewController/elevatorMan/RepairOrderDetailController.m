@@ -12,6 +12,9 @@
 #import "EvaluateController.h"
 #import "RepairProcessController.h"
 #import "RepairTaskMakeController.h"
+#import "RepairPayController.h"
+#import "RepairSubmitController.h"
+
 
 @interface RepairOrderDetailController () <UITableViewDelegate, UITableViewDataSource, RepairInfoViewDelegate>
 
@@ -255,7 +258,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {    
-    RepairProcessController *controller = [[RepairProcessController alloc] init];
+    //RepairProcessController *controller = [[RepairProcessController alloc] init];
+    
+    RepairSubmitController *controller = [[RepairSubmitController alloc] init];
     
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
@@ -279,7 +284,10 @@
 
 - (void)onClickPay
 {
+    RepairPayController *controller = [[RepairPayController alloc] init];
     
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)onClickTask

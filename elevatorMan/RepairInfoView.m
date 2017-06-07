@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbTitleTask;
 
 
+
+
 @end
 
 @implementation RepairInfoView
