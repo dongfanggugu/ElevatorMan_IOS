@@ -120,6 +120,7 @@
     [btnRight setTitle:text forState:UIControlStateNormal];
     [btnRight setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     btnRight.titleLabel.font = [UIFont systemFontOfSize:15];
+    btnRight.titleLabel.textAlignment = NSTextAlignmentRight;
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:btnRight];
     

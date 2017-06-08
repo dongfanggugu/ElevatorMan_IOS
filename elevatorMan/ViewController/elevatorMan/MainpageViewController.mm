@@ -17,6 +17,7 @@
 #import "HttpClient.h"
 #import "MaintOrderController.h"
 #import "RepairOrderController.h"
+#import "AlarmManagerController.h"
 
 
 @interface MainpageViewController()<AVAudioPlayerDelegate>
@@ -182,8 +183,14 @@
 
 - (void)rescue
 {
-    UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
-    UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"WorkerAlarmList"];
+//    UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
+//    UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"WorkerAlarmList"];
+//    [self.navigationController pushViewController:controller animated:YES];
+    
+    AlarmManagerController *controller = [[AlarmManagerController alloc] init];
+    
+    controller.hidesBottomBarWhenPushed = YES;
+    
     [self.navigationController pushViewController:controller animated:YES];
 }
 

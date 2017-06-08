@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -843,12 +843,12 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="40" id="ouc-ts-AhN" customClass="ItemCell">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="ouc-ts-AhN" id="NQr-J7-L5H">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ouc-ts-AhN" id="NQr-J7-L5H">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="39.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4Q-Tl-Ceb">
-                                            <rect key="frame" x="20" y="5" width="80" height="30"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4Q-Tl-Ceb">
+                                            <rect key="frame" x="8" y="5" width="80" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="Jzh-EJ-ad3"/>
                                                 <constraint firstAttribute="width" constant="80" id="lW1-lx-se5"/>
@@ -857,8 +857,8 @@
                                             <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ch-ok-25O">
-                                            <rect key="frame" x="120" y="6" width="460" height="30"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ch-ok-25O">
+                                            <rect key="frame" x="96" y="5" width="259" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="ZNQ-4J-OXs"/>
                                                 <constraint firstAttribute="height" constant="30" id="tpx-kL-zdT"/>
@@ -875,12 +875,10 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="4ch-ok-25O" secondAttribute="trailing" constant="20" id="Hwk-1e-6PE"/>
-                                        <constraint firstAttribute="bottom" secondItem="F4Q-Tl-Ceb" secondAttribute="bottom" constant="5" id="J4J-Lk-Kv1"/>
-                                        <constraint firstAttribute="bottom" secondItem="4ch-ok-25O" secondAttribute="bottom" constant="5" id="K2y-3I-RCC"/>
-                                        <constraint firstItem="F4Q-Tl-Ceb" firstAttribute="leading" secondItem="NQr-J7-L5H" secondAttribute="leading" constant="20" id="a7a-it-IXa"/>
-                                        <constraint firstItem="4ch-ok-25O" firstAttribute="leading" secondItem="F4Q-Tl-Ceb" secondAttribute="trailing" constant="20" id="ceo-Re-LpP"/>
-                                        <constraint firstItem="4ch-ok-25O" firstAttribute="top" secondItem="NQr-J7-L5H" secondAttribute="top" constant="5" id="oWM-It-M4Y"/>
-                                        <constraint firstItem="F4Q-Tl-Ceb" firstAttribute="top" secondItem="NQr-J7-L5H" secondAttribute="top" constant="5" id="osT-iE-G7t"/>
+                                        <constraint firstItem="F4Q-Tl-Ceb" firstAttribute="centerY" secondItem="NQr-J7-L5H" secondAttribute="centerY" id="QW6-P9-K60"/>
+                                        <constraint firstItem="F4Q-Tl-Ceb" firstAttribute="leading" secondItem="NQr-J7-L5H" secondAttribute="leading" constant="8" id="a7a-it-IXa"/>
+                                        <constraint firstItem="4ch-ok-25O" firstAttribute="leading" secondItem="F4Q-Tl-Ceb" secondAttribute="trailing" constant="8" id="ceo-Re-LpP"/>
+                                        <constraint firstItem="4ch-ok-25O" firstAttribute="centerY" secondItem="NQr-J7-L5H" secondAttribute="centerY" id="kcK-VO-ajH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

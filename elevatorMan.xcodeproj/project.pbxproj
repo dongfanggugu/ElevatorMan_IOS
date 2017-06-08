@@ -37,6 +37,16 @@
 		650B799D1C2074A600182D1E /* LoadMoreTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 650B79971C2074A600182D1E /* LoadMoreTableFooterView.m */; };
 		650B799E1C2074A600182D1E /* MessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 650B79991C2074A600182D1E /* MessageInterceptor.m */; };
 		650B799F1C2074A600182D1E /* PullTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 650B799B1C2074A600182D1E /* PullTableView.m */; };
+		650F6D6D1EE8E01C00412C9F /* AlarmManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650F6D6C1EE8E01C00412C9F /* AlarmManagerController.m */; };
+		650F6D6F1EE8E1DD00412C9F /* AlarmTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 650F6D6E1EE8E1DD00412C9F /* AlarmTitleView.xib */; };
+		650F6D721EE8E33B00412C9F /* AlarmTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 650F6D711EE8E33B00412C9F /* AlarmTitleView.m */; };
+		650F6D741EE8E83A00412C9F /* AlarmBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 650F6D731EE8E83A00412C9F /* AlarmBottomView.xib */; };
+		650F6D761EE8EC9800412C9F /* icon_com_project.png in Resources */ = {isa = PBXBuildFile; fileRef = 650F6D751EE8EC9800412C9F /* icon_com_project.png */; };
+		650F6D791EE8F32100412C9F /* AlarmDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650F6D781EE8F32100412C9F /* AlarmDetailController.m */; };
+		650F6D7C1EE8F7A300412C9F /* AlarmBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 650F6D7B1EE8F7A300412C9F /* AlarmBottomView.m */; };
+		650F6D801EE916C300412C9F /* AlarmHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650F6D7F1EE916C300412C9F /* AlarmHistoryController.m */; };
+		650F6D821EE9190B00412C9F /* ComAlarmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 650F6D811EE9190B00412C9F /* ComAlarmCell.xib */; };
+		650F6D851EE91BBE00412C9F /* ComAlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 650F6D841EE91BBE00412C9F /* ComAlarmCell.m */; };
 		651A0F6D1DC830450042E51B /* ProPersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 651A0F6C1DC830450042E51B /* ProPersonCenterViewController.m */; };
 		651A0F6F1DC86A5C0042E51B /* PersonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 651A0F6E1DC86A5C0042E51B /* PersonHeaderView.xib */; };
 		651A0F721DC86B150042E51B /* PersonHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 651A0F711DC86B150042E51B /* PersonHeaderView.m */; };
@@ -445,6 +455,22 @@
 		650B79991C2074A600182D1E /* MessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageInterceptor.m; sourceTree = "<group>"; };
 		650B799A1C2074A600182D1E /* PullTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullTableView.h; sourceTree = "<group>"; };
 		650B799B1C2074A600182D1E /* PullTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullTableView.m; sourceTree = "<group>"; };
+		650F6D6B1EE8E01C00412C9F /* AlarmManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmManagerController.h; sourceTree = "<group>"; };
+		650F6D6C1EE8E01C00412C9F /* AlarmManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmManagerController.m; sourceTree = "<group>"; };
+		650F6D6E1EE8E1DD00412C9F /* AlarmTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarmTitleView.xib; sourceTree = "<group>"; };
+		650F6D701EE8E33B00412C9F /* AlarmTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmTitleView.h; sourceTree = "<group>"; };
+		650F6D711EE8E33B00412C9F /* AlarmTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmTitleView.m; sourceTree = "<group>"; };
+		650F6D731EE8E83A00412C9F /* AlarmBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarmBottomView.xib; sourceTree = "<group>"; };
+		650F6D751EE8EC9800412C9F /* icon_com_project.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_com_project.png; sourceTree = "<group>"; };
+		650F6D771EE8F32100412C9F /* AlarmDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmDetailController.h; sourceTree = "<group>"; };
+		650F6D781EE8F32100412C9F /* AlarmDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmDetailController.m; sourceTree = "<group>"; };
+		650F6D7A1EE8F7A300412C9F /* AlarmBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmBottomView.h; sourceTree = "<group>"; };
+		650F6D7B1EE8F7A300412C9F /* AlarmBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmBottomView.m; sourceTree = "<group>"; };
+		650F6D7E1EE916C300412C9F /* AlarmHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmHistoryController.h; sourceTree = "<group>"; };
+		650F6D7F1EE916C300412C9F /* AlarmHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmHistoryController.m; sourceTree = "<group>"; };
+		650F6D811EE9190B00412C9F /* ComAlarmCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComAlarmCell.xib; sourceTree = "<group>"; };
+		650F6D831EE91BBE00412C9F /* ComAlarmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComAlarmCell.h; sourceTree = "<group>"; };
+		650F6D841EE91BBE00412C9F /* ComAlarmCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComAlarmCell.m; sourceTree = "<group>"; };
 		6510EAC11DC9C434002DE104 /* elevatorMan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = elevatorMan.entitlements; sourceTree = "<group>"; };
 		651A0F6B1DC8302B0042E51B /* ProPersonCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProPersonCenterViewController.h; sourceTree = "<group>"; };
 		651A0F6C1DC830450042E51B /* ProPersonCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProPersonCenterViewController.m; sourceTree = "<group>"; };
@@ -1018,6 +1044,27 @@
 			name = EGOTableViewPullRefresh;
 			sourceTree = "<group>";
 		};
+		650F6D6A1EE8DF6B00412C9F /* Company */ = {
+			isa = PBXGroup;
+			children = (
+				650F6D7D1EE9169A00412C9F /* Alarm */,
+			);
+			name = Company;
+			sourceTree = "<group>";
+		};
+		650F6D7D1EE9169A00412C9F /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				650F6D6B1EE8E01C00412C9F /* AlarmManagerController.h */,
+				650F6D6C1EE8E01C00412C9F /* AlarmManagerController.m */,
+				650F6D771EE8F32100412C9F /* AlarmDetailController.h */,
+				650F6D781EE8F32100412C9F /* AlarmDetailController.m */,
+				650F6D7E1EE916C300412C9F /* AlarmHistoryController.h */,
+				650F6D7F1EE916C300412C9F /* AlarmHistoryController.m */,
+			);
+			name = Alarm;
+			sourceTree = "<group>";
+		};
 		651A0F6A1DC830020042E51B /* Personal */ = {
 			isa = PBXGroup;
 			children = (
@@ -1180,6 +1227,7 @@
 		655ADF491E2721AA00F1F036 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				650F6D6A1EE8DF6B00412C9F /* Company */,
 				65B0A43C1C292A8B008E58B8 /* Common */,
 				BFD843431B2FF3A9008E7118 /* Property */,
 				BFD8433E1B2FC330008E7118 /* Worker */,
@@ -1438,6 +1486,9 @@
 				6576CF641EE7A0FB0046E80F /* RepairPayHeaderView.xib */,
 				6576CF691EE7C68D0046E80F /* RepairPayFooterView.xib */,
 				6576CF731EE7DB7A0046E80F /* ImageViewDelView.xib */,
+				650F6D6E1EE8E1DD00412C9F /* AlarmTitleView.xib */,
+				650F6D731EE8E83A00412C9F /* AlarmBottomView.xib */,
+				650F6D811EE9190B00412C9F /* ComAlarmCell.xib */,
 			);
 			name = nib;
 			sourceTree = "<group>";
@@ -1499,6 +1550,12 @@
 				6576CF6E1EE7C7AB0046E80F /* RepairPayFooterView.m */,
 				6576CF751EE7DC890046E80F /* ImageViewDelView.h */,
 				6576CF761EE7DC890046E80F /* ImageViewDelView.m */,
+				650F6D701EE8E33B00412C9F /* AlarmTitleView.h */,
+				650F6D711EE8E33B00412C9F /* AlarmTitleView.m */,
+				650F6D7A1EE8F7A300412C9F /* AlarmBottomView.h */,
+				650F6D7B1EE8F7A300412C9F /* AlarmBottomView.m */,
+				650F6D831EE91BBE00412C9F /* ComAlarmCell.h */,
+				650F6D841EE91BBE00412C9F /* ComAlarmCell.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -1849,6 +1906,7 @@
 		BFD71D211B2987B700CCE9E1 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				650F6D751EE8EC9800412C9F /* icon_com_project.png */,
 				6576CF6B1EE7C7030046E80F /* icon_delete.png */,
 				65C2EE151EE6A0EE00AF7EDC /* icon_red.png */,
 				65C2EE131EE6A0E400AF7EDC /* icon_blue.png */,
@@ -2013,6 +2071,7 @@
 				6532AFF41C27DFDF00CA5F1E /* icon_plan_list.png in Resources */,
 				654B0B861D22136300ED0064 /* AlarmInfoView.xib in Resources */,
 				6576CF6A1EE7C68D0046E80F /* RepairPayFooterView.xib in Resources */,
+				650F6D741EE8E83A00412C9F /* AlarmBottomView.xib in Resources */,
 				6532AFF31C27DFDF00CA5F1E /* icon_plan_history.png in Resources */,
 				654B0BA31D24E26B00ED0064 /* icon_home.png in Resources */,
 				6532AFF21C27DFDF00CA5F1E /* icon_plan_confirm.png in Resources */,
@@ -2052,6 +2111,7 @@
 				65E1FB121CA3C21000D1510E /* alarm_normal.png in Resources */,
 				654B0B941D23727100ED0064 /* icon_upload.png in Resources */,
 				BFADFCF31B3B0CF4002664B2 /* icon_annotation_property.png in Resources */,
+				650F6D761EE8EC9800412C9F /* icon_com_project.png in Resources */,
 				654B0B5D1D20BB5200ED0064 /* icon_help_center.png in Resources */,
 				655ADF5B1E272C1600F1F036 /* WRepairView.xib in Resources */,
 				655ADF461E270D3500F1F036 /* icon_other.png in Resources */,
@@ -2082,6 +2142,7 @@
 				6574F2341EE558A300B8F17A /* MaintExceptionView.xib in Resources */,
 				65D1FB121E1238E800F2F6EC /* ReceiverVoiceNodePlaying.png in Resources */,
 				65BEBB4A1C102B7A00B9EA17 /* operation.png in Resources */,
+				650F6D6F1EE8E1DD00412C9F /* AlarmTitleView.xib in Resources */,
 				65FCA4FE1E14D9FE0086720D /* chat_voice_normal.png in Resources */,
 				65C2EE2B1EE6C80200AF7EDC /* RepairTaskMakeView.xib in Resources */,
 				6525451E1E2379160027B28B /* icon_pro_alarm_history.png in Resources */,
@@ -2157,6 +2218,7 @@
 				6574F23F1EE57C7400B8F17A /* MaintResultView.xib in Resources */,
 				654B0BEB1D250B6400ED0064 /* sign.html in Resources */,
 				6526F7651C2A700600C9F172 /* icon_pwd_modify.png in Resources */,
+				650F6D821EE9190B00412C9F /* ComAlarmCell.xib in Resources */,
 				655ADF721E275C1D00F1F036 /* guide_new.png in Resources */,
 				BF36D3021AB5C13C00A549AF /* Images.xcassets in Resources */,
 				65A00AEE1C1AB10600A0C2EF /* icon_help.png in Resources */,
@@ -2278,6 +2340,7 @@
 				65C2EE1E1EE6BB4500AF7EDC /* RepairTaskCell.m in Sources */,
 				65FE08C61EA9AD61002C9397 /* PainterView.m in Sources */,
 				65CA98B01EE7974000E2CF02 /* RepairPayCell.m in Sources */,
+				650F6D6D1EE8E01C00412C9F /* AlarmManagerController.m in Sources */,
 				BFD843561B301BAA008E7118 /* BuildingsViewController.m in Sources */,
 				658559C11C228983004C253F /* Utils.m in Sources */,
 				6574F2421EE57C9200B8F17A /* MaintResultView.m in Sources */,
@@ -2302,6 +2365,7 @@
 				6547E68D1E1DE91C0075B532 /* PropertyRegister.m in Sources */,
 				BFD920C01B3954F500AA5C00 /* WorkerRootViewController.m in Sources */,
 				657E203A1CB6515800ED51A9 /* KnowledgeViewController.mm in Sources */,
+				650F6D791EE8F32100412C9F /* AlarmDetailController.m in Sources */,
 				658748DC1D2DEC6F006406AD /* BaseTableViewController.m in Sources */,
 				6574F2561EE6794100B8F17A /* MaintOrderController.m in Sources */,
 				6547E67E1E1C95BC0075B532 /* ProAlarmManagerController.m in Sources */,
@@ -2329,7 +2393,9 @@
 				6547E6781E1C94AB0075B532 /* ProBaseTableViewController.m in Sources */,
 				654B0B641D20C62700ED0064 /* MainpageViewController.mm in Sources */,
 				650B797C1C1FF14600182D1E /* ProMaintenancePlan.m in Sources */,
+				650F6D7C1EE8F7A300412C9F /* AlarmBottomView.m in Sources */,
 				65D1FACF1E10A40200F2F6EC /* MainBaseTabBarController.m in Sources */,
+				650F6D721EE8E33B00412C9F /* AlarmTitleView.m in Sources */,
 				65A98D7B1C19194300BB4674 /* SwipeableCell.m in Sources */,
 				65D1FAE21E10E1C300F2F6EC /* MainBaseNavigationController.m in Sources */,
 				65D1FAD11E10A48800F2F6EC /* ManagerTabBarController.m in Sources */,
@@ -2343,6 +2409,7 @@
 				BF1887D41AB5D42D00F1C8AF /* HttpClient.m in Sources */,
 				6547E6841E1DD34A0075B532 /* BaseTabBarController.m in Sources */,
 				65D1FACA1E10A2A800F2F6EC /* MainBaseViewController.m in Sources */,
+				650F6D851EE91BBE00412C9F /* ComAlarmCell.m in Sources */,
 				650B799F1C2074A600182D1E /* PullTableView.m in Sources */,
 				65FE08C41EA9AD61002C9397 /* PaintViewController.m in Sources */,
 				6576CF771EE7DC890046E80F /* ImageViewDelView.m in Sources */,
@@ -2365,6 +2432,7 @@
 				BFD920C61B39576600AA5C00 /* propertyMenuViewController.m in Sources */,
 				BFD8434D1B301051008E7118 /* AlarmListEmergencyTableViewController.m in Sources */,
 				65C2EE291EE6BFE200AF7EDC /* RepairProcessController.m in Sources */,
+				650F6D801EE916C300412C9F /* AlarmHistoryController.m in Sources */,
 				65CA98B31EE7990A00E2CF02 /* RepairPayController.m in Sources */,
 				65FC13B01C1142C3005B3B86 /* UIRegisterThreeViewController.m in Sources */,
 				6576CF721EE7D4520046E80F /* RepairSubmitController.m in Sources */,

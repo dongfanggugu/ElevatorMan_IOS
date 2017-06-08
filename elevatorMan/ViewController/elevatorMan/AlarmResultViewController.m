@@ -91,8 +91,7 @@
     self.tableView.bounces = NO;
     
     
-    if (_picUrl)
-    {
+    if (_picUrl) {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 540)];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 20)];
