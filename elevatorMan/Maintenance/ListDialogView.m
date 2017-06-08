@@ -13,6 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnCancel;
+
 @end
 
 @implementation ListDialogView
@@ -35,6 +37,27 @@
     self.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.7];
     [self initTableView];
     
+    [_btnCancel addTarget:self action:@selector(clickCancel) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)clickCancel
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickCancel)])
+    {
+        [_delegate onClickCancel];
+    }
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickCancel:)])
+    {
+        [_delegate onClickCancel:self];
+    }
+
+    
+    if (self.superview)
+    {
+        [self removeFromSuperview];
+    }
+
 }
 
 - (void)initTableView
@@ -107,9 +130,15 @@
 {
     
     id<ListDialogDataDelegate> info = _arrayData[indexPath.row];
-    if (_delegate)
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(onSelectItem:content:)])
     {
         [_delegate onSelectItem:[info getKey] content:[info getShowContent]];
+    }
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(onSelectItem:key:content:)])
+    {
+        [_delegate onSelectItem:self key:[info getKey] content:[info getShowContent]];
     }
     
     if (self.superview)

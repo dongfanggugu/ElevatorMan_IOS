@@ -18,6 +18,7 @@
 #import "MaintOrderController.h"
 #import "RepairOrderController.h"
 #import "AlarmManagerController.h"
+#import "MaintManagerController.h"
 
 
 @interface MainpageViewController()<AVAudioPlayerDelegate>
@@ -196,8 +197,13 @@
 
 - (void)maintenance
 {
-    UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
-    UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"maintenance_page"];
+//    UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
+//    UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"maintenance_page"];
+//    [self.navigationController pushViewController:controller animated:YES];
+    
+    MaintManagerController *controller = [[MaintManagerController alloc] init];
+    
+    controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

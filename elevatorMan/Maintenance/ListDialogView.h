@@ -9,6 +9,8 @@
 #ifndef ListDialogView_h
 #define ListDialogView_h
 
+@class ListDialogView;
+
 @protocol ListDialogDataDelegate <NSObject>
 
 - (NSString *)getShowContent;
@@ -19,7 +21,15 @@
 
 @protocol ListDialogViewDelegate <NSObject>
 
+@optional
+
 - (void)onSelectItem:(NSString *)key content:(NSString *)content;
+
+- (void)onClickCancel;
+
+- (void)onSelectItem:(ListDialogView *)view key:(NSString *)key content:(NSString *)content;
+
+- (void)onClickCancel:(ListDialogView *)view;
 
 @end
 

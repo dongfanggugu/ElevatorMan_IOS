@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,23 +16,51 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fxq-9Z-WOC">
-                    <rect key="frame" x="37" y="233" width="300" height="200"/>
+                    <rect key="frame" x="62" y="233" width="250" height="200"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="aP0-am-5un"/>
-                        <constraint firstAttribute="width" constant="300" id="g5g-7u-HIl"/>
+                        <constraint firstAttribute="width" constant="250" id="g5g-7u-HIl"/>
                     </constraints>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSO-QV-wZy">
+                    <rect key="frame" x="62" y="193" width="250" height="40"/>
+                    <color key="backgroundColor" red="0.21176470589999999" green="0.69019607839999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="l4W-HH-vO8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mey-Fb-8fu">
+                    <rect key="frame" x="62" y="434" width="250" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="MGR-ge-kU1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="取消">
+                        <color key="titleColor" red="0.21176470589999999" green="0.69019607839999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="nSO-QV-wZy" firstAttribute="trailing" secondItem="Fxq-9Z-WOC" secondAttribute="trailing" id="6A3-aS-E2Z"/>
+                <constraint firstItem="mey-Fb-8fu" firstAttribute="trailing" secondItem="Fxq-9Z-WOC" secondAttribute="trailing" id="FvB-Me-EWg"/>
+                <constraint firstItem="mey-Fb-8fu" firstAttribute="leading" secondItem="Fxq-9Z-WOC" secondAttribute="leading" id="HMG-hF-euU"/>
                 <constraint firstItem="Fxq-9Z-WOC" firstAttribute="centerY" secondItem="ey3-9L-Hjt" secondAttribute="centerY" id="Mnh-1e-tH4"/>
                 <constraint firstItem="Fxq-9Z-WOC" firstAttribute="centerX" secondItem="ey3-9L-Hjt" secondAttribute="centerX" id="OH9-sn-HG4"/>
+                <constraint firstItem="Fxq-9Z-WOC" firstAttribute="top" secondItem="nSO-QV-wZy" secondAttribute="bottom" id="QFB-VL-xVX"/>
+                <constraint firstItem="nSO-QV-wZy" firstAttribute="leading" secondItem="Fxq-9Z-WOC" secondAttribute="leading" id="QcG-1D-daP"/>
+                <constraint firstItem="mey-Fb-8fu" firstAttribute="top" secondItem="Fxq-9Z-WOC" secondAttribute="bottom" constant="1" id="tWj-4Z-Pfr"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <connections>
+                <outlet property="btnCancel" destination="mey-Fb-8fu" id="Y5H-Rz-V3f"/>
                 <outlet property="tableView" destination="Fxq-9Z-WOC" id="Ge7-qZ-h7b"/>
             </connections>
             <point key="canvasLocation" x="-227.5" y="-114.5"/>
