@@ -10,15 +10,35 @@
 
 @implementation ComAlarmCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
++ (id)cellFromNib
+{
+    NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"ComAlarmCell" owner:nil options:nil];
+    
+    if (0 == array.count) {
+        return nil;
+    }
+    
+    return array[0];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
++ (CGFloat)cellHeight
+{
+    return 66;
+}
 
-    // Configure the view for the selected state
++ (NSString *)identifier
+{
+    return @"com_alarm_cell";
+}
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    _lbIndex.layer.masksToBounds = YES;
+    
+    _lbIndex.layer.cornerRadius = 15;
 }
 
 @end

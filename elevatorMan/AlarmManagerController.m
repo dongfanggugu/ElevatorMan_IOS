@@ -10,6 +10,7 @@
 #import <BaiduMapAPI/BMapKit.h>
 #import "AlarmTitleView.h"
 #import "AlarmBottomView.h"
+#import "AlarmHistoryController.h"
 
 @interface AlarmManagerController () <BMKMapViewDelegate, AlarmTitleViewDelegate>
 
@@ -25,6 +26,14 @@
     [self setNavTitle:@"紧急救援"];
     [self initNavRightWithText:@"查看历史"];
     [self initView];
+}
+
+- (void)onClickNavRight
+{
+    AlarmHistoryController *controller = [[AlarmHistoryController alloc] init];
+    
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)initView

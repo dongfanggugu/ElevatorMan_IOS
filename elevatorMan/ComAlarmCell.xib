@@ -11,11 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com_alarm_cell" id="I4J-ly-zWA">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com_alarm_cell" id="I4J-ly-zWA" customClass="ComAlarmCell">
             <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I4J-ly-zWA" id="bAf-MY-8oy">
-                <rect key="frame" x="0.0" y="0.0" width="342" height="66"/>
+                <rect key="frame" x="0.0" y="0.0" width="342" height="65.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjH-Q5-ULf">
@@ -70,6 +70,12 @@
                     <constraint firstItem="YjH-Q5-ULf" firstAttribute="leading" secondItem="bAf-MY-8oy" secondAttribute="leading" constant="8" id="zIp-QZ-NzO"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lbIndex" destination="YjH-Q5-ULf" id="ZLS-zv-ZJe"/>
+                <outlet property="lbProject" destination="CA5-NC-2dC" id="qSb-rz-Oq5"/>
+                <outlet property="lbState" destination="oBZ-ze-wQY" id="IIZ-hZ-Hee"/>
+                <outlet property="lbTime" destination="khh-Vz-8Hc" id="RbM-CB-dqK"/>
+            </connections>
             <point key="canvasLocation" x="-142" y="-127"/>
         </tableViewCell>
     </objects>

@@ -12,6 +12,16 @@
 
 + (id)cellFromNib;
 
++ (CGFloat)cellHeight;
+
++ (NSString *)identifier;
+
 @property (weak, nonatomic) IBOutlet UILabel *lbIndex;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbProject;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbTime;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbState;
 
 @end
