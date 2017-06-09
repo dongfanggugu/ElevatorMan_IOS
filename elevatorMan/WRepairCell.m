@@ -11,29 +11,24 @@
 
 @implementation WRepairCell
 
-+ (id)viewFromNib
-{
++ (id)viewFromNib {
     NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"WRepairCell" owner:nil options:nil];
-    if (0 == array.count)
-    {
+    if (0 == array.count) {
         return nil;
     }
-    
+
     return array[0];
 }
 
-+ (CGFloat)cellHeigh
-{
++ (CGFloat)cellHeigh {
     return 64;
 }
 
-+ (NSString *)identifier
-{
++ (NSString *)identifier {
     return @"w_repair_cell";
 }
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
     _lbIndex.layer.masksToBounds = YES;
     _lbIndex.layer.cornerRadius = 20;

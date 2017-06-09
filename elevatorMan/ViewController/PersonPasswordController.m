@@ -11,7 +11,7 @@
 #import "Utils.h"
 #import "HttpClient.h"
 
-@interface PersonPasswordController()
+@interface PersonPasswordController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *tfOriginal;
 
@@ -59,22 +59,22 @@
     NSString *original = self.tfOriginal.text;
     NSString *password = self.tfPassword.text;
     NSString *confirm = self.tfConfirm.text;
-    
+
     if (0 == original.length || 0 == password.length || 0 == confirm) {
         [HUDClass showHUDWithLabel:@"密码输入不能为空,请重新输入!" view:self.view];
         return;
     }
-    
+
     if (![password isEqualToString:confirm]) {
         [HUDClass showHUDWithLabel:@"确认密码和密码输入不一致,请重新输入!" view:self.view];
         return;
     }
-    
+
     if (password.length < 6) {
         [HUDClass showHUDWithLabel:@"密码至少为6位,请重新输入!" view:self.view];
         return;
     }
-    
+
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:[Utils md5:original] forKey:@"oldPwd"];
     [params setObject:[Utils md5:password] forKey:@"newPwd"];

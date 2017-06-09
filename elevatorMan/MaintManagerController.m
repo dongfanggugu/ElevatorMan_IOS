@@ -9,6 +9,7 @@
 #import "MaintManagerController.h"
 #import <BaiduMapAPI/BMapKit.h>
 #import "ComMaintTitleView.h"
+#import "MaintLiftController.h"
 
 @interface MaintManagerController () <BMKMapViewDelegate, ComMaintTitleViewDelegate>
 
@@ -26,8 +27,11 @@
     [self initView];
 }
 
-- (void)onClickNavRight
-{
+- (void)onClickNavRight {
+    MaintLiftController *controller = [[MaintLiftController alloc] init];
+
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)initView

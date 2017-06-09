@@ -15,8 +15,7 @@
 #import "PaintViewController.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface PlanViewController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate, DatePickerDialogDelegate>
-{
+@interface PlanViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, DatePickerDialogDelegate> {
     BOOL _hasSubmit;
 }
 
@@ -71,109 +70,105 @@
 
 @synthesize imageViewDic;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     _hasSubmit = NO;
     [self setNavRightWithText:@"提交"];
     [self initView];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
+
     if (_hasSubmit) {
         [self deleteFileAndCleanDic];
     }
 }
-- (void)onClickNavRight
-{
+
+- (void)onClickNavRight {
     [self submit];
 }
 
 /**
  根据进入的flag展示不同的页面
  **/
-- (void)initView
-{
+- (void)initView {
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.bounces = NO;
-    
+
     if ([_flag isEqualToString:@"add"]) {
-        
+
         //[self setTitleString:@"计划制定"];
         [self setNavTitle:@"计划制定"];
-        
+
         self.labelCode.text = self.liftNum;
         self.labelAddress.text = self.address;
         self.labelMainDate.text = (0 == self.mainDate.length ? @"无" : self.mainDate);
         self.labelMainType.text = (0 == self.mainType.length ? @"无" : [self getDescriptionByType:self.mainType]);
-        
+
         self.labelPlanDate.text = [Utils stringFromDate:[NSDate date]];
         self.labelPlanType.text = @"半月保";
-        
+
         NSArray *typeArray = [[NSArray alloc] initWithObjects:@"半月保", @"月保", @"季度保", @"半年保", @"年保", nil];
         self.typePicker = [[DownPicker alloc] initWithTextField:self.labelPlanType withData:typeArray];
-        
+
         [self.typePicker setToolbarDoneButtonText:@"确定"];
         [self.typePicker setToolbarCancelButtonText:@"取消"];
-        
+
     } else if ([_flag isEqualToString:@"complete"]) {
         [self setNavTitle:@"电梯维保"];
         self.labelCode.text = self.liftNum;
         self.labelAddress.text = self.address;
         self.labelMainDate.text = (0 == self.mainDate.length ? @"无" : self.mainDate);
         self.labelMainType.text = (0 == self.mainType.length ? @"无" : [self getDescriptionByType:self.mainType]);
-        
+
         self.labelPlanDate.text = self.planMainDate;
         self.labelPlanType.text = [self getDescriptionByType:self.planMainType];
-        
+
         self.imageViewDic = [NSMutableDictionary dictionaryWithCapacity:1];
-        
+
         self.imageView1.tag = 0;
-        self.imageView1.userInteractionEnabled =  YES;
+        self.imageView1.userInteractionEnabled = YES;
         [self.imageView1 addGestureRecognizer:[[UITapGestureRecognizer alloc]
-                                           initWithTarget:self action:@selector(takePhoto:)]];
+                initWithTarget:self action:@selector(takePhoto:)]];
         self.imageView2.tag = 1;
-        self.imageView2.userInteractionEnabled =  YES;
+        self.imageView2.userInteractionEnabled = YES;
         [self.imageView2 addGestureRecognizer:[[UITapGestureRecognizer alloc]
-                                               initWithTarget:self action:@selector(takePhoto:)]];
+                initWithTarget:self action:@selector(takePhoto:)]];
         self.imageView3.tag = 2;
-        self.imageView3.userInteractionEnabled =  YES;
+        self.imageView3.userInteractionEnabled = YES;
         [self.imageView3 addGestureRecognizer:[[UITapGestureRecognizer alloc]
-                                               initWithTarget:self action:@selector(takePhoto:)]];
-        
+                initWithTarget:self action:@selector(takePhoto:)]];
+
         [self loadImageFile];
-        
+
         [self.labelPlanType setEnabled:NO];
-        
+
     } else if ([_flag isEqualToString:@"edit"]) {
         [self setNavTitle:@"计划修改"];
-        
+
         self.labelCode.text = self.liftNum;
         self.labelAddress.text = self.address;
         self.labelMainDate.text = (0 == self.mainDate.length ? @"无" : self.mainDate);
         self.labelMainType.text = (0 == self.mainType.length ? @"无" : [self getDescriptionByType:self.mainType]);
-        
+
         self.labelPlanDate.text = self.planMainDate;
         self.labelPlanType.text = [self getDescriptionByType:self.planMainType];
-        
+
         NSArray *typeArray = [[NSArray alloc] initWithObjects:@"半月保", @"月保", @"季度保", @"半年保", @"年保", nil];
         self.typePicker = [[DownPicker alloc] initWithTextField:self.labelPlanType withData:typeArray];
-        
+
         [self.typePicker setToolbarDoneButtonText:@"确定"];
         [self.typePicker setToolbarCancelButtonText:@"取消"];
-        
+
         [self.imageView1 removeFromSuperview];
         [self.imageView2 removeFromSuperview];
         [self.imageView3 removeFromSuperview];
-        
+
         //[self.btnHelp removeFromSuperview];
     }
 }
@@ -182,42 +177,40 @@
  弹出时间选择框
  **/
 - (IBAction)popDatePicker:(id)sender {
-    
+
     DatePickerDialog *dialog = [DatePickerDialog viewFromNib];
-    
+
     dialog.delegate = self;
-    
+
     [dialog show];
 }
 
 #pragma mark - DatePickerDialogDelegate
 
-- (void)onPickerDate:(NSDate *)date
-{
+- (void)onPickerDate:(NSDate *)date {
     _labelPlanDate.text = [Utils stringFromDate:date];
 }
 
-- (void)submit
-{
-   
+- (void)submit {
+
     if ([self.flag isEqualToString:@"add"]) {
         [self addPlan];
-        
+
     } else if ([self.flag isEqualToString:@"edit"]) {
         [self modifyPlan];
-        
+
     } else if ([self.flag isEqualToString:@"complete"]) {
-    
+
         [self completePlan];
     }
 }
 
-- (void)jumpPaint
-{
+- (void)jumpPaint {
     PaintViewController *controller = [[PaintViewController alloc] init];
-    
+
     [self.navigationController pushViewController:controller animated:YES];
 }
+
 /**根据类型返回维保类型的描述**/
 - (NSString *)getDescriptionByType:(NSString *)type {
     NSString *description = nil;
@@ -254,17 +247,16 @@
 /**
  拍摄照片
  **/
-- (void)takePhoto:(UIGestureRecognizer *)gestureRecognizer
-{
-    
-    UIImageView *imageView = (UIImageView *)[gestureRecognizer view];
+- (void)takePhoto:(UIGestureRecognizer *)gestureRecognizer {
+
+    UIImageView *imageView = (UIImageView *) [gestureRecognizer view];
     self.curSelectIndex = imageView.tag;
-    
+
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
-        
+
         //设置拍照后的图片可以编辑
         picker.allowsEditing = NO;
         picker.sourceType = sourceType;
@@ -273,85 +265,81 @@
 }
 
 /** 当选择一张图片后调用此方法**/
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
-{
-    
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info {
+
     NSString *fileName = [self getFileName];
     if (0 == fileName.length) {
         return;
     }
-    
+
     NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
-    
+
     //选择的是图片
     if ([type isEqualToString:@"public.image"]) {
-        
+
         NSLog(@"public.image");
         UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        
+
         CGSize size = CGSizeMake(600, 800);
-        
+
         image = [self imageWithImage:image scaledToSize:size];
-        
+
         //将图片转换为 NSData
         NSData *data;
-        
+
         data = UIImageJPEGRepresentation(image, 0.5);
-        
+
         NSString *fileDir = [[NSString alloc] initWithFormat:@"Documents/%@/%ld", self.liftNum, self.curSelectIndex];
         NSLog(@"file dir:%@", fileDir);
         NSString *documentsPath = [NSHomeDirectory() stringByAppendingPathComponent:fileDir];
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        
+
         //清除目录中文件
         [self deleteFileByPath:documentsPath];
-        
+
         //将图片保存在沙盒中
         [fileManager createDirectoryAtPath:documentsPath withIntermediateDirectories:YES attributes:nil error:nil];
         [fileManager createFileAtPath:[documentsPath stringByAppendingString:fileName] contents:data attributes:nil];
-        
+
         NSString *filePath = [[NSString alloc] initWithFormat:@"%@%@", documentsPath, fileName];
-        
+
         //关闭相册界面
         [picker dismissViewControllerAnimated:YES completion:nil];
-        
+
         [self.imageViewDic setObject:filePath forKey:[NSNumber numberWithLong:self.curSelectIndex]];
-        
+
         [self setImage:image tag:self.curSelectIndex reset:NO];
     }
 }
 
-- (NSString *)getFileName
-{
+- (NSString *)getFileName {
     NSString *fileName = nil;
-    
+
     NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
-    
+
     long long dTime = [[NSNumber numberWithDouble:time] longLongValue];
-    
+
     fileName = [NSString stringWithFormat:@"/%llu.jpg", dTime];
-    
+
     return fileName;
 }
 
 /** 按照给定尺寸压缩图片 **/
-- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize
-{
-    
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+
     UIGraphicsBeginImageContext(newSize);
-    
+
     [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
-    
+
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    
+
     UIGraphicsEndImageContext();
-    
+
     return newImage;
 }
 
 /** 图片转换为base64码 **/
-- (NSString *)image2Base64From:(NSString *)path
-{
+- (NSString *)image2Base64From:(NSString *)path {
     UIImage *image = [UIImage imageWithContentsOfFile:path];
     NSData *data = UIImageJPEGRepresentation(image, 1);
     NSString *base64Code = [data base64Encoding];
@@ -368,29 +356,29 @@
             button = self.btnDel1;
             [button setTag:0];
             break;
-            
+
         case 1:
             imageView = self.imageView2;
             button = self.btnDel2;
             [button setTag:1];
             break;
-            
+
         case 2:
             imageView = self.imageView3;
             button = self.btnDel3;
             [button setTag:2];
             break;
     }
-    
+
     if (nil == imageView || nil == button) {
         return;
     }
 
     imageView.image = [ImageUtils imageWithImage:image scaledToSize:CGSizeMake(90, 120)];
-    
+
     [button addTarget:self action:@selector(delImage:) forControlEvents:UIControlEventTouchUpInside];
     imageView.userInteractionEnabled = YES;
-    
+
     //如果是删除照片后设置位默认图片，则把删除按钮隐藏，同时设置点击触发事件为显示菜单
     if (reset) {
         button.hidden = YES;
@@ -401,21 +389,21 @@
         [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                 action:@selector(showOverView:)]];
     }
-    
+
 }
 
 /** 删除文件 **/
 - (void)delImage:(id)sender {
-    
-    NSInteger tag = ((UIButton *)sender).tag;
+
+    NSInteger tag = ((UIButton *) sender).tag;
     NSLog(@"button tag:%ld", tag);
-    
+
     NSString *filePath = [imageViewDic objectForKey:[NSNumber numberWithLong:tag]];
     NSLog(@"delete image path:%@", filePath);
-    
+
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL exist = [fileManager fileExistsAtPath:filePath];
-    
+
     if (exist) {
         NSError *error;
         [fileManager removeItemAtPath:filePath error:&error];
@@ -429,7 +417,7 @@
             [self setImage:[UIImage imageNamed:@"mix.png"] tag:tag reset:YES];
         }
     }
-    
+
 }
 
 /** 显示预览 **/
@@ -439,22 +427,22 @@
     NSString *filePath = [imageViewDic objectForKey:[NSNumber numberWithLong:tag]];
     NSFileManager *manager = [NSFileManager defaultManager];
     long long size = [[manager attributesOfItemAtPath:filePath error:nil] fileSize];
-    
+
     float sizeK = size / 1024.0;
-    
+
     NSLog(@"file size:%f", sizeK);
-    
+
     UIImage *image = [UIImage imageWithContentsOfFile:filePath];
-    
-    
+
+
     if (nil == self.ivOverView) {
         self.ivOverView = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         self.ivOverView.userInteractionEnabled = YES;
         UITapGestureRecognizer *hideView = [[UITapGestureRecognizer alloc]
-                                        initWithTarget:self action:@selector(hideOverView)];
+                initWithTarget:self action:@selector(hideOverView)];
         [self.ivOverView addGestureRecognizer:hideView];
     }
-    
+
     self.ivOverView.image = image;
     [self.view addSubview:self.ivOverView];
 }
@@ -470,70 +458,69 @@
 - (void)addPlan {
     NSString *planDate = self.labelPlanDate.text;
     NSString *planType = [self getTypeByDescription:self.labelPlanType.text];
-    
+
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
     [param setValue:self.liftId forKey:@"id"];
     [param setValue:planDate forKey:@"planTime"];
     [param setValue:planType forKey:@"mainType"];
-    
+
     [[HttpClient sharedClient] view:self.view post:@"newMainPlan" parameter:param
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }];
+                                [self.navigationController popViewControllerAnimated:YES];
+                            }];
 }
 
 - (void)modifyPlan {
     NSString *planDate = self.labelPlanDate.text;
     NSString *planType = [self getTypeByDescription:self.labelPlanType.text];
-    
+
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
     [param setValue:self.liftId forKey:@"id"];
     [param setValue:planDate forKey:@"planTime"];
     [param setValue:planType forKey:@"mainType"];
-    
+
     [[HttpClient sharedClient] view:self.view post:@"updateMainPlan" parameter:param
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }];
+                                [self.navigationController popViewControllerAnimated:YES];
+                            }];
 }
 
-- (void)completePlan
-{
+- (void)completePlan {
     NSString *signUrl = [User sharedUser].signUrl;
-    
+
     if (0 == signUrl.length) {
         [HUDClass showHUDWithLabel:@"您还没有设置手写签名,\n请到个人中心->设置->我的签名设置你的呢签名"];
         return;
     }
-    
+
     if (self.imageViewDic.count != 3) {
         [HUDClass showHUDWithLabel:@"请拍摄三张照片!" view:self.view];
         return;
     }
-    
+
     //三张图片的文件名称
     NSString *imageFileName1 = [self getFileNameFromPath:[self.imageViewDic objectForKey:[NSNumber numberWithInt:0]]];
     NSString *imageFileName2 = [self getFileNameFromPath:[self.imageViewDic objectForKey:[NSNumber numberWithInt:1]]];
     NSString *imageFileName3 = [self getFileNameFromPath:[self.imageViewDic objectForKey:[NSNumber numberWithInt:2]]];
-    
+
     NSArray *fileNameArray = [[NSArray alloc] initWithObjects:imageFileName1, imageFileName2, imageFileName3, nil];
-    
+
     //三张图片的BASE64编码
     NSString *base64Image1 = [self image2Base64From:[self.imageViewDic objectForKey:[NSNumber numberWithInt:0]]];
     NSString *base64Image2 = [self image2Base64From:[self.imageViewDic objectForKey:[NSNumber numberWithInt:1]]];
     NSString *base64Image3 = [self image2Base64From:[self.imageViewDic objectForKey:[NSNumber numberWithInt:2]]];
-                              
+
     NSArray *imageArray = [[NSArray alloc] initWithObjects:base64Image1, base64Image2, base64Image3, nil];
-    
-    
+
+
     NSString *planDate = self.labelPlanDate.text;
-    
+
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
     [param setValue:self.liftId forKey:@"id"];
     [param setValue:planDate forKey:@"mainTime"];
     [param setValue:fileNameArray forKey:@"photoFileName"];
     [param setValue:imageArray forKey:@"photoBase64"];
-    
+
     [[HttpClient sharedClient] view:self.view post:@"finishMain" parameter:param
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                 [self afterComplete];
@@ -542,24 +529,22 @@
 }
 
 
-- (void)afterComplete
-{
+- (void)afterComplete {
     [self setNavRightWithText:@""];
-    
+
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 100)];
-    
+
     //footerView.backgroundColor = [UIColor redColor];
-    
+
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 100)];
-    
+
     [footerView addSubview:imageView];
-    
+
     [imageView setImageWithURL:[NSURL URLWithString:[User sharedUser].signUrl]];
-    
-    
+
+
     [self.tableView setTableFooterView:imageView];
 }
-
 
 
 /**
@@ -568,7 +553,7 @@
 - (NSString *)getFileNameFromPath:(NSString *)path {
     NSArray *array = [path componentsSeparatedByString:@"/"];
     NSInteger size = array.count;
-    
+
     return [array objectAtIndex:size - 1];
 }
 
@@ -579,7 +564,7 @@
 - (void)deleteFileByPath:(NSString *)path {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL exist = [fileManager fileExistsAtPath:path];
-    
+
     if (exist) {
         NSError *error;
         [fileManager removeItemAtPath:path error:&error];
@@ -599,7 +584,7 @@
 - (void)loadImageFile {
     for (int i = 0; i < 3; i++) {
         NSString *fileDir = [NSHomeDirectory() stringByAppendingPathComponent:
-                             [[NSString alloc] initWithFormat:@"Documents/%@/%d", self.liftNum, i]];
+                [[NSString alloc] initWithFormat:@"Documents/%@/%d", self.liftNum, i]];
         NSString *fileName = [self getFileNameInPath:fileDir];
         if (fileName.length != 0) {
             NSString *imageFile = [fileDir stringByAppendingFormat:@"/%@", fileName];
@@ -643,37 +628,35 @@
 //}
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([_flag isEqualToString:@"add"] || [_flag isEqualToString:@"edit"]) {
         return 6;
-        
+
     } else {
         return 7;
-        
+
     }
 }
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (1 == indexPath.row) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth - 8 - 100 - 8 - 8, 0)];
-        
+
         label.text = _address;
-        
+
         label.font = [UIFont systemFontOfSize:14];
-        
+
         label.numberOfLines = 0;
-        
+
         [label sizeToFit];
-        
+
         return label.frame.size.height + 10 + 10;
-        
+
     } else if (6 == indexPath.row) {
         return 188;
-    
+
     } else {
         return 44;
     }

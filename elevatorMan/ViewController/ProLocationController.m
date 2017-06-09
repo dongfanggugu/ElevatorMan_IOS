@@ -27,7 +27,7 @@
 
 #pragma mark - ProLocationController
 
-@interface ProLocationController()<UITableViewDelegate, UITableViewDataSource, BMKMapViewDelegate>
+@interface ProLocationController () <UITableViewDelegate, UITableViewDataSource, BMKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -40,56 +40,50 @@
 @implementation ProLocationController
 
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavTitle:@"驻点"];
     [self initNavRightWithText:@"添加"];
-    
+
     [self initData];
     [self initView];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self getLocations];
 }
 
-- (void)onClickNavRight
-{
+- (void)onClickNavRight {
     AddressViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"address_controller"];
     controller.addType = TYPE_PRO;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)initData
-{
+- (void)initData {
     _arrayAddress = [NSMutableArray array];
 }
 
-- (void)initView
-{
+- (void)initView {
     _mapView.delegate = self;
     _mapView.zoomLevel = 15;
     _mapView.zoomEnabled = YES;
-    
+
     _tableView.bounces = NO;
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
+
     _tableView.delegate = self;
     _tableView.dataSource = self;
 }
 
-- (void)setSelectedIndex:(NSInteger)index
-{
+- (void)setSelectedIndex:(NSInteger)index {
     NSDictionary *info = _arrayAddress[index];
     CGFloat lat = [[info objectForKey:@"lat"] floatValue];
     CGFloat lng = [[info objectForKey:@"lng"] floatValue];
     CLLocationCoordinate2D coor;
     coor.latitude = lat;
     coor.longitude = lng;
-    
+
     [_mapView removeAnnotations:[_mapView annotations]];
     BMKPointAnnotation *annotation = [[BMKPointAnnotation alloc] init];
     annotation.coordinate = coor;
@@ -99,21 +93,17 @@
 
 #pragma mark - Network Request
 
-- (void)getLocations
-{
+- (void)getLocations {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"branchId"] = [User sharedUser].branchId;
-    
+
     __weak typeof(self) weakSelf = self;
     [[HttpClient sharedClient] view:self.view post:@"getPropertyAddressList" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [weakSelf.arrayAddress removeAllObjects];
         [weakSelf.arrayAddress addObjectsFromArray:[responseObject objectForKey:@"body"]];
-        if (0 == weakSelf.arrayAddress.count)
-        {
+        if (0 == weakSelf.arrayAddress.count) {
             _tableView.hidden = YES;
-        }
-        else
-        {
+        } else {
             _tableView.hidden = NO;
             [_tableView reloadData];
             [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
@@ -124,34 +114,29 @@
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _arrayAddress.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ProLocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"pro_location_cell"];
-    
-    if (nil == cell)
-    {
+
+    if (nil == cell) {
         cell = [[ProLocationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"pro_location_cell"];
     }
-    
+
     cell.lbAddress.text = [_arrayAddress[indexPath.row] objectForKey:@"address"];
-    
+
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self setSelectedIndex:indexPath.row];
 }
 

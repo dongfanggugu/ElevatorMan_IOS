@@ -19,54 +19,48 @@
 
 @implementation MaintExceptionController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavTitle:@"无法出发"];
     [self initView];
 }
 
-- (void)initView
-{
+- (void)initView {
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64)];
-    
+
     _tableView.delegate = self;
-    
+
     _tableView.dataSource = self;
-    
+
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
+
     _exceptionView = [MaintExceptionView viewFromNib];
-    
+
     _exceptionView.delegate = self;
-    
+
     _tableView.tableHeaderView = _exceptionView;
-    
+
     [self.view addSubview:_tableView];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 0;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 0;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
 }
 
 #pragma mark - MaintExceptionViewDelegate
 
-- (void)onClickSubmit
-{
-    
+- (void)onClickSubmit {
+
 }
 
 

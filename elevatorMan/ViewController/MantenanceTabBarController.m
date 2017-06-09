@@ -8,19 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "MantenanceTabBarController.h"
+
 /**
  *  维保Tab页
  */
 
-@interface MantenanceTabBarController()
+@interface MantenanceTabBarController ()
 
 @end
 
 
 @implementation MantenanceTabBarController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavTitle:@"维保管理"];
 }

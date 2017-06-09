@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AboutViewController.h"
 
-@interface AboutViewController()
+@interface AboutViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
@@ -18,12 +18,11 @@
 
 @implementation AboutViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self setNavTitle:@"关于"];
-    
+
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     _versionLabel.text = version;
 }

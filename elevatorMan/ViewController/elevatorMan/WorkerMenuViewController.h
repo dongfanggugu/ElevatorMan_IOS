@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol AlarmCancelDelegate<NSObject>
+@protocol AlarmCancelDelegate <NSObject>
 
 - (void)onReceiveAlarmCancelMessage;
 
@@ -16,6 +16,6 @@
 
 @interface WorkerMenuViewController : UIViewController
 
-@property (strong, nonatomic) id<AlarmCancelDelegate> delegate;
+@property (strong, nonatomic) id <AlarmCancelDelegate> delegate;
 
 @end

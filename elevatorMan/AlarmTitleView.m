@@ -22,8 +22,7 @@
 
 @implementation AlarmTitleView
 
-+ (id)viewFromNib
-{
++ (id)viewFromNib {
     NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"AlarmTitleView" owner:nil options:nil];
     if (0 == array.count) {
         return nil;

@@ -13,8 +13,7 @@
 #import "HttpClient.h"
 
 
-
-@interface PersonModifyController()
+@interface PersonModifyController ()
 
 @property (strong, nonatomic) NSString *enterType;
 
@@ -31,13 +30,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self setTitleRight];
     //设置左右边框，看起来美观
     UIView *padView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 5)];
     self.textFieldContent.leftView = padView;
     self.textFieldContent.leftViewMode = UITextFieldViewModeAlways;
-    
+
     self.textFieldContent.rightView = padView;
     self.textFieldContent.rightViewMode = UITextFieldViewModeAlways;
 
@@ -48,7 +47,7 @@
  *  初始化视图
  */
 - (void)initView {
-    
+
     if ([enterType isEqualToString:@"operation"]) {
         [self setTitleString:@"操作证号"];
         self.textFieldContent.text = [User sharedUser].operation;
@@ -58,9 +57,9 @@
     } else if ([enterType isEqualToString:@"sex"]) {
         [self setTitleString:@"性别"];
         NSInteger sexValue = [User sharedUser].sex.integerValue;
-        self.textFieldContent.text = sexValue == 0 ? @"女" :  @"男";
+        self.textFieldContent.text = sexValue == 0 ? @"女" : @"男";
         NSArray *sexArray = [NSArray arrayWithObjects:@"男", @"女", nil];
-         self.downPicker = [[DownPicker alloc] initWithTextField:self.textFieldContent withData:sexArray];
+        self.downPicker = [[DownPicker alloc] initWithTextField:self.textFieldContent withData:sexArray];
         [self.downPicker setToolbarDoneButtonText:@"完成"];
         [self.downPicker setToolbarCancelButtonText:@"取消"];
         //[self.view addSubview:downPicker];
@@ -113,27 +112,27 @@
     NSNumber *sex = [User sharedUser].sex;
     NSString *operationCard = [User sharedUser].operation == nil ? @"" : [User sharedUser].operation;
     NSString *tel = [User sharedUser].tel;
-    
+
     if ([enterType isEqualToString:@"operation"]) {
         operationCard = content;
-        
+
     } else if ([enterType isEqualToString:@"name"]) {
         name = content;
-        
+
     } else if ([enterType isEqualToString:@"sex"]) {
         if ([content isEqualToString:@"男"]) {
             sex = [NSNumber numberWithInt:1];
         } else {
             sex = [NSNumber numberWithInt:0];
         }
-            
+
     } else if ([enterType isEqualToString:@"age"]) {
         if (![Utils isLegalAge:content]) {
             [HUDClass showHUDWithLabel:@"请输入合法的年龄" view:self.view];
             return;
         }
         age = [NSNumber numberWithInteger:[content integerValue]];
-        
+
     } else if ([enterType isEqualToString:@"tel"]) {
         if (![Utils isCorrectPhoneNumberOf:content]) {
             [HUDClass showHUDWithLabel:@"请输入合法的电话号码" view:self.view];
@@ -141,20 +140,20 @@
         }
         tel = content;
     }
-    
+
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    
+
     [params setObject:name forKey:@"name"];
     [params setObject:age forKey:@"age"];
     [params setObject:sex forKey:@"sex"];
     [params setObject:operationCard forKey:@"operationCard"];
     [params setObject:tel forKey:@"tel"];
-    
+
     __weak PersonModifyController *weakSelf = self;
-    
+
     [[HttpClient sharedClient] view:self.view post:@"editUser" parameter:params
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                
+
                                 //更新本地存储的个人信息
                                 [User sharedUser].name = name;
                                 [User sharedUser].age = age;
@@ -164,6 +163,6 @@
                                 [[User sharedUser] setUserInfo];
                                 [weakSelf.navigationController popViewControllerAnimated:YES];
                             }];
-    
+
 }
 @end

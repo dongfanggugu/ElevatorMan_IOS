@@ -1,0 +1,1561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="19e1f9ed-c4a6-4801-8e87-07007dbad8f3" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elevatorMan/ComMaintInfoCell.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elevatorMan/ComMaintInfoCell.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elevatorMan/ComMaintInfoCell.xib" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elevatorMan/HouseMaintManagerController.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elevatorMan/HouseMaintManagerController.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elevatorMan/HouseRepairManagerController.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elevatorMan/HouseRepairManagerController.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elevatorMan/HouseTitleView.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elevatorMan/HouseTitleView.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elevatorMan/HouseTitleView.xib" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elevatorMan/MaintLiftController.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elevatorMan/MaintLiftController.m" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elevatorMan/MaintDetailController.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elevatorMan/MaintDetailController.m" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan.xcworkspace/xcuserdata/changhaozhang.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/elevatorMan.xcworkspace/xcuserdata/changhaozhang.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/changhaozhang.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/changhaozhang.xcuserdatad/xcschemes/xcschememanagement.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PropertyRegister.m" afterPath="$PROJECT_DIR$/PropertyRegister.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chorstar/chorstar.xcodeproj/xcuserdata/changhaozhang.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/chorstar/chorstar.xcodeproj/xcuserdata/changhaozhang.xcuserdatad/xcschemes/xcschememanagement.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/elevatorMan.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan.xcodeproj/xcuserdata/changhaozhang.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/elevatorMan.xcodeproj/xcuserdata/changhaozhang.xcuserdatad/xcschemes/xcschememanagement.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/AlarmTitleView.m" afterPath="$PROJECT_DIR$/elevatorMan/AlarmTitleView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ElevatorManViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ElevatorManViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/EvaluateView.m" afterPath="$PROJECT_DIR$/elevatorMan/EvaluateView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/MaintManagerController.m" afterPath="$PROJECT_DIR$/elevatorMan/MaintManagerController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/MaintResultView.m" afterPath="$PROJECT_DIR$/elevatorMan/MaintResultView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/Maintenance/MainBaseViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/Maintenance/MainBaseViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/Maintenance/MainTodayController.m" afterPath="$PROJECT_DIR$/elevatorMan/Maintenance/MainTodayController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/Maintenance/ManagerTabBarController.m" afterPath="$PROJECT_DIR$/elevatorMan/Maintenance/ManagerTabBarController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/Maintenance/ProjectMainCell.m" afterPath="$PROJECT_DIR$/elevatorMan/Maintenance/ProjectMainCell.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/PersonHeaderView.m" afterPath="$PROJECT_DIR$/elevatorMan/PersonHeaderView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/RepairInfoView.m" afterPath="$PROJECT_DIR$/elevatorMan/RepairInfoView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/RepairOrderCell.m" afterPath="$PROJECT_DIR$/elevatorMan/RepairOrderCell.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/RepairPayAddView.m" afterPath="$PROJECT_DIR$/elevatorMan/RepairPayAddView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/RepairPayCell.m" afterPath="$PROJECT_DIR$/elevatorMan/RepairPayCell.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/RepairPayFooterView.m" afterPath="$PROJECT_DIR$/elevatorMan/RepairPayFooterView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/RepairPayHeaderView.m" afterPath="$PROJECT_DIR$/elevatorMan/RepairPayHeaderView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/RepairTaskCell.m" afterPath="$PROJECT_DIR$/elevatorMan/RepairTaskCell.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/RepairTaskMakeView.m" afterPath="$PROJECT_DIR$/elevatorMan/RepairTaskMakeView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/UIRegisterTwoViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/UIRegisterTwoViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/AboutViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/AboutViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/AddressViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/AddressViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/AlarmListEmergencyTableViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/AlarmListEmergencyTableViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/AroundController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/AroundController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/BaseCollectionViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/BaseCollectionViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/BaseTabBarController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/BaseTabBarController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/BaseTableViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/BaseTableViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/BaseViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/BaseViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/BuildingsViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/BuildingsViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/ElevatorsViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/ElevatorsViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/LocationViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/LocationViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/MantenanceTabBarController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/MantenanceTabBarController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/PersonBasicInfoController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/PersonBasicInfoController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/PersonModifyController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/PersonModifyController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/PersonPasswordController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/PersonPasswordController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/PersonalCenterController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/PersonalCenterController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/ProAlarmManagerController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/ProAlarmManagerController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/ProAlarmTabBarController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/ProAlarmTabBarController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/ProBaseTabBarController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/ProBaseTabBarController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/ProBaseTableViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/ProBaseTableViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/ProBaseViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/ProBaseViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/ProLocationController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/ProLocationController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenanceDetail.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenanceDetail.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenanceFinish.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenanceFinish.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenanceHistory.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenanceHistory.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenancePlan.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenancePlan.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/ProPersonCenterViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/ProPersonCenterViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/ProjectsTableViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/ProjectsTableViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/PropertyMainPageController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/PropertyMainPageController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/ReportAlarmViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/ReportAlarmViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/SettingsViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/SettingsViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/TrackingViewController.mm" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/TrackingViewController.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/UIRegisterOneViewControllor.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/UIRegisterOneViewControllor.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/UIRegisterThreeViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/UIRegisterThreeViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmAssignedViewController.mm" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmAssignedViewController.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmHistoryViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmHistoryViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmListElevatorManViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmListElevatorManViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmProcessViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmProcessViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmReceivedViewController.mm" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmReceivedViewController.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmResultViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmResultViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmTabBarController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmTabBarController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/ConfirmProcessViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/ConfirmProcessViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/FinishedReportViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/FinishedReportViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/HelpViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/HelpViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/LiftDetailViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/LiftDetailViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MainpageViewController.mm" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MainpageViewController.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintExceptionController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintExceptionController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintInfoController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintInfoController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintOrderController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintOrderController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintResultShowController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintResultShowController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintSubmitController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintSubmitController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintenancePageViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintenancePageViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintenanceReminder.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintenanceReminder.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintenanceViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintenanceViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MyLiftViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MyLiftViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/PlanViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/PlanViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/RecordViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/RecordViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/WorkerMenuViewController.h" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/WorkerMenuViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/WorkerMenuViewController.mm" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/WorkerMenuViewController.mm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/WorkerRootViewController.m" afterPath="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/WorkerRootViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/WRepairCell.m" afterPath="$PROJECT_DIR$/elevatorMan/WRepairCell.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/elevatorMan/WRepairView.m" afterPath="$PROJECT_DIR$/elevatorMan/WRepairView.m" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulatoriPhone_SE_10.3_x86_64_1" />
+  <component name="FavoritesManager">
+    <favorites_list name="elevatorMan" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="BaseViewController.m" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/BaseViewController.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1840">
+              <caret line="119" column="24" lean-forward="false" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>&lt;</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/elevatorMan/MaintLiftController.h" />
+        <option value="$PROJECT_DIR$/elevatorMan/ComMaintInfoCell.h" />
+        <option value="$PROJECT_DIR$/elevatorMan/MaintManagerController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/MaintLiftController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ComMaintInfoCell.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/AlarmTitleView.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/HouseTitleView.h" />
+        <option value="$PROJECT_DIR$/elevatorMan/HouseRepairManagerController.h" />
+        <option value="$PROJECT_DIR$/elevatorMan/HouseMaintManagerController.h" />
+        <option value="$PROJECT_DIR$/elevatorMan/HouseMaintManagerController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/HouseRepairManagerController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/EvaluateView.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/HouseTitleView.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MainpageViewController.mm" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/BaseViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/WRepairView.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/WRepairCell.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/RepairTaskMakeView.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/RepairTaskCell.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/RepairPayHeaderView.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/RepairPayFooterView.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/RepairPayCell.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/RepairPayAddView.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/RepairOrderCell.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/Maintenance/ProjectMainCell.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/MaintResultView.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/PersonHeaderView.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/RepairInfoView.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/WorkerRootViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/WorkerMenuViewController.mm" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/WorkerMenuViewController.h" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/LiftDetailViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintenancePageViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintenanceReminder.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintenanceViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MyLiftViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/PlanViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/RecordViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintExceptionController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintInfoController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintOrderController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintResultShowController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintSubmitController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/HelpViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmAssignedViewController.mm" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmHistoryViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmListElevatorManViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmProcessViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmReceivedViewController.mm" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmResultViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmTabBarController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/ConfirmProcessViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ElevatorManViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/FinishedReportViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/AlarmListEmergencyTableViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/BuildingsViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/ElevatorsViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/ProjectsTableViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/ReportAlarmViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/TrackingViewController.mm" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/AroundController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/ProAlarmManagerController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/ProAlarmTabBarController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/PropertyMainPageController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/ProBaseTabBarController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/ProBaseTableViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/ProBaseViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/MantenanceTabBarController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenanceDetail.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenanceFinish.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenanceHistory.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenancePlan.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/ProPersonCenterViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/AboutViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/AddressViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/LocationViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/PersonalCenterController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/PersonBasicInfoController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/PersonModifyController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/PersonPasswordController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/ProLocationController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/SettingsViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/Maintenance/MainTodayController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/Maintenance/ManagerTabBarController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/Maintenance/MainBaseViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/BaseCollectionViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/BaseTabBarController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/BaseTableViewController.m" />
+        <option value="$PROJECT_DIR$/PropertyRegister.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/UIRegisterOneViewControllor.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/ViewController/UIRegisterThreeViewController.m" />
+        <option value="$PROJECT_DIR$/elevatorMan/UIRegisterTwoViewController.m" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="293" />
+    <option name="y" value="156" />
+    <option name="width" value="1360" />
+    <option name="height" value="908" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>C/C++</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="storyboard" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ViewControllers" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ViewControllers" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Property" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ViewControllers" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Property" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Personal" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ViewControllers" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Company" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ViewControllers" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elevatorMan" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ViewControllers" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MaintenanceManager" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Cidr.FilesView" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C/C++/Objective-C" />
+    <property name="OBJC.PRESERVED_TARGET_SELECTION" value="elevatorMan" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.elevatorMan">
+    <configuration default="true" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" MAKE_ACTIVE="TRUE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="OCGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS_2="true" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" PASS_PARENT_ENVS_2="true" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="elevatorMan" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="elevatorMan" TARGET_NAME="elevatorMan" CONFIG_NAME="Debug" SCHEME_NAME="elevatorMan" RUN_TARGET_PROJECT_NAME="elevatorMan" RUN_TARGET_NAME="elevatorMan" MAKE_ACTIVE="TRUE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration default="false" name="AFNetworking" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pods" TARGET_NAME="AFNetworking" CONFIG_NAME="Debug" SCHEME_NAME="AFNetworking" MAKE_ACTIVE="TRUE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration default="false" name="DownPicker" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pods" TARGET_NAME="DownPicker" CONFIG_NAME="Debug" SCHEME_NAME="DownPicker" MAKE_ACTIVE="TRUE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration default="false" name="DownPicker-DownPicker" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pods" TARGET_NAME="DownPicker-DownPicker" CONFIG_NAME="Debug" SCHEME_NAME="DownPicker-DownPicker" MAKE_ACTIVE="TRUE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration default="false" name="IQKeyboardManager" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pods" TARGET_NAME="IQKeyboardManager" CONFIG_NAME="Debug" SCHEME_NAME="IQKeyboardManager" MAKE_ACTIVE="TRUE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration default="false" name="MBProgressHUD" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pods" TARGET_NAME="MBProgressHUD" CONFIG_NAME="Debug" SCHEME_NAME="MBProgressHUD" MAKE_ACTIVE="TRUE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration default="false" name="Pods" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pods" TARGET_NAME="Pods" CONFIG_NAME="Debug" SCHEME_NAME="Pods" MAKE_ACTIVE="TRUE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration default="false" name="RESideMenu-onlyLeft" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pods" TARGET_NAME="RESideMenu-onlyLeft" CONFIG_NAME="Debug" SCHEME_NAME="RESideMenu-onlyLeft" MAKE_ACTIVE="TRUE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration default="false" name="chorstar" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="chorstar" TARGET_NAME="chorstar" CONFIG_NAME="Debug" SCHEME_NAME="chorstar" MAKE_ACTIVE="TRUE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <list size="9">
+      <item index="0" class="java.lang.String" itemvalue="Application.elevatorMan" />
+      <item index="1" class="java.lang.String" itemvalue="Application.AFNetworking" />
+      <item index="2" class="java.lang.String" itemvalue="Application.DownPicker" />
+      <item index="3" class="java.lang.String" itemvalue="Application.DownPicker-DownPicker" />
+      <item index="4" class="java.lang.String" itemvalue="Application.IQKeyboardManager" />
+      <item index="5" class="java.lang.String" itemvalue="Application.MBProgressHUD" />
+      <item index="6" class="java.lang.String" itemvalue="Application.Pods" />
+      <item index="7" class="java.lang.String" itemvalue="Application.RESideMenu-onlyLeft" />
+      <item index="8" class="java.lang.String" itemvalue="Application.chorstar" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="19e1f9ed-c4a6-4801-8e87-07007dbad8f3" name="Default" comment="" />
+      <created>1496987043710</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1496987043710</updated>
+      <workItem from="1496987049571" duration="354000" />
+      <workItem from="1496987425261" duration="128000" />
+      <workItem from="1496987567734" duration="6285000" />
+      <workItem from="1496995500433" duration="2294000" />
+      <workItem from="1496999468273" duration="2492000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="11553000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="true" />
+      <is-preview-enabled value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="293" y="156" width="1360" height="908" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3382353" sideWeight="0.4973861" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32843137" sideWeight="0.48095593" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32843137" sideWeight="0.51904404" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32965687" sideWeight="0.4973861" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50735295" sideWeight="0.4884242" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32965687" sideWeight="0.4943988" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2613891" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/elevatorMan/MaintLiftController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="54" lean-forward="false" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+          <folding>
+            <element signature="e#48#81#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ComMaintInfoCell.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/MaintLiftController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="603">
+          <caret line="70" column="39" lean-forward="false" selection-start-line="70" selection-start-column="39" selection-end-line="70" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ComMaintInfoCell.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" column="8" lean-forward="false" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/AlarmTitleView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/AlarmTitleView.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/AlarmManagerController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="40" column="4" lean-forward="false" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+          <folding>
+            <element signature="e#100#134#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/HouseRepairManagerController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding>
+            <element signature="e#48#81#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/HouseMaintManagerController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="8" column="59" lean-forward="false" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
+          <folding>
+            <element signature="e#48#81#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/EvaluateView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="17" column="54" lean-forward="false" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/HouseRepairManagerController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#48#88#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/HouseMaintManagerController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="6" column="21" lean-forward="false" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/HouseTitleView.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/HouseTitleView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="21" column="73" lean-forward="false" selection-start-line="21" selection-start-column="73" selection-end-line="21" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MainpageViewController.mm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="220" column="0" lean-forward="false" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
+          <folding>
+            <element signature="e#90#124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIControl.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="74" column="51" lean-forward="false" selection-start-line="74" selection-start-column="51" selection-end-line="74" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/AlarmDetailController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/AlarmDetailController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/WRepairView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/WRepairCell.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/RepairTaskMakeView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/RepairTaskCell.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/RepairPayHeaderView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/RepairPayFooterView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/RepairPayCell.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/RepairPayAddView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/MaintResultView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/PersonHeaderView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/Maintenance/ProjectMainCell.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="21" column="18" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/RepairInfoView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/RepairOrderCell.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/WorkerMenuViewController.mm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/WorkerRootViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableView.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="350" column="77" lean-forward="false" selection-start-line="350" selection-start-column="76" selection-end-line="350" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/WorkerMenuViewController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/LiftDetailViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="15" column="54" lean-forward="false" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintenancePageViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintenanceReminder.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-324">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="235" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintenanceViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="428" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MyLiftViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="250" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/PlanViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="671" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/RecordViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1071">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="282" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintExceptionController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintInfoController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="311" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintOrderController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="282" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintResultShowController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/MaintSubmitController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="284" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/HelpViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmAssignedViewController.mm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmListElevatorManViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="285" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmProcessViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="340" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmReceivedViewController.mm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="677" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmResultViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmTabBarController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="706" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/ConfirmProcessViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ElevatorManViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-289">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="94" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/FinishedReportViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="297" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/AlarmListEmergencyTableViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/BuildingsViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/ElevatorsViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/ProjectsTableViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/ReportAlarmViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/TrackingViewController.mm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="632" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/AroundController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/ProAlarmManagerController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="433" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/ProAlarmTabBarController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/PropertyMainPageController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/ProBaseTabBarController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/ProBaseTableViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/ProBaseViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/MantenanceTabBarController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenanceDetail.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="478" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenanceFinish.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenanceHistory.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/ProMaintenancePlan.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/ProPersonCenterViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/AboutViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/AddressViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="274" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/LocationViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/PersonalCenterController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/PersonalCenterController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="460" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/PersonBasicInfoController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="401" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/PersonModifyController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="167" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/PersonPasswordController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="86" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/ProLocationController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/SettingsViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/Maintenance/MainTodayController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/Maintenance/ManagerTabBarController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/Maintenance/MainBaseNavigationController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/Maintenance/MainBaseTabBarController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/UIRegisterTwoViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding>
+            <element signature="e#96#129#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/elevatorMan/AlarmHistoryViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="188" column="0" lean-forward="true" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/Maintenance/MainBaseViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/BaseCollectionViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/BaseTabBarController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/BaseTableViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/UIRegisterThreeViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="410" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/UIRegisterOneViewControllor.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="509" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PropertyRegister.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elevatorMan/ViewController/BaseViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1840">
+          <caret line="119" column="24" lean-forward="false" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

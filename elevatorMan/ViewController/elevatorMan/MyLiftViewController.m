@@ -25,12 +25,11 @@
 @implementation LiftCell
 
 
-
 @end
 
 #pragma mark -- MyLiftViewController
 
-@interface MyLiftViewController()<UITableViewDelegate, UITableViewDataSource>
+@interface MyLiftViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -40,38 +39,32 @@
 
 @implementation MyLiftViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
-    if (TYPE_ALL == _liftType)
-    {
+
+    if (TYPE_ALL == _liftType) {
         [self setNavTitle:@"我的电梯"];
-    }
-    else
-    {
+    } else {
         [self setNavTitle:@"维保计划"];
     }
-    
+
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.bounces = NO;
-    
+
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self getElevatorList];
 }
 
 
-- (void)getElevatorList
-{
-    
+- (void)getElevatorList {
+
     __weak typeof(self) weakSelf = self;
-    
+
     [[HttpClient sharedClient] view:self.view post:@"getMainElevatorList" parameter:nil
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                 NSLog(@"result:%@", responseObject);
@@ -84,14 +77,11 @@
  *
  *  @param array
  */
-- (void)dealHttpData:(NSArray *)array
-{
-    if (TYPE_ALL == _liftType)
-    {
+- (void)dealHttpData:(NSArray *)array {
+    if (TYPE_ALL == _liftType) {
         _dataArray = array.mutableCopy;
-      
-        if (0 == _dataArray.count)
-        {
+
+        if (0 == _dataArray.count) {
             CGFloat width = [UIScreen mainScreen].bounds.size.width;
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 50)];
             label.font = [UIFont systemFontOfSize:15];
@@ -100,21 +90,17 @@
             [self.view addSubview:label];
             return;
         }
-    
-    }
-    else
-    {
+
+    } else {
         _dataArray = [[NSMutableArray alloc] init];
-        for (NSDictionary *dic in array)
-        {
+        for (NSDictionary *dic in array) {
             NSString *planMainTime = [dic objectForKey:@"planMainTime"];
-            if (0 == planMainTime.length)
-            {
+            if (0 == planMainTime.length) {
                 [_dataArray addObject:dic];
             }
-            
+
         }
-        
+
 //        if (0 == _dataArray.count)
 //        {
 //            CGFloat width = [UIScreen mainScreen].bounds.size.width;
@@ -214,36 +200,31 @@
 
 #pragma mark -- UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _dataArray.count;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LiftCell *cell = [tableView dequeueReusableCellWithIdentifier:@"lift_cell"];
-    
+
     NSDictionary *info = _dataArray[indexPath.row];
     cell.codeLabel.text = [info objectForKey:@"num"];
     cell.addressLabel.text = [info objectForKey:@"address"];
-    
+
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *info = _dataArray[indexPath.row];
-    
-    
+
+
     UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
-    
-    if (TYPE_ALL == _liftType)
-    {
+
+    if (TYPE_ALL == _liftType) {
         LiftDetailViewController *controller = [board instantiateViewControllerWithIdentifier:@"lift_detail"];
         controller.liftCode = [info objectForKey:@"num"];
         controller.project = [info objectForKey:@"project"];
@@ -252,9 +233,7 @@
         controller.worker = [User sharedUser].name;
         controller.tel = [User sharedUser].tel;
         [self.navigationController pushViewController:controller animated:YES];
-    }
-    else if (TYPE_PLAN == _liftType)
-    {
+    } else if (TYPE_PLAN == _liftType) {
         PlanViewController *controller = [board instantiateViewControllerWithIdentifier:@"plan_controller"];
         controller.flag = @"add";
         controller.liftId = [info objectForKey:@"id"];
@@ -262,10 +241,10 @@
         controller.address = [info objectForKey:@"address"];
         controller.mainDate = [info objectForKey:@"mainDate"];
         controller.mainType = [info objectForKey:@"mainType"];
-        
+
         [self.navigationController pushViewController:controller animated:YES];
     }
-    
+
 }
 
 @end

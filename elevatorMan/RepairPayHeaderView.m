@@ -10,31 +10,28 @@
 
 @interface RepairPayHeaderView ()
 
-@property (weak, nonatomic) IBOutlet UIButton *btnAdd;
+@property(weak, nonatomic) IBOutlet UIButton *btnAdd;
 
 @end
 
 @implementation RepairPayHeaderView
 
-+ (id)viewFromNib
-{
++ (id)viewFromNib {
     NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"RepairPayHeaderView" owner:nil options:nil];
     if (0 == array.count) {
         return nil;
     }
-    
+
     return array[0];
 }
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
-    
+
     [_btnAdd addTarget:self action:@selector(clickAdd) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)clickAdd
-{
+- (void)clickAdd {
     if (_delegate && [_delegate respondsToSelector:@selector(onClickAdd)]) {
         [_delegate onClickAdd];
     }

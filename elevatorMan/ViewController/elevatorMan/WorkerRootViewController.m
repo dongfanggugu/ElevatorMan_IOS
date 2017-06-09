@@ -15,12 +15,11 @@
 @implementation WorkerRootViewController
 
 
-- (void)awakeFromNib
-{
-    
+- (void)awakeFromNib {
+
     //设置全局导航栏特性
     //[[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:56/255.0 green:142/255.0 blue:212/255.0 alpha:1], NSForegroundColorAttributeName, font, NSFontAttributeName, nil]];
-    
+
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-400.f, 0) forBarMetrics:UIBarMetricsDefault];
     //self.scaleContentView = NO;
     self.bouncesHorizontally = NO;
@@ -32,19 +31,18 @@
     self.contentViewShadowEnabled = YES;
     self.rightMenuViewController = nil;
     self.backgroundImage = [UIImage imageNamed:@"background.png"];
-    
-    
+
+
     //AppDelegate* appdelegate = [UIApplication sharedApplication].delegate;
-    
+
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"workerHomePageViewController"];
     self.leftMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"workerMenuViewController"];
-    
-    
+
+
     //self.delegate = self;
     //设置workerMenuViewController代理，用来处理头像修改后重新加载的问题
     self.delegate = self.leftMenuViewController;
 }
-
 
 
 @end

@@ -11,30 +11,25 @@
 
 @implementation RepairTaskCell
 
-+ (id)cellFromNib
-{
++ (id)cellFromNib {
     NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"RepairTaskCell" owner:nil options:nil];
-    
-    if (0 == array.count)
-    {
+
+    if (0 == array.count) {
         return nil;
     }
-    
+
     return array[0];
 }
 
-+ (CGFloat)cellHeight
-{
++ (CGFloat)cellHeight {
     return 130;
 }
 
-+(NSString *)identifier
-{
++ (NSString *)identifier {
     return @"repair_task_cell";
 }
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSeparatorStyleNone;
 }

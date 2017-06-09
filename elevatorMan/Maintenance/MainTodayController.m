@@ -10,7 +10,7 @@
 #import "MainTodayController.h"
 #import <BaiduMapAPI/BMapKit.h>
 
-@interface MainTodayController()
+@interface MainTodayController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -20,7 +20,6 @@
 @end
 
 @implementation MainTodayController
-
 
 
 @end

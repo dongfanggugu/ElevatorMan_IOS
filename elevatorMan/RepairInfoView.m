@@ -15,69 +15,62 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbTitleTask;
 
 
-
-
 @end
 
 @implementation RepairInfoView
 
-+ (id)viewFromNib
-{
++ (id)viewFromNib {
     NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"RepairInfoView" owner:nil options:nil];
-    
+
     if (0 == array) {
         return nil;
     }
-    
+
     return array[0];
 }
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
-    
+
     _lbFaultDes.userInteractionEnabled = NO;
-    
+
     _lbFaultDes.layer.masksToBounds = YES;
     _lbFaultDes.layer.cornerRadius = 5;
-    
+
     _lbFaultDes.layer.borderColor = RGB(BG_GRAY).CGColor;
-    
+
     _lbFaultDes.layer.borderWidth = 1;
-    
+
     _btnTask.layer.masksToBounds = YES;
     _btnTask.layer.cornerRadius = 5;
-    
+
     _btnPay.layer.masksToBounds = YES;
     _btnPay.layer.cornerRadius = 5;
-    
+
 
     _lbTitleOrder.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"icon_blue"]];
     _lbTitleTask.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"icon_red"]];
-    
+
     [_btnTask addTarget:self action:@selector(clickTask) forControlEvents:UIControlEventTouchUpInside];
-    
+
     [_btnPay addTarget:self action:@selector(clickPay) forControlEvents:UIControlEventTouchUpInside];
-    
+
     [_btnEvaluate addTarget:self action:@selector(clickEvaluate) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)clickTask
-{
+- (void)clickTask {
     if (_delegate && [_delegate respondsToSelector:@selector(onClickTask)]) {
         [_delegate onClickTask];
     }
 }
 
-- (void)clickPay
-{
+- (void)clickPay {
     if (_delegate && [_delegate respondsToSelector:@selector(onClickPay)]) {
         [_delegate onClickPay];
     }
 }
 
-- (void)clickEvaluate
-{
+- (void)clickEvaluate {
     if (_delegate && [_delegate respondsToSelector:@selector(onClickEvaluate)]) {
         [_delegate onClickEvaluate];
     }

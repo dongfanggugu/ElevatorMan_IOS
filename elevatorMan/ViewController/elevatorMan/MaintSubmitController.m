@@ -12,7 +12,7 @@
 #define IMAGE_PATH @"/tmp/maint/"
 
 @interface MaintSubmitController () <UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate,
-UIImagePickerControllerDelegate, MaintResultViewDelegate>
+        UIImagePickerControllerDelegate, MaintResultViewDelegate>
 
 @property (strong, nonatomic) MaintResultView *resultView;
 
@@ -26,33 +26,31 @@ UIImagePickerControllerDelegate, MaintResultViewDelegate>
 
 @implementation MaintSubmitController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavTitle:@"维保结果"];
     [self initView];
 }
 
-- (void)initView
-{
+- (void)initView {
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64)];
-    
+
     tableView.delegate = self;
-    
+
     tableView.dataSource = self;
-    
+
     tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
+
     [self.view addSubview:tableView];
-    
+
     _resultView = [MaintResultView viewFromNib];
-    
+
     _resultView.delegate = self;
-    
+
     tableView.tableHeaderView = _resultView;
-    
+
     //加载缓存文件
     [self loadBeforeCacheImage];
     [self loadAfterCacheImage];
@@ -62,14 +60,13 @@ UIImagePickerControllerDelegate, MaintResultViewDelegate>
 /**
  加载维保前照片
  */
-- (void)loadBeforeCacheImage
-{
+- (void)loadBeforeCacheImage {
     NSString *path = [NSString stringWithFormat:@"%@%@", IMAGE_PATH, self.beforeName];
     NSString *filePath = [NSHomeDirectory() stringByAppendingString:path];
-    
+
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL exist = [fileManager fileExistsAtPath:filePath];
-    
+
     if (exist) {
         UIImage *image = [UIImage imageWithContentsOfFile:filePath];
         _resultView.imageBefore = image;
@@ -80,76 +77,70 @@ UIImagePickerControllerDelegate, MaintResultViewDelegate>
 /**
  加载维保后图片
  */
-- (void)loadAfterCacheImage
-{
+- (void)loadAfterCacheImage {
     NSString *path = [NSString stringWithFormat:@"%@%@", IMAGE_PATH, self.afterName];
     NSString *filePath = [NSHomeDirectory() stringByAppendingString:path];
-    
+
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL exist = [fileManager fileExistsAtPath:filePath];
-    
+
     if (exist) {
         UIImage *image = [UIImage imageWithContentsOfFile:filePath];
         _resultView.imageAfter = image;
     }
 }
 
-- (NSString *)beforeName
-{
+- (NSString *)beforeName {
     return [NSString stringWithFormat:@"%@_before.jpg", _maintInfo[@"id"]];
 }
 
-- (NSString *)afterName
-{
+- (NSString *)afterName {
     return [NSString stringWithFormat:@"%@_after.jpg", _maintInfo[@"id"]];
 }
 
-- (void)showPicker
-{
+- (void)showPicker {
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"照片" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    [controller addAction:[UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+    [controller addAction:[UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
         [self pickPhoto];
     }]];
-    
-    [controller addAction:[UIAlertAction actionWithTitle:@"拍摄" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+    [controller addAction:[UIAlertAction actionWithTitle:@"拍摄" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
         [self takePhoto];
     }]];
-    
-    [controller addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        
+
+    [controller addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *_Nonnull action) {
+
     }]];
-    
+
     [self presentViewController:controller animated:YES completion:nil];
-    
+
 }
 
 /**
  *  从本地选取照片
  */
-- (void)pickPhoto
-{
+- (void)pickPhoto {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    
+
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     picker.delegate = self;
-    
+
     //设置选择后的图片可以编辑
     picker.allowsEditing = YES;
-    
+
     [self showViewController:picker sender:self];
 }
 
 /**
  *  拍摄照片
  */
-- (void)takePhoto
-{
+- (void)takePhoto {
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
-        
+
         //设置拍照后的图片可以编辑
         picker.allowsEditing = NO;
         picker.sourceType = sourceType;
@@ -163,49 +154,49 @@ UIImagePickerControllerDelegate, MaintResultViewDelegate>
  *  @param picker picker
  *  @param info info
  */
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info {
+
     NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
-    
+
     //选择的是图片
     if ([type isEqualToString:@"public.image"]) {
-        
+
         UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        
+
         CGSize size = CGSizeMake(360, 480);
-        
+
         image = [ImageUtils imageWithImage:image scaledToSize:size];
-        
+
         //上传到服务器
         //[self uploadRepairImage:image];
-        
+
         //将图片转换为 NSData
         NSData *data;
-        
+
         data = UIImageJPEGRepresentation(image, 0.5);
-        
+
         if (0 == _curName.length) {
             return;
         }
         //将图片保存在本地
         NSString *dirPath = [NSHomeDirectory() stringByAppendingString:IMAGE_PATH];
-        
+
         BOOL suc = [FileUtils writeFile:data Path:dirPath fileName:_curName];
-        
+
         if ([_curName isEqualToString:self.beforeName]) {
             _resultView.imageBefore = image;
-            
+
         } else {
             _resultView.imageAfter = image;
         }
-        
+
         if (suc) {
             NSLog(@"照片保存成功");
-            
+
         } else {
             NSLog(@"照片保存失败");
         }
-        
+
         //关闭相册界面
         [picker dismissViewControllerAnimated:YES completion:nil];
     }
@@ -221,20 +212,19 @@ UIImagePickerControllerDelegate, MaintResultViewDelegate>
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)delImage:(NSString *)name
-{
+- (void)delImage:(NSString *)name {
     NSString *path = [NSString stringWithFormat:@"%@%@", IMAGE_PATH, name];
     NSString *dirPath = [NSHomeDirectory() stringByAppendingString:path];
-    
+
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL exist = [fileManager fileExistsAtPath:dirPath];
-    
+
     if (exist) {
         NSError *error;
         BOOL suc = [fileManager removeItemAtPath:dirPath error:&error];
-        
+
         NSLog(@"error:%@", error);
-        
+
         if (suc) {
             NSLog(@"del successfully");
         } else {
@@ -247,55 +237,47 @@ UIImagePickerControllerDelegate, MaintResultViewDelegate>
 
 #pragma mark - MaintResultViewDelegate
 
-- (void)onClickSubmit
-{
+- (void)onClickSubmit {
     NSLog(@"submit");
 }
 
-- (void)onClickBeforeImage
-{
+- (void)onClickBeforeImage {
     if (_resultView.hasBefore) {
         NSLog(@"预览");
-    
+
     } else {
         self.curName = self.beforeName;
         [self showPicker];
     }
 }
 
-- (void)onClickAfterImage
-{
+- (void)onClickAfterImage {
     if (_resultView.hasAfter) {
         NSLog(@"预览");
-    
+
     } else {
         self.curName = self.afterName;
         [self showPicker];
     }
 }
 
-- (void)onClickDelBefore
-{
+- (void)onClickDelBefore {
     [self delImage:self.beforeName];
 }
 
-- (void)onClickDelAfter
-{
+- (void)onClickDelAfter {
     [self delImage:self.afterName];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 0;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 0;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
 }
 

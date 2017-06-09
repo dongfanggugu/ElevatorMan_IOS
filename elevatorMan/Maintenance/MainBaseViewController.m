@@ -12,13 +12,11 @@
 @implementation MainBaseViewController
 
 
-- (void)setNavTitle:(NSString *)title
-{
-    if (!self.navigationController)
-    {
+- (void)setNavTitle:(NSString *)title {
+    if (!self.navigationController) {
         return;
     }
-    
+
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
     label.text = title;
     label.font = [UIFont fontWithName:@"System" size:17];

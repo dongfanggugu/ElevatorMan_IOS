@@ -13,7 +13,7 @@
 #import "SwipeableCell.h"
 #import "MaintenanceReminder.h"
 
-@interface MaintenanceViewController() <SwipeableCellDelegate>
+@interface MaintenanceViewController () <SwipeableCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *planDoneList;
 
@@ -29,35 +29,33 @@
 
 @implementation MaintenanceViewController
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self getElevatorList];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     //设置菜单按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[UIImage imageNamed:@"icon_menu.png"] forState:UIControlStateNormal];
     [button setFrame:CGRectMake(0, 0, 30, 30)];
     [button addTarget:self action:@selector(presentLeftMenuViewController:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
-    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+
     [self.segment addTarget:self action:@selector(selected:) forControlEvents:UIControlEventValueChanged];
     self.segment.selectedSegmentIndex = 0;
-    
+
     self.tableView.bounces = NO;
 }
 
 - (void)getElevatorList {
-    
+
     [[HttpClient sharedClient] view:self.view post:@"getMainElevatorList" parameter:nil
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self dealHttpData:[responseObject objectForKey:@"body"]];
-    }];
+                                [self dealHttpData:[responseObject objectForKey:@"body"]];
+                            }];
 }
 
 //- (long long)setPlanDoneReminder {
@@ -142,19 +140,19 @@
 - (void)dealHttpData:(NSArray *)array {
     self.planDoneList = [NSMutableArray arrayWithCapacity:1];
     self.planUndoList = [NSMutableArray arrayWithCapacity:1];
-    
-    
+
+
     for (NSDictionary *dic in array) {
-       
-        
+
+
         NSString *flag = [dic objectForKey:@"planMainTime"];
         if (0 == flag.length) {
             [self.planUndoList addObject:dic];
-            
+
         } else {
             [self.planDoneList addObject:dic];
-            
-        } 
+
+        }
     }
     //[self setReminder];
     [self.tableView reloadData];
@@ -177,37 +175,37 @@
 
 /**设置table view的cell显示数据**/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     SwipeableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"elevator_cell" forIndexPath:indexPath];
-    
+
     cell.swipeableCellDelegate = self;
-    
+
     if (0 == self.segment.selectedSegmentIndex) {
-        
+
         NSString *liftCode = [[self.planDoneList objectAtIndex:indexPath.row] objectForKey:@"num"];
         NSString *address = [[self.planDoneList objectAtIndex:indexPath.row] objectForKey:@"address"];
-        NSString *planDate  = [[self.planDoneList objectAtIndex:indexPath.row] objectForKey:@"planMainTime"];
+        NSString *planDate = [[self.planDoneList objectAtIndex:indexPath.row] objectForKey:@"planMainTime"];
         NSString *planType = [self getDescriptionByType:[[self.planDoneList objectAtIndex:indexPath.row] objectForKey:@"planMainType"]];
         NSString *proFlag = [[self.planDoneList objectAtIndex:indexPath.row] valueForKey:@"propertyFlg"];
-        
+
         [cell labelCode].text = liftCode;
         [cell labelAddress].text = address;
         [cell labelDate].text = planDate;
         [cell labelType].text = planType;
-        
+
         [cell btnDel].tag = indexPath.row;
         [cell btnEdit].tag = indexPath.row;
-        
-        
+
+
         [cell labelDateDes].text = @"计划日期";
         [cell labelTypeDes].text = @"计划类型";
-        
+
         [cell setSwipeable:YES];
-        
+
         NSDate *date = [DateUtil yyyyMMddFromString:planDate];
         NSInteger days = [DateUtil getIntervalDaysFromStart:[NSDate date] end:date];
         [[cell labelDays] setBackgroundColor:[UIColor whiteColor]];
-        
+
         if (days < 0) {
             [cell labelTian].hidden = YES;
             [cell labelDays].text = @"过期";
@@ -215,47 +213,47 @@
             [cell labelTian].hidden = NO;
             [cell labelDays].text = [NSString stringWithFormat:@"%ld", days];
         }
-        
+
         if (days <= 3) {
             [[cell labelDays] setBackgroundColor:[Utils getColorByRGB:@"#ee7651"]];
-            
+
         } else if (days <= 8) {
             [[cell labelDays] setBackgroundColor:[Utils getColorByRGB:@"#ebe084"]];
-            
+
         } else {
             [[cell labelDays] setBackgroundColor:[Utils getColorByRGB:@"#9ac25f"]];
         }
-        
+
         if ([proFlag isEqualToString:@"3"]) {
             [cell labelTian].hidden = YES;
             [cell labelDays].text = @"拒绝";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        
-        
+
+
     } else {
         NSString *liftCode = [[self.planUndoList objectAtIndex:indexPath.row] objectForKey:@"num"];
         NSString *address = [[self.planUndoList objectAtIndex:indexPath.row] objectForKey:@"address"];
-        NSString *mainDate  = [[self.planUndoList objectAtIndex:indexPath.row] objectForKey:@"lastMainTime"];
+        NSString *mainDate = [[self.planUndoList objectAtIndex:indexPath.row] objectForKey:@"lastMainTime"];
         NSString *mainType = [self getDescriptionByType:[[self.planUndoList objectAtIndex:indexPath.row] objectForKey:@"lastMainType"]];
-        
+
         [cell labelCode].text = liftCode;
         [cell labelAddress].text = address;
         [cell labelDate].text = (mainDate.length == 0 ? @"无" : mainDate);
         [cell labelType].text = (mainType.length == 0 ? @"无" : mainType);
-        
+
         [cell labelDateDes].text = @"维保日期";
         [cell labelTypeDes].text = @"维保类型";
-        
+
         [cell setSwipeable:NO];
-        
+
         [cell labelTian].hidden = YES;
         [cell labelDays].text = @"未制定";
-        
+
         [[cell labelDays] setBackgroundColor:[Utils getColorByRGB:@"#e1e1e1"]];
-        
+
     }
-    
+
     cell.tag = indexPath.row;
     return cell;
 }
@@ -279,21 +277,21 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     //如果物业拒绝，不能完成该计划
     if (0 == self.segment.selectedSegmentIndex) {
         NSString *proFlag = [self.planDoneList[indexPath.row] objectForKey:@"propertyFlg"];
         if ([proFlag isEqualToString:@"3"]) {
-            
-            
+
+
             //弹出警告框
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"物业已经拒绝,请修改维保计划!" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
             [alert show];
             return;
         }
     }
-    
-    
+
+
     self.selectedIndex = indexPath.row;
     if (0 == self.segment.selectedSegmentIndex) {
         self.leftFlag = @"complete";
@@ -304,9 +302,9 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+
     UIViewController *send = segue.destinationViewController;
-    
+
     if (0 == self.segment.selectedSegmentIndex) {
         NSString *litfId = [[self.planDoneList objectAtIndex:self.selectedIndex] objectForKey:@"id"];
         NSString *num = [[self.planDoneList objectAtIndex:self.selectedIndex] objectForKey:@"num"];
@@ -323,7 +321,7 @@
         [send setValue:mainType forKey:@"mainType"];
         [send setValue:planDate forKey:@"planMainDate"];
         [send setValue:planType forKey:@"planMainType"];
-        
+
     } else {
         NSString *litfId = [[self.planUndoList objectAtIndex:self.selectedIndex] objectForKey:@"id"];
         NSString *num = [[self.planUndoList objectAtIndex:self.selectedIndex] objectForKey:@"num"];
@@ -347,27 +345,27 @@
         self.leftFlag = @"edit";
         self.selectedIndex = tag;
         [self performSegueWithIdentifier:@"push_to_maintenance_detail" sender:self];
-        
+
     } else if ([buttonType isEqualToString:@"del"]) {
         NSString *liftId = [[self.planDoneList objectAtIndex:tag] objectForKey:@"id"];
         NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
         [param setValue:liftId forKey:@"id"];
-        
+
         [[HttpClient sharedClient] view:self.view post:@"removeMainPlan" parameter:param
                                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                    
+
                                     //删除维保中拍摄但是没有提交的照片
                                     NSString *liftNum = [[self.planDoneList objectAtIndex:tag] objectForKey:@"num"];
-                                    NSString *path1 = [NSHomeDirectory()stringByAppendingPathComponent:
-                                                       [[NSString alloc] initWithFormat:@"Documents/%@/0", liftNum]];
-                                    
-                                    NSString *path2 = [NSHomeDirectory()stringByAppendingPathComponent:
-                                                       [[NSString alloc] initWithFormat:@"Documents/%@/1", liftNum]];
+                                    NSString *path1 = [NSHomeDirectory() stringByAppendingPathComponent:
+                                            [[NSString alloc] initWithFormat:@"Documents/%@/0", liftNum]];
 
-                                    
-                                    NSString *path3 = [NSHomeDirectory()stringByAppendingPathComponent:
-                                                       [[NSString alloc] initWithFormat:@"Documents/%@/2", liftNum]];
-                                    
+                                    NSString *path2 = [NSHomeDirectory() stringByAppendingPathComponent:
+                                            [[NSString alloc] initWithFormat:@"Documents/%@/1", liftNum]];
+
+
+                                    NSString *path3 = [NSHomeDirectory() stringByAppendingPathComponent:
+                                            [[NSString alloc] initWithFormat:@"Documents/%@/2", liftNum]];
+
                                     [self deleteFileByPath:path1];
                                     [self deleteFileByPath:path2];
                                     [self deleteFileByPath:path3];
@@ -375,12 +373,12 @@
                                     //更新视图
                                     [self.planUndoList addObject:[self.planDoneList objectAtIndex:tag]];
                                     [self.planDoneList removeObjectAtIndex:tag];
-                                    
+
                                     //重新设置提醒事件
                                     //[self setReminder];
-                                    
+
                                     [self.tableView reloadData];
-                                
+
                                 }];
     }
 }
@@ -389,9 +387,9 @@
  tab页选择切换
  **/
 - (void)selected:(id)sender {
-    
-    UISegmentedControl *control = (UISegmentedControl *)sender;
-    
+
+    UISegmentedControl *control = (UISegmentedControl *) sender;
+
     switch (control.selectedSegmentIndex) {
         case 0:
             if (!self.planDoneList || 0 == self.planDoneList.count) {
@@ -403,7 +401,7 @@
                 [HUDClass showHUDWithLabel:@"所有电梯都已经制定计划!" view:self.view];
             }
             break;
-            
+
         default:
             break;
     }
@@ -416,7 +414,7 @@
 - (void)deleteFileByPath:(NSString *)path {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL exist = [fileManager fileExistsAtPath:path];
-    
+
     if (exist) {
         NSError *error;
         [fileManager removeItemAtPath:path error:&error];

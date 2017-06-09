@@ -9,53 +9,46 @@
 #import <Foundation/Foundation.h>
 #import "ProjectMainCell.h"
 
-@interface ProjectMainCell()
+@interface ProjectMainCell ()
 
 @property (weak, nonatomic) IBOutlet UIButton *btnDetail;
 
-@property (strong, nonatomic) void(^onClickDetail)();
+@property (strong, nonatomic) void (^onClickDetail)();
 
 @end
 
 @implementation ProjectMainCell
 
-+ (id)viewFromNib
-{
++ (id)viewFromNib {
+
     NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"ProjectMainCell" owner:nil options:nil];
-    if (0 == array.count)
-    {
+    if (0 == array.count) {
         return nil;
     }
-    
+
     return array[0];
 }
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
-    
+
     [_btnDetail addTarget:self action:@selector(onClick) forControlEvents:UIControlEventTouchUpInside];
 }
 
-+ (CGFloat)cellHeight
-{
++ (CGFloat)cellHeight {
     return 44;
 }
 
-+ (NSString *)getIdentifier
-{
++ (NSString *)getIdentifier {
     return @"project_main_cell";
 }
 
-- (void)setOnClickDetailListener:(void (^)())onClickDetail
-{
+- (void)setOnClickDetailListener:(void (^)())onClickDetail {
     _onClickDetail = onClickDetail;
 }
 
-- (void)onClick
-{
-    if (_onClickDetail)
-    {
+- (void)onClick {
+    if (_onClickDetail) {
         _onClickDetail();
     }
 }

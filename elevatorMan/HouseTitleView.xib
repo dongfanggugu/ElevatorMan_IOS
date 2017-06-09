@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="JHy-Tx-auq" customClass="HouseTitleView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwa-xe-Azi">
+                    <rect key="frame" x="20" y="8" width="69" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="未处理">
+                        <color key="titleColor" red="0.21176470589999999" green="0.69019607839999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7L-Ki-Puh">
+                    <rect key="frame" x="109" y="8" width="68.5" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="处理中">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jl1-gJ-tZF">
+                    <rect key="frame" x="197.5" y="8" width="69" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="已处理">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abU-Ho-WWD">
+                    <rect key="frame" x="286.5" y="8" width="68.5" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="已过期">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="j7L-Ki-Puh" firstAttribute="top" secondItem="gwa-xe-Azi" secondAttribute="top" id="2Qh-oS-LND"/>
+                <constraint firstItem="gwa-xe-Azi" firstAttribute="leading" secondItem="JHy-Tx-auq" secondAttribute="leading" constant="20" id="39Y-F6-2HY"/>
+                <constraint firstItem="jl1-gJ-tZF" firstAttribute="top" secondItem="gwa-xe-Azi" secondAttribute="top" id="FMp-Bo-BoT"/>
+                <constraint firstItem="abU-Ho-WWD" firstAttribute="leading" secondItem="jl1-gJ-tZF" secondAttribute="trailing" constant="20" id="IQb-gZ-Mel"/>
+                <constraint firstItem="jl1-gJ-tZF" firstAttribute="width" secondItem="gwa-xe-Azi" secondAttribute="width" id="PNx-ma-y0a"/>
+                <constraint firstItem="jl1-gJ-tZF" firstAttribute="height" secondItem="gwa-xe-Azi" secondAttribute="height" id="QMU-zD-Yvn"/>
+                <constraint firstAttribute="trailing" secondItem="abU-Ho-WWD" secondAttribute="trailing" constant="20" id="TAJ-0n-7bn"/>
+                <constraint firstItem="j7L-Ki-Puh" firstAttribute="width" secondItem="gwa-xe-Azi" secondAttribute="width" id="bOR-7U-jN0"/>
+                <constraint firstItem="jl1-gJ-tZF" firstAttribute="leading" secondItem="j7L-Ki-Puh" secondAttribute="trailing" constant="20" id="fVN-RQ-MdL"/>
+                <constraint firstItem="abU-Ho-WWD" firstAttribute="width" secondItem="gwa-xe-Azi" secondAttribute="width" id="ffJ-nz-CPw"/>
+                <constraint firstItem="j7L-Ki-Puh" firstAttribute="leading" secondItem="gwa-xe-Azi" secondAttribute="trailing" constant="20" id="mBo-o5-F53"/>
+                <constraint firstItem="abU-Ho-WWD" firstAttribute="top" secondItem="gwa-xe-Azi" secondAttribute="top" id="nvJ-cE-cFH"/>
+                <constraint firstItem="abU-Ho-WWD" firstAttribute="height" secondItem="gwa-xe-Azi" secondAttribute="height" id="t9E-HC-5iY"/>
+                <constraint firstItem="j7L-Ki-Puh" firstAttribute="height" secondItem="gwa-xe-Azi" secondAttribute="height" id="xKa-ce-8NJ"/>
+                <constraint firstItem="gwa-xe-Azi" firstAttribute="centerY" secondItem="JHy-Tx-auq" secondAttribute="centerY" id="xsZ-1Y-g2h"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnFinish" destination="jl1-gJ-tZF" id="tRk-pF-jy2"/>
+                <outlet property="btnNeed" destination="gwa-xe-Azi" id="NDX-cF-FE7"/>
+                <outlet property="btnRevoke" destination="abU-Ho-WWD" id="lUa-gC-39z"/>
+                <outlet property="btnSave" destination="j7L-Ki-Puh" id="uEP-B4-e2F"/>
+            </connections>
+        </view>
+    </objects>
+</document>
