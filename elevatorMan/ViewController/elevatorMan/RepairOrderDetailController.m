@@ -258,9 +258,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {    
-    //RepairProcessController *controller = [[RepairProcessController alloc] init];
+    RepairProcessController *controller = [[RepairProcessController alloc] init];
     
-    RepairSubmitController *controller = [[RepairSubmitController alloc] init];
+//    RepairSubmitController *controller = [[RepairSubmitController alloc] init];
     
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];

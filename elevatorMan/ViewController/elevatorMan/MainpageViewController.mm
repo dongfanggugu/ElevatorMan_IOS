@@ -15,51 +15,54 @@
 #import "MaintManagerController.h"
 #import "HouseRepairManagerController.h"
 #import "HouseMaintManagerController.h"
+#import "HelpController.h"
 
 
 @interface MainpageViewController () <AVAudioPlayerDelegate>
 
-@property(weak, nonatomic) IBOutlet UIView *rescueView;
+@property (weak, nonatomic) IBOutlet UIView *rescueView;
 
-@property(weak, nonatomic) IBOutlet UIView *maintenanceView;
+@property (weak, nonatomic) IBOutlet UIView *maintenanceView;
 
-@property(weak, nonatomic) IBOutlet UIView *helpView;
+@property (weak, nonatomic) IBOutlet UIView *helpView;
 
-@property(weak, nonatomic) IBOutlet UIView *personView;
+@property (weak, nonatomic) IBOutlet UIView *personView;
 
-@property(weak, nonatomic) IBOutlet UIView *repairView;
+@property (weak, nonatomic) IBOutlet UIView *repairView;
 
-@property(weak, nonatomic) IBOutlet UIView *wikiView;
+@property (weak, nonatomic) IBOutlet UIView *wikiView;
 
-@property(nonatomic, strong) NSTimer *trackingTimer;
+@property (nonatomic, strong) NSTimer *trackingTimer;
 
-@property(nonatomic, strong) AVAudioPlayer *avAudioPlayer;
+@property (nonatomic, strong) AVAudioPlayer *avAudioPlayer;
 
-@property(nonatomic) __block UIBackgroundTaskIdentifier bgTask;
+@property (nonatomic) __block UIBackgroundTaskIdentifier bgTask;
 
-@property(weak, nonatomic) IBOutlet UIView *tagView;
+@property (weak, nonatomic) IBOutlet UIView *tagView;
 
 @end
 
 @implementation MainpageViewController
 
 
-- (void)dealloc {
+- (void)dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavTitle:@"电梯易管家"];
     [self initView];
 
 
     //添加定位成功返回监听
-    if ([self respondsToSelector:@selector(uploadLocationWhenReceivedNotify:)]) {
+    if ([self respondsToSelector:@selector(uploadLocationWhenReceivedNotify:)])
+    {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadLocationWhenReceivedNotify:)
                                                      name:@"userLocationUpdate" object:nil];
     }
-
 
     //后台一直运行
     [self startTimer];
@@ -69,7 +72,8 @@
 
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     [self hideBackIcon];
     [self hasAlarm];
@@ -79,7 +83,8 @@
 /**
  *  请求服务器，看是否有报警未处理
  */
-- (void)hasAlarm {
+- (void)hasAlarm
+{
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setObject:@"unfinished" forKey:@"scope"];
 
@@ -92,17 +97,20 @@
 }
 
 
-- (void)showTagView:(NSArray *)array {
+- (void)showTagView:(NSArray *)array
+{
 
     AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
 
-    if (appDelegate.locationTimer) {
+    if (appDelegate.locationTimer)
+    {
         [appDelegate.locationTimer invalidate];
         appDelegate.locationTimer = nil;
     }
 
 
-    if (array.count > 0) {
+    if (array.count > 0)
+    {
 
         _tagView.hidden = NO;
 
@@ -112,7 +120,9 @@
                                                                    selector:@selector(getUserLocationUpdate) userInfo:nil repeats:YES];
 
 
-    } else {
+    }
+    else
+    {
         _tagView.hidden = YES;
 
         //没有任务,5分钟定位一次
@@ -123,7 +133,8 @@
 }
 
 
-- (void)initView {
+- (void)initView
+{
     self.tableView.allowsSelection = NO;
     self.tableView.bounces = NO;
 
@@ -166,7 +177,8 @@
 }
 
 
-- (void)rescue {
+- (void)rescue
+{
 //    UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
 //    UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"WorkerAlarmList"];
 //    [self.navigationController pushViewController:controller animated:YES];
@@ -178,7 +190,8 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)maintenance {
+- (void)maintenance
+{
 //    UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
 //    UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"maintenance_page"];
 //    [self.navigationController pushViewController:controller animated:YES];
@@ -189,40 +202,43 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)houseRepair {
+- (void)houseRepair
+{
 //    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
 //    UIViewController *controller = [story instantiateViewControllerWithIdentifier:@"help_center"];
 //    [self.navigationController pushViewController:controller animated:YES];
 
-//    RepairOrderController *controller = [[RepairOrderController alloc] init];
-//
-//    controller.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:controller animated:YES];
-
-
-    HouseRepairManagerController *controller = [[HouseRepairManagerController alloc] init];
+    RepairOrderController *controller = [[RepairOrderController alloc] init];
 
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
+
+
+//    HouseRepairManagerController *controller = [[HouseRepairManagerController alloc] init];
+//
+//    controller.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)person {
+- (void)person
+{
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Person" bundle:nil];
     UIViewController *controller = [story instantiateViewControllerWithIdentifier:@"person_center"];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)houseMaint {
+- (void)houseMaint
+{
 
-//    MaintOrderController *controller = [[MaintOrderController alloc] init];
-//
-//    controller.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:controller animated:YES];
-
-    HouseMaintManagerController *controller = [[HouseMaintManagerController alloc] init];
+    MaintOrderController *controller = [[MaintOrderController alloc] init];
 
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
+
+//    HouseMaintManagerController *controller = [[HouseMaintManagerController alloc] init];
+//
+//    controller.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:controller animated:YES];
 
     //NSString *region =  [[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"];
 
@@ -230,9 +246,12 @@
 //    [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)wiki {
-    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
-    UIViewController *controller = [story instantiateViewControllerWithIdentifier:@"lift_wiki"];
+- (void)wiki
+{
+    HelpController *controller = [[HelpController alloc] init];
+//    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
+//    UIViewController *controller = [story instantiateViewControllerWithIdentifier:@"lift_wiki"];
+    controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -253,14 +272,17 @@
 #pragma mark - getUserLocationUpdate
 
 
-- (void)getUserLocationUpdate {
+- (void)getUserLocationUpdate
+{
 
     [[location sharedLocation] startLocationService];
 }
 
-- (void)uploadLocationWhenReceivedNotify:(NSNotification *)notify {
+- (void)uploadLocationWhenReceivedNotify:(NSNotification *)notify
+{
     BMKUserLocation *location = (BMKUserLocation *) [notify.userInfo objectForKey:@"userLocation"];
-    if (nil == location) {
+    if (nil == location)
+    {
         return;
     }
 
@@ -268,7 +290,8 @@
     float longitude = location.location.coordinate.longitude;
 
 
-    if (latitude < 0.00001 && longitude < 0.00001) {
+    if (latitude < 0.00001 && longitude < 0.00001)
+    {
         NSLog(@"may be wrong coords");
         return;
     }
@@ -283,7 +306,8 @@
  *  @param longitude <#longitude description#>
  */
 - (void)uploadLocationWithLatitude:(float)latitude longitude:(float)longitude
-                           success:(void (^)(void))success {
+                           success:(void (^)(void))success
+{
 
     NSString *urlString = [[Utils getServer] stringByAppendingString:@"updateLocation"];
     NSURL *url = [NSURL URLWithString:urlString];
@@ -303,7 +327,8 @@
     NSString *token = [User sharedUser].accessToken;
     NSString *userId = [User sharedUser].userId;
 
-    if (0 == token.length || 0 == userId.length) {
+    if (0 == token.length || 0 == userId.length)
+    {
         return;
     }
 
@@ -331,8 +356,10 @@
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *_Nullable response, NSData *_Nullable data, NSError *_Nullable connectionError) {
 
 
-        if (data.length > 0 && nil == connectionError) {
-            if (success != nil) {
+        if (data.length > 0 && nil == connectionError)
+        {
+            if (success != nil)
+            {
                 success();
             }
         }
@@ -342,23 +369,28 @@
 /**
  *  检测后台时间是否到期，需要后台一直运行来进行定位
  */
-- (void)startTimer {
+- (void)startTimer
+{
 
     AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
 
-    if (!appDelegate.bgCheckTimer) {
+    if (!appDelegate.bgCheckTimer)
+    {
         appDelegate.bgCheckTimer = [NSTimer scheduledTimerWithTimeInterval:60.0 target:self
                                                                   selector:@selector(timerAdvanced:) userInfo:nil repeats:YES];
     }
 
 }
 
-- (void)timerAdvanced:(NSTimer *)timer {
-    if ([[UIApplication sharedApplication] backgroundTimeRemaining] < 61.0) {
+- (void)timerAdvanced:(NSTimer *)timer
+{
+    if ([[UIApplication sharedApplication] backgroundTimeRemaining] < 61.0)
+    {
         NSString *audioPath = [[NSBundle mainBundle] pathForResource:@"Alarm" ofType:@"mp3"];
         NSURL *audioUrl = [NSURL fileURLWithPath:audioPath];
 
-        if (nil == _avAudioPlayer) {
+        if (nil == _avAudioPlayer)
+        {
             _avAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioUrl error:nil];
             _avAudioPlayer.delegate = self;
             _avAudioPlayer.volume = 0.0f;
@@ -371,13 +403,16 @@
         _bgTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
 
             dispatch_async(dispatch_get_main_queue(), ^{
-                if (weakSelf.bgTask != UIBackgroundTaskInvalid) {
+                if (weakSelf.bgTask != UIBackgroundTaskInvalid)
+                {
                     weakSelf.bgTask = UIBackgroundTaskInvalid;
                 }
             });
 
         }];
-    } else {
+    }
+    else
+    {
         NSLog(@"left time >> 61");
     }
 }

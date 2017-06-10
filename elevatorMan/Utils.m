@@ -84,7 +84,7 @@
         string = @"http://smartydt-lift-beijing.chinacloudapp.cn:8080/lift/mobile/";
     } else {
         //默认使用全国的服务器
-        string = @"http://123.57.10.16:8080/lift/mobile/";
+        string = @"http://192.168.0.82:8080/mobile/";
     }
     
     return string;
