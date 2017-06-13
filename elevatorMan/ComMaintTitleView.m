@@ -34,8 +34,9 @@
 + (id)viewFromNib
 {
     NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"ComMaintTitleView" owner:nil options:nil];
-    
-    if (0 == array.count) {
+
+    if (0 == array.count)
+    {
         return nil;
     }
     
@@ -69,11 +70,8 @@
 {
     ListDialogView *dialog = [ListDialogView viewFromNib];
     
-    ListDialogData *data1 = [[ListDialogData alloc] initWithKey:@"" content:@"中建华宇"];
-    
-    ListDialogData *data2 = [[ListDialogData alloc] initWithKey:@"" content:@"中航机电"];
-    
-    [dialog setData:[NSArray arrayWithObjects:data1, data2, nil]];
+
+    [dialog setData:_arrayCompany];
     
     dialog.delegate = self;
     
@@ -88,11 +86,7 @@
 {
     ListDialogView *dialog = [ListDialogView viewFromNib];
     
-    ListDialogData *data1 = [[ListDialogData alloc] initWithKey:@"" content:@"张三"];
-    
-    ListDialogData *data2 = [[ListDialogData alloc] initWithKey:@"" content:@"李四"];
-    
-    [dialog setData:[NSArray arrayWithObjects:data1, data2, nil]];
+    [dialog setData:_arrayWorker];
     
     dialog.delegate = self;
     
@@ -109,15 +103,28 @@
 {
     NSInteger tag = view.tag;
     
-    if (WORKER == tag) {
+    if (WORKER == tag)
+    {
         _lbWorker.text = content;
         
         _ivWorker.image = [UIImage imageNamed:@"icon_down_new"];
+
+        if (_delegate && [_delegate respondsToSelector:@selector(onChooseWorker:name:)])
+        {
+            [_delegate onChooseWorker:key name:content];
+        }
         
-    } else {
+    }
+    else
+    {
         _lbCompany.text = content;
         
         _ivCom.image = [UIImage imageNamed:@"icon_down_new"];
+
+        if (_delegate && [_delegate respondsToSelector:@selector(onChooseCompany:name:)])
+        {
+            [_delegate onChooseCompany:key name:content];
+        }
     }
 }
 
@@ -125,10 +132,13 @@
 {
     NSInteger tag = view.tag;
     
-    if (WORKER == tag) {
+    if (WORKER == tag)
+    {
         _ivWorker.image = [UIImage imageNamed:@"icon_down_new"];
         
-    } else {
+    }
+    else
+    {
         _ivCom.image = [UIImage imageNamed:@"icon_down_new"];
     }
 
@@ -150,7 +160,8 @@
     [self resetBtn];
     [_btn1 setTitleColor:RGB(TITLE_COLOR) forState:UIControlStateNormal];
 
-    if (_delegate && [_delegate respondsToSelector:@selector(onClickBtn1)]) {
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickBtn1)])
+    {
         [_delegate onClickBtn1];
     }
 }
@@ -160,7 +171,8 @@
     [self resetBtn];
     [_btn2 setTitleColor:RGB(TITLE_COLOR) forState:UIControlStateNormal];
 
-    if (_delegate && [_delegate respondsToSelector:@selector(onClickBtn2)]) {
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickBtn2)])
+    {
         [_delegate onClickBtn2];
     }
 }
@@ -169,7 +181,8 @@
     [self resetBtn];
     [_btn3 setTitleColor:RGB(TITLE_COLOR) forState:UIControlStateNormal];
 
-    if (_delegate && [_delegate respondsToSelector:@selector(onClickBtn3)]) {
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickBtn3)])
+    {
         [_delegate onClickBtn3];
     }
 }
@@ -178,7 +191,8 @@
     [self resetBtn];
     [_btn4 setTitleColor:RGB(TITLE_COLOR) forState:UIControlStateNormal];
 
-    if (_delegate && [_delegate respondsToSelector:@selector(onClickBtn4)]) {
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickBtn4)])
+    {
         [_delegate onClickBtn4];
     }
 }

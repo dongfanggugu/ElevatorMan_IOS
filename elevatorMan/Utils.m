@@ -54,7 +54,7 @@
     
     //string = @"http://123.57.10.16:8080/lift/mobile/";
     
-    string = @"http://211.147.152.6:8080/lift/mobile/";
+    string = @"http://192.168.0.81:8080/mobile/";
     
     
     
@@ -62,30 +62,30 @@
     
      //string = @"http://192.168.0.82:8080/lift/mobile/";
     
-    if ([urlTextString isEqualToString:@"北京"]) {
-        string = @"http://211.147.152.6:8080/lift/mobile/";
-        
-    } else if ([urlTextString isEqualToString:@"全国"]) {
-        string = @"http://123.57.10.16:8080/lift/mobile/";
-        
-    } else if ([urlTextString isEqualToString:@"上海"]) {
-        string = @"http://47.93.123.2:8080/lift/mobile/";
-        
-    } else if ([urlTextString isEqualToString:@"马晓明"]) {
-        string = @"http://119.57.248.130/mobile/";
-        
-    } else if ([urlTextString isEqualToString:@"张明锁"]) {
-        string = @"http://192.168.0.82:8080/mobile/";
-        
-    } else if ([urlTextString isEqualToString:@"演示"]) {
-        string = @"http://182.92.177.247:8080/lift/mobile/";
-        
-    } else if ([urlTextString isEqualToString:@"Azure"]) {
-        string = @"http://smartydt-lift-beijing.chinacloudapp.cn:8080/lift/mobile/";
-    } else {
-        //默认使用全国的服务器
-        string = @"http://192.168.0.82:8080/mobile/";
-    }
+//    if ([urlTextString isEqualToString:@"北京"]) {
+//        string = @"http://211.147.152.6:8080/lift/mobile/";
+//
+//    } else if ([urlTextString isEqualToString:@"全国"]) {
+//        string = @"http://123.57.10.16:8080/lift/mobile/";
+//
+//    } else if ([urlTextString isEqualToString:@"上海"]) {
+//        string = @"http://47.93.123.2:8080/lift/mobile/";
+//
+//    } else if ([urlTextString isEqualToString:@"马晓明"]) {
+//        string = @"http://119.57.248.130/mobile/";
+//
+//    } else if ([urlTextString isEqualToString:@"张明锁"]) {
+//        string = @"http://192.168.0.82:8080/mobile/";
+//
+//    } else if ([urlTextString isEqualToString:@"演示"]) {
+//        string = @"http://182.92.177.247:8080/lift/mobile/";
+//
+//    } else if ([urlTextString isEqualToString:@"Azure"]) {
+//        string = @"http://smartydt-lift-beijing.chinacloudapp.cn:8080/lift/mobile/";
+//    } else {
+//        //默认使用全国的服务器
+//        string = @"http://192.168.0.82:8080/mobile/";
+//    }
     
     return string;
 }
