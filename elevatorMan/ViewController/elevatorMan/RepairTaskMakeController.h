@@ -10,4 +10,6 @@
 
 @interface RepairTaskMakeController : BaseViewController
 
+@property (strong, nonatomic) NSDictionary *orderInfo;
+
 @end

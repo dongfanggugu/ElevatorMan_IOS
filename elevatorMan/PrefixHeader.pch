@@ -29,6 +29,7 @@
 
 #import "Colors.h"
 #import "Constant.h"
+#include "NSArray+Log.h"
 
 #import "UIImageView+AFNetworking.h"
 

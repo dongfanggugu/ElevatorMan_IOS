@@ -112,8 +112,8 @@ RepairPayAddViewDelegate, RepairPayFooterViewDelegate>
  
     NSDictionary *info = self.arrayPay[indexPath.row];
     
-    cell.lbItem.text = info[@"item"];
-    cell.lbMoney.text = [NSString stringWithFormat:@"￥%.2lf", [info[@"fee"] floatValue]];
+    cell.lbItem.text = info[@"name"];
+    cell.lbMoney.text = [NSString stringWithFormat:@"￥%.2lf", [info[@"price"] floatValue]];
     
     
     __weak typeof (self) weakSelf = self;
@@ -145,7 +145,8 @@ RepairPayAddViewDelegate, RepairPayFooterViewDelegate>
 
 - (void)onClickConfirm:(NSString *)item fee:(CGFloat)money
 {
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:item, @"item", [NSNumber numberWithFloat:money], @"fee", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:item, @"name", [NSNumber numberWithFloat:money], @"price",
+                    _orderInfo[@"id"], @"repairOrderId", nil];
     
     [self.arrayPay addObject:dic];
     
@@ -158,7 +159,35 @@ RepairPayAddViewDelegate, RepairPayFooterViewDelegate>
 
 - (void)onClickSubmit
 {
-    NSLog(@"提交");
+    __weak typeof (self) weakSelf = self;
+
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"已经和客户协商并确认提交维修费用明细?" message:nil preferredStyle:UIAlertControllerStyleAlert];
+
+    [controller addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf submitPay];
+    }]];
+
+    [controller addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+
+    }]];
+
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)submitPay
+{
+
+    if (0 == self.arrayPay)
+    {
+        [HUDClass showHUDWithLabel:@"请添加维修收费项目"];
+
+        return;
+    }
+
+    [[HttpClient sharedClient] post:@"addPriceDetails" parameter:self.arrayPay success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [HUDClass showHUDWithLabel:@"维修明细提交成功"];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 @end

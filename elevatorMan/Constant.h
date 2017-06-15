@@ -12,5 +12,9 @@
 
 #define ALARM_ASSIGN_TIME_OUT 300
 
+#pragma mark - 客服电话
+
+#define Custom_Service @"400-919-6333"
+
 
 #endif /* Constant_h */

@@ -4,26 +4,26 @@
 
 #import "MaintLiftController.h"
 #import "ComMaintInfoCell.h"
+#import "MaintLiftHistoryController.h"
 
 @interface MaintLiftController () <UITableViewDelegate, UITableViewDataSource>
 
-@property  (strong, nonatomic) UITableView *tableView;
-
-@property  (strong, nonatomic) NSMutableArray *arrayLift;
-
+@property (strong, nonatomic) UITableView *tableView;
 
 @end
 
 
 @implementation MaintLiftController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavTitle:@"电梯维保"];
     [self initView];
 }
 
-- (void)initView {
+- (void)initView
+{
     self.automaticallyAdjustsScrollViewInsets = NO;
 
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64)];
@@ -37,42 +37,61 @@
     [self.view addSubview:_tableView];
 }
 
-- (NSMutableArray *)arrayLift {
-    if (!_arrayLift) {
-        _arrayLift = [NSMutableArray array];
-    }
-    return _arrayLift;
-}
+//- (NSMutableArray *)arrayLift
+//{
+//    if (!_arrayLift)
+//    {
+//        _arrayLift = [NSMutableArray array];
+//    }
+//    return _arrayLift;
+//}
 
 #pragma mark - UITableView
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return self.arrayLift;
-    return 10;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.arrayMaint.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     ComMaintInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:[ComMaintInfoCell identifier]];
 
-    if (!cell) {
+    if (!cell)
+    {
         cell = [ComMaintInfoCell cellFromNib];
     }
 
     cell.lbIndex.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
 
+    NSDictionary *info = self.arrayMaint[indexPath.row];
+
+    cell.lbAddress.text = info[@"address"];
+
+    cell.lbWorker.text = info[@"userName"];
+
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return [ComMaintInfoCell cellHeight];
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    MaintLiftHistoryController *controller = [[MaintLiftHistoryController alloc] init];
+
+    controller.liftId = self.arrayMaint[indexPath.row][@"elevatorId"];
+    controller.hidesBottomBarWhenPushed = YES;
+
+    [self.navigationController pushViewController:controller animated:YES];
 }
-
 @end

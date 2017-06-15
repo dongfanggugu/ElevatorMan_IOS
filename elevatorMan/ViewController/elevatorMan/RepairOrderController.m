@@ -35,96 +35,103 @@
 
 - (NSMutableArray *)arrayOrder
 {
-    if (!_arrayOrder) {
+    if (!_arrayOrder)
+    {
         _arrayOrder = [NSMutableArray array];
     }
-    
+
     return _arrayOrder;
 }
 
 - (void)initView
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64)];
-    
+
     _tableView.delegate = self;
-    
+
     _tableView.dataSource = self;
-    
+
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-    
+
+
     [self.view addSubview:_tableView];
 }
 
 - (NSString *)getStateDes:(NSInteger)state
 {
     NSString *res = @"";
-    
-    if (1 == state) {
+
+    if (1 == state)
+    {
         res = @"待确认";
-        
-    } else if (2 == state) {
+
+    }
+    else if (2 == state)
+    {
         res = @"已确认";
-        
-    } else if (4 == state) {
+
+    }
+    else if (4 == state)
+    {
         res = @"已委派";
-        
-    } else if (6 == state) {
+
+    }
+    else if (6 == state)
+    {
         res = @"维修中";
-        
-    } else if (8 == state) {
+
+    }
+    else if (8 == state)
+    {
         res = @"维修完成";
-        
-    } else if (9 == state) {
+
+    }
+    else if (9 == state)
+    {
         res = @"已评价";
     }
-    
+
     return res;
 }
 
 
 - (void)getOrders
 {
-    NSMutableDictionary *dic1 = [NSMutableDictionary dictionary];
-    
-    dic1[@"cellName"] = @"北京朝阳区佳境天城";
-    
-    NSMutableDictionary *dic2 = [NSMutableDictionary dictionary];
-    
-    dic2[@"cellName"] = @"北京朝阳区佳境天城2";
-    
-    [self.arrayOrder removeAllObjects];
-    
-    [self.arrayOrder addObject:dic1];
-    
-    [self.arrayOrder addObject:dic2];
-    
-    [self showOrders];
-    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"page"] = [NSNumber numberWithInteger:1];
+    params[@"rows"] = [NSNumber numberWithInteger:100];
+
+    [[HttpClient sharedClient] post:@"getRepairOrderByWorker" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.arrayOrder removeAllObjects];
+        [self showOrders];
+    }];
+
+
 }
 
 - (void)showOrders
 {
-    if (0 == self.arrayOrder.count) {
+    if (0 == self.arrayOrder.count)
+    {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16, 120, self.screenWidth - 32, 40)];
         label.font = [UIFont systemFontOfSize:14];
         label.textAlignment = NSTextAlignmentCenter;
-        
+
         label.text = @"您还没有需要处理的维修订单";
-        
+
         self.tableView.tableHeaderView = label;
-        
+
         [self.arrayOrder removeAllObjects];
-        
+
         [self.tableView reloadData];
-        
+
         return;
     }
-    
+
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectZero];
-    
+
     [self.tableView reloadData];
 }
 
@@ -141,19 +148,38 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RepairOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:[RepairOrderCell identifier]];
-    
-    if (!cell) {
+
+    if (!cell)
+    {
         cell = [RepairOrderCell cellFromNib];
     }
-    
+
     cell.lbIndex.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
-    
+
     NSDictionary *info = self.arrayOrder[indexPath.row];
-    
-    cell.lbName.text = info[@"cellName"];
-    
-    
-    
+
+    cell.lbName.text = info[@"villaInfo"][@"cellName"];
+
+    cell.lbState.text = [self getStateDes:[info[@"state"] integerValue]];
+
+    NSString *name = info[@"villaInfo"][@"contacts"];
+
+    if (0 == name.length)
+    {
+        name = info[@"smallOwnerInfo"][@"name"];
+    }
+
+    NSString *tel = info[@"villaInfo"][@"contactsTel"];
+
+    if (0 == tel.length)
+    {
+        tel = info[@"smallOwnerInfo"][@"tel"];
+    }
+
+    cell.lbLink.text = [NSString stringWithFormat:@"%@/%@", name, tel];
+
+    cell.lbDate.text = [NSString stringWithFormat:@"预约:%@", info[@"repairTime"]];
+
     return cell;
 }
 
@@ -165,7 +191,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RepairOrderDetailController *controller = [[RepairOrderDetailController alloc] init];
-    
+    controller.orderInfo = self.arrayOrder[indexPath.row];
+
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }

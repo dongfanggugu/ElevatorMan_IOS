@@ -80,28 +80,28 @@
                     <rect key="frame" x="0.0" y="30" width="375" height="45"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GmS-Ih-DzZ">
-                            <rect key="frame" x="20" y="8.5" width="69" height="28"/>
+                            <rect key="frame" x="0.0" y="8.5" width="94" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="未制定">
                                 <color key="titleColor" red="0.21176470588235294" green="0.69019607843137254" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0p-gd-vo3">
-                            <rect key="frame" x="109" y="8.5" width="68.5" height="28"/>
+                            <rect key="frame" x="94" y="8.5" width="93.5" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="待维保">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tfk-cc-3vR">
-                            <rect key="frame" x="197.5" y="8.5" width="69" height="28"/>
+                            <rect key="frame" x="187.5" y="8.5" width="94" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="超期">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16N-1O-KHc">
-                            <rect key="frame" x="286.5" y="8.5" width="68.5" height="28"/>
+                            <rect key="frame" x="281.5" y="8.5" width="93.5" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="已完成">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -113,17 +113,17 @@
                         <constraint firstItem="16N-1O-KHc" firstAttribute="width" secondItem="GmS-Ih-DzZ" secondAttribute="width" id="6pd-RY-wRm"/>
                         <constraint firstItem="Tfk-cc-3vR" firstAttribute="top" secondItem="GmS-Ih-DzZ" secondAttribute="top" id="9Af-hb-4h5"/>
                         <constraint firstItem="G0p-gd-vo3" firstAttribute="width" secondItem="GmS-Ih-DzZ" secondAttribute="width" id="EaC-QO-3D8"/>
-                        <constraint firstItem="G0p-gd-vo3" firstAttribute="leading" secondItem="GmS-Ih-DzZ" secondAttribute="trailing" constant="20" id="G4H-3a-HUX"/>
+                        <constraint firstItem="G0p-gd-vo3" firstAttribute="leading" secondItem="GmS-Ih-DzZ" secondAttribute="trailing" id="G4H-3a-HUX"/>
                         <constraint firstItem="16N-1O-KHc" firstAttribute="height" secondItem="GmS-Ih-DzZ" secondAttribute="height" id="HYJ-16-260"/>
-                        <constraint firstAttribute="trailing" secondItem="16N-1O-KHc" secondAttribute="trailing" constant="20" id="K9Y-FW-W8t"/>
+                        <constraint firstAttribute="trailing" secondItem="16N-1O-KHc" secondAttribute="trailing" id="K9Y-FW-W8t"/>
                         <constraint firstItem="G0p-gd-vo3" firstAttribute="top" secondItem="GmS-Ih-DzZ" secondAttribute="top" id="PHV-Je-Xbf"/>
-                        <constraint firstItem="Tfk-cc-3vR" firstAttribute="leading" secondItem="G0p-gd-vo3" secondAttribute="trailing" constant="20" id="UBW-WW-qSv"/>
+                        <constraint firstItem="Tfk-cc-3vR" firstAttribute="leading" secondItem="G0p-gd-vo3" secondAttribute="trailing" id="UBW-WW-qSv"/>
                         <constraint firstItem="Tfk-cc-3vR" firstAttribute="height" secondItem="GmS-Ih-DzZ" secondAttribute="height" id="W83-Ie-RU8"/>
                         <constraint firstItem="GmS-Ih-DzZ" firstAttribute="centerY" secondItem="B9C-Kr-rQx" secondAttribute="centerY" id="eZn-u7-s4b"/>
                         <constraint firstItem="Tfk-cc-3vR" firstAttribute="width" secondItem="GmS-Ih-DzZ" secondAttribute="width" id="j5G-DP-h8d"/>
-                        <constraint firstItem="16N-1O-KHc" firstAttribute="leading" secondItem="Tfk-cc-3vR" secondAttribute="trailing" constant="20" id="mXG-xt-Cv3"/>
+                        <constraint firstItem="16N-1O-KHc" firstAttribute="leading" secondItem="Tfk-cc-3vR" secondAttribute="trailing" id="mXG-xt-Cv3"/>
                         <constraint firstItem="G0p-gd-vo3" firstAttribute="height" secondItem="GmS-Ih-DzZ" secondAttribute="height" id="nnV-gJ-wTy"/>
-                        <constraint firstItem="GmS-Ih-DzZ" firstAttribute="leading" secondItem="B9C-Kr-rQx" secondAttribute="leading" constant="20" id="u8S-DM-jj7"/>
+                        <constraint firstItem="GmS-Ih-DzZ" firstAttribute="leading" secondItem="B9C-Kr-rQx" secondAttribute="leading" id="u8S-DM-jj7"/>
                         <constraint firstItem="16N-1O-KHc" firstAttribute="top" secondItem="GmS-Ih-DzZ" secondAttribute="top" id="yD5-an-4vb"/>
                     </constraints>
                 </view>

@@ -30,14 +30,22 @@
 
 + (id)viewFromNib;
 
-@property (weak, nonatomic) NSArray<id<ListDialogDataDelegate>> *arrayCompany;
+@property (weak,nonatomic) IBOutlet UIButton *btn1;
 
-@property (weak, nonatomic) NSArray<id<ListDialogDataDelegate>> *arrayWorker;
+@property (weak,nonatomic) IBOutlet UIButton *btn2;
 
-@property (weak,nonatomic) IBOutlet UILabel *lbCompany;
+@property (weak,nonatomic) IBOutlet UIButton *btn3;
 
-@property (weak,nonatomic) IBOutlet UILabel *lbWorker;
+@property (weak,nonatomic) IBOutlet UIButton *btn4;
 
-@property (weak, nonatomic) id<ComMaintTitleViewDelegate> delegate;
+@property (strong, nonatomic) NSArray<id <ListDialogDataDelegate>> *arrayCompany;
+
+@property (strong, nonatomic) NSArray<id <ListDialogDataDelegate>> *arrayWorker;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbCompany;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbWorker;
+
+@property (weak, nonatomic) id <ComMaintTitleViewDelegate> delegate;
 
 @end

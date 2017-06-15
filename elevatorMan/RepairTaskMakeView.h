@@ -10,8 +10,6 @@
 
 @protocol RepairTaskMakeViewDelegate <NSObject>
 
-- (void)onClickModify;
-
 - (void)onClickSubmit;
 
 @end

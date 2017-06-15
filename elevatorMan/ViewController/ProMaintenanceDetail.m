@@ -55,7 +55,8 @@
 @implementation ProMaintenanceDetail
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     [self setNavTitle:@"维保详情"];
@@ -76,9 +77,11 @@
 /**
  *  初始化视图
  */
-- (void)initView {
+- (void)initView
+{
 
-    if ([self.enterFlag isEqualToString:@"finish"]) {
+    if ([self.enterFlag isEqualToString:@"finish"])
+    {
         [self setNavRightWithText:@"提交"];
     }
 
@@ -106,7 +109,8 @@
 
 }
 
-- (void)onClickNavRight {
+- (void)onClickNavRight
+{
     [self submit];
 }
 
@@ -115,7 +119,8 @@
  *
  *  @param liftId mainId description
  */
-- (void)getPicUrlByMainId:(NSString *)mainId {
+- (void)getPicUrlByMainId:(NSString *)mainId
+{
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
     [param setObject:mainId forKey:@"mainId"];
 
@@ -124,7 +129,8 @@
                                 NSLog(@"responseObject:%@", responseObject);
                                 NSArray *picArray = [[responseObject objectForKey:@"body"] objectForKey:@"mainPics"];
 
-                                if (picArray.count != 3) {
+                                if (picArray.count != 3)
+                                {
                                     return;
                                 }
 
@@ -150,18 +156,22 @@
  *  @param imageView <#imageView description#>
  */
 - (void)getPictureFromUrlString:(NSString *)urlString imageview:(UIImageView *)imageView
-                      cachePath:(NSString *)cachePath fileName:(NSString *)fileName {
+                      cachePath:(NSString *)cachePath fileName:(NSString *)fileName
+{
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0f];
 
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *_Nullable response, NSData *_Nullable data, NSError *_Nullable connectionError) {
 
-        if (data.length > 0 && nil == connectionError) {
+        if (data.length > 0 && nil == connectionError)
+        {
 
             [self setImageView:imageView data:data url:urlString CachePath:cachePath fileName:fileName];
 
-        } else if (connectionError != nil) {
+        }
+        else if (connectionError != nil)
+        {
             NSLog(@"download picture error = %@", connectionError);
         }
     }];
@@ -174,17 +184,27 @@
  *
  *  @return <#return value description#>
  */
-- (NSString *)getDescriptionByType:(NSString *)type {
+- (NSString *)getDescriptionByType:(NSString *)type
+{
     NSString *description = nil;
-    if ([type isEqualToString:@"hm"]) {
+    if ([type isEqualToString:@"hm"])
+    {
         description = @"半月保";
-    } else if ([type isEqualToString:@"m"]) {
+    }
+    else if ([type isEqualToString:@"m"])
+    {
         description = @"月保";
-    } else if ([type isEqualToString:@"s"]) {
+    }
+    else if ([type isEqualToString:@"s"])
+    {
         description = @"季度保";
-    } else if ([type isEqualToString:@"hy"]) {
+    }
+    else if ([type isEqualToString:@"hy"])
+    {
         description = @"半年保";
-    } else if ([type isEqualToString:@"y"]) {
+    }
+    else if ([type isEqualToString:@"y"])
+    {
         description = @"年保";
     }
     return description;
@@ -193,7 +213,8 @@
 /**
  *  维保完成确认提交
  */
-- (void)submit {
+- (void)submit
+{
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认维保结果" preferredStyle:UIAlertControllerStyleAlert];
 
     [controller addAction:[UIAlertAction actionWithTitle:@"合格" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
@@ -211,7 +232,8 @@
     [self presentViewController:controller animated:YES completion:nil];
 }
 
-- (void)showFailRemark {
+- (void)showFailRemark
+{
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"请填写填写不合格理由" preferredStyle:UIAlertControllerStyleAlert];
 
     [controller addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *_Nonnull action) {
@@ -234,9 +256,11 @@
 }
 
 
-- (void)checkOk {
+- (void)checkOk
+{
     NSString *url = [User sharedUser].signUrl;
-    if (0 == url.length) {
+    if (0 == url.length)
+    {
         [HUDClass showHUDWithLabel:@"您还没有设置手写签名,\n请到个人中心->设置->我的签名设置你的呢签名"];
         return;
     }
@@ -253,7 +277,8 @@
                             }];
 }
 
-- (void)afterConfirm {
+- (void)afterConfirm
+{
     [self setNavRightWithText:@""];
 
     self.enterFlag = @"history";
@@ -263,8 +288,10 @@
     [self.tableView reloadData];
 }
 
-- (void)checkFailed:(NSString *)remark {
-    if (0 == remark.length) {
+- (void)checkFailed:(NSString *)remark
+{
+    if (0 == remark.length)
+    {
         [HUDClass showHUDWithLabel:@"请填写不合格理由"];
         return;
     }
@@ -288,10 +315,12 @@
  *
  *  @return <#return value description#>
  */
-- (NSString *)getFileNameByUrl:(NSString *)url {
+- (NSString *)getFileNameByUrl:(NSString *)url
+{
     NSString *fileName = nil;
     NSArray *array = [url componentsSeparatedByString:@"/"];
-    if (array != nil && array.count > 0) {
+    if (array != nil && array.count > 0)
+    {
         fileName = array[array.count - 1];
     }
     return fileName;
@@ -304,7 +333,8 @@
  *
  *  @return <#return value description#>
  */
-- (UIImage *)getImageFromLocalByPath:(NSString *)filePath {
+- (UIImage *)getImageFromLocalByPath:(NSString *)filePath
+{
     UIImage *image = [UIImage imageWithContentsOfFile:filePath];
     return image;
 }
@@ -314,7 +344,8 @@
  *
  *  @return <#return value description#>
  */
-- (NSString *)getLocalCacheDir {
+- (NSString *)getLocalCacheDir
+{
     NSString *privateDir = [[NSString alloc] initWithFormat:@"/tmp/Maintenance/%@/", self.liftNum];
 
     NSString *cacheDir = [NSHomeDirectory() stringByAppendingString:privateDir];
@@ -327,7 +358,8 @@
  *  @param imageView <#imageView description#>
  *  @param url       <#url description#>
  */
-- (void)setImageView:(UIImageView *)imageView WithUrl:(NSString *)url {
+- (void)setImageView:(UIImageView *)imageView WithUrl:(NSString *)url
+{
     NSString *fileName = [self getFileNameByUrl:url];
     NSString *cachePath = [self getLocalCacheDir];
 
@@ -335,7 +367,8 @@
 
     UIImage *originImage = [self getImageFromLocalByPath:filePath];
 
-    if (originImage != nil) {
+    if (originImage != nil)
+    {
         CGSize size = CGSizeMake(90, 120);
         UIImage *image = [ImageUtils imageWithImage:originImage scaledToSize:size];
         imageView.image = image;
@@ -357,7 +390,8 @@
  *
  *  @param params <#params description#>
  */
-- (void)setImageViewMainTreadCallbackByParams:(NSDictionary *)params {
+- (void)setImageViewMainTreadCallbackByParams:(NSDictionary *)params
+{
     UIImageView *imageView = [params objectForKey:@"view"];
     NSString *urlString = [params objectForKey:@"url"];
     [self setImageView:imageView WithUrl:urlString];
@@ -373,7 +407,8 @@
  *  @param fileName  <#fileName description#>
  */
 - (void)setImageView:(UIImageView *)imageView data:(NSData *)data url:(NSString *)urlString
-           CachePath:(NSString *)cachePath fileName:(NSString *)fileName {
+           CachePath:(NSString *)cachePath fileName:(NSString *)fileName
+{
     NSFileManager *manager = [NSFileManager defaultManager];
     [manager createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];
 
@@ -394,7 +429,8 @@
  *
  *  @param gestureRecognizer
  */
-- (void)showOverView:(UIGestureRecognizer *)gestureRecognizer {
+- (void)showOverView:(UIGestureRecognizer *)gestureRecognizer
+{
     UIView *view = [gestureRecognizer view];
     NSInteger tag = view.tag;
     NSString *filePath = [self.imageViewDic objectForKey:[NSNumber numberWithLong:tag]];
@@ -408,7 +444,8 @@
     UIImage *image = [UIImage imageWithContentsOfFile:filePath];
 
 
-    if (nil == self.ivOverView) {
+    if (nil == self.ivOverView)
+    {
         self.ivOverView = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         self.ivOverView.userInteractionEnabled = YES;
         UITapGestureRecognizer *hideView = [[UITapGestureRecognizer alloc]
@@ -423,27 +460,34 @@
 /**
  *  隐藏预览图
  */
-- (void)hideOverView {
+- (void)hideOverView
+{
     [self.ivOverView removeFromSuperview];
 }
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if ([self.enterFlag isEqualToString:@"history"]) {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if ([self.enterFlag isEqualToString:@"history"])
+    {
 
         [self.imageViewProperty setImageWithURL:[NSURL URLWithString:self.propertySign]];
         return 8;
 
-    } else {
+    }
+    else
+    {
         return 7;
     }
 }
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (1 == indexPath.row) {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (1 == indexPath.row)
+    {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth - 80 - 8 - 8 - 8, 0)];
         label.font = [UIFont systemFontOfSize:14];
 
@@ -455,20 +499,29 @@
 
         NSInteger lines = label.frame.size.height / label.font.lineHeight;
 
-        if (1 == lines) {
+        if (1 == lines)
+        {
             return 44;
 
-        } else {
+        }
+        else
+        {
             return label.frame.size.height + 10 + 10;
         }
 
-    } else if (5 == indexPath.row) {
+    }
+    else if (5 == indexPath.row)
+    {
         return 210;
 
-    } else if (6 == indexPath.row || 7 == indexPath.row) {
+    }
+    else if (6 == indexPath.row || 7 == indexPath.row)
+    {
         return 100;
 
-    } else {
+    }
+    else
+    {
         return 44;
     }
 

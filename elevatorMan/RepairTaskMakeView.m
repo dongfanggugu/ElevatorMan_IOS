@@ -15,17 +15,20 @@
 
 @implementation RepairTaskMakeView
 
-+ (id)viewFromNib {
++ (id)viewFromNib
+{
     NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"RepairTaskMakeView" owner:nil options:nil];
 
-    if (0 == array.count) {
+    if (0 == array.count)
+    {
         return nil;
     }
 
     return array[0];
 }
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
 
     _btnModify.layer.masksToBounds = YES;
@@ -36,10 +39,11 @@
 
     [_btnModify addTarget:self action:@selector(clickModify) forControlEvents:UIControlEventTouchUpInside];
 
-    [_btnSubmit addTarget:self action:@selector(onClickSubmit) forControlEvents:UIControlEventTouchUpInside];
+    [_btnSubmit addTarget:self action:@selector(clickSubmit) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)clickModify {
+- (void)clickModify
+{
     DatePickerDialog *dialog = [DatePickerDialog viewFromNib];
 
     dialog.delegate = self;
@@ -47,11 +51,16 @@
     [dialog show];
 }
 
-- (void)clickSubmit {
-
+- (void)clickSubmit
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickSubmit)])
+    {
+        [_delegate onClickSubmit];
+    }
 }
 
-- (void)onPickerDate:(NSDate *)date {
+- (void)onPickerDate:(NSDate *)date
+{
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     format.dateFormat = @"yyyy-MM-dd HH:mm";
     NSString *dateStr = [format stringFromDate:date];

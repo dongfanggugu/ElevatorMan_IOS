@@ -10,4 +10,6 @@
 
 @interface RepairSubmitController : BaseViewController
 
+@property (strong, nonatomic) NSDictionary *taskInfo;
+
 @end

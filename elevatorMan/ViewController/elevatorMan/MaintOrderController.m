@@ -31,27 +31,33 @@
 
 @implementation MaintOrderController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavTitle:@"维保订单"];
     [self initView];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     [self getMaintOrder];
 }
 
-- (NSMutableArray *)arrayOrder {
-    if (!_arrayOrder) {
+- (NSMutableArray *)arrayOrder
+{
+    if (!_arrayOrder)
+    {
         _arrayOrder = [NSMutableArray array];
     }
 
     return _arrayOrder;
 }
 
-- (NSMutableArray *)arrayTask {
-    if (!_arrayTask) {
+- (NSMutableArray *)arrayTask
+{
+    if (!_arrayTask)
+    {
         _arrayTask = [NSMutableArray array];
     }
 
@@ -59,7 +65,8 @@
 }
 
 
-- (void)initView {
+- (void)initView
+{
     self.automaticallyAdjustsScrollViewInsets = NO;
 
     //维保记录
@@ -87,36 +94,37 @@
  
  @param maintOrdeinFO
  */
-- (void)setMaintOrderInfo:(NSDictionary *)maintOrderInfo {
+- (void)setMaintOrderInfo:(NSDictionary *)maintOrderInfo
+{
     _maintOrderInfo = maintOrderInfo;
 
-    if (_infoView) {
+    if (_infoView)
+    {
         _infoView.lbAddress.text = _maintOrderInfo[@"cellName"];
     }
 
     [self getTask];
 }
 
-- (void)getMaintOrder {
-    NSMutableDictionary *dic1 = [NSMutableDictionary dictionary];
-    dic1[@"cellName"] = @"北京市望京soho";
+- (void)getMaintOrder
+{
 
-    dic1[@"name"] = @"全能大管家";
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
-    NSMutableDictionary *dic2 = [NSMutableDictionary dictionary];
-    dic2[@"cellName"] = @"北京市望京soho1";
+    [[HttpClient sharedClient] post:@"getMaintOrderByWorker" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-    dic2[@"name"] = @"全能小管家";
+        [self.arrayOrder removeAllObjects];
+        [self.arrayOrder addObjectsFromArray:responseObject[@"body"]];
+        [self initOrderView];
+    }];
 
-    [self.arrayOrder removeAllObjects];
-    [self.arrayOrder addObject:dic1];
-    [self.arrayOrder addObject:dic2];
 
-    [self initOrderView];
 }
 
-- (void)initOrderView {
-    if (0 == self.arrayOrder.count) {
+- (void)initOrderView
+{
+    if (0 == self.arrayOrder.count)
+    {
         //当没有维保信息时，提示
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16, 120, self.screenWidth - 32, 40)];
         label.font = [UIFont systemFontOfSize:14];
@@ -133,23 +141,77 @@
         return;
     }
 
-    if (1 == self.arrayOrder.count) {
+    if (1 == self.arrayOrder.count)
+    {
         _infoView.btnChange.hidden = YES;
     }
     _maintOrderInfo = self.arrayOrder[0];
 
-    _infoView.lbAddress.text = _maintOrderInfo[@"cellName"];
-    _infoView.lbName.text = _maintOrderInfo[@"name"];
+    _infoView.lbAddress.text = _maintOrderInfo[@"villaInfo"][@"cellName"];
+    _infoView.lbName.text = _maintOrderInfo[@"maintypeInfo"][@"name"];
+
+    NSInteger maintType = [_maintOrderInfo[@"mainttypeInfo"][@"id"] integerValue];
+
+    switch (maintType)
+    {
+        case 1:
+        {
+            _infoView.lbTag.text = @"一级管家";
+
+            NSString *expire = _maintOrderInfo[@"expireTime"];
+
+            if (0 == expire.length)
+            {
+                _infoView.lbExpire.text = @"无效";
+            }
+            else
+            {
+                _infoView.lbExpire.text = [NSString stringWithFormat:@"%@ 到期", expire];
+            }
+        }
+
+            break;
+
+        case 2:
+        {
+            _infoView.lbTag.text = @"二级管家";
+
+            NSString *expire = _maintOrderInfo[@"expireTime"];
+
+            if (0 == expire.length)
+            {
+                _infoView.lbExpire.text = @"无效";
+            }
+            else
+            {
+                _infoView.lbExpire.text = [NSString stringWithFormat:@"%@ 到期", expire];
+            }
+        }
+
+            break;
+
+        case 3:
+        {
+             _infoView.lbTag.text = @"三级管家";
+
+            NSInteger frequency = _maintOrderInfo[@"frequency"];
+
+            _infoView.lbExpire.text = [NSString stringWithFormat:@"剩余次数:%ld", frequency];
+        }
+    }
 }
 
-- (void)showOrderList {
-    if (0 == self.arrayOrder.count || 1 == self.arrayOrder.count) {
+- (void)showOrderList
+{
+    if (0 == self.arrayOrder.count || 1 == self.arrayOrder.count)
+    {
         return;
     }
 
     NSMutableArray *array = [NSMutableArray array];
 
-    for (NSDictionary *info in self.arrayOrder) {
+    for (NSDictionary *info in self.arrayOrder)
+    {
         ListDialogData *data = [[ListDialogData alloc] initWithKey:info[@"id"] content:info[@"cellName"]];
         [array addObject:data];
     }
@@ -163,9 +225,12 @@
 
 #pragma mark - LisDialogViewDelegate
 
-- (void)onSelectItem:(NSString *)key content:(NSString *)content {
-    for (NSDictionary *info in self.arrayOrder) {
-        if ([key isEqualToString:info[@"id"]]) {
+- (void)onSelectItem:(NSString *)key content:(NSString *)content
+{
+    for (NSDictionary *info in self.arrayOrder)
+    {
+        if ([key isEqualToString:info[@"id"]])
+        {
             self.maintOrderInfo = info;
             break;
         }
@@ -173,22 +238,29 @@
 }
 
 
-- (void)getTask {
+- (void)getTask
+{
 
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"maintOrderId"] = _maintOrderInfo[@"id"];
+    params[@"page"] = [NSNumber numberWithInteger:1];
+    params[@"rows"] = [NSNumber numberWithInteger:100];
 
 
     [[HttpClient sharedClient] post:nil parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
+        [self.arrayTask removeAllObjects];
+        [self.arrayTask addObjectsFromArray:responseObject[@"body"]];
+        [self.tableView reloadData];
     }];
 }
 
 //0待确认 1已确认 2已完成 3已评价
-- (NSString *)getStateDes:(NSInteger)state {
+- (NSString *)getStateDes:(NSInteger)state
+{
     NSString *res = @"";
 
-    switch (state) {
+    switch (state)
+    {
         case 0:
             res = @"待确认";
             break;
@@ -223,33 +295,48 @@
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return _arrayTask.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     MainTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:[MainTaskCell identifier]];
 
-    if (!cell) {
+    if (!cell)
+    {
         cell = [MainTaskCell cellFromNib];
     }
 
     NSDictionary *info = _arrayTask[indexPath.row];
 
+    cell.lbIndex.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
+
+    cell.lbCode.text = info[@"taskCode"];
+
+    cell.lbWorker.text = [User sharedUser].name;
+
+    NSInteger state = [info[@"state"] integerValue];
+
+    cell.lbState.text = [self getStateDes:state];
 
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return [MainTaskCell cellHeight];
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 
     MaintInfoController *controller = [[MaintInfoController alloc] init];
     controller.maintInfo = _arrayTask[indexPath.row];
@@ -260,22 +347,31 @@
 
 #pragma mark - MainOrderViewDelegate
 
-- (void)onClickLinkButton:(MainOrderInfoView *)view {
-
+- (void)onClickLinkButton:(MainOrderInfoView *)view
+{
+    NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", Custom_Service]];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    [webView loadRequest:[NSURLRequest requestWithURL:phoneURL]];
+    [self.view addSubview:webView];
 }
 
-- (void)onClickPlanButton:(MainOrderInfoView *)view {
+- (void)onClickPlanButton:(MainOrderInfoView *)view
+{
     MaintInfoController *controller = [[MaintInfoController alloc] init];
+    controller.serviceId = _maintOrderInfo[@"id"];
+
     controller.hidesBottomBarWhenPushed = YES;
 
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)onClickChangeButton:(MainOrderInfoView *)view {
+- (void)onClickChangeButton:(MainOrderInfoView *)view
+{
     [self showOrderList];
 }
 
-- (void)onClickDetailButton:(MainOrderInfoView *)view {
+- (void)onClickDetailButton:(MainOrderInfoView *)view
+{
 
 }
 

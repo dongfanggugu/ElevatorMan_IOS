@@ -10,4 +10,6 @@
 
 @interface MaintExceptionController : BaseViewController
 
+@property (strong, nonatomic) NSDictionary *taskInfo;
+
 @end

@@ -26,13 +26,15 @@
 
 @implementation MaintInfoController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavTitle:@"维保任务单"];
     [self initView];
 }
 
-- (void)initView {
+- (void)initView
+{
     _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64)];
 
     [self.view addSubview:_mapView];
@@ -49,9 +51,11 @@
     [self.view addSubview:_infoView];
 }
 
-- (NSInteger)state {
-    if (!_maintInfo) {
-        return -1;
+- (NSInteger)state
+{
+    if (!_maintInfo)
+    {
+        return 0;
     }
 
     return [_maintInfo[@"state"] integerValue];
@@ -61,7 +65,8 @@
 /**
  待确认
  */
-- (void)state0 {
+- (void)state0
+{
     _infoView.btnStart.hidden = YES;
 
     _infoView.btnException.hidden = YES;
@@ -72,7 +77,8 @@
 /**
  已确认
  **/
-- (void)state1 {
+- (void)state1
+{
     _infoView.btnStart.hidden = NO;
 
     _infoView.btnException.hidden = NO;
@@ -84,7 +90,8 @@
 /**
  已出发
  **/
-- (void)state2 {
+- (void)state2
+{
     _infoView.btnStart.hidden = YES;
 
     _infoView.btnException.hidden = YES;
@@ -98,7 +105,8 @@
 /**
  已到达
  **/
-- (void)state3 {
+- (void)state3
+{
     _infoView.btnStart.hidden = YES;
 
     _infoView.btnException.hidden = YES;
@@ -112,7 +120,8 @@
 /**
  已完成
  **/
-- (void)state4 {
+- (void)state4
+{
     _infoView.btnStart.hidden = YES;
 
     _infoView.btnException.hidden = YES;
@@ -126,7 +135,8 @@
 /**
  已评价
  **/
-- (void)state5 {
+- (void)state5
+{
     _infoView.btnStart.hidden = NO;
 
     _infoView.btnException.hidden = NO;
@@ -140,17 +150,21 @@
 
 #pragma mark - MaintInfoViewDelegate
 
-- (void)onClickStretch {
+- (void)onClickStretch
+{
     CGFloat y = _infoView.frame.origin.y;
 
     CGFloat initY = self.screenHeight - [MaintInfoView basicInfoHeight];
 
-    if (y < initY) {
+    if (y < initY)
+    {
         CGRect frame = CGRectMake(0, self.screenHeight - [MaintInfoView basicInfoHeight], self.screenWidth, [MaintInfoView viewHeight]);
 
         _infoView.frame = frame;
 
-    } else {
+    }
+    else
+    {
         CGRect frame = CGRectMake(0, self.screenHeight - [MaintInfoView viewHeight], self.screenWidth, [MaintInfoView viewHeight]);
 
 
@@ -158,8 +172,10 @@
     }
 }
 
-- (void)onClickStart {
-    if (1 == self.state) {  //已经确认状态
+- (void)onClickStart
+{
+    if (1 == self.state)
+    {  //已经确认状态
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定开始出发,前往别墅进行维保?" preferredStyle:UIAlertControllerStyleAlert];
 
         __weak typeof(self) weakSelf = self;
@@ -175,19 +191,23 @@
 
         }];
 
-    } else if (5 == self.state) {   //已经评价状态
+    }
+    else if (5 == self.state)
+    {   //已经评价状态
         NSLog(@"查看评价");
 
         [self evaluate];
     }
 }
 
-- (void)onClickException {
+- (void)onClickException
+{
     [self completePlan];
 
     return;
 
-    if (1 == self.state) {
+    if (1 == self.state)
+    {
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认无法出发完成当前维保任务?" preferredStyle:UIAlertControllerStyleAlert];
 
         __weak typeof(self) weakSelf = self;
@@ -203,15 +223,19 @@
 
         }];
 
-    } else if (5 == self.state) {   //已经评价
+    }
+    else if (5 == self.state)
+    {   //已经评价
         NSLog(@"查看维保结果");
         [self maintResult];
 
     }
 }
 
-- (void)onClickMake {
-    switch (self.state) {
+- (void)onClickMake
+{
+    switch (self.state)
+    {
         case 0:
             [self makePlan];
             break;
@@ -233,20 +257,20 @@
     }
 }
 
-- (void)evaluate {
+- (void)evaluate
+{
     NSLog(@"查看评价");
 }
 
 /**
  完成维保计划
  */
-- (void)completePlan {
+- (void)completePlan
+{
     NSLog(@"完成维保计划");
     MaintSubmitController *controller = [[MaintSubmitController alloc] init];
 
-    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    dic[@"id"] = @"13131";
-    controller.maintInfo = dic;
+    controller.maintInfo = _maintInfo;
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
     //[self state4];
@@ -256,7 +280,8 @@
 /**
  查看维保结果
  */
-- (void)maintResult {
+- (void)maintResult
+{
     NSLog(@"查看维保结果");
 
     MaintResultShowController *controller = [[MaintResultShowController alloc] init];
@@ -274,34 +299,54 @@
 /**
  制定维保计划
  */
-- (void)makePlan {
-    NSLog(@"制定维保计划");
-    [self state1];
+- (void)makePlan
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"maintOrderId"] = _serviceId;
+    params[@"planTime"] = _infoView.lbPlan.text;
+
+    [[HttpClient sharedClient] post:@"addMaintOrderProcess" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [HUDClass showHUDWithLabel:@"维保计划制定成功"];
+        [self state1];
+    }];
 }
 
 
 /**
  到达
  */
-- (void)arrive {
-    NSLog(@"到达");
-    [self state3];
+- (void)arrive
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"maintOrderProcessId"] = _maintInfo[@"id"];
+
+    [[HttpClient sharedClient] post:@"editMaintOrderProcessWorkerArrive" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        [self state3];
+    }];
 }
 
 
 /**
  出发
  */
-- (void)start {
-    NSLog(@"出发");
-    [self state2];
+- (void)start
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"maintOrderProcessId"] = _maintInfo[@"id"];
+
+    [[HttpClient sharedClient] post:@"editMaintOrderProcessWorkerSetOut" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        [self state2];
+    }];
 }
 
 
 /**
  无法出发
  */
-- (void)exception {
+- (void)exception
+{
     MaintExceptionController *controller = [[MaintExceptionController alloc] init];
     controller.hidesBottomBarWhenPushed = YES;
 

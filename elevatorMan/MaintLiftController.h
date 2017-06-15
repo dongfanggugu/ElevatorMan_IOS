@@ -8,5 +8,6 @@
 
 @interface MaintLiftController : BaseViewController
 
-@property (strong, nonatomic) NSDictionary *maintInfo;
+@property (strong, nonatomic) NSMutableArray *arrayMaint;
+
 @end

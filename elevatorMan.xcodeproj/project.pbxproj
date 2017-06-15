@@ -342,8 +342,10 @@
 		65FE08C71EA9AD61002C9397 /* Squiggle.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08C31EA9AD61002C9397 /* Squiggle.m */; };
 		65FE08CA1EA9EA59002C9397 /* PersonSignController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08C91EA9EA59002C9397 /* PersonSignController.m */; };
 		65FEDC251C1FAB2700DB339B /* MantenanceTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FEDC241C1FAB2700DB339B /* MantenanceTabBarController.m */; };
+		699E410E729956BB3266A53B /* CheckResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 699E41E0A4301E9AAE3B3BAD /* CheckResultView.xib */; };
 		699E413B624BEFEFFA2589BE /* Person.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 699E44680697A470588AE643 /* Person.storyboard */; };
 		699E4174C06E0D835AD4C7AB /* HouseTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E47B7158A9150593D6030 /* HouseTitleView.m */; };
+		699E423A53F53AABAD39A41E /* RepairResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4BB6078426B14A52B0EC /* RepairResultController.m */; };
 		699E429CA5C4F11869DBAA51 /* KnInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 699E43664DC89F2535E8C190 /* KnInfoCell.xib */; };
 		699E43EC33C99B0ABD58FD35 /* KnowledgeDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4E2309800E25F27992CE /* KnowledgeDetailController.m */; };
 		699E45F419A5BC43A1F9C4E0 /* MaintLiftController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E48C938D723E7E35462BF /* MaintLiftController.m */; };
@@ -351,13 +353,21 @@
 		699E46586A0AAC3FB70B2AB5 /* knowledge_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 699E42181C210783B6C4BE4A /* knowledge_banner.png */; };
 		699E477061671049206EC52A /* KnMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 699E4997CC55C0DD2C70D9C1 /* KnMainCell.xib */; };
 		699E4939C095CB77796BED95 /* HouseRepairManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4B26F3E2C7C52363A5FF /* HouseRepairManagerController.m */; };
+		699E49C3FCFAC48977CFE298 /* KeyValueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 699E4709BA12E36C9C83F180 /* KeyValueCell.xib */; };
 		699E49F712E1A14AEF971182 /* ComMaintInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E48D490E1C6ABC0253AF4 /* ComMaintInfoCell.m */; };
+		699E4A3EE41D8BE963194870 /* MaintListDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E41EDE93F61A4B89AB161 /* MaintListDetailController.m */; };
 		699E4AF7795C05309CB55330 /* MyProperty.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 699E42DA009CC80C70E70027 /* MyProperty.storyboard */; };
 		699E4B2F36DA2851353BEFDE /* KnowledgeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E49E22EE22B4D58D36709 /* KnowledgeController.m */; };
+		699E4B6642369FCADA3C260C /* MaintLiftHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E47F8E99D6AD0FDAC1990 /* MaintLiftHistoryController.m */; };
+		699E4C0BA4908730A21D21B6 /* KeyValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E48C4237D23C7AAA65A83 /* KeyValueCell.m */; };
 		699E4C4172BD9C9423B3412E /* KnMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4A895F2CCB1420573DED /* KnMainCell.m */; };
 		699E4C49AA61C5BC9A0C91EF /* HelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4D08CA536B871B03E8BE /* HelpController.m */; };
+		699E4C6BDB11AE083C3E6CEB /* CheckResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4543EE913D61D581CCDF /* CheckResultView.m */; };
 		699E4D6D9EB784E4A0A6520A /* HelpContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E40D15BDA14D42F14F3D0 /* HelpContentController.m */; };
+		699E4DD54898181DFDD467BE /* NSArray+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4CA9A61BA6C2BEA61B76 /* NSArray+Log.m */; };
 		699E4E57F660402D0BE72257 /* HouseMaintManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4F1B1D580ABEE1E87B20 /* HouseMaintManagerController.m */; };
+		699E4EB18433EDE5172C49E7 /* MaintAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E41AA176C9AFD1F7FBB68 /* MaintAnnotationView.m */; };
+		699E4ED1056B5D7A3150BEF7 /* MaintAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E439DBBEF02425CF07D93 /* MaintAnnotation.m */; };
 		BF0296951AC88E6600ED4AF1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0296941AC88E6600ED4AF1 /* MapKit.framework */; };
 		BF0296A01ACBFE1B00ED4AF1 /* ElevatorManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF02969F1ACBFE1B00ED4AF1 /* ElevatorManViewController.m */; };
 		BF1887D11AB5C6A800F1C8AF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = BF1887D01AB5C6A800F1C8AF /* .gitignore */; };
@@ -902,27 +912,45 @@
 		65FEDC241C1FAB2700DB339B /* MantenanceTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MantenanceTabBarController.m; sourceTree = "<group>"; };
 		699E402D12F14A345905823B /* KnMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnMainCell.h; sourceTree = "<group>"; };
 		699E40D15BDA14D42F14F3D0 /* HelpContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpContentController.m; sourceTree = "<group>"; };
+		699E41AA176C9AFD1F7FBB68 /* MaintAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintAnnotationView.m; sourceTree = "<group>"; };
+		699E41E0A4301E9AAE3B3BAD /* CheckResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckResultView.xib; sourceTree = "<group>"; };
+		699E41EDE93F61A4B89AB161 /* MaintListDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintListDetailController.m; sourceTree = "<group>"; };
 		699E42181C210783B6C4BE4A /* knowledge_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knowledge_banner.png; sourceTree = "<group>"; };
 		699E42DA009CC80C70E70027 /* MyProperty.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = MyProperty.storyboard; path = ViewController/MyProperty.storyboard; sourceTree = "<group>"; };
 		699E43664DC89F2535E8C190 /* KnInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KnInfoCell.xib; sourceTree = "<group>"; };
+		699E439DBBEF02425CF07D93 /* MaintAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintAnnotation.m; sourceTree = "<group>"; };
 		699E43D6ABC0EB9ABF18EDF4 /* HelpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpController.h; sourceTree = "<group>"; };
+		699E445A202408EE69BDAA70 /* MaintAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintAnnotation.h; sourceTree = "<group>"; };
 		699E44680697A470588AE643 /* Person.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Person.storyboard; path = ViewController/Person.storyboard; sourceTree = "<group>"; };
 		699E4495F893521E76BB81A6 /* KnowledgeDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeDetailController.h; sourceTree = "<group>"; };
+		699E453E8A7D29BA21017E95 /* MaintListDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintListDetailController.h; sourceTree = "<group>"; };
+		699E4543EE913D61D581CCDF /* CheckResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckResultView.m; sourceTree = "<group>"; };
 		699E456BBC4AEB97E9F51549 /* HelpContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpContentController.h; sourceTree = "<group>"; };
 		699E45E31460E986F9853C79 /* ComMaintInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComMaintInfoCell.h; sourceTree = "<group>"; };
 		699E464182F076A1EB1EEDF3 /* KnInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnInfoCell.h; sourceTree = "<group>"; };
+		699E466EEB331224BDDE3F1E /* MaintLiftHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintLiftHistoryController.h; sourceTree = "<group>"; };
+		699E4709BA12E36C9C83F180 /* KeyValueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyValueCell.xib; sourceTree = "<group>"; };
+		699E472AC016A020ED1678F6 /* CheckResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckResultView.h; sourceTree = "<group>"; };
 		699E4731ABC4E5D92F0E9403 /* MaintLiftController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintLiftController.h; sourceTree = "<group>"; };
 		699E47B7158A9150593D6030 /* HouseTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseTitleView.m; sourceTree = "<group>"; };
+		699E47F8E99D6AD0FDAC1990 /* MaintLiftHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintLiftHistoryController.m; sourceTree = "<group>"; };
+		699E488868747B739DB855F7 /* RepairResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepairResultController.h; sourceTree = "<group>"; };
+		699E48C4237D23C7AAA65A83 /* KeyValueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyValueCell.m; sourceTree = "<group>"; };
 		699E48C938D723E7E35462BF /* MaintLiftController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintLiftController.m; sourceTree = "<group>"; };
 		699E48D490E1C6ABC0253AF4 /* ComMaintInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComMaintInfoCell.m; sourceTree = "<group>"; };
 		699E494A05E7391775586F8D /* HouseRepairManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseRepairManagerController.h; sourceTree = "<group>"; };
 		699E4997CC55C0DD2C70D9C1 /* KnMainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KnMainCell.xib; sourceTree = "<group>"; };
 		699E49E22EE22B4D58D36709 /* KnowledgeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeController.m; sourceTree = "<group>"; };
+		699E4A1E8DD93092F9795EED /* MaintAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintAnnotationView.h; sourceTree = "<group>"; };
 		699E4A895F2CCB1420573DED /* KnMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnMainCell.m; sourceTree = "<group>"; };
 		699E4B1D38BC13A0702F3E1C /* HouseMaintManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseMaintManagerController.h; sourceTree = "<group>"; };
 		699E4B26F3E2C7C52363A5FF /* HouseRepairManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseRepairManagerController.m; sourceTree = "<group>"; };
+		699E4B45C0A3997E5F57B7BD /* KeyValueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValueCell.h; sourceTree = "<group>"; };
+		699E4BB6078426B14A52B0EC /* RepairResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepairResultController.m; sourceTree = "<group>"; };
 		699E4BC73C57FABAF6E5D339 /* KnInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnInfoCell.m; sourceTree = "<group>"; };
 		699E4C275A210C1A6E523F97 /* KnowledgeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnowledgeController.h; sourceTree = "<group>"; };
+		699E4CA9A61BA6C2BEA61B76 /* NSArray+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Log.m"; sourceTree = "<group>"; };
+		699E4CEDAA20F81222B81FC1 /* NSArray+Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Log.h"; sourceTree = "<group>"; };
 		699E4D08CA536B871B03E8BE /* HelpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpController.m; sourceTree = "<group>"; };
 		699E4E2309800E25F27992CE /* KnowledgeDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeDetailController.m; sourceTree = "<group>"; };
 		699E4F1B1D580ABEE1E87B20 /* HouseMaintManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseMaintManagerController.m; sourceTree = "<group>"; };
@@ -1330,6 +1358,8 @@
 				65CA98B21EE7990A00E2CF02 /* RepairPayController.m */,
 				6576CF701EE7D4520046E80F /* RepairSubmitController.h */,
 				6576CF711EE7D4520046E80F /* RepairSubmitController.m */,
+				699E4BB6078426B14A52B0EC /* RepairResultController.m */,
+				699E488868747B739DB855F7 /* RepairResultController.h */,
 			);
 			name = Repair;
 			sourceTree = "<group>";
@@ -1546,6 +1576,8 @@
 				655ADF5A1E272C1600F1F036 /* WRepairView.xib */,
 				699E43664DC89F2535E8C190 /* KnInfoCell.xib */,
 				699E4997CC55C0DD2C70D9C1 /* KnMainCell.xib */,
+				699E41E0A4301E9AAE3B3BAD /* CheckResultView.xib */,
+				699E4709BA12E36C9C83F180 /* KeyValueCell.xib */,
 			);
 			name = nib;
 			sourceTree = "<group>";
@@ -1623,6 +1655,14 @@
 				699E402D12F14A345905823B /* KnMainCell.h */,
 				699E4A895F2CCB1420573DED /* KnMainCell.m */,
 				699E464182F076A1EB1EEDF3 /* KnInfoCell.h */,
+				699E439DBBEF02425CF07D93 /* MaintAnnotation.m */,
+				699E445A202408EE69BDAA70 /* MaintAnnotation.h */,
+				699E41AA176C9AFD1F7FBB68 /* MaintAnnotationView.m */,
+				699E4A1E8DD93092F9795EED /* MaintAnnotationView.h */,
+				699E472AC016A020ED1678F6 /* CheckResultView.h */,
+				699E4543EE913D61D581CCDF /* CheckResultView.m */,
+				699E4B45C0A3997E5F57B7BD /* KeyValueCell.h */,
+				699E48C4237D23C7AAA65A83 /* KeyValueCell.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -1634,6 +1674,10 @@
 				65A07C7A1EE9625100EEA262 /* MaintManagerController.m */,
 				699E48C938D723E7E35462BF /* MaintLiftController.m */,
 				699E4731ABC4E5D92F0E9403 /* MaintLiftController.h */,
+				699E47F8E99D6AD0FDAC1990 /* MaintLiftHistoryController.m */,
+				699E466EEB331224BDDE3F1E /* MaintLiftHistoryController.h */,
+				699E41EDE93F61A4B89AB161 /* MaintListDetailController.m */,
+				699E453E8A7D29BA21017E95 /* MaintListDetailController.h */,
 			);
 			name = Maint;
 			sourceTree = "<group>";
@@ -1662,6 +1706,8 @@
 				6526F76A1C2AE44700C9F172 /* FileUtils.h */,
 				6526F76B1C2AE45800C9F172 /* FileUtils.m */,
 				650AFD931CAA16B20074CC86 /* StaticHeader.h */,
+				699E4CA9A61BA6C2BEA61B76 /* NSArray+Log.m */,
+				699E4CEDAA20F81222B81FC1 /* NSArray+Log.h */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -2371,6 +2417,8 @@
 				699E429CA5C4F11869DBAA51 /* KnInfoCell.xib in Resources */,
 				699E477061671049206EC52A /* KnMainCell.xib in Resources */,
 				699E46586A0AAC3FB70B2AB5 /* knowledge_banner.png in Resources */,
+				699E410E729956BB3266A53B /* CheckResultView.xib in Resources */,
+				699E49C3FCFAC48977CFE298 /* KeyValueCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2586,6 +2634,14 @@
 				699E46540FF1BCB736821853 /* KnInfoCell.m in Sources */,
 				699E4C4172BD9C9423B3412E /* KnMainCell.m in Sources */,
 				699E43EC33C99B0ABD58FD35 /* KnowledgeDetailController.m in Sources */,
+				699E4DD54898181DFDD467BE /* NSArray+Log.m in Sources */,
+				699E4ED1056B5D7A3150BEF7 /* MaintAnnotation.m in Sources */,
+				699E4EB18433EDE5172C49E7 /* MaintAnnotationView.m in Sources */,
+				699E423A53F53AABAD39A41E /* RepairResultController.m in Sources */,
+				699E4C6BDB11AE083C3E6CEB /* CheckResultView.m in Sources */,
+				699E4B6642369FCADA3C260C /* MaintLiftHistoryController.m in Sources */,
+				699E4A3EE41D8BE963194870 /* MaintListDetailController.m in Sources */,
+				699E4C0BA4908730A21D21B6 /* KeyValueCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2720,7 +2776,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
@@ -2770,7 +2826,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;

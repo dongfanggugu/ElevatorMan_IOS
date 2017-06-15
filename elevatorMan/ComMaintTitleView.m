@@ -15,13 +15,7 @@
 
 @interface ComMaintTitleView () <ListDialogViewDelegate>
 
-@property (weak,nonatomic) IBOutlet UIButton *btn1;
 
-@property (weak,nonatomic) IBOutlet UIButton *btn2;
-
-@property (weak,nonatomic) IBOutlet UIButton *btn3;
-
-@property (weak,nonatomic) IBOutlet UIButton *btn4;
 
 @property (weak,nonatomic) IBOutlet UIImageView *ivCom;
 
@@ -64,6 +58,29 @@
     
     [_lbWorker addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showWorker)]];
     
+}
+
+- (void)setArrayCompany:(NSArray *)arrayCompany
+{
+    if (0 == arrayCompany.count)
+    {
+        return;
+    }
+    _arrayCompany = arrayCompany;
+
+    _lbCompany.text = [_arrayCompany[0] getShowContent];
+}
+
+- (void)setArrayWorker:(NSArray *)arrayWorker
+{
+    if (0 == arrayWorker.count)
+    {
+        return;
+    }
+
+    _arrayWorker = arrayWorker;
+
+    _lbWorker.text = [_arrayWorker[0] getShowContent];
 }
 
 - (void)showCompany

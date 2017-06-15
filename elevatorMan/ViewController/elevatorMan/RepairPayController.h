@@ -10,4 +10,6 @@
 
 @interface RepairPayController : BaseViewController
 
+@property (strong, nonatomic) NSDictionary *orderInfo;
+
 @end

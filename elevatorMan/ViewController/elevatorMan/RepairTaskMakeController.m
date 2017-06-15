@@ -10,7 +10,7 @@
 #import "RepairTaskMakeView.h"
 #import <BaiduMapAPI/BMapKit.h>
 
-@interface RepairTaskMakeController ()
+@interface RepairTaskMakeController () <RepairTaskMakeViewDelegate>
 
 @property (strong, nonatomic) RepairTaskMakeView *taskView;
 
@@ -33,6 +33,8 @@
     [self.view addSubview:mapView];
     
     _taskView = [RepairTaskMakeView viewFromNib];
+
+    _taskView.delegate = self;
     
     CGRect frame = _taskView.frame;
     
@@ -45,6 +47,19 @@
     _taskView.frame = frame;
     
     [self.view addSubview:_taskView];
+}
+
+#pragma mark - RepairTaskMakeViewDelegate
+- (void)onClickSubmit
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"repairOrderId"] = _orderInfo[@"id"];
+    params[@"planTime"] = _taskView.lbPlan.text;
+
+    [[HttpClient sharedClient] post:@"addRepairOrderProcess" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [HUDClass showHUDWithLabel:@"下次上门预约成功,请准时到达安排维修工作"];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 

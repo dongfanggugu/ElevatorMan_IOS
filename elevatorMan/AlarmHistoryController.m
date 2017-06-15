@@ -25,6 +25,7 @@
     [super viewDidLoad];
     [self setNavTitle:@"救援历史"];
     [self initView];
+    [self getAlarms];
 }
 
 - (NSMutableArray *)arrayAlarm
@@ -51,6 +52,19 @@
     [self.view addSubview:_tableView];
 }
 
+- (void)getAlarms
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"branchId"] = [User sharedUser].branchId;
+    params[@"history"] = @"1";
+    
+    [[HttpClient sharedClient] post:@"getAlarmListByBranchId" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.arrayAlarm removeAllObjects];
+        [self.arrayAlarm addObjectsFromArray:responseObject[@"body"]];
+        [self.tableView reloadData];
+    }];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -60,9 +74,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-   // return self.arrayAlarm.count;
-    
-    return 4;
+    return self.arrayAlarm.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -74,12 +86,21 @@
     }
     cell.lbIndex.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
 
-    //NSDictionary *info = self.arrayAlarm[indexPath.row];
+    NSDictionary *info = self.arrayAlarm[indexPath.row];
 
-    cell.lbProject.text = @"望京soho";
-    cell.lbTime.text = @"2017-12-12 12:12:12";
+    cell.lbProject.text = info[@"communityName"];
+    cell.lbTime.text = info[@"alarmTime"];
 
-    cell.lbState.text = @"已完成";
+    BOOL cancel = [info[@"isMisinformation"] boolValue];
+    
+    if (cancel)
+    {
+        cell.lbState.text = @"已撤销";
+    }
+    else
+    {
+        cell.lbState.text = @"已完成";
+    }
 
     return cell;
 }
@@ -95,10 +116,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //NSDictionary *info = self.arrayAlarm[indexPath.row];
-    //NSInteger userState = [info[@"userState"] integerValue];
-    
-    NSInteger userState = 5;
+    NSDictionary *info = self.arrayAlarm[indexPath.row];
+    NSInteger userState = [info[@"userState"] integerValue];
     
     if (-10 == userState)
     {
@@ -116,13 +135,12 @@
     {
         UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
         AlarmResultViewController *vc = [board instantiateViewControllerWithIdentifier:@"AlarmResultViewController"];
-        vc.project = @"望京soho";
-        vc.address = @"望京soho";
-        vc.liftCode = @"12313131313";
-        vc.alarmTime = @"2017-12-12 12:12:12";
-        vc.savedCount = @"5";
-        vc.injuredCount = @"2";
-        vc.picUrl = @"http://img002.21cnimg.com/photos/album/20150702/m600/2D79154370E073A2BA3CD4D07868861D.jpg";
+        vc.project = info[@"communityName"];
+        vc.address = info[@"communityAddress"];
+        vc.liftCode = info[@"liftNum"];
+        vc.alarmTime = info[@"alarmTime"];
+        vc.savedCount = [NSString stringWithFormat:@"%ld", [info[@"savedCount"] integerValue]];
+        vc.injuredCount = [NSString stringWithFormat:@"%ld", [info[@"injureCount"] integerValue]];
         
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
