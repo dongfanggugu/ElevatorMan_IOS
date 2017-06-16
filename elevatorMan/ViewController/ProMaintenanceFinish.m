@@ -25,26 +25,30 @@
 
 @implementation ProMaintenanceFinish
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavTitle:@"维保管理"];
     [self initView];
 }
 
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     [self getFinishedPlanList];
 }
 
-- (void)initView {
+- (void)initView
+{
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 /**
  *  请求完成待确认的维保列表
  */
-- (void)getFinishedPlanList {
+- (void)getFinishedPlanList
+{
     [[HttpClient sharedClient] view:self.view post:@"getFinishedMainList" parameter:nil
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                 self.planArray = [responseObject objectForKey:@"body"];
@@ -54,18 +58,22 @@
 
 #pragma mark --  TableView data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.planArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     MaintInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:[MaintInfoCell identifier]];
 
-    if (!cell) {
+    if (!cell)
+    {
         cell = [MaintInfoCell cellFromNib];
     }
 
@@ -89,7 +97,8 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     NSString *community = [[self.planArray objectAtIndex:indexPath.row] objectForKey:@"communityName"];
     NSString *building = [[self.planArray objectAtIndex:indexPath.row] objectForKey:@"buildingCode"];
     NSString *unit = [[self.planArray objectAtIndex:indexPath.row] objectForKey:@"unitCode"];
@@ -99,7 +108,8 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 
     ProMaintenanceDetail *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"planDetail"];
 

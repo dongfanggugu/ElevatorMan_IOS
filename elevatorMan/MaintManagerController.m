@@ -50,7 +50,7 @@
 {
     [super viewDidLoad];
     [self setNavTitle:@"E维保"];
-   // [self initNavRightWithText:@"维保历史"];
+    // [self initNavRightWithText:@"维保历史"];
     [self initView];
     [self getBranches];
 }
@@ -119,20 +119,20 @@
 - (void)initView
 {
     _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64)];
-    
+
     _mapView.delegate = self;
-    
+
     _mapView.zoomLevel = 10;
-    
+
     [self.view addSubview:_mapView];
-    
+
     //头部视图
     _titleView = [ComMaintTitleView viewFromNib];
-    
+
     _titleView.frame = CGRectMake(0, 64, self.screenWidth, 75);
-    
+
     _titleView.delegate = self;
-    
+
     [self.view addSubview:_titleView];
 }
 
@@ -176,6 +176,7 @@
         [self initWorker];
     }];
 }
+
 - (void)initWorker
 {
     NSMutableArray *array = [NSMutableArray array];
@@ -257,7 +258,7 @@
 - (void)unPlan:(NSArray *)array
 {
     [self.dicUnPlan removeAllObjects];
-    
+
     self.dicUnPlan[@"count"] = [NSNumber numberWithInteger:array.count];
 
     for (NSDictionary *info in array)
@@ -282,7 +283,7 @@
 - (void)beFinished:(NSArray *)arrayMaint
 {
     [self.dicBeFinished removeAllObjects];
-    
+
     self.dicBeFinished[@"count"] = [NSNumber numberWithInteger:arrayMaint.count];
     for (NSDictionary *info in arrayMaint)
     {
@@ -306,7 +307,7 @@
 - (void)finished:(NSArray *)array
 {
     [self.dicFinished removeAllObjects];
-    
+
     self.dicFinished[@"count"] = [NSNumber numberWithInteger:array.count];
     for (NSDictionary *info in array)
     {
@@ -407,9 +408,9 @@
 {
     if ([annotation isKindOfClass:[MaintAnnotation class]])
     {
-        MaintAnnotation *ann = (MaintAnnotation *)annotation;
+        MaintAnnotation *ann = (MaintAnnotation *) annotation;
 
-        MaintAnnotationView *annView = (MaintAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:[MaintAnnotationView identifier]];
+        MaintAnnotationView *annView = (MaintAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:[MaintAnnotationView identifier]];
 
         if (!annView)
         {
@@ -443,7 +444,7 @@
 
 - (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
 {
-    MaintAnnotationView *annView = (MaintAnnotationView *)view;
+    MaintAnnotationView *annView = (MaintAnnotationView *) view;
 
     if (_curAnnView)
     {
@@ -488,7 +489,7 @@
         dic = [NSMutableDictionary dictionary];
 
         NSArray *overTime = [self filtMaintArray:self.dicMaint[@"overTime"]];
-        NSArray *today = [self filtMaintArray: self.dicMaint[@"today"]];
+        NSArray *today = [self filtMaintArray:self.dicMaint[@"today"]];
         NSArray *unPlan = [self filtMaintArray:self.dicMaint[@"unPlan"]];
 
         dic[@"overTime"] = overTime;

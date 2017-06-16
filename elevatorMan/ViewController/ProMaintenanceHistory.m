@@ -32,13 +32,15 @@
 @implementation ProMaintenanceHistory
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self initView];
     [self initData];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
 
     self.currentPage = 1;
@@ -46,7 +48,8 @@
 }
 
 
-- (void)initView {
+- (void)initView
+{
     self.automaticallyAdjustsScrollViewInsets = NO;
 
     _tableView = [[PullTableView alloc] initWithFrame:CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64 - 49)];
@@ -63,11 +66,13 @@
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
-- (void)initData {
+- (void)initData
+{
     _historyArray = [NSMutableArray array];
 }
 
-- (void)getHistory {
+- (void)getHistory
+{
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
 
     [param setValue:[NSNumber numberWithLong:1] forKey:@"page"];
@@ -77,7 +82,8 @@
     [[HttpClient sharedClient] view:self.view post:@"getHistoryMainList" parameter:param
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-                                if (_tableView.pullTableIsRefreshing) {
+                                if (_tableView.pullTableIsRefreshing)
+                                {
                                     _tableView.pullTableIsRefreshing = NO;
                                 }
 
@@ -91,7 +97,8 @@
 }
 
 
-- (void)getMoreHistory {
+- (void)getMoreHistory
+{
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
 
     [param setValue:[NSNumber numberWithLong:self.currentPage] forKey:@"page"];
@@ -101,7 +108,8 @@
     [[HttpClient sharedClient] view:self.view post:@"getHistoryMainList" parameter:param
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-                                if (_tableView.pullTableIsLoadingMore) {
+                                if (_tableView.pullTableIsLoadingMore)
+                                {
                                     _tableView.pullTableIsLoadingMore = NO;
                                 }
 
@@ -113,7 +121,8 @@
 }
 
 - (void)getHistoryArrayByPage:(NSInteger)page project:(NSString *)project building:(NSString *)building
-                         unit:(NSString *)unit lift:(NSString *)litfId {
+                         unit:(NSString *)unit lift:(NSString *)litfId
+{
 
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithCapacity:1];
 
@@ -139,18 +148,22 @@
 
 #pragma mark -- TableView data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.historyArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     MaintInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:[MaintInfoCell identifier]];
 
-    if (!cell) {
+    if (!cell)
+    {
         cell = [MaintInfoCell cellFromNib];
     }
 
@@ -173,7 +186,8 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     NSString *community = [[self.historyArray objectAtIndex:indexPath.row] objectForKey:@"communityName"];
     NSString *building = [[self.historyArray objectAtIndex:indexPath.row] objectForKey:@"buildingCode"];
     NSString *unit = [[self.historyArray objectAtIndex:indexPath.row] objectForKey:@"unitCode"];
@@ -182,7 +196,8 @@
     return [MaintInfoCell cellHeightWithText:project];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 
     ProMaintenanceDetail *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"planDetail"];
 
@@ -228,22 +243,26 @@
 
 #pragma mark - PullTableViewDelegate
 
-- (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView {
+- (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
+{
     [self refreshTable];
 }
 
-- (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView {
+- (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
+{
     [self loadMoreDataToTable];
 }
 
 
 #pragma mark - PullTableViewDelegate callback
 
-- (void)refreshTable {
+- (void)refreshTable
+{
     [self getHistory];
 }
 
-- (void)loadMoreDataToTable {
+- (void)loadMoreDataToTable
+{
     self.currentPage++;
     [self getMoreHistory];
 

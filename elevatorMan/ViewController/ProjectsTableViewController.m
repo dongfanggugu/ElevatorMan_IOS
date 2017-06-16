@@ -26,9 +26,12 @@
 
 
 //根据index.row的值%3来设置背景图片、背景颜色和文字颜色
-- (void)setCellContent:(NSInteger)index {
-    switch (index % 3) {
-        case 0: {
+- (void)setCellContent:(NSInteger)index
+{
+    switch (index % 3)
+    {
+        case 0:
+        {
 
             self.projectTtle.textColor = UIColorFromRGB(0xfffbd075);
             self.backColorView.backgroundColor = UIColorFromRGB(0xfffbd075);
@@ -37,14 +40,16 @@
 
         }
 
-        case 1: {
+        case 1:
+        {
             self.projectTtle.textColor = UIColorFromRGB(0xff99cdff);;
             self.backColorView.backgroundColor = UIColorFromRGB(0xff99cdff);
             [self.backgroundImageView setImage:[UIImage imageNamed:@"icon_project_2.png"]];
             break;
 
         }
-        case 2: {
+        case 2:
+        {
             self.projectTtle.textColor = UIColorFromRGB(0xffcacd96);;
             self.backColorView.backgroundColor = UIColorFromRGB(0xffcacd96);
             [self.backgroundImageView setImage:[UIImage imageNamed:@"icon_project_3.png"]];
@@ -77,18 +82,21 @@
 @implementation ProjectsTableViewController
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavTitle:@"项目"];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     [self getProjectsList];
 }
 
 
-- (void)getProjectsList {
+- (void)getProjectsList
+{
 
     __weak ProjectsTableViewController *weakSelf = self;
     //请求
@@ -102,20 +110,23 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
 
     // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
 
     // Return the number of rows in the section.
     return [self.ProjectList count];
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     ProjectsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"projectsCell" forIndexPath:indexPath];
 
     // Configure the cell...
@@ -129,7 +140,8 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     BuildingsViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"buildingsViewController"];
     controller.buildingArray = [[self.ProjectList objectAtIndex:indexPath.row] objectForKey:@"buildingList"];
     controller.projectName = [[self.ProjectList objectAtIndex:indexPath.row] objectForKey:@"name"];

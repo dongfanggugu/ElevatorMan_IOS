@@ -15,14 +15,17 @@
 @implementation BaseTabBarController
 
 
-- (void)setNavIcon {
-    if (!self.navigationController) {
+- (void)setNavIcon
+{
+    if (!self.navigationController)
+    {
         return;
     }
 
     NSArray<UIViewController *> *controllers = self.navigationController.viewControllers;
 
-    if (self == controllers[0]) {
+    if (self == controllers[0])
+    {
         return;
     }
 
@@ -35,7 +38,8 @@
     self.navigationItem.leftBarButtonItem = item;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
 
     //设置回退icon
@@ -49,19 +53,23 @@
                                                  name:@"alarmNotification" object:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"alarmNotification" object:nil];
 }
 
-- (void)popup {
+- (void)popup
+{
     [self.navigationController popViewControllerAnimated:YES];
 
 }
 
 
-- (void)setNavTitle:(NSString *)title {
-    if (!self.navigationController) {
+- (void)setNavTitle:(NSString *)title
+{
+    if (!self.navigationController)
+    {
         return;
     }
 
@@ -77,8 +85,10 @@
 /**
  使用图片初始化导航栏右侧按钮
  **/
-- (void)initNavRightWithImage:(UIImage *)image {
-    if (!self.navigationController) {
+- (void)initNavRightWithImage:(UIImage *)image
+{
+    if (!self.navigationController)
+    {
         return;
     }
 
@@ -92,36 +102,46 @@
     [btnRight addTarget:self action:@selector(onClickNavRight) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)onClickNavRight {
+- (void)onClickNavRight
+{
 
 }
 
-- (void)hideBackIcon {
+- (void)hideBackIcon
+{
     UIView *nullView = [[UIView alloc] initWithFrame:CGRectZero];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:nullView];
 }
 
-- (void)receivedAlarmNotify:(NSNotification *)notification {
+- (void)receivedAlarmNotify:(NSNotification *)notification
+{
     NSDictionary *info = [NSDictionary dictionaryWithDictionary:notification.userInfo];
 
     _notifyAlarmId = [info objectForKey:@"alarmId"];
 
-    if ([[info objectForKey:@"notifyType"] isEqualToString:@"WORKER_CHOSEN_FALSE"]) {
+    if ([[info objectForKey:@"notifyType"] isEqualToString:@"WORKER_CHOSEN_FALSE"])
+    {
 
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您未被指派参与此次救援,感谢您的参与!"
                                                        delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
-    } else if ([[info objectForKey:@"notifyType"] isEqualToString:@"WORKER_CHOSEN_TRUE"]) {
+    }
+    else if ([[info objectForKey:@"notifyType"] isEqualToString:@"WORKER_CHOSEN_TRUE"])
+    {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您已经被指派参与此次救援,点击确定进行处理!"
                                                        delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         alert.tag = ALARM_ASSIGNED;
         [alert show];
-    } else if ([[info objectForKey:@"notifyType"] isEqualToString:@"WORKER_ALARM"]) {
+    }
+    else if ([[info objectForKey:@"notifyType"] isEqualToString:@"WORKER_ALARM"])
+    {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"有新的报警,点击确定查看报警详细信息!"
                                                        delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         alert.tag = ALARM_RECEIVED;
         [alert show];
-    } else if ([[info objectForKey:@"notifyType"] isEqualToString:@"CHAT"]) {
+    }
+    else if ([[info objectForKey:@"notifyType"] isEqualToString:@"CHAT"])
+    {
         UIView *notice = [BannerNotice bannerWith:nil bannerName:@"新消息" bannerContent:@"救援交流群有新的消息"];
 
         CGRect frame = notice.frame;
@@ -134,18 +154,24 @@
 #pragma mark --  UIAlertViewDelegate
 
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
     NSLog(@"button index:%ld", buttonIndex);
 
-    if (ALARM_RECEIVED == alertView.tag) {
-        if (1 == buttonIndex) {
+    if (ALARM_RECEIVED == alertView.tag)
+    {
+        if (1 == buttonIndex)
+        {
             UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
             UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"alarm_received"];
 
             [self.navigationController pushViewController:controller animated:YES];
         }
-    } else if (ALARM_ASSIGNED == alertView.tag) {
-        if (1 == buttonIndex) {
+    }
+    else if (ALARM_ASSIGNED == alertView.tag)
+    {
+        if (1 == buttonIndex)
+        {
             UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
             AlarmViewController *controller = [board instantiateViewControllerWithIdentifier:@"alarm_process"];
             controller.alarmId = _notifyAlarmId;
@@ -156,14 +182,16 @@
 
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     NSLog(@"%@ dealloc", [self class]);
 }
 
 
 #pragma mark -- 设置状态栏字体为白色
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
     return UIStatusBarStyleLightContent;
 }
 

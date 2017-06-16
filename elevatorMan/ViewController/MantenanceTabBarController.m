@@ -20,7 +20,8 @@
 
 @implementation MantenanceTabBarController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavTitle:@"维保管理"];
 }

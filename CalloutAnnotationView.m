@@ -11,7 +11,7 @@
 #import "AlarmInfoView.h"
 #import "HttpClient.h"
 
-@interface CalloutAnnotationView()
+@interface CalloutAnnotationView ()
 
 
 @end
@@ -24,11 +24,11 @@
     if (self)
     {
     }
-    
+
     return self;
 }
 
-- (id)initWithAnnotation:(id<BMKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithAnnotation:(id <BMKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
     if (self)
@@ -41,49 +41,49 @@
         imageView.image = [UIImage imageNamed:@"icon_project"];
         [self addSubview:imageView];
     }
-    
+
     return self;
 }
 
 - (void)showInfoWindow
 {
-    
+
     _alarmInfoView = [AlarmInfoView viewFromNib];
     _alarmInfoView.backgroundColor = [UIColor clearColor];
-    
+
     _alarmInfoView.frame = CGRectMake(-98, -120, 210, 120);
-    
+
     NSString *project = [_info objectForKey:@"name"];
     NSString *brands = [_info objectForKey:@"brand"];
     NSString *tel = [_info objectForKey:@"projectTela"];
-    
+
     _alarmInfoView.projectLabel.text = project;
     _alarmInfoView.addressLabel.text = brands;
     _alarmInfoView.propertyTel.text = tel;
-    
+
     [_alarmInfoView onClickTel:^(NSString *tel) {
         NSLog(@"contacts tel:%@", tel);
-        
+
         if (0 == tel.length)
         {
             [HUDClass showHUDWithLabel:@"非法的手机号码,无法拨打!" view:self];
             return;
         }
-        
+
         NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", tel]];
         UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectZero];
         [webView loadRequest:[NSURLRequest requestWithURL:phoneURL]];
         [self addSubview:webView];
-        
+
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         params[@"communityId"] = [_info objectForKey:@"id"];
-        
+
         [[HttpClient sharedClient] view:nil post:@"addContactMaint" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
+
         }];
-        
+
     }];
-    
+
     [self addSubview:_alarmInfoView];
 }
 
@@ -114,7 +114,7 @@
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
     CGRect rect = self.bounds;
-    
+
     BOOL isInside = CGRectContainsPoint(rect, point);
     if (!isInside)
     {
@@ -127,7 +127,7 @@
             }
         }
     }
-    
+
     return isInside;
 }
 

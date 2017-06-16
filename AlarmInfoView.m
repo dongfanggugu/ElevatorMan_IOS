@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "AlarmInfoView.h"
 
-@interface AlarmInfoView()
+@interface AlarmInfoView ()
 
 @property (weak, nonatomic) IBOutlet UIButton *telBtn;
 
-@property (strong, nonatomic) void(^onClickTel)(NSString *tel);
+@property (strong, nonatomic) void (^onClickTel)(NSString *tel);
 
 @end
 
@@ -27,9 +27,9 @@
     {
         return nil;
     }
-    
+
     return [[array[0] subviews] objectAtIndex:0];
-        
+
 }
 
 - (void)awakeFromNib

@@ -13,7 +13,8 @@
 #import "AppDelegate.h"
 #import "ChatController.h"
 
-@interface TrackingViewController () <BMKMapViewDelegate> {
+@interface TrackingViewController () <BMKMapViewDelegate>
+{
     IBOutlet BMKMapView *_mapView;
     BMKPointAnnotation *_alarmAnnotation;
 }
@@ -62,19 +63,23 @@
 
 @implementation TrackingViewController
 
-- (void)dealloc {
+- (void)dealloc
+{
 
-    if (self.trackingTimer) {
+    if (self.trackingTimer)
+    {
         [self.trackingTimer invalidate];
         self.trackingTimer = nil;
     }
 
-    if (_mapView) {
+    if (_mapView)
+    {
         _mapView = nil;
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
 
     [_mapView viewWillAppear];
@@ -84,7 +89,8 @@
 
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     [self getAlarmInfo];
 
@@ -92,7 +98,8 @@
     self.trackingTimer = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(getRepairListByAlarmId) userInfo:nil repeats:YES];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
 
     [super viewWillDisappear:animated];
     [_mapView viewWillDisappear];
@@ -104,7 +111,8 @@
 }
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     //[self initTitle];
@@ -126,7 +134,8 @@
 }
 
 
-- (void)initNavRight {
+- (void)initNavRight
+{
     //设置标题栏右侧
     UIButton *btnSubmit = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     //[btnSubmit setTitle:@"提交" forState:UIControlStateNormal];
@@ -138,7 +147,8 @@
     self.navigationItem.rightBarButtonItem = rightItem;
 }
 
-- (void)chat {
+- (void)chat
+{
     UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
     ChatController *controller = [board instantiateViewControllerWithIdentifier:@"chat_controller"];
     controller.enterType = Enter_Property;
@@ -159,7 +169,8 @@
 //    [self.backImage addGestureRecognizer:sigleTap];
 //}
 
-- (void)hideWorkerInfo:(BOOL)show {
+- (void)hideWorkerInfo:(BOOL)show
+{
     self.labelStateLeft.hidden = show;
 
     self.currentState.hidden = show;
@@ -172,34 +183,45 @@
 
     self.label_telphone.hidden = show;
 
-    if (show) {
+    if (show)
+    {
         self.infoViewHeight.constant = 35;
-    } else {
+    }
+    else
+    {
         self.infoViewHeight.constant = 140;
     }
 }
 
 
-- (void)getAlarmInfo {
+- (void)getAlarmInfo
+{
     __weak TrackingViewController *weakSelf = self;
     NSDictionary *dic = [NSDictionary dictionaryWithObject:self.alarmId forKey:@"id"];
 
     [[HttpClient sharedClient] view:self.view post:@"getAlarmDetail" parameter:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *misInfo = [[responseObject objectForKey:@"body"] objectForKey:@"isMisinformation"];
-        if ([misInfo isEqualToString:@"1"]) {
+        if ([misInfo isEqualToString:@"1"])
+        {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"报警消息已经撤消!" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             alert.tag = 1;
             [alert show];
 
-        } else {
+        }
+        else
+        {
             NSDictionary *alarmInfo = [responseObject objectForKey:@"body"];
             //是否显示完成按钮
-            if ([[alarmInfo objectForKey:@"state"] isEqualToString:@"3"]) {
+            if ([[alarmInfo objectForKey:@"state"] isEqualToString:@"3"])
+            {
                 weakSelf.button_finish.hidden = NO;
-            } else {
+            }
+            else
+            {
                 weakSelf.button_finish.hidden = YES;
 
-                if ([[alarmInfo objectForKey:@"state"] isEqualToString:@"0"]) {
+                if ([[alarmInfo objectForKey:@"state"] isEqualToString:@"0"])
+                {
                     weakSelf.currentState.text = @"任务指派中";
                     [weakSelf getNoticedWorkerInfo];
                 }
@@ -226,7 +248,8 @@
     }];
 }
 
-- (IBAction)dismis:(id)sender {
+- (IBAction)dismis:(id)sender
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -234,10 +257,12 @@
 /**
  *  call the telphone
  */
-- (void)call {
+- (void)call
+{
     NSString *telstringTrim = [self.label_telphone.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-    if ([telstringTrim isEqualToString:@""]) {
+    if ([telstringTrim isEqualToString:@""])
+    {
         return;
     }
     NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", telstringTrim]];
@@ -248,7 +273,8 @@
 }
 
 //请求推送完的维修工数量及位置
-- (void)getNoticedWorkerInfo {
+- (void)getNoticedWorkerInfo
+{
 
     NSDictionary *dic =
             [NSDictionary dictionaryWithObject:self.alarmId forKey:@"alarmId"];
@@ -258,7 +284,8 @@
                           parameter:dic
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-                                if ([responseObject objectForKey:@"body"]) {
+                                if ([responseObject objectForKey:@"body"])
+                                {
                                     weakself.noticedWorkers = [NSArray arrayWithArray:[responseObject objectForKey:@"body"]];
                                     [weakself addNoticedWorkerAnnotations];
                                 }
@@ -268,7 +295,8 @@
 
 
 //请求报警追踪
-- (void)getRepairListByAlarmId {
+- (void)getRepairListByAlarmId
+{
 
     NSDictionary *dic = [NSDictionary dictionaryWithObject:self.alarmId forKey:@"alarmId"];
 
@@ -280,7 +308,8 @@
                                 //根据获取的报警跟踪信息显示数据
                                 //[weakself addAlarmAnnotation];
 
-                                if ([responseObject objectForKey:@"body"]) {
+                                if ([responseObject objectForKey:@"body"])
+                                {
                                     weakself.workerInfo = [NSArray arrayWithArray:[responseObject objectForKey:@"body"]];
                                     [weakself addWorkersAnnotation];
                                 }
@@ -289,13 +318,17 @@
 }
 
 //显示所有推送的维修工的位置
-- (void)addNoticedWorkerAnnotations {
+- (void)addNoticedWorkerAnnotations
+{
 
     //[_mapView removeOverlays:_mapView.overlays];
 
     self.noticedWorkerAnnotations = [NSMutableArray arrayWithCapacity:1];
 
-    for (NSInteger i = 0; i < self.noticedWorkers.count; i++) {
+    for (NSInteger i = 0;
+            i < self.noticedWorkers.count;
+            i++)
+    {
         CLLocationCoordinate2D coor;
         coor.latitude = [[[self.noticedWorkers objectAtIndex:i] objectForKey:@"lat"] floatValue];
         coor.longitude = [[[self.noticedWorkers objectAtIndex:i] objectForKey:@"lng"] floatValue];
@@ -313,10 +346,12 @@
     //[_mapView showAnnotations:array animated:YES];
 }
 
-- (void)addAlarmAnnotationWithLat:(float)lat AndLng:(float)lng {
+- (void)addAlarmAnnotationWithLat:(float)lat AndLng:(float)lng
+{
 
     if (_alarmAnnotation.coordinate.latitude == lat
-            && _alarmAnnotation.coordinate.longitude == lng) {
+            && _alarmAnnotation.coordinate.longitude == lng)
+    {
         return;
     }
 
@@ -324,7 +359,8 @@
     //[_mapView removeOverlays:_mapView.overlays];
     [_mapView removeAnnotation:_alarmAnnotation];
 
-    if (nil == _alarmAnnotation) {
+    if (nil == _alarmAnnotation)
+    {
         _alarmAnnotation = [[BMKPointAnnotation alloc] init];
     }
 
@@ -341,14 +377,18 @@
 
 }
 
-- (void)addWorkersAnnotation {
+- (void)addWorkersAnnotation
+{
 
     //clear the annotation previous
     [_mapView removeAnnotations:_annotations];
     [_annotations removeAllObjects];
 
     NSLog(@"worker count:%ld", _workerInfo.count);
-    for (NSInteger i = 0; i < _workerInfo.count; i++) {
+    for (NSInteger i = 0;
+            i < _workerInfo.count;
+            i++)
+    {
         NSDictionary *worker = [_workerInfo objectAtIndex:i];
         CLLocationCoordinate2D coor;
         coor.latitude = [[worker objectForKey:@"lat"] floatValue];
@@ -360,10 +400,12 @@
 
         NSString *state = [self getDescriptionByState:[worker objectForKey:@"state"]];
 
-        if (0 == state.length) {
+        if (0 == state.length)
+        {
             continue;
         }
-        if (_curSelect == i) {
+        if (_curSelect == i)
+        {
             _currentState.text = state;
         }
 
@@ -379,7 +421,8 @@
     //[_mapView showAnnotations:array animated:YES];
 }
 
-- (IBAction)finishedAlarm:(id)sender {
+- (IBAction)finishedAlarm:(id)sender
+{
     NSDictionary *dic = [NSDictionary dictionaryWithObject:self.alarmId forKey:@"alarmId"];
 
     //确认救援完成
@@ -397,10 +440,13 @@
 
 // 根据anntation生成对应的View
 
-- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation {
-    if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
+- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[BMKPointAnnotation class]])
+    {
 
-        if (annotation == _alarmAnnotation) {
+        if (annotation == _alarmAnnotation)
+        {
             BMKAnnotationView *alarmAnnotationView = [[BMKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"alarmAnnotation"];
             [alarmAnnotationView setBounds:CGRectMake(0.f, 0.f, 20.f, 25.f)];
             [alarmAnnotationView setBackgroundColor:[UIColor clearColor]];
@@ -416,22 +462,33 @@
         annotationImageView.contentMode = UIViewContentModeScaleAspectFit;
 
 
-        for (BMKPointAnnotation *annotation1 in self.annotations) {
+        for (BMKPointAnnotation *annotation1 in self.annotations)
+        {
 
-            if (annotation1 == annotation) {
+            if (annotation1 == annotation)
+            {
                 NSInteger index = [self.annotations indexOfObject:annotation];
                 NSDictionary *dic = [self.workerInfo objectAtIndex:index];
-                if ([[dic objectForKey:@"state"] isEqualToString:@"1"]) {
-                    if (index == self.curSelect) {
+                if ([[dic objectForKey:@"state"] isEqualToString:@"1"])
+                {
+                    if (index == self.curSelect)
+                    {
                         [annotationImageView setImage:[UIImage imageNamed:@"marker_selected"]];
-                    } else {
+                    }
+                    else
+                    {
                         [annotationImageView setImage:[UIImage imageNamed:@"marker_worker"]];
                     }
 
-                } else if ([[dic objectForKey:@"state"] isEqualToString:@"2"] || [[dic objectForKey:@"state"] isEqualToString:@"3"]) {
-                    if (index == self.curSelect) {
+                }
+                else if ([[dic objectForKey:@"state"] isEqualToString:@"2"] || [[dic objectForKey:@"state"] isEqualToString:@"3"])
+                {
+                    if (index == self.curSelect)
+                    {
                         [annotationImageView setImage:[UIImage imageNamed:@"marker_selected"]];
-                    } else {
+                    }
+                    else
+                    {
                         [annotationImageView setImage:[UIImage imageNamed:@"marker_worker_arrived"]];
                     }
                 }
@@ -448,12 +505,17 @@
 }
 
 
-- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
+- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
+{
     //[_mapView removeOverlays:_mapView.overlays];
 
-    for (int i = 0; i < self.annotations.count; i++) {
+    for (int i = 0;
+            i < self.annotations.count;
+            i++)
+    {
         BMKPointAnnotation *annotation = [self.annotations objectAtIndex:i];
-        if (view.annotation == annotation) {
+        if (view.annotation == annotation)
+        {
             //设置选中的状态
             NSDictionary *worker = [self.workerInfo objectAtIndex:i];
 
@@ -476,29 +538,41 @@
             self.label_telphone.text = [worker objectForKey:@"tel"];
 
             //set the worker state
-            if ([[worker objectForKey:@"state"] isEqualToString:@"0"]) {
+            if ([[worker objectForKey:@"state"] isEqualToString:@"0"])
+            {
                 self.currentState.text = @"指派中";
 
-            } else if ([[worker objectForKey:@"state"] isEqualToString:@"1"]) {
+            }
+            else if ([[worker objectForKey:@"state"] isEqualToString:@"1"])
+            {
                 self.currentState.text = @"已出发";
 
-            } else if ([[worker objectForKey:@"state"] isEqualToString:@"2"]) {
+            }
+            else if ([[worker objectForKey:@"state"] isEqualToString:@"2"])
+            {
                 self.currentState.text = @"已到达";
 
-            } else if ([[worker objectForKey:@"state"] isEqualToString:@"3"]) {
+            }
+            else if ([[worker objectForKey:@"state"] isEqualToString:@"3"])
+            {
                 self.currentState.text = @"已完成";
 
             }
 
 
             //show the trace if the worker does not arrive
-            if ([[worker objectForKey:@"state"] isEqualToString:@"1"]) {
+            if ([[worker objectForKey:@"state"] isEqualToString:@"1"])
+            {
                 NSArray *points = [worker objectForKey:@"points"];
 
-                if (points && points.count > 0) {
+                if (points && points.count > 0)
+                {
                     CLLocationCoordinate2D coors[points.count];
 
-                    for (NSInteger j = 0; j < points.count; j++) {
+                    for (NSInteger j = 0;
+                            j < points.count;
+                            j++)
+                    {
                         CLLocationCoordinate2D coor;
                         coor.latitude = [[points[j] objectForKey:@"lat"] floatValue];
                         coor.longitude = [[points[j] objectForKey:@"lng"] floatValue];
@@ -515,10 +589,13 @@
 }
 
 // 当点击annotation view弹出的泡泡时，调用此接口
-- (void)mapView:(BMKMapView *)mapView annotationViewForBubble:(BMKAnnotationView *)view; {
-    for (BMKPointAnnotation *annotation in self.annotations) {
+- (void)mapView:(BMKMapView *)mapView annotationViewForBubble:(BMKAnnotationView *)view;
+{
+    for (BMKPointAnnotation *annotation in self.annotations)
+    {
 
-        if (view.annotation == annotation) {
+        if (view.annotation == annotation)
+        {
             NSInteger index = [self.annotations indexOfObject:annotation];
 
             //界面上更新数据
@@ -531,16 +608,23 @@
             self.infoViewHeight.constant = 130;
 
             //设置报警状态描述
-            if ([[dic objectForKey:@"state"] isEqualToString:@"0"]) {
+            if ([[dic objectForKey:@"state"] isEqualToString:@"0"])
+            {
                 self.currentState.text = @"指派中";
 
-            } else if ([[dic objectForKey:@"state"] isEqualToString:@"1"]) {
+            }
+            else if ([[dic objectForKey:@"state"] isEqualToString:@"1"])
+            {
                 self.currentState.text = @"已出发";
 
-            } else if ([[dic objectForKey:@"state"] isEqualToString:@"2"]) {
+            }
+            else if ([[dic objectForKey:@"state"] isEqualToString:@"2"])
+            {
                 self.currentState.text = @"已到达";
 
-            } else if ([[dic objectForKey:@"state"] isEqualToString:@"3"]) {
+            }
+            else if ([[dic objectForKey:@"state"] isEqualToString:@"3"])
+            {
                 self.currentState.text = @"已完成";
 
             }
@@ -559,14 +643,18 @@
             NSArray *array = [dic objectForKey:@"points"];
 
 
-            if (array && array.count > 0) {
+            if (array && array.count > 0)
+            {
                 // NSMutableArray *newA = [NSMutableArray arrayWithCapacity:1];
 
 
                 CLLocationCoordinate2D coor[array.count];
 
 
-                for (NSInteger i = 0; i < array.count; i++) {
+                for (NSInteger i = 0;
+                        i < array.count;
+                        i++)
+                {
                     CLLocationCoordinate2D cor;
                     cor.latitude = [[array[i] objectForKey:@"lat"] floatValue];
                     cor.longitude = [[array[i] objectForKey:@"lng"] floatValue];
@@ -585,8 +673,10 @@
 }
 
 // Override
-- (BMKOverlayView *)mapView:(BMKMapView *)mapView viewForOverlay:(id <BMKOverlay>)overlay {
-    if ([overlay isKindOfClass:[BMKPolyline class]]) {
+- (BMKOverlayView *)mapView:(BMKMapView *)mapView viewForOverlay:(id <BMKOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[BMKPolyline class]])
+    {
         [mapView removeOverlay:self.overLayer];
 
         BMKPolylineView *polylineView = [[BMKPolylineView alloc] initWithOverlay:overlay];
@@ -609,20 +699,28 @@
  *
  *  @return <#return value description#>
  */
-- (NSString *)getDescriptionByState:(NSString *)state {
+- (NSString *)getDescriptionByState:(NSString *)state
+{
 
     NSString *result = @"";
     //设置报警状态描述
-    if ([state isEqualToString:@"0"]) {
+    if ([state isEqualToString:@"0"])
+    {
         result = @"指派中";
 
-    } else if ([state isEqualToString:@"1"]) {
+    }
+    else if ([state isEqualToString:@"1"])
+    {
         result = @"已出发";
 
-    } else if ([state isEqualToString:@"2"]) {
+    }
+    else if ([state isEqualToString:@"2"])
+    {
         result = @"已到达";
 
-    } else if ([state isEqualToString:@"3"]) {
+    }
+    else if ([state isEqualToString:@"3"])
+    {
         result = @"已完成";
     }
 

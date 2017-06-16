@@ -13,32 +13,35 @@
 
 @implementation Utils
 
-+ (UIColor *)getColorByRGB:(NSString *)RGB {
-    
-    if (RGB.length != 7) {
++ (UIColor *)getColorByRGB:(NSString *)RGB
+{
+
+    if (RGB.length != 7)
+    {
         NSLog(@"illegal RGB value!");
         return [UIColor clearColor];
     }
-    
-    if (![RGB hasPrefix:@"#"]) {
+
+    if (![RGB hasPrefix:@"#"])
+    {
         NSLog(@"illegal RGB value!");
         return [UIColor clearColor];
     }
-    
+
     NSString *colorString = [RGB substringFromIndex:1];
-    
+
     NSRange range;
     range.location = 0;
     range.length = 2;
-    
+
     NSString *red = [colorString substringWithRange:range];
-    
+
     range.location = 2;
     NSString *green = [colorString substringWithRange:range];
-    
+
     range.location = 4;
     NSString *blue = [colorString substringWithRange:range];
-    
+
     unsigned int r, g, b;
     [[NSScanner scannerWithString:red] scanHexInt:&r];
     [[NSScanner scannerWithString:green] scanHexInt:&g];
@@ -47,21 +50,22 @@
 }
 
 
-+ (NSString *)getServer {
-    NSString *urlTextString =  [[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"];
-    
++ (NSString *)getServer
+{
+    NSString *urlTextString = [[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"];
+
     NSString *string = nil;
-    
+
     //string = @"http://123.57.10.16:8080/lift/mobile/";
-    
-    string = @"http://192.168.0.81:8080/mobile/";
-    
-    
-    
+
+    string = @"http://192.168.0.82:8080/mobile/";
+
+
+
     //string = @"http://192.168.0.82:8080/mobile/";
-    
-     //string = @"http://192.168.0.82:8080/lift/mobile/";
-    
+
+    //string = @"http://192.168.0.82:8080/lift/mobile/";
+
 //    if ([urlTextString isEqualToString:@"北京"]) {
 //        string = @"http://211.147.152.6:8080/lift/mobile/";
 //
@@ -86,7 +90,7 @@
 //        //默认使用全国的服务器
 //        string = @"http://192.168.0.82:8080/mobile/";
 //    }
-    
+
     return string;
 }
 
@@ -98,7 +102,8 @@
  *
  *  @return <#return value description#>
  */
-+ (BOOL)isLegalAge:(NSString *)age {
++ (BOOL)isLegalAge:(NSString *)age
+{
     NSString *ageRegex = @"^([1-9]\\d{0,1})$";
     NSPredicate *ageTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", ageRegex];
     return [ageTest evaluateWithObject:age];
@@ -111,8 +116,9 @@
  *
  *  @return <#return value description#>
  */
-+ (BOOL)isCorrectPhoneNumberOf:(NSString *)phoneNumber {
-    
++ (BOOL)isCorrectPhoneNumberOf:(NSString *)phoneNumber
+{
+
     NSString *phoneRegex = @"^((13[0-9])|(14[0-9])|(15[^4,\\D])|(17[0-9])|(18[0,5-9]))\\d{8}$";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
     return [phoneTest evaluateWithObject:phoneNumber];
@@ -137,21 +143,32 @@
             result[4], result[5], result[6], result[7],
             result[8], result[9], result[10], result[11],
             result[12], result[13], result[14], result[15]
-            ];
+    ];
 }
 
 + (NSString *)stringFromDate:(NSDate *)date
 {
-    
+
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
+
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    
+
     NSString *destDateString = [dateFormatter stringFromDate:date];
-    
+
     return destDateString;
 }
 
++ (NSString *)today:(NSString *)format
+{
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+
+    [dateFormatter setDateFormat:format];
+
+    NSString *destDateString = [dateFormatter stringFromDate:[NSDate date]];
+
+    return destDateString;
+}
 
 /** 图片转换为base64码 **/
 + (NSString *)image2Base64:(UIImage *)image

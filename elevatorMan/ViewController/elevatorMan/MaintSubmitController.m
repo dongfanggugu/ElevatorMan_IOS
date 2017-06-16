@@ -314,7 +314,7 @@
 
     [[HttpClient sharedClient] post:@"uploadImg" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *afterUrl = responseObject[@"body"][@"url"];
-
+        [self submit:beforeUrl after:afterUrl];
     }];
 }
 

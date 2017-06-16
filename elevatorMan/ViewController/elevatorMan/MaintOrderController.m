@@ -145,10 +145,10 @@
     {
         _infoView.btnChange.hidden = YES;
     }
-    _maintOrderInfo = self.arrayOrder[0];
+    self.maintOrderInfo = self.arrayOrder[0];
 
     _infoView.lbAddress.text = _maintOrderInfo[@"villaInfo"][@"cellName"];
-    _infoView.lbName.text = _maintOrderInfo[@"maintypeInfo"][@"name"];
+    _infoView.lbName.text = _maintOrderInfo[@"mainttypeInfo"][@"name"];
 
     NSInteger maintType = [_maintOrderInfo[@"mainttypeInfo"][@"id"] integerValue];
 
@@ -158,7 +158,7 @@
         {
             _infoView.lbTag.text = @"一级管家";
 
-            NSString *expire = _maintOrderInfo[@"expireTime"];
+            NSString *expire = _maintOrderInfo[@"maintOrderInfo"][@"expireTime"];
 
             if (0 == expire.length)
             {
@@ -176,7 +176,7 @@
         {
             _infoView.lbTag.text = @"二级管家";
 
-            NSString *expire = _maintOrderInfo[@"expireTime"];
+            NSString *expire = _maintOrderInfo[@"maintOrderInfo"][@"expireTime"];
 
             if (0 == expire.length)
             {
@@ -194,7 +194,7 @@
         {
              _infoView.lbTag.text = @"三级管家";
 
-            NSInteger frequency = _maintOrderInfo[@"frequency"];
+            NSInteger frequency = [_maintOrderInfo[@"frequency"] integerValue];
 
             _infoView.lbExpire.text = [NSString stringWithFormat:@"剩余次数:%ld", frequency];
         }
@@ -212,7 +212,7 @@
 
     for (NSDictionary *info in self.arrayOrder)
     {
-        ListDialogData *data = [[ListDialogData alloc] initWithKey:info[@"id"] content:info[@"cellName"]];
+        ListDialogData *data = [[ListDialogData alloc] initWithKey:info[@"id"] content:info[@"villaInfo"][@"cellName"]];
         [array addObject:data];
     }
 
@@ -247,7 +247,7 @@
     params[@"rows"] = [NSNumber numberWithInteger:100];
 
 
-    [[HttpClient sharedClient] post:nil parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[HttpClient sharedClient] post:@"getMaintOrderProcessByMaintOrder" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.arrayTask removeAllObjects];
         [self.arrayTask addObjectsFromArray:responseObject[@"body"]];
         [self.tableView reloadData];
@@ -358,7 +358,7 @@
 - (void)onClickPlanButton:(MainOrderInfoView *)view
 {
     MaintInfoController *controller = [[MaintInfoController alloc] init];
-    controller.serviceId = _maintOrderInfo[@"id"];
+    controller.orderInfo = self.maintOrderInfo;
 
     controller.hidesBottomBarWhenPushed = YES;
 

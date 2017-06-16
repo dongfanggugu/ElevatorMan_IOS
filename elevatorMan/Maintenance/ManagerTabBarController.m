@@ -13,13 +13,15 @@
 @implementation ManagerTabBarController
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self initItem];
     [self initTabBar];
 }
 
-- (void)initItem {
+- (void)initItem
+{
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MaintenanceManager" bundle:nil];
     UIViewController *today = [storyBoard instantiateViewControllerWithIdentifier:@"main_today"];
 
@@ -32,7 +34,8 @@
 }
 
 
-- (void)initTabBar {
+- (void)initTabBar
+{
     [[self.tabBar.items objectAtIndex:0] setImage:[UIImage imageNamed:@"icon_more_normal"]];
     [[self.tabBar.items objectAtIndex:0] setTitle:@"今日维保"];
 }

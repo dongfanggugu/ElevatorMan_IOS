@@ -36,7 +36,8 @@
 
 @implementation InfoCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
     _bagView.layer.masksToBounds = YES;
     _bagView.layer.cornerRadius = 5;
@@ -71,7 +72,8 @@
 
 @synthesize btnLogOff;
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     [self setNavTitle:@"个人中心"];
@@ -91,7 +93,8 @@
     [self addFootView];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
 
     //在这里加载信息，解决更新信息及时显示的问题
@@ -106,12 +109,14 @@
 /**
  *  跳转到基本信息页面
  */
-- (void)showBasicInfo {
+- (void)showBasicInfo
+{
     UIViewController *destinationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"basicInfo"];
     [self.navigationController pushViewController:destinationVC animated:YES];
 }
 
-- (void)addHeaderView {
+- (void)addHeaderView
+{
     _personHeader = [PersonHeaderView viewFromNib];
     _personHeader.delegate = self;
     _tableView.tableHeaderView = _personHeader;
@@ -120,7 +125,8 @@
 /**
  *  在下面添加退出登录按钮
  */
-- (void)addFootView {
+- (void)addFootView
+{
 
     btnLogOff = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     btnLogOff.layer.masksToBounds = YES;
@@ -167,7 +173,8 @@
 /**
  *  退出登录
  */
-- (void)logout {
+- (void)logout
+{
 
     //注销jpush//请求
     [[HttpClient sharedClient] view:self.view post:@"logout" parameter:nil
@@ -197,16 +204,21 @@
  *  @param tags
  *  @param alias
  */
-- (void)tagsAliasCallback:(int)iResCode tags:(NSSet *)tags alias:(NSString *)alias {
+- (void)tagsAliasCallback:(int)iResCode tags:(NSSet *)tags alias:(NSString *)alias
+{
 
     NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags, alias);
-    if (0 == iResCode) {
+    if (0 == iResCode)
+    {
 
-    } else {
+    }
+    else
+    {
         NSString *err = [NSString stringWithFormat:@"%d:注销消息服务器失败，请重新再试", iResCode];
         NSLog(@"zhenhao:%@", err);
 
-        if (_jpushCount < 5) {
+        if (_jpushCount < 5)
+        {
             _jpushCount++;
             [APService setAlias:@"" callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
         }
@@ -216,62 +228,87 @@
 
 #pragma -mark -Table View data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
 
     //如果是物业，不显示操作证号，显示驻点地址
-    if ([[User sharedUser].userType isEqualToString:UserTypeAdmin]) {
+    if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])
+    {
         return 3;
-    } else {
+    }
+    else
+    {
         return 3;
     }
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (0 == section) {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (0 == section)
+    {
         //如果是物业，不显示操作证号
-        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin]) {
+        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])
+        {
             return 1;
-        } else {
+        }
+        else
+        {
             return 2;
         }
-    } else if (1 == section) {
+    }
+    else if (1 == section)
+    {
 
-        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin]) {
+        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])
+        {
             return 1;
-        } else {
+        }
+        else
+        {
             return 2;
         }
 
-    } else {
+    }
+    else
+    {
         return 1;
     }
 
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
 
     InfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"infoCell"];
 
-    if (0 == section) {
+    if (0 == section)
+    {
 
         //如果是物业，不显示操作证号
-        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin]) {
-            if (0 == row) {
+        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])
+        {
+            if (0 == row)
+            {
                 cell.imageViewInfoIcon.image = [UIImage imageNamed:@"icon_branch"];
                 cell.labelInfo.text = [User sharedUser].branch;
                 cell.keyLabel.text = @"公司名称";
                 cell.selectionStyle = UITableViewCellEditingStyleNone;
             }
-        } else {
+        }
+        else
+        {
 
 
-            if (0 == row) {
+            if (0 == row)
+            {
                 cell.imageViewInfoIcon.image = [UIImage imageNamed:@"icon_branch"];
                 cell.labelInfo.text = [User sharedUser].branch;
                 cell.selectionStyle = UITableViewCellEditingStyleNone;
-            } else if (1 == row) {
+            }
+            else if (1 == row)
+            {
                 cell.imageViewInfoIcon.image = [UIImage imageNamed:@"icon_operation"];
                 cell.keyLabel.text = @"操作证号";
                 cell.labelInfo.text = [User sharedUser].operation;
@@ -279,21 +316,29 @@
             }
 
         }
-    } else if (1 == section) {
+    }
+    else if (1 == section)
+    {
 
         //如果是物业，直接显示设置
-        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin]) {
+        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])
+        {
             cell.imageViewInfoIcon.image = [UIImage imageNamed:@"icon_settings"];
             cell.keyLabel.text = @"驻点";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else {
-            if (0 == row) {
+        }
+        else
+        {
+            if (0 == row)
+            {
                 cell.imageViewInfoIcon.image = [UIImage imageNamed:@"icon_home"];
                 cell.keyLabel.text = @"家庭住址";
                 cell.labelInfo.text = [User sharedUser].homeAddress;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
-            } else if (1 == row) {
+            }
+            else if (1 == row)
+            {
                 cell.imageViewInfoIcon.image = [UIImage imageNamed:@"icon_work_place"];
                 cell.keyLabel.text = @"工作地址";
                 cell.labelInfo.text = [User sharedUser].workAddress;
@@ -301,13 +346,18 @@
 
             }
         }
-    } else if (2 == section) {
+    }
+    else if (2 == section)
+    {
         //如果是物业，直接显示设置
-        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin]) {
+        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])
+        {
             cell.imageViewInfoIcon.image = [UIImage imageNamed:@"icon_settings"];
             cell.keyLabel.text = @"设置";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else {
+        }
+        else
+        {
             cell.imageViewInfoIcon.image = [UIImage imageNamed:@"icon_settings"];
             cell.keyLabel.text = @"设置";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -319,9 +369,12 @@
 }
 
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (1 == section) {
-        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin]) {
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (1 == section)
+    {
+        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])
+        {
             return nil;
         }
         UIView *head = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];;
@@ -336,46 +389,62 @@
     return nil;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     //松手后颜色回复
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
 
-    if (0 == section) {
+    if (0 == section)
+    {
 
-        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin]) {
+        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])
+        {
             //            if (1 == row)
             //            {
             //                UIViewController *destinationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PasswordPage"];
             //                [self.navigationController pushViewController:destinationVC animated:YES];
             //            }
 
-        } else {
-            if (1 == row) {
+        }
+        else
+        {
+            if (1 == row)
+            {
                 UIViewController *destinationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ModifyDetail"];
                 [destinationVC setValue:@"operation" forKey:@"enterType"];
                 [self.navigationController pushViewController:destinationVC animated:YES];
             }
         }
-    } else if (1 == section) {
+    }
+    else if (1 == section)
+    {
 
-        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin]) {
+        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])
+        {
             UIStoryboard *board = [UIStoryboard storyboardWithName:@"Person" bundle:nil];
             UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"pro_location_controller"];
             [self.navigationController pushViewController:controller animated:YES];
-        } else {
+        }
+        else
+        {
 
             UIStoryboard *board = [UIStoryboard storyboardWithName:@"Person" bundle:nil];
             AddressViewController *controller = [board instantiateViewControllerWithIdentifier:@"address_controller"];
-            if (0 == row) {
+            if (0 == row)
+            {
                 controller.addType = TYPE_HOME;
-            } else if (1 == row) {
+            }
+            else if (1 == row)
+            {
                 controller.addType = TYPE_WORK;
             }
             [self.navigationController pushViewController:controller animated:YES];
         }
-    } else if (2 == section) {
+    }
+    else if (2 == section)
+    {
         UIStoryboard *board = [UIStoryboard storyboardWithName:@"Person" bundle:nil];
         UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"settings_controller"];
         [self.navigationController pushViewController:controller animated:YES];
@@ -383,14 +452,19 @@
 
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 70;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if ([[User sharedUser].userType isEqualToString:UserTypeAdmin]) {
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])
+    {
         return 20;
-    } else {
+    }
+    else
+    {
         return 40;
     }
 }
@@ -399,46 +473,56 @@
 #pragma mark - deal with the icon image
 
 
-- (void)downloadIconByUrlString:(NSString *)urlString dirPath:(NSString *)dirPath fileName:(NSString *)fileName {
+- (void)downloadIconByUrlString:(NSString *)urlString dirPath:(NSString *)dirPath fileName:(NSString *)fileName
+{
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0f];
 
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *_Nullable response, NSData *_Nullable data, NSError *_Nullable connectionError) {
 
-        if (data.length > 0 && nil == connectionError) {
+        if (data.length > 0 && nil == connectionError)
+        {
             [FileUtils writeFile:data Path:dirPath fileName:fileName];
             [self performSelectorOnMainThread:@selector(setPersonIcon:) withObject:urlString waitUntilDone:NO];
 
-        } else if (connectionError != nil) {
+        }
+        else if (connectionError != nil)
+        {
             NSLog(@"download picture error = %@", connectionError);
         }
     }];
 }
 
 
-- (void)setPersonIcon:(NSString *)urlString {
+- (void)setPersonIcon:(NSString *)urlString
+{
 
     NSLog(@"picture url:%@", urlString);
 
-    if (0 == urlString.length) {
+    if (0 == urlString.length)
+    {
         return;
     }
     NSString *dirPath = [NSHomeDirectory() stringByAppendingString:ICON_PATH];
     NSString *fileName = [FileUtils getFileNameFromUrlString:urlString];
     NSString *filePath = [dirPath stringByAppendingString:fileName];
 
-    if ([FileUtils existInFilePath:filePath]) {
+    if ([FileUtils existInFilePath:filePath])
+    {
 
         UIImage *icon = [UIImage imageWithContentsOfFile:filePath];
         _personHeader.image.image = icon;
-    } else {
+    }
+    else
+    {
         [self downloadIconByUrlString:urlString dirPath:dirPath fileName:fileName];
     }
 
 }
 
-- (void)setTitleString:(NSString *)title {
+- (void)setTitleString:(NSString *)title
+{
     UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
     labelTitle.text = title;
     labelTitle.font = [UIFont fontWithName:@"System" size:17];
@@ -446,14 +530,16 @@
     [self.navigationItem setTitleView:labelTitle];
 }
 
-- (void)backToMainPage {
+- (void)backToMainPage
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 #pragma mark -- PersonHeaderDelegate
 
-- (void)onClickIcon {
+- (void)onClickIcon
+{
     [self showBasicInfo];
 }
 

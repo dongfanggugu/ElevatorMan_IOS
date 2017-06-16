@@ -192,22 +192,18 @@
 
 - (void)maintenance
 {
-//    UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
-//    UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"maintenance_page"];
-//    [self.navigationController pushViewController:controller animated:YES];
-
-    MaintManagerController *controller = [[MaintManagerController alloc] init];
-
-    controller.hidesBottomBarWhenPushed = YES;
+    UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
+    UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"maintenance_page"];
     [self.navigationController pushViewController:controller animated:YES];
+
+//    MaintManagerController *controller = [[MaintManagerController alloc] init];
+//
+//    controller.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)houseRepair
 {
-//    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
-//    UIViewController *controller = [story instantiateViewControllerWithIdentifier:@"help_center"];
-//    [self.navigationController pushViewController:controller animated:YES];
-
     RepairOrderController *controller = [[RepairOrderController alloc] init];
 
     controller.hidesBottomBarWhenPushed = YES;
@@ -229,7 +225,6 @@
 
 - (void)houseMaint
 {
-
     MaintOrderController *controller = [[MaintOrderController alloc] init];
 
     controller.hidesBottomBarWhenPushed = YES;
@@ -238,11 +233,6 @@
 //    HouseMaintManagerController *controller = [[HouseMaintManagerController alloc] init];
 //
 //    controller.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:controller animated:YES];
-
-    //NSString *region =  [[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"];
-
-//    UIViewController *controller = [[WRepairTabBarController alloc] init];
 //    [self.navigationController pushViewController:controller animated:YES];
 }
 

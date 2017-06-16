@@ -28,7 +28,8 @@
 
 @synthesize enterType;
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     [self setTitleRight];
@@ -46,15 +47,21 @@
 /**
  *  初始化视图
  */
-- (void)initView {
+- (void)initView
+{
 
-    if ([enterType isEqualToString:@"operation"]) {
+    if ([enterType isEqualToString:@"operation"])
+    {
         [self setTitleString:@"操作证号"];
         self.textFieldContent.text = [User sharedUser].operation;
-    } else if ([enterType isEqualToString:@"name"]) {
+    }
+    else if ([enterType isEqualToString:@"name"])
+    {
         [self setTitleString:@"姓名"];
         self.textFieldContent.text = [User sharedUser].name;
-    } else if ([enterType isEqualToString:@"sex"]) {
+    }
+    else if ([enterType isEqualToString:@"sex"])
+    {
         [self setTitleString:@"性别"];
         NSInteger sexValue = [User sharedUser].sex.integerValue;
         self.textFieldContent.text = sexValue == 0 ? @"女" : @"男";
@@ -63,10 +70,14 @@
         [self.downPicker setToolbarDoneButtonText:@"完成"];
         [self.downPicker setToolbarCancelButtonText:@"取消"];
         //[self.view addSubview:downPicker];
-    } else if ([enterType isEqualToString:@"age"]) {
+    }
+    else if ([enterType isEqualToString:@"age"])
+    {
         [self setTitleString:@"年龄"];
         self.textFieldContent.text = [NSString stringWithFormat:@"%ld", [User sharedUser].age.integerValue];
-    } else if ([enterType isEqualToString:@"tel"]) {
+    }
+    else if ([enterType isEqualToString:@"tel"])
+    {
         [self setTitleString:@"手机号码"];
         self.textFieldContent.text = [User sharedUser].tel;
     }
@@ -77,7 +88,8 @@
  *
  *  @param title <#title description#>
  */
-- (void)setTitleString:(NSString *)title {
+- (void)setTitleString:(NSString *)title
+{
     UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
     labelTitle.text = title;
     labelTitle.font = [UIFont fontWithName:@"System" size:17];
@@ -88,7 +100,8 @@
 /**
  *  设置标题栏右侧
  */
-- (void)setTitleRight {
+- (void)setTitleRight
+{
     UIButton *btnSubmit = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
     [btnSubmit setTitle:@"提交" forState:UIControlStateNormal];
     [btnSubmit setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -101,9 +114,11 @@
 /**
  *  提交到服务器
  */
-- (void)submit {
+- (void)submit
+{
     NSString *content = self.textFieldContent.text;
-    if (0 == content.length) {
+    if (0 == content.length)
+    {
         [HUDClass showHUDWithLabel:@"输入不能为空,请重新输入!" view:self.view];
         return;
     }
@@ -113,28 +128,42 @@
     NSString *operationCard = [User sharedUser].operation == nil ? @"" : [User sharedUser].operation;
     NSString *tel = [User sharedUser].tel;
 
-    if ([enterType isEqualToString:@"operation"]) {
+    if ([enterType isEqualToString:@"operation"])
+    {
         operationCard = content;
 
-    } else if ([enterType isEqualToString:@"name"]) {
+    }
+    else if ([enterType isEqualToString:@"name"])
+    {
         name = content;
 
-    } else if ([enterType isEqualToString:@"sex"]) {
-        if ([content isEqualToString:@"男"]) {
+    }
+    else if ([enterType isEqualToString:@"sex"])
+    {
+        if ([content isEqualToString:@"男"])
+        {
             sex = [NSNumber numberWithInt:1];
-        } else {
+        }
+        else
+        {
             sex = [NSNumber numberWithInt:0];
         }
 
-    } else if ([enterType isEqualToString:@"age"]) {
-        if (![Utils isLegalAge:content]) {
+    }
+    else if ([enterType isEqualToString:@"age"])
+    {
+        if (![Utils isLegalAge:content])
+        {
             [HUDClass showHUDWithLabel:@"请输入合法的年龄" view:self.view];
             return;
         }
         age = [NSNumber numberWithInteger:[content integerValue]];
 
-    } else if ([enterType isEqualToString:@"tel"]) {
-        if (![Utils isCorrectPhoneNumberOf:content]) {
+    }
+    else if ([enterType isEqualToString:@"tel"])
+    {
+        if (![Utils isCorrectPhoneNumberOf:content])
+        {
             [HUDClass showHUDWithLabel:@"请输入合法的电话号码" view:self.view];
             return;
         }

@@ -55,7 +55,8 @@
 
 static NSString *const reuseIdentifier = @"elevatorsCell";
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     [self setNavTitle:@"电梯选择"];
@@ -68,15 +69,20 @@ static NSString *const reuseIdentifier = @"elevatorsCell";
 
 
 //处理单元数据，去重排序
-- (void)processUnit {
+- (void)processUnit
+{
 
-    if (self.elevatorListArray) {
+    if (self.elevatorListArray)
+    {
 
         self.unitArray = [NSMutableArray arrayWithCapacity:1];
 
         //获取本楼所有单元
         NSMutableArray *UnitArray = [NSMutableArray arrayWithCapacity:1];
-        for (NSInteger i = 0; i < [self.elevatorListArray count]; i++) {
+        for (NSInteger i = 0;
+                i < [self.elevatorListArray count];
+                i++)
+        {
             [UnitArray addObject:[[self.elevatorListArray objectAtIndex:i] objectForKey:@"unitCode"]];
 
         }
@@ -88,15 +94,20 @@ static NSString *const reuseIdentifier = @"elevatorsCell";
 
 
         //重组
-        for (NSInteger y = 0; y < [temp count]; y++) {
+        for (NSInteger y = 0;
+                y < [temp count];
+                y++)
+        {
             NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:1];
 
             [dic setObject:[temp objectAtIndex:y] forKey:@"unitCode"];
 
             NSMutableArray *allElevatorsInUnit = [NSMutableArray arrayWithCapacity:1];
 
-            for (NSDictionary *elevator in self.elevatorListArray) {
-                if ([[elevator objectForKey:@"unitCode"] isEqualToString:[temp objectAtIndex:y]]) {
+            for (NSDictionary *elevator in self.elevatorListArray)
+            {
+                if ([[elevator objectForKey:@"unitCode"] isEqualToString:[temp objectAtIndex:y]])
+                {
                     [allElevatorsInUnit addObject:elevator];
                 }
             }
@@ -115,20 +126,23 @@ static NSString *const reuseIdentifier = @"elevatorsCell";
 
 #pragma mark <UICollectionViewDataSource>
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
 
     return [self.unitArray count];
 }
 
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
 
     return [[[self.unitArray objectAtIndex:section] objectForKey:@"eles"] count];
 
     //return [self.elevatorListArray count];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     ElevatorsCell *cell = (ElevatorsCell *) [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
 
 
@@ -144,10 +158,12 @@ static NSString *const reuseIdentifier = @"elevatorsCell";
     return cell;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
     UICollectionReusableView *reusableview = nil;
 
-    if (kind == UICollectionElementKindSectionHeader) {
+    if (kind == UICollectionElementKindSectionHeader)
+    {
         HeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"elevatorsCellHeader" forIndexPath:indexPath];
 
         NSString *unitString = [[self.unitArray objectAtIndex:indexPath.section] objectForKey:@"unitCode"];
@@ -171,7 +187,8 @@ static NSString *const reuseIdentifier = @"elevatorsCell";
 
 #pragma mark <UICollectionViewDelegate>
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
 
 
     ReportAlarmViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"reportAlarmViewController"];

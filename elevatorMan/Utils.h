@@ -63,4 +63,11 @@
 
 + (NSString *)image2Base64:(UIImage *)image;
 
+/**
+ * 格式化今天  yyyy-MM-dd HH:hh:ss
+ * @param format
+ * @return
+ */
++ (NSString *)today:(NSString *)format;
+
 @end

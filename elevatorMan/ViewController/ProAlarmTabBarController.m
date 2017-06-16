@@ -14,12 +14,14 @@
 @implementation ProAlarmTabBarController
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self initItem];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     [self setNavTitle:@"应急救援"];
     [self initNavRightWithImage:[UIImage imageNamed:@"icon_bbs"]];
@@ -27,7 +29,8 @@
 }
 
 
-- (void)initItem {
+- (void)initItem
+{
     UIStoryboard *board1 = [UIStoryboard storyboardWithName:@"MyProperty" bundle:nil];
     ProAlarmManagerController *process = [board1 instantiateViewControllerWithIdentifier:@"pro_alarm_manager"];
 
@@ -39,7 +42,8 @@
     self.viewControllers = [NSArray arrayWithObjects:process, history, project, nil];
 }
 
-- (void)initTabBar {
+- (void)initTabBar
+{
     UITabBar *tabBar = self.tabBar;
     [[tabBar.items objectAtIndex:0] setImage:[UIImage imageNamed:@"pro_alarm_process"]];
     [[tabBar.items objectAtIndex:0] setTitle:@"处理报警"];
@@ -52,14 +56,18 @@
 
 }
 
-- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
     NSInteger index = [tabBar.items indexOfObject:item];
 
     NSLog(@"index:%ld", index);
 
-    if (0 == index) {
+    if (0 == index)
+    {
         [self initNavRightWithImage:[UIImage imageNamed:@"icon_bbs"]];
-    } else {
+    }
+    else
+    {
         self.navigationItem.rightBarButtonItem = nil;
     }
 }
@@ -68,8 +76,10 @@
 /**
  使用图片初始化导航栏右侧按钮
  **/
-- (void)initNavRightWithImage:(UIImage *)image {
-    if (!self.navigationController) {
+- (void)initNavRightWithImage:(UIImage *)image
+{
+    if (!self.navigationController)
+    {
         return;
     }
 
@@ -83,7 +93,8 @@
     [btnRight addTarget:self action:@selector(onClickNavRight) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)onClickNavRight {
+- (void)onClickNavRight
+{
     UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
     ChatController *controller = [board instantiateViewControllerWithIdentifier:@"chat_controller"];
     controller.enterType = Enter_Property;

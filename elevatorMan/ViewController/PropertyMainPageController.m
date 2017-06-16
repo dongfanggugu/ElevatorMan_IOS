@@ -30,13 +30,15 @@
 
 @implementation PropertyMainPageController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavTitle:@"电梯易管家"];
     [self iniView];
 }
 
-- (void)iniView {
+- (void)iniView
+{
 
     self.tableView.allowsSelection = NO;
     self.tableView.bounces = NO;
@@ -76,34 +78,40 @@
 
 }
 
-- (void)rescue {
+- (void)rescue
+{
     ProAlarmTabBarController *controller = [[ProAlarmTabBarController alloc] init];
 
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)market {
+- (void)market
+{
     [HUDClass showHUDWithLabel:@"功能开发中" view:self.view];
 }
 
-- (void)other {
+- (void)other
+{
     [HUDClass showHUDWithLabel:@"功能开发中" view:self.view];
 }
 
 
-- (void)maintenance {
+- (void)maintenance
+{
     UIStoryboard *board = [UIStoryboard storyboardWithName:@"Property" bundle:nil];
     UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"mantenanceController"];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)around {
+- (void)around
+{
     UIStoryboard *board = [UIStoryboard storyboardWithName:@"MyProperty" bundle:nil];
     UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"around_controller"];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)person {
+- (void)person
+{
     UIStoryboard *board = [UIStoryboard storyboardWithName:@"Person" bundle:nil];
     UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"person_center"];
     [self.navigationController pushViewController:controller animated:YES];

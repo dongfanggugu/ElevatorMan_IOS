@@ -23,7 +23,8 @@
 
 @implementation PersonPasswordController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setTitleRight];
     [self setTitleString:@"密码"];
@@ -34,7 +35,8 @@
  *
  *  @param title <#title description#>
  */
-- (void)setTitleString:(NSString *)title {
+- (void)setTitleString:(NSString *)title
+{
     UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
     labelTitle.text = title;
     labelTitle.font = [UIFont fontWithName:@"System" size:17];
@@ -45,7 +47,8 @@
 /**
  *  设置标题栏右侧
  */
-- (void)setTitleRight {
+- (void)setTitleRight
+{
     UIButton *btnSubmit = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
     [btnSubmit setTitle:@"提交" forState:UIControlStateNormal];
     [btnSubmit setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -55,22 +58,26 @@
     self.navigationItem.rightBarButtonItem = rightItem;
 }
 
-- (void)submit {
+- (void)submit
+{
     NSString *original = self.tfOriginal.text;
     NSString *password = self.tfPassword.text;
     NSString *confirm = self.tfConfirm.text;
 
-    if (0 == original.length || 0 == password.length || 0 == confirm) {
+    if (0 == original.length || 0 == password.length || 0 == confirm)
+    {
         [HUDClass showHUDWithLabel:@"密码输入不能为空,请重新输入!" view:self.view];
         return;
     }
 
-    if (![password isEqualToString:confirm]) {
+    if (![password isEqualToString:confirm])
+    {
         [HUDClass showHUDWithLabel:@"确认密码和密码输入不一致,请重新输入!" view:self.view];
         return;
     }
 
-    if (password.length < 6) {
+    if (password.length < 6)
+    {
         [HUDClass showHUDWithLabel:@"密码至少为6位,请重新输入!" view:self.view];
         return;
     }

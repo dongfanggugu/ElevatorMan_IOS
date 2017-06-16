@@ -12,6 +12,7 @@
 #import "MaintExceptionController.h"
 #import "MaintSubmitController.h"
 #import "MaintResultShowController.h"
+#import "EvaluateController.h"
 
 @interface MaintInfoController () <MaintInfoViewDelegate>
 
@@ -42,6 +43,64 @@
     _infoView = [MaintInfoView viewFromNib];
 
     _infoView.delegate = self;
+    
+    if (_orderInfo)
+    {
+        _infoView.lbAddress.text = _orderInfo[@"villaInfo"][@"cellName"];
+        
+        NSString *name = _orderInfo[@"villaInfo"][@"contacts"];
+        
+        if (0 == name.length)
+        {
+            name = _orderInfo[@"ownerInfo"][@"name"];
+        }
+
+        NSString *tel = _orderInfo[@"villaInfo"][@"contactsTel"];
+
+        if (0 == tel.length)
+        {
+            tel = _orderInfo[@"ownerInfo"][@"tel"];
+        }
+        
+        _infoView.lbLinkInfo.text = [NSString stringWithFormat:@"%@/%@", name, tel];
+
+
+        _infoView.lbBrand.text = _orderInfo[@"villaInfo"][@"brand"];
+        _infoView.lbLoad.text = [NSString stringWithFormat:@"%ldkg", [_orderInfo[@"villaInfo"][@"weight"] integerValue]];
+        _infoView.lbLayer.text = [NSString stringWithFormat:@"%ld层", [_orderInfo[@"villaInfo"][@"layerAmount"] integerValue]];
+
+        _infoView.lbPlan.text = [Utils today:@"yyyy-MM-dd HH:mm"];
+    }
+
+    if (_maintInfo)
+    {
+        _infoView.lbAddress.text = _maintInfo[@"maintOrderInfo"][@"villaInfo"][@"cellName"];
+
+        NSString *name = _maintInfo[@"maintOrderInfo"][@"villaInfo"][@"contacts"];
+
+        if (0 == name.length)
+        {
+            name = _maintInfo[@"maintOrderInfo"][@"smallOwnerInfo"][@"name"];
+        }
+
+        NSString *tel = _maintInfo[@"maintOrderInfo"][@"villaInfo"][@"contactsTel"];
+
+        if (0 == tel.length)
+        {
+            tel = _maintInfo[@"maintOrderInfo"][@"smallOwnerInfo"][@"tel"];
+        }
+
+        _infoView.lbLinkInfo.text = [NSString stringWithFormat:@"%@/%@", name, tel];
+
+
+        _infoView.lbBrand.text = _maintInfo[@"maintOrderInfo"][@"villaInfo"][@"brand"];
+        _infoView.lbLoad.text = [NSString stringWithFormat:@"%ldkg", [_maintInfo[@"maintOrderInfo"][@"villaInfo"][@"weight"] integerValue]];
+        _infoView.lbLayer.text = [NSString stringWithFormat:@"%ld层", [_maintInfo[@"maintOrderInfo"][@"villaInfo"][@"layerAmount"] integerValue]];
+
+        _infoView.lbPlan.text = _maintInfo[@"planTime"];
+    }
+
+
 
     CGRect frame = CGRectMake(0, self.screenHeight - [MaintInfoView basicInfoHeight], self.screenWidth, [MaintInfoView viewHeight]);
 
@@ -49,6 +108,36 @@
     _infoView.frame = frame;
 
     [self.view addSubview:_infoView];
+    
+    switch (self.state)
+    {
+        case 0:
+            [self state0];
+            break;
+
+        case 1:
+            [self state1];
+            break;
+
+        case 2:
+            [self state2];
+            break;
+
+        case 3:
+            [self state3];
+            break;
+
+        case 4:
+            [self state4];
+            break;
+
+        case 5:
+            [self state5];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (NSInteger)state
@@ -79,12 +168,13 @@
  **/
 - (void)state1
 {
+    _infoView.btnPlan.hidden = YES;
+
     _infoView.btnStart.hidden = NO;
 
     _infoView.btnException.hidden = NO;
 
     _infoView.btnMake.hidden = YES;
-
 }
 
 /**
@@ -92,6 +182,8 @@
  **/
 - (void)state2
 {
+    _infoView.btnPlan.hidden = YES;
+
     _infoView.btnStart.hidden = YES;
 
     _infoView.btnException.hidden = YES;
@@ -107,6 +199,8 @@
  **/
 - (void)state3
 {
+    _infoView.btnPlan.hidden = YES;
+
     _infoView.btnStart.hidden = YES;
 
     _infoView.btnException.hidden = YES;
@@ -122,6 +216,8 @@
  **/
 - (void)state4
 {
+    _infoView.btnPlan.hidden = YES;
+
     _infoView.btnStart.hidden = YES;
 
     _infoView.btnException.hidden = YES;
@@ -137,6 +233,8 @@
  **/
 - (void)state5
 {
+    _infoView.btnPlan.hidden = YES;
+
     _infoView.btnStart.hidden = NO;
 
     _infoView.btnException.hidden = NO;
@@ -202,10 +300,6 @@
 
 - (void)onClickException
 {
-    [self completePlan];
-
-    return;
-
     if (1 == self.state)
     {
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认无法出发完成当前维保任务?" preferredStyle:UIAlertControllerStyleAlert];
@@ -259,7 +353,12 @@
 
 - (void)evaluate
 {
-    NSLog(@"查看评价");
+    EvaluateController *controller = [[EvaluateController alloc] init];
+    controller.content = _maintInfo[@"evaluateContent"];
+    controller.star = [_maintInfo[@"evaluateResult"] integerValue];
+
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 /**
@@ -267,7 +366,6 @@
  */
 - (void)completePlan
 {
-    NSLog(@"完成维保计划");
     MaintSubmitController *controller = [[MaintSubmitController alloc] init];
 
     controller.maintInfo = _maintInfo;
@@ -282,15 +380,14 @@
  */
 - (void)maintResult
 {
-    NSLog(@"查看维保结果");
 
     MaintResultShowController *controller = [[MaintResultShowController alloc] init];
 
-    controller.content = @"维保完成";
+    controller.content = _maintInfo[@"maintUserFeedback"];
 
-    controller.urlBefore = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1496651112189&di=84d87604a1c275ad9a4b6954e5ce8c5f&imgtype=0&src=http%3A%2F%2Fimage.tianjimedia.com%2FuploadImages%2F2015%2F156%2F44%2F891VW0Q49W96.jpg";
+    controller.urlBefore = _maintInfo[@"beforeImg"];
 
-    controller.urlAfter = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1496651135858&di=7bccb2d14a6660d7d0552d5f38e35755&imgtype=0&src=http%3A%2F%2Fimg.meimi.cc%2Fmeinv%2F20170506%2Fvfvuvqlc5ec1476.jpg";
+    controller.urlAfter = _maintInfo[@"afterImg"];
 
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
@@ -302,7 +399,7 @@
 - (void)makePlan
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"maintOrderId"] = _serviceId;
+    params[@"maintOrderId"] = _orderInfo[@"id"];
     params[@"planTime"] = _infoView.lbPlan.text;
 
     [[HttpClient sharedClient] post:@"addMaintOrderProcess" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -322,7 +419,7 @@
 
     [[HttpClient sharedClient] post:@"editMaintOrderProcessWorkerArrive" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-        [self state3];
+        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 

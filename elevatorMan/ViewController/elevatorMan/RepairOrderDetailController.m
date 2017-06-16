@@ -91,7 +91,7 @@
     _repairInfoView.lbWeight.text = [NSString stringWithFormat:@"电梯载重量: %.0lfkg    层站:%d层",
                     [_orderInfo[@"villaInfo"][@"weight"] floatValue], [_orderInfo[@"villaInfo"][@"layerAmount"] integerValue]];
 
-    NSInteger state = _orderInfo[@"state"];
+    NSInteger state = [_orderInfo[@"state"] integerValue];
     [self showViewWithState:state];
 
     _tableView.tableHeaderView = _repairInfoView;
@@ -160,7 +160,7 @@
 {
     _repairInfoView.btnTask.hidden = NO;
 
-    _repairInfoView.btnPay.hidden = YES;
+    _repairInfoView.btnPay.hidden = NO;
 
     _repairInfoView.btnEvaluate.hidden = YES;
 }
@@ -172,7 +172,7 @@
 {
     _repairInfoView.btnTask.hidden = NO;
 
-    _repairInfoView.btnPay.hidden = YES;
+    _repairInfoView.btnPay.hidden = NO;
 
     _repairInfoView.btnEvaluate.hidden = YES;
 }
@@ -276,7 +276,7 @@
 
     NSInteger state = [info[@"state"] integerValue];
 
-    if (0 == state) //待出发
+    if (1 == state) //待出发
     {
         RepairProcessController *controller = [[RepairProcessController alloc] init];
         controller.taskInfo = info;
@@ -285,7 +285,7 @@
         controller.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:controller animated:YES];
     }
-    else if (1 == state)    //已出发
+    else if (2 == state)    //已出发
     {
         RepairProcessController *controller = [[RepairProcessController alloc] init];
         controller.taskInfo = info;
@@ -303,7 +303,7 @@
         controller.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:controller animated:YES];
     }
-    else if (5 == state || 6 == state)    //检修完成
+    else if (5 == state || 6 == state)    //检修完成,维修完成
     {
         RepairResultController *controller = [[RepairResultController alloc] init];
         controller.repairResult = info[@"finishResult"];

@@ -18,7 +18,8 @@
 
 @implementation AboutViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     [self setNavTitle:@"关于"];

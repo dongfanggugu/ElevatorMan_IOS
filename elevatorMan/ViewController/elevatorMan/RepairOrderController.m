@@ -105,6 +105,7 @@
 
     [[HttpClient sharedClient] post:@"getRepairOrderByWorker" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.arrayOrder removeAllObjects];
+        [self.arrayOrder addObjectsFromArray:responseObject[@"body"]];
         [self showOrders];
     }];
 

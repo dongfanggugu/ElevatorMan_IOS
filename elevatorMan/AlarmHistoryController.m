@@ -30,25 +30,26 @@
 
 - (NSMutableArray *)arrayAlarm
 {
-    if (!_arrayAlarm) {
+    if (!_arrayAlarm)
+    {
         _arrayAlarm = [NSMutableArray array];
     }
-    
+
     return _arrayAlarm;
 }
 
 - (void)initView
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64)];
-    
+
     _tableView.delegate = self;
-    
+
     _tableView.dataSource = self;
-    
+
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
+
     [self.view addSubview:_tableView];
 }
 
@@ -57,7 +58,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"branchId"] = [User sharedUser].branchId;
     params[@"history"] = @"1";
-    
+
     [[HttpClient sharedClient] post:@"getAlarmListByBranchId" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.arrayAlarm removeAllObjects];
         [self.arrayAlarm addObjectsFromArray:responseObject[@"body"]];
@@ -81,7 +82,8 @@
 {
     ComAlarmCell *cell = [tableView dequeueReusableCellWithIdentifier:[ComAlarmCell identifier]];
 
-    if (!cell) {
+    if (!cell)
+    {
         cell = [ComAlarmCell cellFromNib];
     }
     cell.lbIndex.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
@@ -92,7 +94,7 @@
     cell.lbTime.text = info[@"alarmTime"];
 
     BOOL cancel = [info[@"isMisinformation"] boolValue];
-    
+
     if (cancel)
     {
         cell.lbState.text = @"已撤销";
@@ -118,7 +120,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSDictionary *info = self.arrayAlarm[indexPath.row];
     NSInteger userState = [info[@"userState"] integerValue];
-    
+
     if (-10 == userState)
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"该报警已经取消，无法查看救援结果!"
@@ -141,7 +143,7 @@
         vc.alarmTime = info[@"alarmTime"];
         vc.savedCount = [NSString stringWithFormat:@"%ld", [info[@"savedCount"] integerValue]];
         vc.injuredCount = [NSString stringWithFormat:@"%ld", [info[@"injureCount"] integerValue]];
-        
+
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }

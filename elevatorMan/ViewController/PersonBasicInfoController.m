@@ -56,13 +56,15 @@
 
 @implementation PersonBasicInfoController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavTitle:@"基本资料"];
 }
 
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     [self.tableView reloadData];
     //设置回退icon
@@ -120,7 +122,8 @@
  *
  *  @return <#return value description#>
  */
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 2;
 }
 
@@ -133,10 +136,14 @@
  *
  *  @return <#return value description#>
  */
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (0 == section) {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (0 == section)
+    {
         return 1;
-    } else {
+    }
+    else
+    {
         return 5;
     }
 }
@@ -150,11 +157,13 @@
  *
  *  @return <#return value description#>
  */
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     NSInteger row = indexPath.row;
     NSInteger section = indexPath.section;
 
-    if (0 == section) {
+    if (0 == section)
+    {
         IconCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IconCell"];
 
         //设置圆形
@@ -168,10 +177,13 @@
         [cell addGestureRecognizer:recognizer];
         return cell;
 
-    } else if (1 == section) {
+    }
+    else if (1 == section)
+    {
         TextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextCell"];
 
-        if (0 == row) {
+        if (0 == row)
+        {
             cell.labelTitle.text = @"用户名";
             cell.labelContent.text = [User sharedUser].userName;
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -180,16 +192,24 @@
             [views setObject:cell.labelContent forKey:@"content"];
             [cell addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[content]-60-|"
                                                                          options:0 metrics:nil views:views]];
-        } else if (1 == row) {
+        }
+        else if (1 == row)
+        {
             cell.labelTitle.text = @"姓名";
             cell.labelContent.text = [User sharedUser].name;
-        } else if (2 == row) {
+        }
+        else if (2 == row)
+        {
             cell.labelTitle.text = @"性别";
             cell.labelContent.text = [User sharedUser].sex.integerValue == 0 ? @"女" : @"男";
-        } else if (3 == row) {
+        }
+        else if (3 == row)
+        {
             cell.labelTitle.text = @"年龄";
             cell.labelContent.text = [NSString stringWithFormat:@"%ld", [User sharedUser].age.integerValue];
-        } else if (4 == row) {
+        }
+        else if (4 == row)
+        {
             cell.labelTitle.text = @"手机号码";
             cell.labelContent.text = [User sharedUser].tel;
         }
@@ -208,30 +228,42 @@
  *
  *  @return <#return value description#>
  */
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (0 == indexPath.section) {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (0 == indexPath.section)
+    {
         return 80;
     }
 
     return 50;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
-    if (1 == section) {
+    if (1 == section)
+    {
 
-        if (0 == row) {
+        if (0 == row)
+        {
             return;
         }
         UIViewController *destinationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ModifyDetail"];
-        if (1 == row) {
+        if (1 == row)
+        {
             [destinationVC setValue:@"name" forKey:@"enterType"];
-        } else if (2 == row) {
+        }
+        else if (2 == row)
+        {
             [destinationVC setValue:@"sex" forKey:@"enterType"];
-        } else if (3 == row) {
+        }
+        else if (3 == row)
+        {
             [destinationVC setValue:@"age" forKey:@"enterType"];
-        } else if (4 == row) {
+        }
+        else if (4 == row)
+        {
             [destinationVC setValue:@"tel" forKey:@"enterType"];
         }
         [self.navigationController pushViewController:destinationVC animated:YES];
@@ -246,16 +278,19 @@
  *
  *  @param imageView <#imageView description#>
  */
-- (void)setPersonIcon:(UIImageView *)imageView {
+- (void)setPersonIcon:(UIImageView *)imageView
+{
 
-    if (0 == [User sharedUser].picUrl.length) {
+    if (0 == [User sharedUser].picUrl.length)
+    {
         return;
     }
     NSString *dirPath = [NSHomeDirectory() stringByAppendingString:ICON_PATH];
     NSString *fileName = [FileUtils getFileNameFromUrlString:[User sharedUser].picUrl];
     NSString *filePath = [dirPath stringByAppendingString:fileName];
 
-    if ([FileUtils existInFilePath:filePath]) {
+    if ([FileUtils existInFilePath:filePath])
+    {
 
         UIImage *icon = [UIImage imageWithContentsOfFile:filePath];
         imageView.image = icon;
@@ -267,7 +302,8 @@
 /**
  *  选择拍照或者选取图片
  */
-- (void)showMenu {
+- (void)showMenu
+{
 
     self.actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍摄", @"选取", nil];
     [self.actionSheet showInView:self.view];
@@ -279,12 +315,15 @@
  *  @param actionSheet <#actionSheet description#>
  *  @param buttonIndex <#buttonIndex description#>
  */
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
 
-    if (buttonIndex == self.actionSheet.cancelButtonIndex) {
+    if (buttonIndex == self.actionSheet.cancelButtonIndex)
+    {
     }
 
-    switch (buttonIndex) {
+    switch (buttonIndex)
+    {
         case 0:
             [self takePhoto];
             break;
@@ -298,9 +337,11 @@
 /**
  *  拍摄照片
  */
-- (void)takePhoto {
+- (void)takePhoto
+{
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
 
@@ -314,7 +355,8 @@
 /**
  *  从本地选取照片
  */
-- (void)pickPhoto {
+- (void)pickPhoto
+{
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
 
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -332,13 +374,15 @@
  *  @param picker <#picker description#>
  *  @param info   <#info description#>
  */
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info {
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info
+{
 
 
     NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
 
     //选择的是图片
-    if ([type isEqualToString:@"public.image"]) {
+    if ([type isEqualToString:@"public.image"])
+    {
 
         UIImage *image = [info objectForKey:@"UIImagePickerControllerEditedImage"];
 
@@ -394,7 +438,8 @@
  *
  *  @param picker <#picker description#>
  */
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -20,10 +20,12 @@
 
 @implementation MaintResultView
 
-+ (id)viewFromNib {
++ (id)viewFromNib
+{
     NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"MaintResultView" owner:nil options:nil];
 
-    if (0 == array.count) {
+    if (0 == array.count)
+    {
         return nil;
     }
 
@@ -31,7 +33,8 @@
 }
 
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
 
     _tvContent.layer.cornerRadius = 5;
@@ -64,67 +67,83 @@
     [_btnSubmit addTarget:self action:@selector(clickSubmit) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)clickSubmit {
-    if (_delegate && [_delegate respondsToSelector:@selector(onClickSubmit)]) {
-        [_delegate onClickDelBefore];
+- (void)clickSubmit
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickSubmit)])
+    {
+        [_delegate onClickSubmit];
     }
 }
 
-- (void)clickDelBefore {
+- (void)clickDelBefore
+{
     [self resetBefore];
 
-    if (_delegate && [_delegate respondsToSelector:@selector(onClickDelBefore)]) {
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickDelBefore)])
+    {
         [_delegate onClickDelBefore];
     }
 }
 
-- (void)clickDelAfter {
+- (void)clickDelAfter
+{
     [self resetAfter];
 
-    if (_delegate && [_delegate respondsToSelector:@selector(onClickDelAfter)]) {
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickDelAfter)])
+    {
         [_delegate onClickDelAfter];
     }
 
 }
 
-- (void)delAfter {
+- (void)delAfter
+{
     [self resetAfter];
 }
 
-- (void)clickBefore {
-    if (_delegate && [_delegate respondsToSelector:@selector(onClickBeforeImage)]) {
+- (void)clickBefore
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickBeforeImage)])
+    {
         [_delegate onClickBeforeImage];
     }
 }
 
-- (void)clickAfter {
-    if (_delegate && [_delegate respondsToSelector:@selector(onClickAfterImage)]) {
+- (void)clickAfter
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickAfterImage)])
+    {
         [_delegate onClickAfterImage];
     }
 }
 
-- (void)setImageBefore:(UIImage *)imageBefore {
+- (void)setImageBefore:(UIImage *)imageBefore
+{
     _ivBefore.image = imageBefore;
 
     _hasBefore = YES;
 
-    if (!_showMode) {
+    if (!_showMode)
+    {
         _btnBefore.hidden = NO;
     }
 }
 
-- (void)setImageAfter:(UIImage *)imageAfter {
+- (void)setImageAfter:(UIImage *)imageAfter
+{
     _ivAfter.image = imageAfter;
 
     _hasAfter = YES;
 
-    if (!_showMode) {
+    if (!_showMode)
+    {
         _btnAfter.hidden = NO;
     }
 }
 
 
-- (void)resetBefore {
+- (void)resetBefore
+{
     _ivBefore.image = [UIImage imageNamed:@"icon_photo"];;
 
     _hasBefore = NO;
@@ -132,7 +151,8 @@
     _btnBefore.hidden = YES;
 }
 
-- (void)resetAfter {
+- (void)resetAfter
+{
     _ivAfter.image = [UIImage imageNamed:@"icon_photo"];
 
     _hasAfter = NO;
@@ -140,10 +160,12 @@
     _btnAfter.hidden = YES;
 }
 
-- (void)setShowMode:(BOOL)showMode {
+- (void)setShowMode:(BOOL)showMode
+{
     _showMode = showMode;
 
-    if (showMode) {
+    if (showMode)
+    {
         _btnAfter.hidden = YES;
 
         _btnBefore.hidden = YES;

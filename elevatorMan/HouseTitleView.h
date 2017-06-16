@@ -20,6 +20,14 @@
 
 + (id)viewFromNib;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnNeed;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnSave;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnFinish;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnRevoke;
+
 @property (weak, nonatomic) id<HouseTitleViewDelegate> delegate;
 
 @end

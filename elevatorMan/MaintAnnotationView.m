@@ -58,9 +58,28 @@
     label.textAlignment = NSTextAlignmentCenter;
     label.numberOfLines = 0;
 
-    NSString *project = _arrayInfo[0][@"communityName"];
+    if (_arrayInfo.count > 0)
+    {
+        NSString *project = _arrayInfo[0][@"communityName"];
+        label.text = [NSString stringWithFormat:@"%@(%ld)", project, _arrayInfo.count];
+    }
 
-    label.text = [NSString stringWithFormat:@"%@(%ld)", project, _arrayInfo.count];
+    if (_info)
+    {
+        NSString *house = _info[@"villaInfo"][@"cellName"];
+
+        NSString *worker = _info[@"maintUserInfo"][@"name"];
+
+        if (0 == worker.length)
+        {
+            label.text = [NSString stringWithFormat:@"%@", house];
+        }
+        else
+        {
+            label.text = [NSString stringWithFormat:@"%@(%@)", house, worker];
+        }
+    }
+
 
     [label sizeToFit];
 

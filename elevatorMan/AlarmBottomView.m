@@ -13,11 +13,12 @@
 + (id)viewFromNib
 {
     NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"AlarmBottomView" owner:nil options:nil];
-    
-    if (0 == array.count) {
+
+    if (0 == array.count)
+    {
         return nil;
     }
-    
+
     return array[0];
 }
 

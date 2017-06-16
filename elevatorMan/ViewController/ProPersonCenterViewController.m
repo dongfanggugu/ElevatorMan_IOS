@@ -19,18 +19,21 @@
 
 @implementation ProPersonCenterViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
 
 
     [self initNavi];
 }
 
-- (void)initNavi {
+- (void)initNavi
+{
     NSLog(@"initNavi");
     UIButton *btnLeft = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 20)];
     [btnLeft setTitle:@"返回" forState:UIControlStateNormal];
@@ -43,14 +46,16 @@
     self.navigationController.navigationBar.barTintColor = [Utils getColorByRGB:@"#007ec5"];
 }
 
-- (void)goBack {
+- (void)goBack
+{
     [self dismissViewControllerAnimated:YES completion:^{
 
     }];
 }
 
 
-- (void)dealloc {
+- (void)dealloc
+{
     NSLog(@"person dealloc");
 }
 

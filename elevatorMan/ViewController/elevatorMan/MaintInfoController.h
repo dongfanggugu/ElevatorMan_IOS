@@ -10,7 +10,7 @@
 
 @interface MaintInfoController : BaseViewController
 
-@property (copy, nonatomic) NSString *serviceId;
+@property (strong, nonatomic) NSDictionary *orderInfo;
 
 @property (strong, nonatomic) NSDictionary *maintInfo;
 

@@ -28,7 +28,8 @@
 @implementation AlarmListEmergencyCell
 
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
     self.indexView.layer.masksToBounds = YES;
 
@@ -52,13 +53,15 @@
 @implementation AlarmListEmergencyTableViewController
 
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     [self getPropertyAlarmList];
 }
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self initData];
 
@@ -66,17 +69,20 @@
 
 }
 
-- (void)initData {
+- (void)initData
+{
     _arrayData = [NSMutableArray array];
 }
 
-- (void)initView {
+- (void)initView
+{
     self.tableView.bounces = YES;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 
-- (void)getPropertyAlarmList {
+- (void)getPropertyAlarmList
+{
     //设置
     __weak AlarmListEmergencyTableViewController *weakSelf = self;
 
@@ -95,20 +101,23 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
 
     // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     // Return the number of rows in the section.
 
     return _arrayData.count;
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     AlarmListEmergencyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"alarmListEmergencyCell" forIndexPath:indexPath];
 
     NSDictionary *info = _arrayData[indexPath.row];
@@ -122,37 +131,46 @@
     cell.label_project.text = [communityInfo objectForKey:@"name"];
     cell.label_time.text = alarmTime;
 
-    switch (indexPath.row % 8) {
+    switch (indexPath.row % 8)
+    {
 
-        case 0: {
+        case 0:
+        {
             cell.indexView.backgroundColor = UIColorFromRGB(0xffbeee78);
             break;
         }
-        case 1: {
+        case 1:
+        {
             cell.indexView.backgroundColor = UIColorFromRGB(0xffebe084);
             break;
         }
-        case 2: {
+        case 2:
+        {
             cell.indexView.backgroundColor = UIColorFromRGB(0xffbecccb);
             break;
         }
-        case 3: {
+        case 3:
+        {
             cell.indexView.backgroundColor = UIColorFromRGB(0xffb2f4b1);
             break;
         }
-        case 4: {
+        case 4:
+        {
             cell.indexView.backgroundColor = UIColorFromRGB(0xffb6b6fc);
             break;
         }
-        case 5: {
+        case 5:
+        {
             cell.indexView.backgroundColor = UIColorFromRGB(0xfffecb236);
             break;
         }
-        case 6: {
+        case 6:
+        {
             cell.indexView.backgroundColor = UIColorFromRGB(0xff99cdff);
             break;
         }
-        case 7: {
+        case 7:
+        {
             cell.indexView.backgroundColor = UIColorFromRGB(0xff4aeab7);
             break;
         }
@@ -165,28 +183,40 @@
     //设置报警状态描述
     NSString *misInfo = [info objectForKey:@"isMisinformation"];
 
-    if ([misInfo isEqualToString:@"1"]) {
+    if ([misInfo isEqualToString:@"1"])
+    {
         cell.label_state.text = @"已撤消";
         cell.label_state.textColor = UIColorFromRGB(0xff11e767);
 
-    } else {
-        if ([userState isEqualToString:@"5"]) {
+    }
+    else
+    {
+        if ([userState isEqualToString:@"5"])
+        {
             cell.label_state.text = @"已确认";
             cell.label_state.textColor = UIColorFromRGB(0xff11e767);
 
-        } else if ([alarmState isEqualToString:@"0"]) {
+        }
+        else if ([alarmState isEqualToString:@"0"])
+        {
             cell.label_state.text = @"指派中";
             cell.label_state.textColor = UIColorFromRGB(0xfff4be19);
 
-        } else if ([alarmState isEqualToString:@"1"]) {
+        }
+        else if ([alarmState isEqualToString:@"1"])
+        {
             cell.label_state.text = @"已出发";
             cell.label_state.textColor = UIColorFromRGB(0xfff4be19);
 
-        } else if ([alarmState isEqualToString:@"2"]) {
+        }
+        else if ([alarmState isEqualToString:@"2"])
+        {
             cell.label_state.text = @"已到达";
             cell.label_state.textColor = UIColorFromRGB(0xfff4be19);
 
-        } else if ([alarmState isEqualToString:@"3"]) {
+        }
+        else if ([alarmState isEqualToString:@"3"])
+        {
             cell.label_state.text = @"已完成";
             cell.label_state.textColor = UIColorFromRGB(0xff11e767);
         }
@@ -197,20 +227,26 @@
 
 #pragma mark - Table view Delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSDictionary *info = _arrayData[indexPath.row];
     NSInteger userState = [[info objectForKey:@"userState"] integerValue];
 
-    if (-10 == userState) {
+    if (-10 == userState)
+    {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"该报警已经取消，无法查看救援结果!"
                                                        delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
         [alert show];
-    } else if (-9 == userState) {
+    }
+    else if (-9 == userState)
+    {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"该报警已经取消，无法查看救援结果!"
                                                        delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
         [alert show];
-    } else {
+    }
+    else
+    {
         UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
         AlarmResultViewController *vc = [board instantiateViewControllerWithIdentifier:@"AlarmResultViewController"];
 

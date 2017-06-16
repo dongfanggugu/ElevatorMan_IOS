@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,28 +16,28 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8Y-nK-QuZ">
-                    <rect key="frame" x="20" y="8" width="69" height="28"/>
+                    <rect key="frame" x="0.0" y="8" width="94" height="28"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="待处理">
                         <color key="titleColor" red="0.21176470589999999" green="0.69019607839999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xo-sY-GIo">
-                    <rect key="frame" x="109" y="8" width="68.5" height="28"/>
+                    <rect key="frame" x="94" y="8" width="93.5" height="28"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="救援中">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wnt-hA-NGc">
-                    <rect key="frame" x="197.5" y="8" width="69" height="28"/>
+                    <rect key="frame" x="187.5" y="8" width="94" height="28"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="已完成">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvF-rP-Yde">
-                    <rect key="frame" x="286.5" y="8" width="68.5" height="28"/>
+                    <rect key="frame" x="281.5" y="8" width="93.5" height="28"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="已撤销">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -46,20 +46,20 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Wnt-hA-NGc" firstAttribute="leading" secondItem="7xo-sY-GIo" secondAttribute="trailing" constant="20" id="0AY-vC-ZON"/>
+                <constraint firstItem="Wnt-hA-NGc" firstAttribute="leading" secondItem="7xo-sY-GIo" secondAttribute="trailing" id="0AY-vC-ZON"/>
                 <constraint firstItem="Wnt-hA-NGc" firstAttribute="height" secondItem="F8Y-nK-QuZ" secondAttribute="height" id="0No-KB-rfj"/>
                 <constraint firstItem="tvF-rP-Yde" firstAttribute="top" secondItem="F8Y-nK-QuZ" secondAttribute="top" id="EQF-bP-PkX"/>
                 <constraint firstItem="7xo-sY-GIo" firstAttribute="width" secondItem="F8Y-nK-QuZ" secondAttribute="width" id="HyC-cS-tzG"/>
-                <constraint firstItem="F8Y-nK-QuZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="VtK-Ca-BFj"/>
+                <constraint firstItem="F8Y-nK-QuZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VtK-Ca-BFj"/>
                 <constraint firstItem="tvF-rP-Yde" firstAttribute="height" secondItem="F8Y-nK-QuZ" secondAttribute="height" id="YDl-Uj-S9C"/>
                 <constraint firstItem="tvF-rP-Yde" firstAttribute="width" secondItem="F8Y-nK-QuZ" secondAttribute="width" id="ZxW-xX-W69"/>
                 <constraint firstItem="Wnt-hA-NGc" firstAttribute="width" secondItem="F8Y-nK-QuZ" secondAttribute="width" id="b2Y-kt-QGf"/>
-                <constraint firstItem="tvF-rP-Yde" firstAttribute="leading" secondItem="Wnt-hA-NGc" secondAttribute="trailing" constant="20" id="be6-H7-bgK"/>
+                <constraint firstItem="tvF-rP-Yde" firstAttribute="leading" secondItem="Wnt-hA-NGc" secondAttribute="trailing" id="be6-H7-bgK"/>
                 <constraint firstItem="F8Y-nK-QuZ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="hCW-fQ-uNY"/>
                 <constraint firstItem="Wnt-hA-NGc" firstAttribute="top" secondItem="F8Y-nK-QuZ" secondAttribute="top" id="pls-zC-IjH"/>
-                <constraint firstItem="7xo-sY-GIo" firstAttribute="leading" secondItem="F8Y-nK-QuZ" secondAttribute="trailing" constant="20" id="to0-eu-T16"/>
+                <constraint firstItem="7xo-sY-GIo" firstAttribute="leading" secondItem="F8Y-nK-QuZ" secondAttribute="trailing" id="to0-eu-T16"/>
                 <constraint firstItem="7xo-sY-GIo" firstAttribute="height" secondItem="F8Y-nK-QuZ" secondAttribute="height" id="v6L-Pq-s1g"/>
-                <constraint firstAttribute="trailing" secondItem="tvF-rP-Yde" secondAttribute="trailing" constant="20" id="wYy-Jo-R3G"/>
+                <constraint firstAttribute="trailing" secondItem="tvF-rP-Yde" secondAttribute="trailing" id="wYy-Jo-R3G"/>
                 <constraint firstItem="7xo-sY-GIo" firstAttribute="top" secondItem="F8Y-nK-QuZ" secondAttribute="top" id="y0P-av-XON"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

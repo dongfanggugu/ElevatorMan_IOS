@@ -34,22 +34,27 @@
 
 @implementation AddressViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavTitle:@"地址填写"];
     [self initView];
 }
 
-- (void)initView {
+- (void)initView
+{
     [self setTitleRight];
 
     [_locationBtn addTarget:self action:@selector(location) forControlEvents:UIControlEventTouchUpInside];
 
-    if (_addType == TYPE_HOME) {
+    if (_addType == TYPE_HOME)
+    {
         _cityLabel.text = [User sharedUser].homeCity;
         _zoneLabel.text = [User sharedUser].homeZone;
         _addressTF.text = [User sharedUser].homeAddress;
-    } else if (_addType == TYPE_WORK) {
+    }
+    else if (_addType == TYPE_WORK)
+    {
         _cityLabel.text = [User sharedUser].workCity;
         _zoneLabel.text = [User sharedUser].workZone;
         _addressTF.text = [User sharedUser].workAddress;
@@ -68,7 +73,8 @@
 /**
  *  设置标题栏右侧
  */
-- (void)setTitleRight {
+- (void)setTitleRight
+{
     UIButton *btnSubmit = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
     [btnSubmit setTitle:@"提交" forState:UIControlStateNormal];
     [btnSubmit setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -78,9 +84,11 @@
     self.navigationItem.rightBarButtonItem = rightItem;
 }
 
-- (void)location {
+- (void)location
+{
     NSString *address = [_addressTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    if (0 == address.length) {
+    if (0 == address.length)
+    {
         [HUDClass showHUDWithLabel:@"请先填写您的详细地址" view:self.view];
         return;
     }
@@ -90,33 +98,43 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)submit {
-    if (0 == _zoneLabel.text.length) {
+- (void)submit
+{
+    if (0 == _zoneLabel.text.length)
+    {
         [HUDClass showHUDWithLabel:@"请选择您所在的城区!" view:self.view];
         return;
     }
 
     NSString *address = [_addressTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    if (0 == address.length) {
+    if (0 == address.length)
+    {
         [HUDClass showHUDWithLabel:@"请填写您的详细地址!" view:self.view];
         return;
     }
 
-    if (0 == _lngValueLabel.text.length || 0 == _latValueLabel.text.length) {
+    if (0 == _lngValueLabel.text.length || 0 == _latValueLabel.text.length)
+    {
         [HUDClass showHUDWithLabel:@"请点击定位图标,选择地图上的位置!" view:self.view];
         return;
     }
 
-    if (_addType == TYPE_HOME) {
+    if (_addType == TYPE_HOME)
+    {
         [self reportHome];
-    } else if (_addType == TYPE_WORK) {
+    }
+    else if (_addType == TYPE_WORK)
+    {
         [self reportWork];
-    } else if (_addType == TYPE_PRO) {
+    }
+    else if (_addType == TYPE_PRO)
+    {
         [self reportPro];
     }
 }
 
-- (void)reportHome {
+- (void)reportHome
+{
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:@"北京市" forKey:@"family_province"];
     [params setObject:@"北京市" forKey:@"family_city"];
@@ -136,7 +154,8 @@
     }];
 }
 
-- (void)reportWork {
+- (void)reportWork
+{
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:@"北京市" forKey:@"resident_province"];
     [params setObject:@"北京市" forKey:@"resident_city"];
@@ -156,7 +175,8 @@
     }];
 }
 
-- (void)reportPro {
+- (void)reportPro
+{
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"address"] = _addressTF.text;
     params[@"branchId"] = [User sharedUser].branchId;
@@ -168,7 +188,8 @@
     }];
 }
 
-- (void)readZones {
+- (void)readZones
+{
     NSString *zoneJson = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"beijing_districts" ofType:@"json"]
                                                    encoding:NSUTF8StringEncoding error:nil];
     NSData *jsonData = [zoneJson dataUsingEncoding:NSUTF8StringEncoding];
@@ -178,13 +199,16 @@
     [self showZones];
 }
 
-- (void)showZones {
-    if (_alartView != nil && _alartView.window != nil) {
+- (void)showZones
+{
+    if (_alartView != nil && _alartView.window != nil)
+    {
         NSLog(@"already showing");
         return;
     }
 
-    if (_alartView != nil && nil == _alartView.window) {
+    if (_alartView != nil && nil == _alartView.window)
+    {
         [self.view addSubview:_alartView];
         return;
     }
@@ -230,8 +254,10 @@
     [self.view addSubview:_alartView];
 }
 
-- (void)cancelAlertView {
-    if (_alartView != nil && _alartView.window != nil) {
+- (void)cancelAlertView
+{
+    if (_alartView != nil && _alartView.window != nil)
+    {
         [_alartView removeFromSuperview];
     }
 }
@@ -239,14 +265,17 @@
 
 #pragma mark -- UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return _dataArray.count;
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"zone_cell"];
-    if (nil == cell) {
+    if (nil == cell)
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"zone_cell"];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 150, 24)];
         label.tag = 1001;
@@ -262,7 +291,8 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSDictionary *info = _dataArray[indexPath.row];
 

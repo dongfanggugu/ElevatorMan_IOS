@@ -58,7 +58,8 @@
 @implementation ProMaintenancePlan
 
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     [self getPlanList];
 }
@@ -66,13 +67,15 @@
 /**
  *  视图加载后，初始化全局变量
  */
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavTitle:@"维保管理"];
     [self initView];
 }
 
-- (void)getPlanList {
+- (void)getPlanList
+{
     [[HttpClient sharedClient] view:self.view post:@"getMainPlanByPropertyId" parameter:nil
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                 self.planArray = [responseObject objectForKey:@"body"];
@@ -80,7 +83,8 @@
                             }];
 }
 
-- (void)initView {
+- (void)initView
+{
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
@@ -88,16 +92,19 @@
 #pragma mark -- Table View data source
 
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.planArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 
     PlanTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"planCell"];
 
@@ -128,7 +135,8 @@
     return cell;
 }
 
-- (void)cellSelected:(UIGestureRecognizer *)recognizer {
+- (void)cellSelected:(UIGestureRecognizer *)recognizer
+{
     self.currentAlerCell = (PlanTableCell *) recognizer.view;
     NSInteger tag = self.currentAlerCell.tag;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"维保计划处理" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", @"拒绝", nil];
@@ -145,17 +153,27 @@
  *
  *  @return <#return value description#>
  */
-- (NSString *)getDescriptionByType:(NSString *)type {
+- (NSString *)getDescriptionByType:(NSString *)type
+{
     NSString *description = nil;
-    if ([type isEqualToString:@"hm"]) {
+    if ([type isEqualToString:@"hm"])
+    {
         description = @"半月保";
-    } else if ([type isEqualToString:@"m"]) {
+    }
+    else if ([type isEqualToString:@"m"])
+    {
         description = @"月保";
-    } else if ([type isEqualToString:@"s"]) {
+    }
+    else if ([type isEqualToString:@"s"])
+    {
         description = @"季度保";
-    } else if ([type isEqualToString:@"hy"]) {
+    }
+    else if ([type isEqualToString:@"hy"])
+    {
         description = @"半年保";
-    } else if ([type isEqualToString:@"y"]) {
+    }
+    else if ([type isEqualToString:@"y"])
+    {
         description = @"年保";
     }
     return description;
@@ -167,10 +185,12 @@
  *  @param alertView   <#alertView description#>
  *  @param buttonIndex <#buttonIndex description#>
  */
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
     //index:0 取消 1:确认 2:拒绝
 
-    if (0 == buttonIndex) {
+    if (0 == buttonIndex)
+    {
         return;
     }
 
@@ -191,15 +211,21 @@
 }
 
 
-- (void)setCellView:(PlanTableCell *)cell state:(NSString *)state {
+- (void)setCellView:(PlanTableCell *)cell state:(NSString *)state
+{
 
-    if ([state isEqualToString:@"1"]) {
+    if ([state isEqualToString:@"1"])
+    {
         cell.stateLabel.text = @"待确认(点击进行确认)";
 
-    } else if ([state isEqualToString:@"2"]) {
+    }
+    else if ([state isEqualToString:@"2"])
+    {
         cell.stateLabel.text = @"已确认";
 
-    } else if ([state isEqualToString:@"3"]) {
+    }
+    else if ([state isEqualToString:@"3"])
+    {
         cell.stateLabel.text = @"已拒绝";
     }
 }

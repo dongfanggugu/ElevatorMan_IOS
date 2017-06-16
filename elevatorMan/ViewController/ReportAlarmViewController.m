@@ -25,7 +25,8 @@
 @implementation ReportAlarmViewController
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     // Do any additional setup after loading the view.
@@ -39,13 +40,15 @@
 }
 
 
-- (void)showAlarmDetail {
+- (void)showAlarmDetail
+{
     self.AlarmDetail.text = [NSString stringWithFormat:@"%@%@号楼%@号电梯", self.projectName, self.buildingNum, [self.liftDic objectForKey:@"number"]];
 }
 
 #pragma mark - IBAction
 
-- (IBAction)reportAlarm:(id)sender {
+- (IBAction)reportAlarm:(id)sender
+{
 
     //设置参数
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:1];
@@ -71,20 +74,25 @@
 
 #pragma mark - UIAlertViewDelegate
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
     [self.navigationController popToRootViewControllerAnimated:YES];
 
 }
 
-- (IBAction)choiceInJured:(id)sender {
+- (IBAction)choiceInJured:(id)sender
+{
 
     self.isInjured = !self.isInjured;
 
     UIButton *button = (UIButton *) sender;
 
-    if (self.isInjured) {
+    if (self.isInjured)
+    {
         [button setBackgroundImage:[UIImage imageNamed:@"icon_choice.png"] forState:UIControlStateNormal];
-    } else {
+    }
+    else
+    {
         [button setBackgroundImage:[UIImage imageNamed:@"icon_noChoice.png"] forState:UIControlStateNormal];
     }
 }
@@ -93,7 +101,8 @@
 #pragma mark - UITextFiledDelegate
 
 //当用户按下return键或者按回车键，keyboard消失
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     [textField resignFirstResponder];
     return YES;
 }

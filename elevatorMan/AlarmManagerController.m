@@ -18,6 +18,8 @@
 
 @property (strong, nonatomic) BMKMapView *mapView;
 
+@property (strong, nonatomic) AlarmTitleView *titleView;
+
 @property (strong, nonatomic) NSMutableArray *arrayAlarm;
 
 @property (strong, nonatomic) NSMutableArray *arrayReceived;
@@ -48,7 +50,7 @@
 - (void)onClickNavRight
 {
     AlarmHistoryController *controller = [[AlarmHistoryController alloc] init];
-    
+
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -56,29 +58,29 @@
 - (void)initView
 {
     _mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64)];
-    
+
     _mapView.delegate = self;
-    
+
     _mapView.zoomLevel = 10;
-    
+
     [self.view addSubview:_mapView];
-    
+
     //头部视图
-    AlarmTitleView *titleView = [AlarmTitleView viewFromNib];
-    
-    titleView.frame = CGRectMake(0, 64, self.screenWidth, 44);
-    
-    titleView.delegate = self;
-    
-    [self.view addSubview:titleView];
-    
+    _titleView = [AlarmTitleView viewFromNib];
+
+    _titleView.frame = CGRectMake(0, 64, self.screenWidth, 44);
+
+    _titleView.delegate = self;
+
+    [self.view addSubview:_titleView];
+
     //底部视图
     _bottomView = [AlarmBottomView viewFromNib];
-    
+
     _bottomView.frame = CGRectMake(0, self.screenHeight - 180, self.screenWidth, 180);
 
     _bottomView.hidden = YES;
-    
+
     [self.view addSubview:_bottomView];
 }
 
@@ -98,7 +100,7 @@
     {
         _arrayAlarm = [NSMutableArray array];
     }
-    
+
     return _arrayAlarm;
 }
 
@@ -183,7 +185,23 @@
         }
     }
 
+    [self showTitleCount];
     [self markOnMap:self.arrayReceived];
+}
+
+- (void)showTitleCount
+{
+    NSString *received = [NSString stringWithFormat:@"待处理(%ld)", self.arrayReceived.count];
+    [_titleView.btnNeed setTitle:received forState:UIControlStateNormal];
+
+    NSString *process = [NSString stringWithFormat:@"救援中(%ld)", self.arrayProcess.count];
+    [_titleView.btnSave setTitle:process forState:UIControlStateNormal];
+
+    NSString *finish = [NSString stringWithFormat:@"已完成(%ld)", self.arrayFinished.count];
+    [_titleView.btnFinish setTitle:finish forState:UIControlStateNormal];
+
+    NSString *cancel = [NSString stringWithFormat:@"已撤销(%ld)", self.arrayCancel.count];
+    [_titleView.btnRevoke setTitle:cancel forState:UIControlStateNormal];
 }
 
 - (void)markOnMap:(NSArray *)array
@@ -191,7 +209,9 @@
     _bottomView.hidden = YES;
     [_mapView removeAnnotations:[_mapView annotations]];
 
-    for (NSInteger i = 0; i < array.count; i++)
+    for (NSInteger i = 0;
+            i < array.count;
+            i++)
     {
         NSDictionary *alarm = array[i];
 
@@ -207,9 +227,9 @@
 
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
 {
-    MaintAnnotation *ann = (MaintAnnotation *)annotation;
+    MaintAnnotation *ann = (MaintAnnotation *) annotation;
 
-    MaintAnnotationView *annView = (MaintAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:[MaintAnnotationView identifier]];
+    MaintAnnotationView *annView = (MaintAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:[MaintAnnotationView identifier]];
 
     if (!annView)
     {
@@ -227,8 +247,8 @@
 {
     [self resetAnnViewImage];
 
-    MaintAnnotationView *annView = (MaintAnnotationView *)view;
-    
+    MaintAnnotationView *annView = (MaintAnnotationView *) view;
+
     annView.image = [UIImage imageNamed:@"icon_project.png"];
 
     if (_bottomView.hidden)
@@ -302,12 +322,12 @@
 
 - (void)onClickFinish
 {
-   [self markOnMap:self.arrayFinished];
+    [self markOnMap:self.arrayFinished];
 }
 
 - (void)onClickRevoke
 {
-   [self markOnMap:self.arrayCancel];
+    [self markOnMap:self.arrayCancel];
 }
 
 @end

@@ -29,7 +29,8 @@
 
 @implementation AroundController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavTitle:@"附近维保"];
     [self initNavRightWithText:@"驻点切换"];
@@ -38,24 +39,31 @@
     [self getProjectInfo];
 }
 
-- (void)initData {
+- (void)initData
+{
     _arrayProject = [NSMutableArray array];
 }
 
-- (void)onClickNavRight {
+- (void)onClickNavRight
+{
     [self getLocations];
 }
 
-- (void)initView {
+- (void)initView
+{
     _mapView.delegate = self;
     _mapView.zoomLevel = 15;
     _mapView.zoomEnabled = YES;
 }
 
-- (void)showAddress {
+- (void)showAddress
+{
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"驻点选择" message:nil delegate:self
                                               cancelButtonTitle:@"取消" otherButtonTitles:nil];
-    for (NSInteger i = 0; i < _arrayLocation.count; i++) {
+    for (NSInteger i = 0;
+            i < _arrayLocation.count;
+            i++)
+    {
         NSString *title = [_arrayLocation[i] objectForKey:@"address"];
 
         [alertView addButtonWithTitle:title];
@@ -69,7 +77,8 @@
 #pragma mark - Network Request
 
 
-- (void)getLocations {
+- (void)getLocations
+{
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"branchId"] = [User sharedUser].branchId;
 
@@ -82,7 +91,8 @@
     }];
 }
 
-- (void)getProjectInfo {
+- (void)getProjectInfo
+{
     __weak typeof(self) weakSelf = self;
 
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
@@ -93,8 +103,12 @@
     }];
 }
 
-- (void)showProjects {
-    for (NSInteger i = 0; i < _arrayProject.count; i++) {
+- (void)showProjects
+{
+    for (NSInteger i = 0;
+            i < _arrayProject.count;
+            i++)
+    {
         CGFloat lat = [[_arrayProject[i] objectForKey:@"lat"] floatValue];
         CGFloat lng = [[_arrayProject[i] objectForKey:@"lng"] floatValue];
         CalloutMapAnnotation *marker = [[CalloutMapAnnotation alloc] init];
@@ -109,11 +123,14 @@
 
 #pragma mark - BMKMapViewDelegate
 
-- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation {
-    if ([annotation isKindOfClass:[CalloutMapAnnotation class]]) {
+- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[CalloutMapAnnotation class]])
+    {
         CalloutMapAnnotation *ann = (CalloutMapAnnotation *) annotation;
         CalloutAnnotationView *calloutView = (CalloutAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:@"calloutview"];
-        if (nil == calloutView) {
+        if (nil == calloutView)
+        {
             calloutView = [[CalloutAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"calloutview"];
         }
 
@@ -128,17 +145,22 @@
 }
 
 
-- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
+- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
+{
     CalloutAnnotationView *calloutView = (CalloutAnnotationView *) view;
 
-    if (_calloutView == calloutView) {
+    if (_calloutView == calloutView)
+    {
         return;
     }
 
-    if (nil == _calloutView) {
+    if (nil == _calloutView)
+    {
         _calloutView = calloutView;
         [_calloutView showInfoWindow];
-    } else {
+    }
+    else
+    {
         [_calloutView hideInfoWindow];
         _calloutView = calloutView;
         [_calloutView showInfoWindow];
@@ -147,8 +169,10 @@
 
 }
 
-- (void)mapView:(BMKMapView *)mapView didDeselectAnnotationView:(BMKAnnotationView *)view {
-    if (nil == _calloutView) {
+- (void)mapView:(BMKMapView *)mapView didDeselectAnnotationView:(BMKAnnotationView *)view
+{
+    if (nil == _calloutView)
+    {
         return;
     }
 
@@ -156,8 +180,10 @@
     _calloutView = nil;
 }
 
-- (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate {
-    if (nil == _calloutView) {
+- (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate
+{
+    if (nil == _calloutView)
+    {
         return;
     }
 
@@ -167,9 +193,11 @@
 
 #pragma mark - UIAlertViewDelegate
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
     NSLog(@"button index:%ld", buttonIndex);
-    if (0 == buttonIndex) {
+    if (0 == buttonIndex)
+    {
         return;
     }
     CLLocationCoordinate2D coor;

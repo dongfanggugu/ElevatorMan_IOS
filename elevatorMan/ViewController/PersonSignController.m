@@ -29,19 +29,23 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    if (0 == [User sharedUser].signUrl) {
-        
+
+    if (0 == [User sharedUser].signUrl)
+    {
+
         [self initNavRightWithText:@"添加"];
         [HUDClass showHUDWithLabel:@"您还未添加您的个人手写签名,请录入您的签名"];
-        
+
         return;
-        
-    } else {
+
+    }
+    else
+    {
         [self initNavRightWithText:@"修改"];
         [_imageView setImageWithURL:[NSURL URLWithString:[User sharedUser].signUrl]];
     }
 }
+
 - (void)initView
 {
     _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64)];
@@ -52,7 +56,7 @@
 {
 
     PaintViewController *controller = [[PaintViewController alloc] init];
-    
+
     [self.navigationController pushViewController:controller animated:YES];
 }
 
