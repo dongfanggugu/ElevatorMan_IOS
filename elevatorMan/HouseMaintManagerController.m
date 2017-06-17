@@ -5,9 +5,20 @@
 #import "HouseMaintManagerController.h"
 #import <BaiduMapAPI/BMapKit.h>
 #import "HouseTitleView.h"
-#import "MaintAnnotation.h"
-#import "MaintAnnotationView.h"
+#import "RepairAnnotation.h"
+#import "RepairAnnotationView.h"
 #import "OrderMaintListController.h"
+#import "MaintResultShowController.h"
+#import "MaintInfoController.h"
+#import "MaintDetailController.h"
+
+typedef NS_ENUM(NSInteger, FiltState)
+{
+    Filt_Be,
+    Filt_Ing,
+    Filt_Ed,
+    Filt_Over
+};
 
 @interface HouseMaintManagerController () <BMKMapViewDelegate, HouseTitleViewDelegate>
 
@@ -17,7 +28,9 @@
 
 @property (strong, nonatomic) HouseTitleView *titleView;
 
-@property (weak, nonatomic) MaintAnnotationView *curAnnView;
+@property (weak, nonatomic) RepairAnnotationView *curAnnView;
+
+@property (assign, nonatomic) FiltState filtState;
 
 @end
 
@@ -74,19 +87,37 @@
 - (void)markMaint
 {
     [self showTitleCount];
+    _filtState = Filt_Be;
     [self markOnMap:_dicMaint[@"weiChuLi"]];
 }
 
 - (void)markOnMap:(NSArray *)array
 {
     [_mapView removeAnnotations:[_mapView annotations]];
+
     for (NSInteger i = 0; i < array.count; i++)
     {
+        NSMutableDictionary *annInfo = [NSMutableDictionary dictionary];
+
+        annInfo[@"category"] = @"repair";
+
         NSDictionary *info = array[i];
+        RepairAnnotation *ann = nil;
 
-        MaintAnnotation *ann = [[MaintAnnotation alloc] initWithLat:[info[@"villaInfo"][@"lat"] floatValue] andLng:[info[@"villaInfo"][@"lng"] floatValue]];
+        if (Filt_Be == _filtState)
+        {
+            annInfo[@"type"] = @"order";
+            ann = [[RepairAnnotation alloc] initWithLat:[info[@"villaInfo"][@"lat"] floatValue] andLng:[info[@"villaInfo"][@"lng"] floatValue]];
+        }
+        else
+        {
+            annInfo[@"type"] = @"task";
+            ann = [[RepairAnnotation alloc] initWithLat:[info[@"maintOrderInfo"][@"villaInfo"][@"lat"] floatValue]
+                                                 andLng:[info[@"maintOrderInfo"][@"villaInfo"][@"lng"] floatValue]];
+        }
 
-        ann.info = info;
+        annInfo[@"data"] = info;
+        ann.info = annInfo;
 
         [_mapView addAnnotation:ann];
     }
@@ -111,24 +142,46 @@
 
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
 {
-    if ([annotation isKindOfClass:[MaintAnnotation class]])
+    if ([annotation isKindOfClass:[RepairAnnotation class]])
     {
-        MaintAnnotation *ann = (MaintAnnotation *) annotation;
+        RepairAnnotation *ann = (RepairAnnotation *) annotation;
 
-        MaintAnnotationView *annView = (MaintAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:[MaintAnnotationView identifier]];
+        RepairAnnotationView *annView = (RepairAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:[RepairAnnotationView identifier]];
 
         if (!annView)
         {
-            annView = [[MaintAnnotationView alloc] initWithAnnotation:ann reuseIdentifier:[MaintAnnotationView identifier]];
+            annView = [[RepairAnnotationView alloc] initWithAnnotation:ann reuseIdentifier:[RepairAnnotationView identifier]];
         }
 
+        annView.info = ann.info;
 
         __weak typeof(self) weakSelf = self;
 
         [annView setOnClickDetail:^(NSArray *arrayInfo) {
 
+            if (weakSelf.curAnnView)
+            {
+                [weakSelf.curAnnView hideInfoView];
+                weakSelf.curAnnView.selected = NO;
+                weakSelf.curAnnView = nil;
+            }
+
+            if (Filt_Be == weakSelf.filtState)
+            {
+                MaintDetailController *controller = [[MaintDetailController alloc] init];
+                controller.orderInfo = ann.info[@"data"];
+                controller.hidesBottomBarWhenPushed = YES;
+                [weakSelf.navigationController pushViewController:controller animated:YES];
+            }
+            else
+            {
+                MaintInfoController *controller = [[MaintInfoController alloc] init];
+                controller.maintInfo = ann.info[@"data"];
+                controller.mode = MaintTaskMode_Show;
+                controller.hidesBottomBarWhenPushed = YES;
+                [weakSelf.navigationController pushViewController:controller animated:YES];
+            }
         }];
-        annView.arrayInfo = ann.arrayInfo;
 
         return annView;
     }
@@ -138,7 +191,7 @@
 
 - (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
 {
-    MaintAnnotationView *annView = (MaintAnnotationView *) view;
+    RepairAnnotationView *annView = (RepairAnnotationView *) view;
 
     if (_curAnnView)
     {
@@ -166,6 +219,7 @@
     if (_curAnnView)
     {
         [_curAnnView hideInfoView];
+        _curAnnView.selected = NO;
         _curAnnView = nil;
     }
 }
@@ -178,6 +232,7 @@
  */
 - (void)onClickNeed
 {
+    _filtState = Filt_Be;
     [self markOnMap:self.dicMaint[@"weiChuLi"]];
 }
 
@@ -186,6 +241,7 @@
  */
 - (void)onClickSave
 {
+    _filtState = Filt_Ing;
     [self markOnMap:self.dicMaint[@"chuLiZhong"]];
 }
 
@@ -194,6 +250,7 @@
  */
 - (void)onClickFinish
 {
+    _filtState = Filt_Ed;
     [self markOnMap:self.dicMaint[@"yiChuLi"]];
 }
 
@@ -202,6 +259,7 @@
  */
 - (void)onClickRevoke
 {
+    _filtState = Filt_Over;
     [self markOnMap:self.dicMaint[@"yiChaoQi"]];
 }
 @end

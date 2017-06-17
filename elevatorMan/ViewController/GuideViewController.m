@@ -10,6 +10,9 @@
 #import "GuideViewController.h"
 #import "CDPGifScrollView.h"
 #import "AppDelegate.h"
+#import "TmateMainPageController.h"
+#import "TmateMainTabBarController.h"
+#import "BaseNavigationController.h"
 
 @interface GuideViewController () <UIScrollViewDelegate>
 
@@ -51,6 +54,7 @@
 
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"signviewcontroller"];
 
+
     }
     else
     {
@@ -68,12 +72,16 @@
         }
         else if ([[User sharedUser].userType isEqualToString:UserTypeWorker])//维修工
         {
+            TmateMainTabBarController *controller = [[TmateMainTabBarController alloc] init];
 
-            UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-
-            //[UIApplication sharedApplication].delegate.window.rootViewController = [story  instantiateViewControllerWithIdentifier:@"workerRootViewController"];
-            UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"main_page"];
+//            BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:controller];
             self.window.rootViewController = controller;
+
+//            UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//
+//            //[UIApplication sharedApplication].delegate.window.rootViewController = [story  instantiateViewControllerWithIdentifier:@"workerRootViewController"];
+//            UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"main_page"];
+//            self.window.rootViewController = controller;
         }
     }
 

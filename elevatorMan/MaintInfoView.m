@@ -18,10 +18,11 @@
 + (id)viewFromNib
 {
     NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"MaintInfoView" owner:nil options:nil];
-    if (0 == array.count) {
+    if (0 == array.count)
+    {
         return nil;
     }
-    
+
     return array[0];
 }
 
@@ -38,42 +39,44 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
+
     _btnStart.layer.masksToBounds = YES;
-    
+
     _btnStart.layer.cornerRadius = 5;
-    
+
     _btnException.layer.masksToBounds = YES;
-    
+
     _btnException.layer.cornerRadius = 5;
-    
+
     _btnMake.layer.masksToBounds = YES;
-    
+
     _btnMake.layer.cornerRadius = 5;
-    
+
     [_btnStretch addTarget:self action:@selector(clickStretch) forControlEvents:UIControlEventTouchUpInside];
-    
+
     [_btnPlan addTarget:self action:@selector(clickPlan) forControlEvents:UIControlEventTouchUpInside];
-    
+
     [_btnStart addTarget:self action:@selector(clickStart) forControlEvents:UIControlEventTouchUpInside];
-    
+
     [_btnException addTarget:self action:@selector(clickException) forControlEvents:UIControlEventTouchUpInside];
-    
+
     [_btnMake addTarget:self action:@selector(clickMake) forControlEvents:UIControlEventTouchUpInside];
-    
+
 }
 
 
 - (void)clickMake
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(onClickMake)]) {
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickMake)])
+    {
         [_delegate onClickMake];
     }
 }
 
 - (void)clickException
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(onClickException)]) {
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickException)])
+    {
         [_delegate onClickException];
     }
 }
@@ -84,7 +87,8 @@
  */
 - (void)clickStart
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(onClickStart)]) {
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickStart)])
+    {
         [_delegate onClickStart];
     }
 }
@@ -95,7 +99,8 @@
  */
 - (void)clickStretch
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(onClickStretch)]) {
+    if (_delegate && [_delegate respondsToSelector:@selector(onClickStretch)])
+    {
         [_delegate onClickStretch];
     }
 }
@@ -107,9 +112,9 @@
 - (void)clickPlan
 {
     DatePickerDialog *dialog = [DatePickerDialog viewFromNib];
-    
+
     dialog.delegate = self;
-    
+
     [dialog show];
 }
 

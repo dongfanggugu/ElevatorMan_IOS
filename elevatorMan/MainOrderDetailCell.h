@@ -24,26 +24,9 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *lbContent;
 
-@property (weak, nonatomic) IBOutlet UILabel *lbAppoint;
-
 @property (weak, nonatomic) IBOutlet UILabel *lbBrand;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbAddress;
 
-@property (weak, nonatomic) IBOutlet UILabel *lbAmount;
-
-@property (weak, nonatomic) IBOutlet UILabel *lbPrice;
-
-@property (weak, nonatomic) IBOutlet UILabel *lbDiscourt;
-
-@property (weak, nonatomic) IBOutlet UILabel *lbPay;
-
-@property (weak, nonatomic) IBOutlet UILabel *lbPayType;
-
-@property (weak, nonatomic) IBOutlet UILabel *lbPayState;
-
-@property (weak, nonatomic) IBOutlet UILabel *lbPayDate;
-
-@property (weak, nonatomic) IBOutlet UIButton *btn;
 
 @end

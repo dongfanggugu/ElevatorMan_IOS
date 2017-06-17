@@ -19,6 +19,9 @@
 #import "FileUtils.h"
 #import "GuideViewController.h"
 #import "PaintViewController.h"
+#import "TmateMainPageController.h"
+#import "TmateMainTabBarController.h"
+#import "BaseNavigationController.h"
 
 #define PROVINCE 1002
 #define CITY 1003
@@ -407,10 +410,6 @@
 {
     if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])//物业
     {
-//        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Property" bundle:nil];
-//        
-//        [UIApplication sharedApplication].delegate.window.rootViewController = [story  instantiateViewControllerWithIdentifier:@"propertyRootViewController"];
-
 
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"MyProperty" bundle:nil];
 
@@ -420,9 +419,13 @@
     else if ([[User sharedUser].userType isEqualToString:UserTypeWorker])//维修工
     {
 
-        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        TmateMainTabBarController *controller = [[TmateMainTabBarController alloc] init];
 
-        [UIApplication sharedApplication].delegate.window.rootViewController = [story instantiateViewControllerWithIdentifier:@"main_page"];
+        [UIApplication sharedApplication].delegate.window.rootViewController = controller;
+
+//        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//
+//        [UIApplication sharedApplication].delegate.window.rootViewController = [story instantiateViewControllerWithIdentifier:@"main_page"];
 
     }
 

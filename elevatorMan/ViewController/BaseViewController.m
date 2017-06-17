@@ -45,6 +45,13 @@
         return;
     }
 
+    NSArray *array = self.navigationController.viewControllers;
+
+    if (self == array[0])
+    {
+        return;
+    }
+
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
     imageView.image = [UIImage imageNamed:@"back_normal"];
     [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(popup)]];

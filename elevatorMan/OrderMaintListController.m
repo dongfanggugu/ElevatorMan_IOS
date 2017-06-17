@@ -5,7 +5,7 @@
 
 #import "OrderMaintListController.h"
 #import "OrderMaintCell.h"
-#import "OrderMaintDetailController.h"
+#import "MaintDetailController.h"
 
 @interface OrderMaintListController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -47,7 +47,8 @@
     }
 
     return _arrayOrder;
-}/**
+}
+/**
  id  支付ID
  type 1维保2维修3一元保障
  frequency 购买次数
@@ -69,13 +70,13 @@
     params[@"page"] = [NSNumber numberWithInteger:1];
     params[@"rows"] = [NSNumber numberWithInteger:100];
 
-
     [[HttpClient sharedClient] post:@"getPaymentByBranchId" parameter:params success:^(AFHTTPRequestOperation *task, id responseObject) {
         [self.arrayOrder removeAllObjects];
 
         [self.arrayOrder addObjectsFromArray:[responseObject objectForKey:@"body"]];
 
         [self.tableView reloadData];
+
     }];
 }
 
@@ -127,7 +128,7 @@
 {
     NSDictionary *info = self.arrayOrder[indexPath.section];
 
-    OrderMaintDetailController *controller = [[OrderMaintDetailController alloc] init];
+    MaintDetailController *controller = [[MaintDetailController alloc] init];
     controller.orderInfo = info;
 
     [self.navigationController pushViewController:controller animated:YES];

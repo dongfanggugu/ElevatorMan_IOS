@@ -5,6 +5,7 @@
 
 #import "OrderRepairListController.h"
 #import "OrderMaintCell.h"
+#import "HouseRepairOrderDetailController.h"
 //#import "RepairInfoController.h"
 
 @interface OrderRepairListController () <UITableViewDataSource, UITableViewDelegate>
@@ -56,8 +57,53 @@
 - (void)getRepair
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"branchId"] = [User sharedUser].branchId;
+    params[@"page"] = [NSNumber numberWithInteger:1];
+    params[@"rows"] = [NSNumber numberWithInteger:100];
 
+    [[HttpClient sharedClient] post:@"getRepairOrderByBranchId" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
+        [self.arrayOrder removeAllObjects];
+        [self.arrayOrder addObjectsFromArray:responseObject[@"body"]];
+        [self.tableView reloadData];
+    }];
+}
+
+- (NSString *)getStateDes:(NSInteger)state
+{
+    NSString *res = @"";
+
+    if (1 == state)
+    {
+        res = @"待确认";
+
+    }
+    else if (2 == state)
+    {
+        res = @"已确认";
+
+    }
+    else if (4 == state)
+    {
+        res = @"已委派";
+
+    }
+    else if (6 == state)
+    {
+        res = @"维修中";
+
+    }
+    else if (8 == state)
+    {
+        res = @"维修完成";
+
+    }
+    else if (9 == state)
+    {
+        res = @"已评价";
+    }
+
+    return res;
 }
 
 #pragma mark - UITableView
@@ -90,14 +136,8 @@
     NSString *fault = [orderInfo[@"repairTypeInfo"] objectForKey:@"name"];
     cell.lbType.text = [NSString stringWithFormat:@"故障类型: %@", fault];
 
-    cell.lbState.text = @"未支付";
+    cell.lbState.text = [self getStateDes:[orderInfo[@"state"] integerValue]];
 
-    BOOL isPay = [orderInfo[@"isPay"] boolValue];
-
-    if (isPay)
-    {
-        cell.lbState.text = @"已支付";
-    }
     return cell;
 }
 
@@ -108,6 +148,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    HouseRepairOrderDetailController *controller = [[HouseRepairOrderDetailController alloc] init];
+    controller.orderInfo = self.arrayOrder[indexPath.section];
+
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section

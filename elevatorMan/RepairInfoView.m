@@ -12,8 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lbTitleOrder;
 
-@property (weak, nonatomic) IBOutlet UILabel *lbTitleTask;
-
 
 @end
 

@@ -108,35 +108,45 @@
     _infoView.frame = frame;
 
     [self.view addSubview:_infoView];
-    
-    switch (self.state)
+
+    if (MaintTaskMode_Show == _mode)
     {
-        case 0:
-            [self state0];
-            break;
+        _infoView.btnPlan.hidden = YES;
+        _infoView.btnException.hidden = YES;
+        _infoView.btnMake.hidden = YES;
+        _infoView.btnStart.hidden = YES;
+    }
+    else
+    {
+        switch (self.state)
+        {
+            case 0:
+                [self state0];
+                break;
 
-        case 1:
-            [self state1];
-            break;
+            case 1:
+                [self state1];
+                break;
 
-        case 2:
-            [self state2];
-            break;
+            case 2:
+                [self state2];
+                break;
 
-        case 3:
-            [self state3];
-            break;
+            case 3:
+                [self state3];
+                break;
 
-        case 4:
-            [self state4];
-            break;
+            case 4:
+                [self state4];
+                break;
 
-        case 5:
-            [self state5];
-            break;
-            
-        default:
-            break;
+            case 5:
+                [self state5];
+                break;
+
+            default:
+                break;
+        }
     }
 }
 
@@ -256,17 +266,20 @@
 
     if (y < initY)
     {
+
         CGRect frame = CGRectMake(0, self.screenHeight - [MaintInfoView basicInfoHeight], self.screenWidth, [MaintInfoView viewHeight]);
 
         _infoView.frame = frame;
 
+        [_infoView.btnStretch setImage:[UIImage imageNamed:@"icon_maint_down.png"] forState:UIControlStateNormal];
     }
     else
     {
         CGRect frame = CGRectMake(0, self.screenHeight - [MaintInfoView viewHeight], self.screenWidth, [MaintInfoView viewHeight]);
 
-
         _infoView.frame = frame;
+
+        [_infoView.btnStretch setImage:[UIImage imageNamed:@"icon_maint_up.png"] forState:UIControlStateNormal];
     }
 }
 

@@ -15,22 +15,26 @@
 
 @implementation PersonHeaderView
 
-+ (instancetype)viewFromNib {
++ (instancetype)viewFromNib
+{
     NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"PersonHeaderView" owner:nil options:nil];
 
-    if (0 == array.count) {
+    if (0 == array.count)
+    {
         return nil;
     }
 
     return [[array[0] subviews] objectAtIndex:0];
 }
 
-- (void)layoutSubviews {
+- (void)layoutSubviews
+{
     [super layoutSubviews];
     [self initImageView];
 }
 
-- (void)initImageView {
+- (void)initImageView
+{
     _image.layer.masksToBounds = YES;
     _image.layer.cornerRadius = 40;
 
@@ -38,8 +42,10 @@
     [_image addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onClickImage)]];
 }
 
-- (void)onClickImage {
-    if (_delegate != nil && [_delegate respondsToSelector:@selector(onClickIcon)]) {
+- (void)onClickImage
+{
+    if (_delegate != nil && [_delegate respondsToSelector:@selector(onClickIcon)])
+    {
         [_delegate onClickIcon];
     }
 }

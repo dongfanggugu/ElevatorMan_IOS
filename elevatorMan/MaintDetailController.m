@@ -15,13 +15,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setNavTitle:@"维保订单"];
     [self initView];
 }
 
 - (void)initView
 {
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth,
-            self.screenHeight - 118)];
+            self.screenHeight - 64)];
 
     tableView.delegate = self;
 
@@ -62,50 +63,6 @@
     cell.lbAddress.text = [NSString stringWithFormat:@"别墅地址:%@", _orderInfo[@"villaInfo"][@"cellName"]];
 
 
-    cell.lbAmount.text = [NSString stringWithFormat:@"%ld", [_orderInfo[@"frequency"] integerValue]];
-
-
-    CGFloat price = [[_orderInfo[@"mainttypeInfo"] objectForKey:@"price"] floatValue];
-
-    cell.lbPrice.text = [NSString stringWithFormat:@"￥%.2lf", price];
-
-    cell.lbDiscourt.text = @"￥0";
-
-    cell.lbPay.text = [NSString stringWithFormat:@"￥%.2lf", [_orderInfo[@"payMoney"] floatValue]];
-
-    cell.lbPayType.text = @"在线支付";
-
-    NSInteger isPay = [_orderInfo[@"isPay"] integerValue];
-
-    if (isPay)
-    {
-        cell.lbPayState.text = @"已经支付";
-        cell.lbPayDate.text = _orderInfo[@"payTime"];
-        cell.btn.hidden = YES;
-
-    }
-    else
-    {
-
-        NSInteger delete = [[_orderInfo[@"maintOrderInfo"] objectForKey:@"isDelete"] integerValue];
-
-        if (delete)
-        {
-            cell.lbPayState.text = @"已过期";
-            cell.lbPayDate.text = @"--";
-            cell.btn.hidden = YES;
-
-        }
-        else
-        {
-            cell.lbPayState.text = @"未支付";
-            cell.lbPayDate.text = @"--";
-            cell.btn.hidden = NO;
-
-            [cell.btn addTarget:self action:@selector(payment) forControlEvents:UIControlEventTouchUpInside];
-        }
-    }
-
     return cell;
 
 }
@@ -115,12 +72,5 @@
     return [MainOrderDetailCell cellHeight];
 }
 
-- (void)payment
-{
-    if (_delegate && [_delegate respondsToSelector:@selector(onClickPay)])
-    {
-        [_delegate onClickPay];
-    }
-}
 
 @end

@@ -48,6 +48,12 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnEvaluate;
 
+@property (weak, nonatomic) IBOutlet UIView *viewSeparator;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbTitleTask;
+
+@property (weak, nonatomic) IBOutlet UIView *ivTitleTask;
+
 @property (weak, nonatomic) id<RepairInfoViewDelegate> delegate;
 
 @end

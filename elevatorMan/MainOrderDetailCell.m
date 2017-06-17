@@ -30,7 +30,7 @@
 
 + (CGFloat)cellHeight
 {
-    return 800;
+    return 350;
 }
 
 + (NSString *)identifier
@@ -54,10 +54,6 @@
     _lbContent.layer.borderWidth = 1;
 
     _lbContent.layer.borderColor = [Utils getColorByRGB:@"#f1f1f1"].CGColor;
-
-    _btn.layer.masksToBounds = YES;
-
-    _btn.layer.cornerRadius = 5;
 }
 
 

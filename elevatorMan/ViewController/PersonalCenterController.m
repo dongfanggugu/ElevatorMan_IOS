@@ -23,6 +23,8 @@
 
 @interface InfoCell : UITableViewCell
 
++ (id)cellFromNib;
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewInfoIcon;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelInfo;
@@ -35,6 +37,18 @@
 
 
 @implementation InfoCell
+
++ (id)cellFromNib
+{
+    NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"PersonInfoCell" owner:nil options:nil];
+
+    if (0 == array.count)
+    {
+        return nil;
+    }
+
+    return array[0];
+}
 
 - (void)awakeFromNib
 {
@@ -58,7 +72,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *labelAge;
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UITableView *tableView;
 
 @property (strong, nonatomic) UIButton *btnLogOff;
 
@@ -78,19 +92,9 @@
 
     [self setNavTitle:@"个人中心"];
 
+    [self initView];
     _jpushCount = 0;
 
-
-//    //设置ImageView圆形
-//    self.imageViewPersonIcon.layer.masksToBounds = YES;
-//    self.imageViewPersonIcon.layer.cornerRadius = 40;
-//    
-//    self.imageViewPersonIcon.userInteractionEnabled = YES;
-//    UIGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBasicInfo)];
-//    [self.imageViewPersonIcon addGestureRecognizer:recognizer];
-    _tableView.bounces = NO;
-    [self addHeaderView];
-    [self addFootView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -106,6 +110,25 @@
     [self.tableView reloadData];
 }
 
+- (void)initView
+{
+    self.automaticallyAdjustsScrollViewInsets = NO;
+
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64 - 49)];
+
+    _tableView.delegate = self;
+
+    _tableView.dataSource = self;
+
+    _tableView.backgroundColor = RGB(BG_GRAY);
+
+    [self.view addSubview:_tableView];
+
+    [self addHeaderView];
+
+    [self addFootView];
+}
+
 /**
  *  跳转到基本信息页面
  */
@@ -115,9 +138,13 @@
     [self.navigationController pushViewController:destinationVC animated:YES];
 }
 
+
 - (void)addHeaderView
 {
     _personHeader = [PersonHeaderView viewFromNib];
+
+    _personHeader.frame = CGRectMake(0, 0, self.screenWidth, 300);
+
     _personHeader.delegate = self;
     _tableView.tableHeaderView = _personHeader;
 }
@@ -127,7 +154,6 @@
  */
 - (void)addFootView
 {
-
     btnLogOff = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     btnLogOff.layer.masksToBounds = YES;
     btnLogOff.layer.cornerRadius = 5;
@@ -135,39 +161,25 @@
     //设置文字和文字颜色
     [btnLogOff setTitle:@"退出登录" forState:UIControlStateNormal];
     [btnLogOff setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btnLogOff.titleLabel.font = [UIFont systemFontOfSize:13];
 
     //设置frame
-    btnLogOff.frame = CGRectMake(0, 0, 50, 70);
-    btnLogOff.translatesAutoresizingMaskIntoConstraints = NO;
-
-    //设置背景色
-    self.btnLogOff.backgroundColor = [Utils getColorByRGB:@"#007EC5"];
-
-    UIView *parentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 100)];
-
-
-    [parentView addSubview:btnLogOff];
-    parentView.backgroundColor = [UIColor clearColor];
-
-    NSDictionary *views = NSDictionaryOfVariableBindings(btnLogOff);
-
-    //设置button高度40
-    [parentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[btnLogOff(40)]"
-                                                                       options:0 metrics:nil views:views]];
-
-    //设置button距离上边框60
-    [parentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-30-[btnLogOff]"
-                                                                       options:0 metrics:nil views:views]];
-
-
-
-    //设置button距离左右边框都是20
-    [parentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[btnLogOff]-20-|"
-                                                                       options:0 metrics:nil views:views]];
-
-    self.tableView.tableFooterView = parentView;
+    btnLogOff.frame = CGRectMake(0, 0, 120, 26);
 
     [btnLogOff addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+
+    //设置背景色
+    self.btnLogOff.backgroundColor = RGB(TITLE_COLOR);
+
+    UIView *parentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, 100)];
+
+    btnLogOff.center = CGPointMake(self.screenWidth / 2, 50);
+
+    [parentView addSubview:btnLogOff];
+
+    parentView.backgroundColor = [UIColor clearColor];
+
+    self.tableView.tableFooterView = parentView;
 }
 
 /**
@@ -281,7 +293,14 @@
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
 
-    InfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"infoCell"];
+
+
+    InfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"info_cell"];
+
+    if (!cell)
+    {
+        cell = [InfoCell cellFromNib];
+    }
 
     if (0 == section)
     {
@@ -454,7 +473,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 70;
+    return 66;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -519,20 +538,6 @@
         [self downloadIconByUrlString:urlString dirPath:dirPath fileName:fileName];
     }
 
-}
-
-- (void)setTitleString:(NSString *)title
-{
-    UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-    labelTitle.text = title;
-    labelTitle.font = [UIFont fontWithName:@"System" size:17];
-    labelTitle.textColor = [UIColor whiteColor];
-    [self.navigationItem setTitleView:labelTitle];
-}
-
-- (void)backToMainPage
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

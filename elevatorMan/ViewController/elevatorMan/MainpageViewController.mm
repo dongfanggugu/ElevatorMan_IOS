@@ -204,16 +204,16 @@
 
 - (void)houseRepair
 {
-    RepairOrderController *controller = [[RepairOrderController alloc] init];
-
-    controller.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:controller animated:YES];
-
-
-//    HouseRepairManagerController *controller = [[HouseRepairManagerController alloc] init];
+//    RepairOrderController *controller = [[RepairOrderController alloc] init];
 //
 //    controller.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:controller animated:YES];
+
+
+    HouseRepairManagerController *controller = [[HouseRepairManagerController alloc] init];
+
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)person
@@ -225,15 +225,14 @@
 
 - (void)houseMaint
 {
-    MaintOrderController *controller = [[MaintOrderController alloc] init];
+//    MaintOrderController *controller = [[MaintOrderController alloc] init];
+//    controller.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:controller animated:YES];
+
+    HouseMaintManagerController *controller = [[HouseMaintManagerController alloc] init];
 
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
-
-//    HouseMaintManagerController *controller = [[HouseMaintManagerController alloc] init];
-//
-//    controller.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)wiki
