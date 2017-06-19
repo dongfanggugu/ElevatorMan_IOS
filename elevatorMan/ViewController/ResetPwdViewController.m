@@ -8,30 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "ResetPwdViewController.h"
-#import "HttpClient.h"
-#import "Utils.h"
 
 
 @interface ResetPwdViewController () <UIAlertViewDelegate>
-
-@property (weak, nonatomic) IBOutlet UIView *viewTitle;
-
-@property (weak, nonatomic) IBOutlet UIImageView *ivBack;
-
-@property (weak, nonatomic) IBOutlet UILabel *labelSubmit;
 
 @property (weak, nonatomic) IBOutlet UITextField *tfUserName;
 
 @property (weak, nonatomic) IBOutlet UITextField *tfPhone;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
+
 @end
 
-
 @implementation ResetPwdViewController
-
-@synthesize ivBack;
-
-@synthesize labelSubmit;
 
 @synthesize tfUserName;
 
@@ -41,28 +30,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    //设置标题颜色
-    UIColor *colorTitle = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
-    [self.viewTitle setBackgroundColor:colorTitle];
-
-    //后退按钮
-    ivBack.userInteractionEnabled = YES;
-    [ivBack addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goBack)]];
-
-    //提交按钮
-    labelSubmit.userInteractionEnabled = YES;
-    [labelSubmit addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(submit)]];
-
-
+    [self setNavTitle:@"重置密码"];
+    [self initView];
 }
 
-/**
- *  返回
- */
-- (void)goBack
+- (void)initView
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    _btnSubmit.layer.masksToBounds = YES;
+    _btnSubmit.layer.cornerRadius = 5;
+
+    [_btnSubmit addTarget:self action:@selector(submit) forControlEvents:UIControlStateNormal];
 }
 
 /**
@@ -111,4 +88,5 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 @end

@@ -23,7 +23,6 @@
 
 @property (nonatomic, strong)NSString *userType;
 
-
 @property (strong, nonatomic) NSString *name;
 
 @property (strong, nonatomic) NSNumber *age;
@@ -59,6 +58,9 @@
 @property (strong, nonatomic) NSString *branchId;
 
 @property (copy, nonatomic) NSString *signUrl;
+
+//是否加入怡墅相关业务
+@property (assign, nonatomic) BOOL joinVilla;
 
 +(instancetype)sharedUser;
 

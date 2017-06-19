@@ -278,14 +278,9 @@
 		65D1FABB1E0A13A900F2F6EC /* 4b.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D1FAB51E0A13A900F2F6EC /* 4b.png */; };
 		65D1FABC1E0A13A900F2F6EC /* 5b.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D1FAB61E0A13A900F2F6EC /* 5b.png */; };
 		65D1FABD1E0A13A900F2F6EC /* 6b.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D1FAB71E0A13A900F2F6EC /* 6b.png */; };
-		65D1FACA1E10A2A800F2F6EC /* MainBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1FAC91E10A2A800F2F6EC /* MainBaseViewController.m */; };
-		65D1FACF1E10A40200F2F6EC /* MainBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1FACE1E10A40200F2F6EC /* MainBaseTabBarController.m */; };
-		65D1FAD11E10A48800F2F6EC /* ManagerTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1FAD01E10A48800F2F6EC /* ManagerTabBarController.m */; };
 		65D1FAD71E10A4FF00F2F6EC /* MaintenanceManager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D1FAD61E10A4FF00F2F6EC /* MaintenanceManager.storyboard */; };
 		65D1FAD91E10ABE300F2F6EC /* ProjectMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D1FAD81E10ABE300F2F6EC /* ProjectMainCell.xib */; };
 		65D1FADC1E10ACFD00F2F6EC /* ProjectMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1FADB1E10ACFD00F2F6EC /* ProjectMainCell.m */; };
-		65D1FADF1E10AF9500F2F6EC /* MainTodayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1FADE1E10AF9500F2F6EC /* MainTodayController.m */; };
-		65D1FAE21E10E1C300F2F6EC /* MainBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1FAE11E10E1C300F2F6EC /* MainBaseNavigationController.m */; };
 		65D1FAE41E10E2BF00F2F6EC /* icon_more_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D1FAE31E10E2BF00F2F6EC /* icon_more_normal.png */; };
 		65D1FAE61E10E4BE00F2F6EC /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D1FAE51E10E4BE00F2F6EC /* FilterView.xib */; };
 		65D1FAE91E10E4DA00F2F6EC /* FilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D1FAE81E10E4DA00F2F6EC /* FilterView.m */; };
@@ -326,6 +321,8 @@
 		65D344981EF512B500E75161 /* icon_person_bottom_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D344941EF512B500E75161 /* icon_person_bottom_sel.png */; };
 		65D3449C1EF5209C00E75161 /* login_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D3449B1EF5209C00E75161 /* login_bg.png */; };
 		65D3449E1EF5221100E75161 /* PersonInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D3449D1EF5221100E75161 /* PersonInfoCell.xib */; };
+		65D344A01EF7A19300E75161 /* icon_market_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D3449F1EF7A19300E75161 /* icon_market_top.png */; };
+		65D344A31EF7C1DF00E75161 /* BackgroundRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D344A21EF7C1DF00E75161 /* BackgroundRunner.m */; };
 		65D3EACB1CAB6B950079A140 /* icon_query.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D3EACA1CAB6B950079A140 /* icon_query.png */; };
 		65D3EACD1CAB765D0079A140 /* icon_knowledge.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D3EACC1CAB765D0079A140 /* icon_knowledge.png */; };
 		65D6FEDD1CABC08E00CEB203 /* AlarmResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FEDC1CABC08E00CEB203 /* AlarmResultViewController.m */; };
@@ -336,7 +333,6 @@
 		65EA23971E1E15CE00F2BE18 /* AroundController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EA23961E1E15CE00F2BE18 /* AroundController.m */; };
 		65EA239A1E1E271300F2BE18 /* ProLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EA23991E1E271300F2BE18 /* ProLocationController.m */; };
 		65F0680E1C0453F000628BA7 /* UIRegisterOneViewControllor.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F0680D1C0453F000628BA7 /* UIRegisterOneViewControllor.m */; };
-		65F5B7391C46362F004F47A4 /* ResetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F5B7381C46362F004F47A4 /* ResetPwdViewController.m */; };
 		65FC13B01C1142C3005B3B86 /* UIRegisterThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FC13AF1C1142C3005B3B86 /* UIRegisterThreeViewController.m */; };
 		65FC13B21C116989005B3B86 /* icon_del_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 65FC13B11C116989005B3B86 /* icon_del_img.png */; };
 		65FCA4F31E13590F0086720D /* icon_photo_submit.png in Resources */ = {isa = PBXBuildFile; fileRef = 65FCA4F21E13590F0086720D /* icon_photo_submit.png */; };
@@ -348,10 +344,8 @@
 		65FE08B51EA87FFB002C9397 /* DatePickerDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08B41EA87FFB002C9397 /* DatePickerDialog.m */; };
 		65FE08B71EA89EDE002C9397 /* MaintInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FE08B61EA89EDE002C9397 /* MaintInfoCell.xib */; };
 		65FE08BA1EA89F62002C9397 /* MaintInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08B91EA89F62002C9397 /* MaintInfoCell.m */; };
-		65FE08C41EA9AD61002C9397 /* PaintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08BD1EA9AD61002C9397 /* PaintViewController.m */; };
 		65FE08C61EA9AD61002C9397 /* PainterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08C11EA9AD61002C9397 /* PainterView.m */; };
 		65FE08C71EA9AD61002C9397 /* Squiggle.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08C31EA9AD61002C9397 /* Squiggle.m */; };
-		65FE08CA1EA9EA59002C9397 /* PersonSignController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE08C91EA9EA59002C9397 /* PersonSignController.m */; };
 		65FEDC251C1FAB2700DB339B /* MantenanceTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FEDC241C1FAB2700DB339B /* MantenanceTabBarController.m */; };
 		699E40F6592FE7778B320DDD /* TmateMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E42AAE92390518A8BF7F5 /* TmateMainTabBarController.m */; };
 		699E410E729956BB3266A53B /* CheckResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 699E41E0A4301E9AAE3B3BAD /* CheckResultView.xib */; };
@@ -361,6 +355,7 @@
 		699E418B1B617FB878CEF28D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4C432F21932B3A60D7EC /* BaseViewController.m */; };
 		699E41EEB1BF742DFF56AC76 /* MainOrderDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 699E44B87DDD6B34D15D539F /* MainOrderDetailCell.xib */; };
 		699E423A53F53AABAD39A41E /* RepairResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4BB6078426B14A52B0EC /* RepairResultController.m */; };
+		699E42675A041D4F8800AEC4 /* PersonSignController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E400732A92F7EF29D78E1 /* PersonSignController.m */; };
 		699E42824057FEB2A87FFC78 /* OrderMaintListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E477DBA966EF93395F861 /* OrderMaintListController.m */; };
 		699E429CA5C4F11869DBAA51 /* KnInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 699E43664DC89F2535E8C190 /* KnInfoCell.xib */; };
 		699E42B189D43A2A2FEDB3B3 /* AddBannerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4C48523031CD2B14E658 /* AddBannerData.m */; };
@@ -396,11 +391,13 @@
 		699E4C17C0F0D2A6F4FA9F3B /* OrderMaintCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E49DC6802143399A99229 /* OrderMaintCell.m */; };
 		699E4C4172BD9C9423B3412E /* KnMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4A895F2CCB1420573DED /* KnMainCell.m */; };
 		699E4C49AA61C5BC9A0C91EF /* HelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4D08CA536B871B03E8BE /* HelpController.m */; };
+		699E4C515CA7E755C537DDE3 /* ResetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4B9A7EC98DFE79CE4B8D /* ResetPwdViewController.m */; };
 		699E4C6BDB11AE083C3E6CEB /* CheckResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4543EE913D61D581CCDF /* CheckResultView.m */; };
 		699E4CDB14AE027BF67080FE /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4E6F6F0D8C6EED6A0540 /* BaseTabBarController.m */; };
 		699E4D15BA094C2D9EE33738 /* icon_tmate_alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = 699E44A0CCDC603E157DD164 /* icon_tmate_alarm.png */; };
 		699E4D4EC7D8A9D0B5F6BDE3 /* ElevatorDecorateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4D12676006EC52CE7568 /* ElevatorDecorateController.m */; };
 		699E4D6D9EB784E4A0A6520A /* HelpContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E40D15BDA14D42F14F3D0 /* HelpContentController.m */; };
+		699E4D79C131F297A5472367 /* PaintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4178AB1233B723F7709B /* PaintViewController.m */; };
 		699E4DD54898181DFDD467BE /* NSArray+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4CA9A61BA6C2BEA61B76 /* NSArray+Log.m */; };
 		699E4E57F660402D0BE72257 /* HouseMaintManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4F1B1D580ABEE1E87B20 /* HouseMaintManagerController.m */; };
 		699E4E812291B8A5D24BDEEA /* TmateMainPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4A24BC73160DF020C85E /* TmateMainPageController.m */; };
@@ -855,20 +852,10 @@
 		65D1FAB51E0A13A900F2F6EC /* 4b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4b.png; sourceTree = "<group>"; };
 		65D1FAB61E0A13A900F2F6EC /* 5b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5b.png; sourceTree = "<group>"; };
 		65D1FAB71E0A13A900F2F6EC /* 6b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6b.png; sourceTree = "<group>"; };
-		65D1FAC91E10A2A800F2F6EC /* MainBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainBaseViewController.m; sourceTree = "<group>"; };
-		65D1FACB1E10A2D000F2F6EC /* MainBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainBaseViewController.h; sourceTree = "<group>"; };
-		65D1FACC1E10A3DB00F2F6EC /* ManagerTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManagerTabBarController.h; sourceTree = "<group>"; };
-		65D1FACD1E10A3F300F2F6EC /* MainBaseTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainBaseTabBarController.h; sourceTree = "<group>"; };
-		65D1FACE1E10A40200F2F6EC /* MainBaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainBaseTabBarController.m; sourceTree = "<group>"; };
-		65D1FAD01E10A48800F2F6EC /* ManagerTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagerTabBarController.m; sourceTree = "<group>"; };
 		65D1FAD61E10A4FF00F2F6EC /* MaintenanceManager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MaintenanceManager.storyboard; path = Maintenance/MaintenanceManager.storyboard; sourceTree = "<group>"; };
 		65D1FAD81E10ABE300F2F6EC /* ProjectMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProjectMainCell.xib; path = Maintenance/ProjectMainCell.xib; sourceTree = "<group>"; };
 		65D1FADA1E10ACEC00F2F6EC /* ProjectMainCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProjectMainCell.h; path = Maintenance/ProjectMainCell.h; sourceTree = "<group>"; };
 		65D1FADB1E10ACFD00F2F6EC /* ProjectMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProjectMainCell.m; path = Maintenance/ProjectMainCell.m; sourceTree = "<group>"; };
-		65D1FADD1E10AF8200F2F6EC /* MainTodayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTodayController.h; sourceTree = "<group>"; };
-		65D1FADE1E10AF9500F2F6EC /* MainTodayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTodayController.m; sourceTree = "<group>"; };
-		65D1FAE01E10E1A500F2F6EC /* MainBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainBaseNavigationController.h; sourceTree = "<group>"; };
-		65D1FAE11E10E1C300F2F6EC /* MainBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainBaseNavigationController.m; sourceTree = "<group>"; };
 		65D1FAE31E10E2BF00F2F6EC /* icon_more_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_more_normal.png; sourceTree = "<group>"; };
 		65D1FAE51E10E4BE00F2F6EC /* FilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FilterView.xib; path = Maintenance/FilterView.xib; sourceTree = "<group>"; };
 		65D1FAE71E10E4CD00F2F6EC /* FilterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FilterView.h; path = Maintenance/FilterView.h; sourceTree = "<group>"; };
@@ -913,6 +900,9 @@
 		65D344941EF512B500E75161 /* icon_person_bottom_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_person_bottom_sel.png; sourceTree = "<group>"; };
 		65D3449B1EF5209C00E75161 /* login_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_bg.png; sourceTree = "<group>"; };
 		65D3449D1EF5221100E75161 /* PersonInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonInfoCell.xib; sourceTree = "<group>"; };
+		65D3449F1EF7A19300E75161 /* icon_market_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_market_top.png; path = ../../../owner_IOS/owner/Resources/icon_market_top.png; sourceTree = "<group>"; };
+		65D344A11EF7C1DF00E75161 /* BackgroundRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundRunner.h; sourceTree = "<group>"; };
+		65D344A21EF7C1DF00E75161 /* BackgroundRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundRunner.m; sourceTree = "<group>"; };
 		65D3EACA1CAB6B950079A140 /* icon_query.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_query.png; sourceTree = "<group>"; };
 		65D3EACC1CAB765D0079A140 /* icon_knowledge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_knowledge.png; sourceTree = "<group>"; };
 		65D6FEDC1CABC08E00CEB203 /* AlarmResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmResultViewController.m; sourceTree = "<group>"; };
@@ -929,8 +919,6 @@
 		65EA23991E1E271300F2BE18 /* ProLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProLocationController.m; sourceTree = "<group>"; };
 		65F0680C1C0453B700628BA7 /* UIRegisterOneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIRegisterOneViewController.h; sourceTree = "<group>"; };
 		65F0680D1C0453F000628BA7 /* UIRegisterOneViewControllor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIRegisterOneViewControllor.m; sourceTree = "<group>"; };
-		65F5B7371C46361C004F47A4 /* ResetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPwdViewController.h; sourceTree = "<group>"; };
-		65F5B7381C46362F004F47A4 /* ResetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPwdViewController.m; sourceTree = "<group>"; };
 		65FA51FD1CA299A10066C5A0 /* libchorstar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libchorstar.a; path = "chorstar/build/Debug-iphoneos/libchorstar.a"; sourceTree = "<group>"; };
 		65FC13AE1C114255005B3B86 /* UIRegisterThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIRegisterThreeViewController.h; sourceTree = "<group>"; };
 		65FC13AF1C1142C3005B3B86 /* UIRegisterThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIRegisterThreeViewController.m; sourceTree = "<group>"; };
@@ -948,16 +936,13 @@
 		65FE08B61EA89EDE002C9397 /* MaintInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaintInfoCell.xib; sourceTree = "<group>"; };
 		65FE08B81EA89F62002C9397 /* MaintInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintInfoCell.h; sourceTree = "<group>"; };
 		65FE08B91EA89F62002C9397 /* MaintInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintInfoCell.m; sourceTree = "<group>"; };
-		65FE08BC1EA9AD61002C9397 /* PaintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaintViewController.h; path = ../../HandPainter/PaintViewController.h; sourceTree = "<group>"; };
-		65FE08BD1EA9AD61002C9397 /* PaintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaintViewController.m; path = ../../HandPainter/PaintViewController.m; sourceTree = "<group>"; };
 		65FE08C01EA9AD61002C9397 /* PainterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PainterView.h; sourceTree = "<group>"; };
 		65FE08C11EA9AD61002C9397 /* PainterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PainterView.m; sourceTree = "<group>"; };
 		65FE08C21EA9AD61002C9397 /* Squiggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Squiggle.h; sourceTree = "<group>"; };
 		65FE08C31EA9AD61002C9397 /* Squiggle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Squiggle.m; sourceTree = "<group>"; };
-		65FE08C81EA9EA59002C9397 /* PersonSignController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonSignController.h; sourceTree = "<group>"; };
-		65FE08C91EA9EA59002C9397 /* PersonSignController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonSignController.m; sourceTree = "<group>"; };
 		65FEDC231C1FAB1700DB339B /* MantenanceTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MantenanceTabBarController.h; sourceTree = "<group>"; };
 		65FEDC241C1FAB2700DB339B /* MantenanceTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MantenanceTabBarController.m; sourceTree = "<group>"; };
+		699E400732A92F7EF29D78E1 /* PersonSignController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonSignController.m; sourceTree = "<group>"; };
 		699E402D12F14A345905823B /* KnMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnMainCell.h; sourceTree = "<group>"; };
 		699E408005B19F85401A55F4 /* MainOrderDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainOrderDetailCell.m; sourceTree = "<group>"; };
 		699E40D15BDA14D42F14F3D0 /* HelpContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpContentController.m; sourceTree = "<group>"; };
@@ -965,6 +950,7 @@
 		699E414317A5F8D9603CFADF /* BaseCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewController.m; sourceTree = "<group>"; };
 		699E41490BA3B8C80958FE42 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		699E415EBEFC90480F4E1C6B /* MarketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketCell.m; sourceTree = "<group>"; };
+		699E4178AB1233B723F7709B /* PaintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaintViewController.m; path = HandPainter/PaintViewController.m; sourceTree = SOURCE_ROOT; };
 		699E41A1B05FAB0C905F2087 /* AddBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBannerView.h; sourceTree = "<group>"; };
 		699E41BD77812F0B310404B4 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		699E41CC39CF6A87EC600A61 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
@@ -997,6 +983,7 @@
 		699E45516D59988D7F89A098 /* ElevatorSellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElevatorSellController.h; sourceTree = "<group>"; };
 		699E456BBC4AEB97E9F51549 /* HelpContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpContentController.h; sourceTree = "<group>"; };
 		699E45DF1F3B7ABFE761D27B /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		699E45E2945ECA37A5C310CF /* ResetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPwdViewController.h; sourceTree = "<group>"; };
 		699E45E31460E986F9853C79 /* ComMaintInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComMaintInfoCell.h; sourceTree = "<group>"; };
 		699E461045C5BA1BFD3C8052 /* ProcessCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProcessCell.xib; sourceTree = "<group>"; };
 		699E464182F076A1EB1EEDF3 /* KnInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnInfoCell.h; sourceTree = "<group>"; };
@@ -1033,6 +1020,7 @@
 		699E4B45C0A3997E5F57B7BD /* KeyValueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValueCell.h; sourceTree = "<group>"; };
 		699E4B7EE06E2174B6633F44 /* MaintDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintDetailController.m; sourceTree = "<group>"; };
 		699E4B8EE703EB818A5175AD /* BaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarController.h; sourceTree = "<group>"; };
+		699E4B9A7EC98DFE79CE4B8D /* ResetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPwdViewController.m; sourceTree = "<group>"; };
 		699E4BB6078426B14A52B0EC /* RepairResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepairResultController.m; sourceTree = "<group>"; };
 		699E4BC73C57FABAF6E5D339 /* KnInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnInfoCell.m; sourceTree = "<group>"; };
 		699E4C0DE14825B3FE68AD3B /* OrderRepairListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderRepairListController.h; sourceTree = "<group>"; };
@@ -1050,6 +1038,7 @@
 		699E4DD16BB5104353AA04C5 /* MainPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageView.m; sourceTree = "<group>"; };
 		699E4DD289FFD65CAC1E2552 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		699E4DD8BDF272329BE28730 /* TmateMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmateMainTabBarController.h; sourceTree = "<group>"; };
+		699E4E09D7C849F33D4B1713 /* PaintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaintViewController.h; path = HandPainter/PaintViewController.h; sourceTree = SOURCE_ROOT; };
 		699E4E2309800E25F27992CE /* KnowledgeDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KnowledgeDetailController.m; sourceTree = "<group>"; };
 		699E4E2A9FEEBDD41BA108E8 /* MaintDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintDetailController.h; sourceTree = "<group>"; };
 		699E4E658CC5C3FC2AC9490C /* OrderMaintListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderMaintListController.h; sourceTree = "<group>"; };
@@ -1058,6 +1047,7 @@
 		699E4EFC8508B2B74011F9D9 /* RepairAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepairAnnotationView.m; sourceTree = "<group>"; };
 		699E4F1B1D580ABEE1E87B20 /* HouseMaintManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseMaintManagerController.m; sourceTree = "<group>"; };
 		699E4F635657457FD8B5C6FC /* MaintAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintAnnotationView.h; sourceTree = "<group>"; };
+		699E4F66D5CCE3C6898598A8 /* PersonSignController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonSignController.h; sourceTree = "<group>"; };
 		699E4F8B4B9A5FD8B2B66E3A /* HouseTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseTitleView.h; sourceTree = "<group>"; };
 		699E4FAEC274D178372649BB /* ElevatorDecorateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElevatorDecorateController.h; sourceTree = "<group>"; };
 		BF0296941AC88E6600ED4AF1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -1812,6 +1802,8 @@
 		65A98D781C1918EE00BB4674 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				65D344A11EF7C1DF00E75161 /* BackgroundRunner.h */,
+				65D344A21EF7C1DF00E75161 /* BackgroundRunner.m */,
 				BFADFD071B406F0A002664B2 /* location.m */,
 				BFADFD061B406F0A002664B2 /* location.h */,
 				BF3869211B4D1FCC009F6E05 /* HUDClass.h */,
@@ -1842,19 +1834,12 @@
 		65B0A43C1C292A8B008E58B8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				65FE08C81EA9EA59002C9397 /* PersonSignController.h */,
-				65FE08C91EA9EA59002C9397 /* PersonSignController.m */,
-				65FE08BC1EA9AD61002C9397 /* PaintViewController.h */,
-				65FE08BD1EA9AD61002C9397 /* PaintViewController.m */,
-				65D1FABE1E0CC07A00F2F6EC /* MaintenanceManager */,
 				65B0A43E1C292B13008E58B8 /* PersonalCenter */,
 				65B0A43D1C292AE6008E58B8 /* Register */,
 				BFDB1AEA1B4F96DC00629155 /* SignInViewController.h */,
 				BFDB1AEB1B4F96DC00629155 /* SignInViewController.m */,
-				65F5B7371C46361C004F47A4 /* ResetPwdViewController.h */,
 				653922851E948CEF00A8B69A /* ChatRightController.h */,
 				653922861E948CEF00A8B69A /* ChatRightController.m */,
-				65F5B7381C46362F004F47A4 /* ResetPwdViewController.m */,
 				654B0B621D20C60100ED0064 /* MainpageViewController.h */,
 				654B0B631D20C62700ED0064 /* MainpageViewController.mm */,
 				658748C91D2CF800006406AD /* GuideViewController.h */,
@@ -1910,6 +1895,12 @@
 				658748C71D2CEAC9006406AD /* AboutViewController.m */,
 				65EA23981E1E270600F2BE18 /* ProLocationController.h */,
 				65EA23991E1E271300F2BE18 /* ProLocationController.m */,
+				699E400732A92F7EF29D78E1 /* PersonSignController.m */,
+				699E4F66D5CCE3C6898598A8 /* PersonSignController.h */,
+				699E4E09D7C849F33D4B1713 /* PaintViewController.h */,
+				699E4178AB1233B723F7709B /* PaintViewController.m */,
+				699E45E2945ECA37A5C310CF /* ResetPwdViewController.h */,
+				699E4B9A7EC98DFE79CE4B8D /* ResetPwdViewController.m */,
 			);
 			name = PersonalCenter;
 			sourceTree = "<group>";
@@ -1971,32 +1962,6 @@
 				699E4C48523031CD2B14E658 /* AddBannerData.m */,
 			);
 			name = Data;
-			sourceTree = "<group>";
-		};
-		65D1FABE1E0CC07A00F2F6EC /* MaintenanceManager */ = {
-			isa = PBXGroup;
-			children = (
-				65D1FACC1E10A3DB00F2F6EC /* ManagerTabBarController.h */,
-				65D1FAD01E10A48800F2F6EC /* ManagerTabBarController.m */,
-				65D1FADD1E10AF8200F2F6EC /* MainTodayController.h */,
-				65D1FADE1E10AF9500F2F6EC /* MainTodayController.m */,
-				65D1FABF1E0CC0B200F2F6EC /* Base */,
-			);
-			name = MaintenanceManager;
-			path = ../Maintenance;
-			sourceTree = "<group>";
-		};
-		65D1FABF1E0CC0B200F2F6EC /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				65D1FAC91E10A2A800F2F6EC /* MainBaseViewController.m */,
-				65D1FACB1E10A2D000F2F6EC /* MainBaseViewController.h */,
-				65D1FACD1E10A3F300F2F6EC /* MainBaseTabBarController.h */,
-				65D1FACE1E10A40200F2F6EC /* MainBaseTabBarController.m */,
-				65D1FAE01E10E1A500F2F6EC /* MainBaseNavigationController.h */,
-				65D1FAE11E10E1C300F2F6EC /* MainBaseNavigationController.m */,
-			);
-			name = Base;
 			sourceTree = "<group>";
 		};
 		65D1FAF31E1206DE00F2F6EC /* JZLocationConverter */ = {
@@ -2216,37 +2181,38 @@
 		BFD71D211B2987B700CCE9E1 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				65D3449B1EF5209C00E75161 /* login_bg.png */,
-				65D344911EF512B500E75161 /* icon_main_page_bottom_normal.png */,
-				65D344921EF512B500E75161 /* icon_main_page_bottom_sel.png */,
-				65D344931EF512B500E75161 /* icon_person_bottom_normal.png */,
-				65D344941EF512B500E75161 /* icon_person_bottom_sel.png */,
-				65D3448D1EF5116A00E75161 /* icon_maint_down.png */,
-				65D3448E1EF5116A00E75161 /* icon_maint_up.png */,
-				65D3448B1EF5114800E75161 /* icon_maint_appoint.png */,
-				65D344891EF5113000E75161 /* icon_maint_link.png */,
-				65D344871EF5111300E75161 /* icon_maint_address.png */,
-				65D344851EF4FE2B00E75161 /* icon_house_repair.png */,
-				65D344831EF4FD8100E75161 /* icon_house_maint.png */,
-				65D344811EF4FCE000E75161 /* icon_tmate_maint.png */,
+				65D3449F1EF7A19300E75161 /* icon_market_top.png */,
 				658A5FF81C44964700F0209A /* Assets */,
 				654B0BA91D250B6400ED0064 /* help_center */,
 				65C2EE131EE6A0E400AF7EDC /* icon_blue.png */,
-				65A07C761EE952A200EEA262 /* icon_up_new.png */,
 				650F6D751EE8EC9800412C9F /* icon_com_project.png */,
 				6576CF6B1EE7C7030046E80F /* icon_delete.png */,
-				6574F2521EE6762200B8F17A /* icon_house.png */,
-				655ADF451E270D3500F1F036 /* icon_other.png */,
 				65A07C741EE9525300EEA262 /* icon_down_new.png */,
+				65D344831EF4FD8100E75161 /* icon_house_maint.png */,
+				65D344851EF4FE2B00E75161 /* icon_house_repair.png */,
+				6574F2521EE6762200B8F17A /* icon_house.png */,
+				65D344911EF512B500E75161 /* icon_main_page_bottom_normal.png */,
+				65D344921EF512B500E75161 /* icon_main_page_bottom_sel.png */,
+				65D344871EF5111300E75161 /* icon_maint_address.png */,
+				65D3448B1EF5114800E75161 /* icon_maint_appoint.png */,
+				65D3448D1EF5116A00E75161 /* icon_maint_down.png */,
+				65D344891EF5113000E75161 /* icon_maint_link.png */,
+				65D3448E1EF5116A00E75161 /* icon_maint_up.png */,
+				655ADF451E270D3500F1F036 /* icon_other.png */,
+				65D344931EF512B500E75161 /* icon_person_bottom_normal.png */,
+				65D344941EF512B500E75161 /* icon_person_bottom_sel.png */,
 				6574F2431EE57D7700B8F17A /* icon_photo.png */,
 				65C2EE151EE6A0EE00AF7EDC /* icon_red.png */,
 				655ADF6B1E275A3E00F1F036 /* icon_repair_report.png */,
 				655ADF671E27574A00F1F036 /* icon_star_normal.png */,
 				655ADF681E27574A00F1F036 /* icon_star_sel.png */,
+				699E44A0CCDC603E157DD164 /* icon_tmate_alarm.png */,
+				65D344811EF4FCE000E75161 /* icon_tmate_maint.png */,
+				65A07C761EE952A200EEA262 /* icon_up_new.png */,
 				65D1FAF71E1238D300F2F6EC /* im_image */,
 				658A5FF71C44960A00F0209A /* Image */,
 				699E42181C210783B6C4BE4A /* knowledge_banner.png */,
-				699E44A0CCDC603E157DD164 /* icon_tmate_alarm.png */,
+				65D3449B1EF5209C00E75161 /* login_bg.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -2605,6 +2571,7 @@
 				65D1FAF21E10EC2F00F2F6EC /* icon_search.png in Resources */,
 				65D344971EF512B500E75161 /* icon_person_bottom_normal.png in Resources */,
 				654B0B5C1D20BB5200ED0064 /* icon_bbs.png in Resources */,
+				65D344A01EF7A19300E75161 /* icon_market_top.png in Resources */,
 				BF38691E1B4CCDC0009F6E05 /* marker_worker.png in Resources */,
 				654B0BE51D250B6400ED0064 /* rt.png in Resources */,
 				699E4AF7795C05309CB55330 /* MyProperty.storyboard in Resources */,
@@ -2707,6 +2674,7 @@
 				65A07C7B1EE9625100EEA262 /* MaintManagerController.m in Sources */,
 				650B799E1C2074A600182D1E /* MessageInterceptor.m in Sources */,
 				658748B01D2B5493006406AD /* ConfirmProcessViewController.m in Sources */,
+				65D344A31EF7C1DF00E75161 /* BackgroundRunner.m in Sources */,
 				658748B51D2B9522006406AD /* AddressViewController.m in Sources */,
 				BFD920B31B393C0700AA5C00 /* WorkerMenuViewController.mm in Sources */,
 				654B0B841D22133600ED0064 /* AlarmInfoView.m in Sources */,
@@ -2748,23 +2716,17 @@
 				654B0B641D20C62700ED0064 /* MainpageViewController.mm in Sources */,
 				650B797C1C1FF14600182D1E /* ProMaintenancePlan.m in Sources */,
 				650F6D7C1EE8F7A300412C9F /* AlarmBottomView.m in Sources */,
-				65D1FACF1E10A40200F2F6EC /* MainBaseTabBarController.m in Sources */,
 				650F6D721EE8E33B00412C9F /* AlarmTitleView.m in Sources */,
 				65A98D7B1C19194300BB4674 /* SwipeableCell.m in Sources */,
-				65D1FAE21E10E1C300F2F6EC /* MainBaseNavigationController.m in Sources */,
-				65D1FAD11E10A48800F2F6EC /* ManagerTabBarController.m in Sources */,
 				650B79821C20105E00182D1E /* ProMaintenanceHistory.m in Sources */,
 				BFADFCFC1B3C6B37002664B2 /* AlarmProcessViewController.m in Sources */,
 				65C2EE0A1EE6969F00AF7EDC /* RepairOrderCell.m in Sources */,
 				6576CF631EE79DB60046E80F /* RepairPayAddView.m in Sources */,
-				65F5B7391C46362F004F47A4 /* ResetPwdViewController.m in Sources */,
 				65D1FB1C1E12391600F2F6EC /* ChatController.m in Sources */,
 				654B0BA81D25099500ED0064 /* HelpViewController.m in Sources */,
 				BF1887D41AB5D42D00F1C8AF /* HttpClient.m in Sources */,
-				65D1FACA1E10A2A800F2F6EC /* MainBaseViewController.m in Sources */,
 				650F6D851EE91BBE00412C9F /* ComAlarmCell.m in Sources */,
 				650B799F1C2074A600182D1E /* PullTableView.m in Sources */,
-				65FE08C41EA9AD61002C9397 /* PaintViewController.m in Sources */,
 				6576CF771EE7DC890046E80F /* ImageViewDelView.m in Sources */,
 				BF3869201B4CF927009F6E05 /* TrackingViewController.mm in Sources */,
 				BFADFD051B3D1148002664B2 /* FinishedReportViewController.m in Sources */,
@@ -2779,7 +2741,6 @@
 				65D6FEDD1CABC08E00CEB203 /* AlarmResultViewController.m in Sources */,
 				6574F2321EE546AA00B8F17A /* MaintInfoController.m in Sources */,
 				65FEDC251C1FAB2700DB339B /* MantenanceTabBarController.m in Sources */,
-				65FE08CA1EA9EA59002C9397 /* PersonSignController.m in Sources */,
 				65C065731C2BBED3007EA068 /* PersonModifyController.m in Sources */,
 				658748CB1D2CF811006406AD /* GuideViewController.m in Sources */,
 				BFD920C61B39576600AA5C00 /* propertyMenuViewController.m in Sources */,
@@ -2811,7 +2772,6 @@
 				BFD920C31B3955C900AA5C00 /* PropertyRootViewController.m in Sources */,
 				654B0B981D2376A200ED0064 /* MyLiftViewController.m in Sources */,
 				65EA23971E1E15CE00F2BE18 /* AroundController.m in Sources */,
-				65D1FADF1E10AF9500F2F6EC /* MainTodayController.m in Sources */,
 				65385F051C16ADD800EAF4EB /* MaintenanceViewController.m in Sources */,
 				6574F24C1EE655AB00B8F17A /* MaintResultShowController.m in Sources */,
 				650B797F1C2006D900182D1E /* ProMaintenanceFinish.m in Sources */,
@@ -2866,6 +2826,9 @@
 				699E4F65E1EBA3DF28CC6E76 /* BaseCollectionViewController.m in Sources */,
 				699E478518B784F104D4CED0 /* BaseTableViewController.m in Sources */,
 				699E4CDB14AE027BF67080FE /* BaseTabBarController.m in Sources */,
+				699E42675A041D4F8800AEC4 /* PersonSignController.m in Sources */,
+				699E4D79C131F297A5472367 /* PaintViewController.m in Sources */,
+				699E4C515CA7E755C537DDE3 /* ResetPwdViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

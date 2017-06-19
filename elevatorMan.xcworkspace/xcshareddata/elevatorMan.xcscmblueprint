@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B0EDE102C60BC9095D469EF1D3AACE8017F3297A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "B0EDE102C60BC9095D469EF1D3AACE8017F3297A" : 9223372036854775807,
+    "56D57B641FBD965F4E13BFB7C785F4BF19AEDF84" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DD35B1A8-09D9-45C3-80C7-E7687595FBA8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "B0EDE102C60BC9095D469EF1D3AACE8017F3297A" : "ElevatorMan_IOS\/",
+    "56D57B641FBD965F4E13BFB7C785F4BF19AEDF84" : "owner_IOS\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "elevatorMan",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "elevatorMan.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:dongfanggugu\/owner_IOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "56D57B641FBD965F4E13BFB7C785F4BF19AEDF84"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:dongfanggugu\/ElevatorMan_IOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B0EDE102C60BC9095D469EF1D3AACE8017F3297A"
+    }
+  ]
+}

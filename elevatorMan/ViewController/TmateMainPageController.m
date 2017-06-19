@@ -14,6 +14,7 @@
 #import "RepairOrderController.h"
 #import "MaintOrderController.h"
 #import "MarketDetailController.h"
+#import "location.h"
 
 @interface TmateMainPageController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -27,6 +28,7 @@
 {
     [super viewDidLoad];
     [self setNavTitle:@"首页"];
+    [self dealWithLocation];
     [self initView];
 }
 
@@ -52,7 +54,7 @@
 
     tableView.tableHeaderView = _myView;
 
-    if (ROle_Pro == self.roleType)
+    if (Role_Pro == self.roleType)
     {
         _myView.lbMaint.text = @"电梯商城";
         _myView.lbRepair.text = @"附近维保";
@@ -61,6 +63,90 @@
     [self addEventListener];
 
     [self initBannerView];
+}
+
+- (void)dealWithLocation
+{
+    if (self.roleType != Role_Worker)
+    {
+        return;
+    }
+
+    //添加定位成功返回监听
+    if ([self respondsToSelector:@selector(uploadLocationWhenReceivedNotify:)])
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadLocationWhenReceivedNotify:)
+                                                     name:@"userLocationUpdate" object:nil];
+    }
+
+    //定位一次
+    [[location sharedLocation] startLocationService];
+
+    [self locationLoop:5];
+}
+
+- (void)locationLoop:(CGFloat)second
+{
+    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+
+    if (appDelegate.locationTimer)
+    {
+        [appDelegate.locationTimer invalidate];
+        appDelegate.locationTimer = nil;
+    }
+
+    //有任务,30秒定位一次
+    appDelegate.locationTimer = [NSTimer scheduledTimerWithTimeInterval:second * 60 target:self
+                                                               selector:@selector(getUserLocationUpdate) userInfo:nil repeats:YES];
+}
+
+- (void)getUserLocationUpdate
+{
+    [[location sharedLocation] startLocationService];
+}
+
+- (void)uploadLocationWhenReceivedNotify:(NSNotification *)notify
+{
+    BMKUserLocation *location = (BMKUserLocation *) [notify.userInfo objectForKey:@"userLocation"];
+    if (nil == location)
+    {
+        return;
+    }
+
+    float latitude = location.location.coordinate.latitude;
+    float longitude = location.location.coordinate.longitude;
+
+
+    if (latitude < 0.00001 || longitude < 0.00001)
+    {
+        NSLog(@"may be wrong coords");
+        return;
+    }
+
+    [self uploadLocationWithLatitude:latitude longitude:longitude success:nil];
+}
+
+/**
+ *  在后台上传位置信息，不在使用HUDClass阻塞UI刷新
+ *
+ *  @param latitude  <#latitude description#>
+ *  @param longitude <#longitude description#>
+ */
+- (void)uploadLocationWithLatitude:(float)latitude longitude:(float)longitude
+                           success:(void (^)(void))success
+{
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+
+    params[@"lat"] = [NSNumber numberWithFloat:latitude];
+    params[@"lng"] = [NSNumber numberWithFloat:longitude];
+
+    [[HttpClient sharedClient] bgPost:@"updateLocation" parameter:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+    } failed:^(id responseObject) {
+
+    }];
+
 }
 
 - (void)addEventListener
@@ -84,9 +170,9 @@
 
 - (void)initBannerView
 {
-    _myView.bannerHeight.constant = self.screenWidth / 3;
+    _myView.bannerHeight.constant = self.screenWidth / 2;
 
-    AddBannerView *bannerView = [[AddBannerView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, self.screenWidth / 3)];
+    AddBannerView *bannerView = [[AddBannerView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, self.screenWidth / 2)];
 
     [self.myView.bannerView addSubview:bannerView];
 
@@ -129,7 +215,7 @@
         controller.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:controller animated:YES];
     }
-    else if (ROle_Pro == self.roleType)
+    else if (Role_Pro == self.roleType)
     {
         ProAlarmTabBarController *controller = [[ProAlarmTabBarController alloc] init];
 
@@ -154,7 +240,7 @@
         controller.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:controller animated:YES];
     }
-    else if (ROle_Pro == self.roleType)
+    else if (Role_Pro == self.roleType)
     {
         UIStoryboard *board = [UIStoryboard storyboardWithName:@"Property" bundle:nil];
         UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"mantenanceController"];
@@ -172,18 +258,56 @@
     }
 
 }
+- (void)houseMaint
+{
+    if (Role_Com == self.roleType)
+    {
+        if (!self.joinVilla)
+        {
+            [self showUnJoinedInfo];
+            return;
+        }
+        HouseMaintManagerController *controller = [[HouseMaintManagerController alloc] init];
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else if (Role_Pro == self.roleType)
+    {
+        MarketDetailContrller *contrller = [[MarketDetailContrller alloc] init];
+
+        contrller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:contrller animated:YES];
+    }
+    else
+    {
+        if (!self.joinVilla)
+        {
+            [self showUnJoinedInfo];
+            return;
+        }
+        MaintOrderController *controller = [[MaintOrderController alloc] init];
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+
+}
 
 - (void)houseRepair
 {
     if (Role_Com == self.roleType)
     {
+        if (!self.joinVilla)
+        {
+            [self showUnJoinedInfo];
+            return;
+        }
         HouseRepairManagerController *controller = [[HouseRepairManagerController alloc] init];
 
         controller.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:controller animated:YES];
 
     }
-    else if (ROle_Pro == self.roleType)
+    else if (Role_Pro == self.roleType)
     {
         UIStoryboard *board = [UIStoryboard storyboardWithName:@"MyProperty" bundle:nil];
         UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"around_controller"];
@@ -193,6 +317,11 @@
     }
     else
     {
+        if (!self.joinVilla)
+        {
+            [self showUnJoinedInfo];
+            return;
+        }
         RepairOrderController *controller = [[RepairOrderController alloc] init];
 
         controller.hidesBottomBarWhenPushed = YES;
@@ -202,31 +331,7 @@
 
 }
 
-- (void)houseMaint
-{
-    if (Role_Com == self.roleType)
-    {
-        HouseMaintManagerController *controller = [[HouseMaintManagerController alloc] init];
-        controller.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:controller animated:YES];
-    }
-    else if (ROle_Pro == self.roleType)
-    {
-        MarketDetailContrller *contrller = [[MarketDetailContrller alloc] init];
 
-        contrller.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:contrller animated:YES];
-    }
-    else
-    {
-        MaintOrderController *controller = [[MaintOrderController alloc] init];
-        controller.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:controller animated:YES];
-    }
-
-
-
-}
 
 - (void)QA
 {
@@ -266,6 +371,11 @@
     controller.hidesBottomBarWhenPushed = YES;
 
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

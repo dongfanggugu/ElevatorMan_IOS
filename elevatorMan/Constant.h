@@ -22,7 +22,7 @@
 typedef NS_ENUM(NSInteger, RoleType)
 {
     Role_Com = 1,
-    ROle_Pro,
+    Role_Pro,
     Role_Worker
 };
 

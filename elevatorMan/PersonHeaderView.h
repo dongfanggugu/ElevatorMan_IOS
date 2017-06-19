@@ -10,6 +10,7 @@
 #define PersonHeaderView_h
 
 #import <UIKit/UIKit.h>
+#import "UIImageView+AFNetworking.h"
 
 @protocol PersonHeaderDelegate <NSObject>
 

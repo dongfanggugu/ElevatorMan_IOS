@@ -43,7 +43,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FYo-Cw-Slc" id="uHq-WM-9Ca">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r54-hV-f4x">
@@ -314,10 +314,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_avatar.png" translatesAutoresizingMaskIntoConstraints="NO" id="L4u-Rk-mdP">
-                                            <rect key="frame" x="252" y="30" width="60" height="60"/>
+                                            <rect key="frame" x="272" y="40" width="40" height="40"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="60" id="3Bo-pt-Alo"/>
-                                                <constraint firstAttribute="height" constant="60" id="GOE-M9-X8c"/>
+                                                <constraint firstAttribute="width" constant="40" id="3Bo-pt-Alo"/>
+                                                <constraint firstAttribute="height" constant="40" id="GOE-M9-X8c"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
@@ -826,7 +826,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YIY-rx-FR2" id="dFU-xi-4ZQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="修改密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vt-1R-OQi">

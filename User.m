@@ -55,6 +55,8 @@
     
     [[NSUserDefaults standardUserDefaults] setObject:_signUrl forKey:@"sign_url"];
 
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:_joinVilla] forKey:@"join_villa"];
+
 }
 
 
@@ -85,6 +87,8 @@
     _workAddress = [[NSUserDefaults standardUserDefaults] objectForKey:@"work_address"];
 
     _signUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"sign_url"];
+
+    _joinVilla = [[[NSUserDefaults standardUserDefaults] objectForKey:@"join_villa"] boolValue];
 }
 
 - (void)clearUserInfo
@@ -114,7 +118,9 @@
     _workAddress = nil;
     
     _signUrl = nil;
-    
+
+    _joinVilla = NO;
+
     //[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userName"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userType"];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userId"];
@@ -140,6 +146,8 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"work_address"];
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sign_url"];
+
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"join_villa"];
     
 }
 

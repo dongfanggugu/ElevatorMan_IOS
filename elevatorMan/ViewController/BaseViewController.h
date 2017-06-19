@@ -31,11 +31,18 @@
 
 - (void)landscapeRight;
 
-@property (assign, nonatomic) RoleType roleType;
+/**
+ * 显示未加入怡墅业务信息
+ */
+- (void)showUnJoinedInfo;
 
-@property (assign, nonatomic) CGFloat screenWidth;
+@property (assign, nonatomic, readonly) RoleType roleType;
 
-@property (assign, nonatomic) CGFloat screenHeight;
+@property (assign, nonatomic, readonly) CGFloat screenWidth;
+
+@property (assign, nonatomic, readonly) CGFloat screenHeight;
+
+@property (assign, nonatomic, readonly) BOOL joinVilla;
 
 @end
 

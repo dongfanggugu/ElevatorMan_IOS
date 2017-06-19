@@ -41,6 +41,11 @@
     return [User sharedUser].userType.integerValue;
 }
 
+- (BOOL)joinVilla
+{
+    return [User sharedUser].joinVilla;
+}
+
 
 - (void)setNavIcon
 {
@@ -291,6 +296,34 @@
 
         [invocation invoke];
     }
+}
+
+/**
+ * 当企业没有加入怡墅联盟的时候，显示提示
+ */
+- (void)showUnJoinedInfo
+{
+    NSString *msg = [NSString stringWithFormat:@"你还未加入别墅业务处理功能,详情请联系客服%@了解详情", Custom_Service];
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
+
+    __weak typeof(self) weakSelf = self;
+    [controller addAction:[UIAlertAction actionWithTitle:@"联系客服" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [weakSelf dialTel:Custom_Service];
+    }]];
+
+    [controller addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+
+    }]];
+
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)dialTel:(NSString *)tel
+{
+    NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", tel]];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    [webView loadRequest:[NSURLRequest requestWithURL:phoneURL]];
+    [self.view addSubview:webView];
 }
 
 @end

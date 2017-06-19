@@ -33,6 +33,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnDelMix;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
+
 @property (weak, nonatomic) IBOutlet UIImageView *ivOverView;
 
 @property (strong, nonatomic) NSMutableDictionary *imageViewDic;
@@ -46,11 +48,16 @@
 
 @synthesize imageViewDic;
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
 
     [super viewDidLoad];
 
     [self setNavTitle:@"维修工注册"];
+
+    //设置按钮风格
+    _btnSubmit.layer.masksToBounds = YES;
+    _btnSubmit.layer.cornerRadius = 5;
 
     imageViewDic = [[NSMutableDictionary alloc] initWithCapacity:1];
 
@@ -82,7 +89,8 @@
 //}
 
 /** 显示拍照和选取选项 **/
-- (void)showMenu:(UIGestureRecognizer *)gestureRecognizer {
+- (void)showMenu:(UIGestureRecognizer *)gestureRecognizer
+{
 
     UIImageView *imageView = (UIImageView *) [gestureRecognizer view];
     NSInteger tag = imageView.tag;
@@ -94,13 +102,16 @@
 
 
 /**ActionSheet 菜单点击回调方法**/
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
 
-    if (buttonIndex == self.actionSheet.cancelButtonIndex) {
+    if (buttonIndex == self.actionSheet.cancelButtonIndex)
+    {
         NSLog(@"action sheet cancel");
     }
 
-    switch (buttonIndex) {
+    switch (buttonIndex)
+    {
         case 0:
             [self takePhoto];
             break;
@@ -112,9 +123,11 @@
 }
 
 /**拍摄照片**/
-- (void)takePhoto {
+- (void)takePhoto
+{
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
 
@@ -126,7 +139,8 @@
 }
 
 /**从本地选取照片**/
-- (void)pickPhoto {
+- (void)pickPhoto
+{
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
 
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -139,11 +153,13 @@
 }
 
 /** 当选择一张图片后调用此方法**/
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info {
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info
+{
 
     NSString *fileName = [self getFileNameBy:self.actionSheet.tag];
     NSLog(@"file name:%@", fileName);
-    if (0 == fileName.length) {
+    if (0 == fileName.length)
+    {
         return;
     }
 
@@ -152,7 +168,8 @@
     NSLog(@"type:%@", type);
 
     //选择的是图片
-    if ([type isEqualToString:@"public.image"]) {
+    if ([type isEqualToString:@"public.image"])
+    {
 
         NSLog(@"public.image");
         UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
@@ -192,13 +209,15 @@
     }
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
     NSLog(@"取消选择图片");
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 /** 显示预览 **/
-- (void)showOverView:(UIGestureRecognizer *)gestureRecognizer {
+- (void)showOverView:(UIGestureRecognizer *)gestureRecognizer
+{
     NSLog(@"show overview");
     UIView *view = [gestureRecognizer view];
     NSInteger tag = view.tag;
@@ -223,15 +242,18 @@
 }
 
 /** 隐藏预览图 **/
-- (void)hideOverView {
+- (void)hideOverView
+{
     self.ivOverView.hidden = YES;
 }
 
 
 /** 根据标签值返回文件名称 **/
-- (NSString *)getFileNameBy:(NSInteger)tag {
+- (NSString *)getFileNameBy:(NSInteger)tag
+{
     NSString *fileName = nil;
-    switch (tag) {
+    switch (tag)
+    {
         case 0:
             fileName = @"/card.jpg";
             break;
@@ -245,10 +267,12 @@
 }
 
 /** 获取图片后处理imageView **/
-- (void)setImage:(UIImage *)image tag:(NSInteger)tag reset:(BOOL)reset {
+- (void)setImage:(UIImage *)image tag:(NSInteger)tag reset:(BOOL)reset
+{
     UIImageView *imageView = nil;
     UIButton *button = nil;
-    switch (tag) {
+    switch (tag)
+    {
         case 0:
             imageView = self.ivCard;
             button = self.btnDelCard;
@@ -268,7 +292,8 @@
             break;
     }
 
-    if (nil == imageView || nil == button) {
+    if (nil == imageView || nil == button)
+    {
         return;
     }
 
@@ -278,11 +303,14 @@
     imageView.userInteractionEnabled = YES;
 
     //如果是删除照片后设置位默认图片，则把删除按钮隐藏，同时设置点击触发事件为显示菜单
-    if (reset) {
+    if (reset)
+    {
         button.hidden = YES;
         [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                 action:@selector(showMenu:)]];
-    } else {
+    }
+    else
+    {
         button.hidden = NO;
         [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                 action:@selector(showOverView:)]];
@@ -291,7 +319,8 @@
 }
 
 /** 删除文件 **/
-- (void)delImage:(id)sender {
+- (void)delImage:(id)sender
+{
 
     NSInteger tag = ((UIButton *) sender).tag;
     NSLog(@"button tag:%ld", tag);
@@ -302,16 +331,22 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL exist = [fileManager fileExistsAtPath:filePath];
 
-    if (exist) {
+    if (exist)
+    {
         NSError *error;
         [fileManager removeItemAtPath:filePath error:&error];
         [imageViewDic removeObjectForKey:[NSNumber numberWithLong:tag]];
         NSLog(@"imageview dictionary size:%ld", imageViewDic.count);
-        if (0 == tag) {
+        if (0 == tag)
+        {
             [self setImage:[UIImage imageNamed:@"card_id.png"] tag:tag reset:YES];
-        } else if (1 == tag) {
+        }
+        else if (1 == tag)
+        {
             [self setImage:[UIImage imageNamed:@"operation.png"] tag:tag reset:YES];
-        } else if (2 == tag) {
+        }
+        else if (2 == tag)
+        {
             [self setImage:[UIImage imageNamed:@"mix.png"] tag:tag reset:YES];
         }
     }
@@ -320,7 +355,8 @@
 
 
 /** 按照给定尺寸压缩图片 **/
-- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize
+{
 
     UIGraphicsBeginImageContext(newSize);
 
@@ -334,7 +370,8 @@
 }
 
 /** 图片转换为base64码 **/
-- (NSString *)image2Base64From:(NSString *)path {
+- (NSString *)image2Base64From:(NSString *)path
+{
     UIImage *image = [UIImage imageWithContentsOfFile:path];
     NSData *data = UIImageJPEGRepresentation(image, 1);
     NSString *base64Code = [data base64Encoding];
@@ -344,10 +381,12 @@
 /**
  提交新用户
  **/
-- (IBAction)pressedConfirm:(id)sender {
+- (IBAction)pressedConfirm:(id)sender
+{
 
     //三张照片必须全部都拍照完毕
-    if (imageViewDic.count != 3) {
+    if (imageViewDic.count != 3)
+    {
         [HUDClass showHUDWithLabel:@"请拍摄完成三张照片!" view:self.view];
         return;
     }
@@ -361,7 +400,8 @@
 
 
     NSInteger sex = 0;
-    if ([self.sex isEqualToString:@"男"]) {
+    if ([self.sex isEqualToString:@"男"])
+    {
         sex = 1;
     }
 
@@ -389,7 +429,8 @@
 }
 
 //MD5加密
-- (NSString *)md5:(NSString *)str {
+- (NSString *)md5:(NSString *)str
+{
     const char *cStr = [str UTF8String];
     unsigned char result[16];
     CC_MD5(cStr, strlen(cStr), result); // This is the md5 call
@@ -402,7 +443,8 @@
     ];
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     NSLog(@"deal loc 3");
 }
 

@@ -67,51 +67,7 @@
 {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
-    //设置回退icon
-    //[self setNavIcon];
-    //self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
-
-
-
-//- (void)setNavIcon
-//{
-//    if (!self.navigationController)
-//    {
-//        return;
-//    }
-//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-//    imageView.image = [UIImage imageNamed:@"back_normal"];
-//    [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(popup)]];
-//    
-//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:imageView];
-//    self.navigationItem.leftBarButtonItem = item;
-//}
-//
-//
-//
-//- (void)popup
-//{
-//    [self.navigationController popViewControllerAnimated:YES];
-//    
-//}
-//
-//
-//- (void)setNavTitle:(NSString *)title
-//{
-//    if (!self.navigationController)
-//    {
-//        return;
-//    }
-//    
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-//    label.text = title;
-//    label.font = [UIFont fontWithName:@"System" size:17];
-//    label.textColor = [UIColor whiteColor];
-//    [label setTextAlignment:NSTextAlignmentCenter];
-//    [self.navigationItem setTitleView:label];
-//}
-
 
 #pragma mark - TableView DataSource and Delegate
 
@@ -168,7 +124,7 @@
 
         //设置圆形
         cell.imageViewIcon.layer.masksToBounds = YES;
-        cell.imageViewIcon.layer.cornerRadius = 30;
+        cell.imageViewIcon.layer.cornerRadius = 20;
         [self setPersonIcon:cell.imageViewIcon];
 
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -285,16 +241,8 @@
     {
         return;
     }
-    NSString *dirPath = [NSHomeDirectory() stringByAppendingString:ICON_PATH];
-    NSString *fileName = [FileUtils getFileNameFromUrlString:[User sharedUser].picUrl];
-    NSString *filePath = [dirPath stringByAppendingString:fileName];
 
-    if ([FileUtils existInFilePath:filePath])
-    {
-
-        UIImage *icon = [UIImage imageWithContentsOfFile:filePath];
-        imageView.image = icon;
-    }
+    [imageView setImageWithURL:[NSURL URLWithString:[User sharedUser].picUrl]];
 }
 
 #pragma mark -- take the photo
@@ -304,7 +252,6 @@
  */
 - (void)showMenu
 {
-
     self.actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍摄", @"选取", nil];
     [self.actionSheet showInView:self.view];
 }

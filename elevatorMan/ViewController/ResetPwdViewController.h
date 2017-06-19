@@ -11,7 +11,7 @@
 
 #import "BaseViewController.h"
 
-@interface ResetPwdViewController : UIViewController
+@interface ResetPwdViewController : BaseViewController
 
 @end
 

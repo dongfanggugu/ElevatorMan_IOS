@@ -7,8 +7,6 @@
 //
 
 #import "SignInViewController.h"
-#import "HttpClient.h"
-#import "AppDelegate.h"
 #import "APService.h"
 #import "DownPicker.h"
 #import "Utils.h"
@@ -169,44 +167,40 @@
 
 
     //设置地区
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"])
-    {
-        self.labelCity.text = @"北京";
-        [[NSUserDefaults standardUserDefaults] setObject:@"北京" forKey:@"urlString"];
+//    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"])
+//    {
+//        self.labelCity.text = @"北京";
+//        [[NSUserDefaults standardUserDefaults] setObject:@"北京" forKey:@"urlString"];
+//
+//    }
+//    else
+//    {
+//        self.labelCity.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"];
+//    }
 
-    }
-    else
-    {
-        self.labelCity.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"];
-    }
-
-    //使用微软云，不再选择服务器
-//    self.labelCity.userInteractionEnabled = YES;
-//    UIGestureRecognizer *cityRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-//                                                                                  action:@selector(getCityInfoFromFile)];
-//    [self.labelCity addGestureRecognizer:cityRecognizer];
-//    
+    //不显示区域
+    self.labelCity.text = @"";
+    self.labelCity.userInteractionEnabled = NO;
 
 
     //设置输入框边框
+    self.view_username.layer.masksToBounds = YES;
+    self.view_username.layer.cornerRadius = 5;
     self.view_username.layer.borderWidth = 1;
     self.view_username.layer.borderColor = [[UIColor whiteColor] CGColor];
 
+    self.view_password.layer.masksToBounds = YES;
+    self.view_password.layer.cornerRadius = 5;
     self.view_password.layer.borderWidth = 1;
     self.view_password.layer.borderColor = [[UIColor whiteColor] CGColor];
-
-
-    //设置登录按钮的背景颜色效果
-    [self.button_login setBackgroundColor:UIColorFromRGB(0xfff3c434) forState:UIControlStateNormal];
-    [self.button_login setBackgroundColor:UIColorFromRGB(0xffe9b516) forState:UIControlStateHighlighted];
-
-    //textfield tint color
-    self.textField_userName.tintColor = [UIColor whiteColor];
-    self.textField_userPWD.tintColor = [UIColor whiteColor];
 
     self.textField_userPWD.delegate = self;
 
     self.textField_userName.delegate = self;
+
+    //设置登录按钮
+    _button_login.layer.masksToBounds = YES;
+    _button_login.layer.cornerRadius = 18;
 
     //内部服务器
     self.ivLogo.userInteractionEnabled = YES;
@@ -224,15 +218,12 @@
 
 - (void)userRegister
 {
-//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"用户注册" message:nil delegate:self
-//                                          cancelButtonTitle:@"取消" otherButtonTitles:@"维修工", @"物业人员", nil];
-//    
-//     alertView.tag = 10001;
-//    [alertView show];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"用户注册" message:nil delegate:self
+                                          cancelButtonTitle:@"取消" otherButtonTitles:@"维修工", @"物业人员", nil];
 
-    PaintViewController *controller = [[PaintViewController alloc] init];
+     alertView.tag = 10001;
+    [alertView show];
 
-    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)workerRegister
@@ -328,7 +319,6 @@
                                 [User sharedUser].picUrl = [loginInfo objectForKey:@"pic"];
                                 [User sharedUser].signUrl = [loginInfo objectForKey:@"autograph"];
 
-
                                 NSDictionary *userAttach = [loginInfo objectForKey:@"userAttach"];
                                 [User sharedUser].homeProvince = [userAttach objectForKey:@"familyProvince"];
                                 [User sharedUser].homeCity = [userAttach objectForKey:@"familyCity"];
@@ -339,6 +329,7 @@
                                 [User sharedUser].workCity = [userAttach objectForKey:@"residentCity"];
                                 [User sharedUser].workZone = [userAttach objectForKey:@"residentCounty"];
                                 [User sharedUser].workAddress = [userAttach objectForKey:@"residentAddress"];
+                                [User sharedUser].joinVilla = [[loginInfo objectForKey:@"isJoinVilla"] boolValue];
 
                                 [[User sharedUser] setUserInfo];
 
@@ -775,8 +766,10 @@
 
 - (void)resetPassword
 {
-    UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ResetPwdViewController"];
-    [self presentViewController:viewController animated:YES completion:nil];
+    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ResetPwdViewController"];
+
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 

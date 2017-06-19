@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "PersonalCenterController.h"
-#import "Utils.h"
-#import "FileUtils.h"
-#import "HttpClient.h"
 #import "APService.h"
 #import "MaintenanceReminder.h"
 #import "AddressViewController.h"
@@ -56,6 +53,7 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     _bagView.layer.masksToBounds = YES;
     _bagView.layer.cornerRadius = 5;
+    _labelInfo.text = @"";
 }
 
 @end
@@ -66,12 +64,6 @@
 @interface PersonalCenterController () <UITableViewDelegate, UITableViewDataSource, PersonHeaderDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewPersonIcon;
-
-@property (weak, nonatomic) IBOutlet UILabel *labelName;
-
-@property (weak, nonatomic) IBOutlet UILabel *labelSex;
-
-@property (weak, nonatomic) IBOutlet UILabel *labelAge;
 
 @property (strong, nonatomic) UITableView *tableView;
 
@@ -134,7 +126,8 @@
  */
 - (void)showBasicInfo
 {
-    UIViewController *destinationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"basicInfo"];
+    UIStoryboard *board = [UIStoryboard storyboardWithName:@"Person" bundle:nil];
+    UIViewController *destinationVC = [board instantiateViewControllerWithIdentifier:@"basicInfo"];
     [self.navigationController pushViewController:destinationVC animated:YES];
 }
 
@@ -244,7 +237,7 @@
 {
 
     //如果是物业，不显示操作证号，显示驻点地址
-    if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])
+    if (Role_Pro == self.roleType)
     {
         return 3;
     }
@@ -259,7 +252,7 @@
     if (0 == section)
     {
         //如果是物业，不显示操作证号
-        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])
+        if (Role_Pro == self.roleType)
         {
             return 1;
         }
@@ -271,7 +264,7 @@
     else if (1 == section)
     {
 
-        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])
+        if (Role_Pro == self.roleType)
         {
             return 1;
         }
@@ -292,8 +285,6 @@
 {
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
-
-
 
     InfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"info_cell"];
 
@@ -340,7 +331,7 @@
     {
 
         //如果是物业，直接显示设置
-        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])
+        if (Role_Pro == self.roleType)
         {
             cell.imageViewInfoIcon.image = [UIImage imageNamed:@"icon_settings"];
             cell.keyLabel.text = @"驻点";
@@ -411,20 +402,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //松手后颜色回复
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
 
     if (0 == section)
     {
 
-        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])
+        if (Role_Pro == self.roleType)
         {
-            //            if (1 == row)
-            //            {
-            //                UIViewController *destinationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PasswordPage"];
-            //                [self.navigationController pushViewController:destinationVC animated:YES];
-            //            }
 
         }
         else
@@ -492,52 +477,9 @@
 #pragma mark - deal with the icon image
 
 
-- (void)downloadIconByUrlString:(NSString *)urlString dirPath:(NSString *)dirPath fileName:(NSString *)fileName
-{
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0f];
-
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *_Nullable response, NSData *_Nullable data, NSError *_Nullable connectionError) {
-
-        if (data.length > 0 && nil == connectionError)
-        {
-            [FileUtils writeFile:data Path:dirPath fileName:fileName];
-            [self performSelectorOnMainThread:@selector(setPersonIcon:) withObject:urlString waitUntilDone:NO];
-
-        }
-        else if (connectionError != nil)
-        {
-            NSLog(@"download picture error = %@", connectionError);
-        }
-    }];
-}
-
-
 - (void)setPersonIcon:(NSString *)urlString
 {
-
-    NSLog(@"picture url:%@", urlString);
-
-    if (0 == urlString.length)
-    {
-        return;
-    }
-    NSString *dirPath = [NSHomeDirectory() stringByAppendingString:ICON_PATH];
-    NSString *fileName = [FileUtils getFileNameFromUrlString:urlString];
-    NSString *filePath = [dirPath stringByAppendingString:fileName];
-
-    if ([FileUtils existInFilePath:filePath])
-    {
-
-        UIImage *icon = [UIImage imageWithContentsOfFile:filePath];
-        _personHeader.image.image = icon;
-    }
-    else
-    {
-        [self downloadIconByUrlString:urlString dirPath:dirPath fileName:fileName];
-    }
-
+    [_personHeader.image setImageWithURL:[NSURL URLWithString:urlString]];
 }
 
 

@@ -68,10 +68,14 @@
 
 @synthesize arrayCity;
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavTitle:@"维修工注册"];
 
+    //设置按钮风格
+    _btnNext.layer.masksToBounds = YES;
+    _btnNext.layer.cornerRadius = 5;
 
     //设置UILabel字体颜色，和UITextField的placeholder颜色相同
     UIColor *placeHolderColor = [self.tfUserName valueForKeyPath:@"_placeholderLabel.textColor"];
@@ -81,10 +85,13 @@
     arraySearchResult = [[NSMutableArray alloc] init];
 
     NSString *urlTextString = [[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"];
-    if ([urlTextString isEqualToString:@"北京"]) {
+    if ([urlTextString isEqualToString:@"北京"])
+    {
         labelCity.text = @"北京";
         [labelCity setTextColor:[UIColor blackColor]];
-    } else {
+    }
+    else
+    {
         labelCity.userInteractionEnabled = YES;
         UIGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                   action:@selector(getCityInfoFromFile)];
@@ -99,8 +106,10 @@
 
 }
 
-- (void)popInnerServer:(UILongPressGestureRecognizer *)recognizer {
-    if (recognizer.state == UIGestureRecognizerStateBegan) {
+- (void)popInnerServer:(UILongPressGestureRecognizer *)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateBegan)
+    {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"服务器选择" message:nil delegate:self
                                                   cancelButtonTitle:@"取消" otherButtonTitles:@"演示", @"马晓明", @"Azure", nil];
         [alertView show];
@@ -108,7 +117,8 @@
 }
 
 /** 通过segue传递值 **/
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     NSString *city = self.labelCity.text;
     NSString *userName = self.tfUserName.text;
     NSString *password = self.tfPassword.text;
@@ -125,44 +135,52 @@
 /**
  点击下一步，先检测用户名是否存在
  **/
-- (IBAction)pressNextBtn:(id)sender {
+- (IBAction)pressNextBtn:(id)sender
+{
 
     NSString *city = labelCity.text;
-    if (0 == city.length) {
+    if (0 == city.length)
+    {
         [HUDClass showHUDWithLabel:@"城市不能为空!" view:self.view];
         return;
     }
 
-    if ([city isEqualToString:@"点击选择城市"]) {
+    if ([city isEqualToString:@"点击选择城市"])
+    {
         [HUDClass showHUDWithLabel:@"请选择城市!" view:self.view];
         return;
     }
 
     NSString *userName = self.tfUserName.text;
     //检测用户名不为空
-    if (0 == userName.length) {
+    if (0 == userName.length)
+    {
         [HUDClass showHUDWithLabel:@"用户名不能为空!" view:self.view];
         return;
     }
 
     NSString *password = self.tfPassword.text;
-    if (0 == password.length) {
+    if (0 == password.length)
+    {
         [HUDClass showHUDWithLabel:@"密码输入不能为空!" view:self.view];
         return;
     }
-    if (password.length < 6) {
+    if (password.length < 6)
+    {
         [HUDClass showHUDWithLabel:@"密码至少为6位，请重新输入!" view:self.view];
         return;
     }
 
     NSString *confirm = self.tfConfirm.text;
-    if (0 == confirm.length) {
+    if (0 == confirm.length)
+    {
         [HUDClass showHUDWithLabel:@"确认密码不能为空" view:self.view];
         return;
     }
 
     //判断密码和确认密码是否一致
-    if (![password isEqualToString:confirm]) {
+    if (![password isEqualToString:confirm])
+    {
         [HUDClass showHUDWithLabel:@"密码和确认密码不一致，请重新输入!" view:self.view];
         return;
     }
@@ -188,30 +206,36 @@
 
 /**
  点击软键盘的完成按钮 **/
-- (IBAction)didEndOnExitByUserName:(id)sender {
+- (IBAction)didEndOnExitByUserName:(id)sender
+{
     [self.tfPassword becomeFirstResponder];
 }
 
-- (IBAction)didEndOnExitByPassword:(id)sender {
+- (IBAction)didEndOnExitByPassword:(id)sender
+{
     [self.tfConfirm becomeFirstResponder];
 }
 
-- (IBAction)didEndOnExitByConfirm:(id)sender {
+- (IBAction)didEndOnExitByConfirm:(id)sender
+{
     [self resignFirstResponder];
 }
 
-- (IBAction)didEndOnExit:(id)sender {
+- (IBAction)didEndOnExit:(id)sender
+{
     [self resignFirstResponder];
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     NSLog(@"deal loc 1");
 }
 
 /**
  *  从文件中获取城市信息
  */
-- (void)getCityInfoFromFile {
+- (void)getCityInfoFromFile
+{
 
     NSError *error;
     NSString *cityJsonString = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"city_json" ofType:@"json"] encoding:NSUTF8StringEncoding error:&error];
@@ -226,7 +250,8 @@
     NSLog(@"length:%ld", arrayProvince.count);
 
     [arraySearchResult removeAllObjects];
-    for (NSObject *o in arrayProvince) {
+    for (NSObject *o in arrayProvince)
+    {
         [arraySearchResult addObject:o];
     }
 
@@ -244,7 +269,8 @@
  *  @param title <#title description#>
  *  @param type  <#type description#>
  */
-- (void)showAlertTableViewWithTitle:(NSString *)title type:(NSInteger)type {
+- (void)showAlertTableViewWithTitle:(NSString *)title type:(NSInteger)type
+{
 
     intCurrentTableViewTag = type;
 
@@ -300,7 +326,8 @@
     tfSearch.rightViewMode = UITextFieldViewModeAlways;
 
     NSString *placeHolder = @"请输入省份名称";
-    if (CITY == type) {
+    if (CITY == type)
+    {
         placeHolder = @"请输入城市名称";
     }
     [tfSearch setPlaceholder:placeHolder];
@@ -350,10 +377,12 @@
 /**
  *  关闭城市选择弹出框
  */
-- (void)cityDialogCancel {
+- (void)cityDialogCancel
+{
 
     UIView *alertView = [self.view viewWithTag:1001];
-    if (alertView != nil) {
+    if (alertView != nil)
+    {
         intCurrentTableViewTag = 0;
         [alertView removeFromSuperview];
     }
@@ -364,8 +393,10 @@
  *
  *  @param textField <#textField description#>
  */
-- (void)textFieldAfterChanged:(UITextField *)textField {
-    if (0 == intCurrentTableViewTag) {
+- (void)textFieldAfterChanged:(UITextField *)textField
+{
+    if (0 == intCurrentTableViewTag)
+    {
         return;
     }
     [arraySearchResult removeAllObjects];
@@ -373,15 +404,24 @@
     NSString *content = [textField.text stringByTrimmingCharactersInSet:
             [NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-    switch (intCurrentTableViewTag) {
+    switch (intCurrentTableViewTag)
+    {
         case PROVINCE:
-            if (0 == content.length) {
-                for (NSObject *o in arrayProvince) {
+            if (0 == content.length)
+            {
+                for (NSObject *o in arrayProvince)
+                {
                     [arraySearchResult addObject:o];
                 }
-            } else {
-                for (int i = 0; i < arrayProvince.count; i++) {
-                    if ([(NSString *) [arrayProvince[i] objectForKey:@"proname"] containsString:content]) {
+            }
+            else
+            {
+                for (int i = 0;
+                        i < arrayProvince.count;
+                        i++)
+                {
+                    if ([(NSString *) [arrayProvince[i] objectForKey:@"proname"] containsString:content])
+                    {
                         [arraySearchResult addObject:arrayProvince[i]];
                     }
                 }
@@ -395,13 +435,21 @@
             break;
 
         case CITY:
-            if (0 == content.length) {
-                for (NSObject *o in arrayCity) {
+            if (0 == content.length)
+            {
+                for (NSObject *o in arrayCity)
+                {
                     [arraySearchResult addObject:o];
                 }
-            } else {
-                for (int i = 0; i < arrayCity.count; i++) {
-                    if ([(NSString *) [arrayCity[i] objectForKey:@"cityname"] containsString:content]) {
+            }
+            else
+            {
+                for (int i = 0;
+                        i < arrayCity.count;
+                        i++)
+                {
+                    if ([(NSString *) [arrayCity[i] objectForKey:@"cityname"] containsString:content])
+                    {
                         [arraySearchResult addObject:arrayCity[i]];
                     }
                 }
@@ -424,19 +472,23 @@
 
 #pragma mark -- UITableView Datasource Delegate
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return arraySearchResult.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     NSString *cellIdentifier = @"CompanyCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
-    if (nil == cell) {
+    if (nil == cell)
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         UILabel *labelComName = [[UILabel alloc] init];
         labelComName.tag = 1;
@@ -446,28 +498,35 @@
 
     UILabel *labelCom = (UILabel *) [cell viewWithTag:1];
 
-    if (tableView.tag == PROVINCE) {
+    if (tableView.tag == PROVINCE)
+    {
         [labelCom setText:[arraySearchResult[indexPath.row] objectForKey:@"proname"]];
-    } else if (tableView.tag == CITY) {
+    }
+    else if (tableView.tag == CITY)
+    {
         [labelCom setText:[arraySearchResult[indexPath.row] objectForKey:@"cityname"]];
     }
 
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 50;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *content = ((UILabel *) [cell viewWithTag:1]).text;
 
-    if (tableView.tag == PROVINCE) {
+    if (tableView.tag == PROVINCE)
+    {
         arrayCity = [arraySearchResult[indexPath.row] objectForKey:@"citys"];
         [arraySearchResult removeAllObjects];
 
-        for (NSObject *o in arrayCity) {
+        for (NSObject *o in arrayCity)
+        {
             [arraySearchResult addObject:o];
         }
 
@@ -478,7 +537,9 @@
 
         [self cityDialogCancel];
         [self showAlertTableViewWithTitle:content type:CITY];
-    } else if (tableView.tag == CITY) {
+    }
+    else if (tableView.tag == CITY)
+    {
 
         [self cityDialogCancel];
         labelCity.text = content;
@@ -495,8 +556,10 @@
 
 #pragma mark -- UIAlertViewDelegate
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (0 == buttonIndex) {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (0 == buttonIndex)
+    {
         return;
     }
 

@@ -49,7 +49,7 @@
 
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, self.screenWidth / 2)];
 
-    imageView.image = [UIImage imageNamed:@"icon_market_top"];
+    imageView.image = [UIImage imageNamed:@"icon_market_top.png"];
 
     _tableView.tableHeaderView = imageView;
 
