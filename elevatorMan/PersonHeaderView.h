@@ -19,13 +19,11 @@
 
 @interface PersonHeaderView : UIView
 
-+ (instancetype)viewFromNib;
++ (id)viewFromNib;
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 
 @property (weak, nonatomic) IBOutlet UILabel *name;
-
-@property (weak, nonatomic) IBOutlet UILabel *sex;
 
 @property (weak, nonatomic) IBOutlet UILabel *age;
 

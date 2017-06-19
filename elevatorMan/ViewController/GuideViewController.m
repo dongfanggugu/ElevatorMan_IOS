@@ -53,36 +53,35 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"signviewcontroller"];
-
-
     }
     else
     {
 
-
-        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])//物业
-        {
-
-            UIStoryboard *story = [UIStoryboard storyboardWithName:@"MyProperty" bundle:nil];
-
-            [UIApplication sharedApplication].delegate.window.rootViewController =
-                    [story instantiateViewControllerWithIdentifier:@"property_main_page"];
+        TmateMainTabBarController *controller = [[TmateMainTabBarController alloc] init];
+        self.window.rootViewController = controller;
 
 
-        }
-        else if ([[User sharedUser].userType isEqualToString:UserTypeWorker])//维修工
-        {
-            TmateMainTabBarController *controller = [[TmateMainTabBarController alloc] init];
-
-//            BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:controller];
-            self.window.rootViewController = controller;
-
-//            UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])//物业
+//        {
 //
-//            //[UIApplication sharedApplication].delegate.window.rootViewController = [story  instantiateViewControllerWithIdentifier:@"workerRootViewController"];
-//            UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"main_page"];
+//            UIStoryboard *story = [UIStoryboard storyboardWithName:@"MyProperty" bundle:nil];
+//
+//            [UIApplication sharedApplication].delegate.window.rootViewController =
+//                    [story instantiateViewControllerWithIdentifier:@"property_main_page"];
+//
+//
+//        }
+//        else if ([[User sharedUser].userType isEqualToString:UserTypeWorker])//维修工
+//        {
+//            TmateMainTabBarController *controller = [[TmateMainTabBarController alloc] init];
 //            self.window.rootViewController = controller;
-        }
+//
+////            UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+////
+////            //[UIApplication sharedApplication].delegate.window.rootViewController = [story  instantiateViewControllerWithIdentifier:@"workerRootViewController"];
+////            UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"main_page"];
+////            self.window.rootViewController = controller;
+//        }
     }
 
 }
@@ -164,12 +163,9 @@
 {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"isLogged"])
     {
-
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
-
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"signviewcontroller"];
-
     }
 }
 

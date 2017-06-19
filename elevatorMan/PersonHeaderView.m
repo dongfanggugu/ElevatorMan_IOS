@@ -15,7 +15,7 @@
 
 @implementation PersonHeaderView
 
-+ (instancetype)viewFromNib
++ (id)viewFromNib
 {
     NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"PersonHeaderView" owner:nil options:nil];
 
@@ -24,12 +24,12 @@
         return nil;
     }
 
-    return [[array[0] subviews] objectAtIndex:0];
+    return array[0];
 }
 
-- (void)layoutSubviews
+- (void)awakeFromNib
 {
-    [super layoutSubviews];
+    [super awakeFromNib];
     [self initImageView];
 }
 

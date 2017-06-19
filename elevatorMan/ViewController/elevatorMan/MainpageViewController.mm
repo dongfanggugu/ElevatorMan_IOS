@@ -179,9 +179,6 @@
 
 - (void)rescue
 {
-//    UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
-//    UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"WorkerAlarmList"];
-//    [self.navigationController pushViewController:controller animated:YES];
 
     AlarmManagerController *controller = [[AlarmManagerController alloc] init];
 

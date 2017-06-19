@@ -36,6 +36,11 @@
     return [UIScreen mainScreen].bounds.size.height;
 }
 
+- (RoleType)roleType
+{
+    return [User sharedUser].userType.integerValue;
+}
+
 
 - (void)setNavIcon
 {

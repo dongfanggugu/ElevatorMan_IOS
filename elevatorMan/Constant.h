@@ -17,4 +17,26 @@
 #define Custom_Service @"400-919-6333"
 
 
+#pragma mark - 用户类型
+
+typedef NS_ENUM(NSInteger, RoleType)
+{
+    Role_Com = 1,
+    ROle_Pro,
+    Role_Worker
+};
+
+
+#pragma mark - 电梯商城
+
+typedef NS_ENUM(NSInteger, Market_Type) {
+
+    Market_Lift,  //整体销售
+
+    Market_Decorate,  //电梯装潢
+
+    Market_Msg  //留言
+};
+
+
 #endif /* Constant_h */

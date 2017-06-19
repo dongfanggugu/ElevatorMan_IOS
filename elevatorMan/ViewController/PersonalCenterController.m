@@ -53,6 +53,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     _bagView.layer.masksToBounds = YES;
     _bagView.layer.cornerRadius = 5;
 }
@@ -104,7 +105,6 @@
     //在这里加载信息，解决更新信息及时显示的问题
     [self setPersonIcon:[User sharedUser].picUrl];
     _personHeader.name.text = [User sharedUser].name;
-    _personHeader.sex.text = [User sharedUser].sex.integerValue == 0 ? @"女" : @"男";
     _personHeader.age.text = [NSString stringWithFormat:@"%ld", [User sharedUser].age.integerValue];
 
     [self.tableView reloadData];
@@ -143,7 +143,7 @@
 {
     _personHeader = [PersonHeaderView viewFromNib];
 
-    _personHeader.frame = CGRectMake(0, 0, self.screenWidth, 300);
+    _personHeader.frame = CGRectMake(0, 0, self.screenWidth, 200);
 
     _personHeader.delegate = self;
     _tableView.tableHeaderView = _personHeader;

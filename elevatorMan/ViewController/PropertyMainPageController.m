@@ -81,7 +81,6 @@
 - (void)rescue
 {
     ProAlarmTabBarController *controller = [[ProAlarmTabBarController alloc] init];
-
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -105,9 +104,6 @@
 
 - (void)around
 {
-    UIStoryboard *board = [UIStoryboard storyboardWithName:@"MyProperty" bundle:nil];
-    UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"around_controller"];
-    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)person

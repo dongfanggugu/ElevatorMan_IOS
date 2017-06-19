@@ -408,26 +408,22 @@
  */
 - (void)showUserInterFace:(NSString *)type
 {
-    if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])//物业
-    {
+    TmateMainTabBarController *controller = [[TmateMainTabBarController alloc] init];
 
-        UIStoryboard *story = [UIStoryboard storyboardWithName:@"MyProperty" bundle:nil];
+    [UIApplication sharedApplication].delegate.window.rootViewController = controller;
 
-        [UIApplication sharedApplication].delegate.window.rootViewController =
-                [story instantiateViewControllerWithIdentifier:@"property_main_page"];
-    }
-    else if ([[User sharedUser].userType isEqualToString:UserTypeWorker])//维修工
-    {
-
-        TmateMainTabBarController *controller = [[TmateMainTabBarController alloc] init];
-
-        [UIApplication sharedApplication].delegate.window.rootViewController = controller;
-
-//        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])//物业
+//    {
 //
-//        [UIApplication sharedApplication].delegate.window.rootViewController = [story instantiateViewControllerWithIdentifier:@"main_page"];
-
-    }
+//        UIStoryboard *story = [UIStoryboard storyboardWithName:@"MyProperty" bundle:nil];
+//
+//        [UIApplication sharedApplication].delegate.window.rootViewController =
+//                [story instantiateViewControllerWithIdentifier:@"property_main_page"];
+//    }
+//    else if ([[User sharedUser].userType isEqualToString:UserTypeWorker])//维修工
+//    {
+//
+//    }
 
 }
 

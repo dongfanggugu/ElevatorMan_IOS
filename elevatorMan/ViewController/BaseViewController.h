@@ -31,6 +31,8 @@
 
 - (void)landscapeRight;
 
+@property (assign, nonatomic) RoleType roleType;
+
 @property (assign, nonatomic) CGFloat screenWidth;
 
 @property (assign, nonatomic) CGFloat screenHeight;

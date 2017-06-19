@@ -9,6 +9,11 @@
 #import "HouseRepairManagerController.h"
 #import "AlarmManagerController.h"
 #import "KnowledgeController.h"
+#import "MaintManagerController.h"
+#import "ProAlarmTabBarController.h"
+#import "RepairOrderController.h"
+#import "MaintOrderController.h"
+#import "MarketDetailController.h"
 
 @interface TmateMainPageController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -47,6 +52,12 @@
 
     tableView.tableHeaderView = _myView;
 
+    if (ROle_Pro == self.roleType)
+    {
+        _myView.lbMaint.text = @"电梯商城";
+        _myView.lbRepair.text = @"附近维保";
+    }
+
     [self addEventListener];
 
     [self initBannerView];
@@ -73,7 +84,6 @@
 
 - (void)initBannerView
 {
-
     _myView.bannerHeight.constant = self.screenWidth / 3;
 
     AddBannerView *bannerView = [[AddBannerView alloc] initWithFrame:CGRectMake(0, 0, self.screenWidth, self.screenWidth / 3)];
@@ -113,43 +123,109 @@
 
 - (void)rescue
 {
-    AlarmManagerController *controller = [[AlarmManagerController alloc] init];
-    controller.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:controller animated:YES];
+    if (Role_Com == self.roleType)
+    {
+        AlarmManagerController *controller = [[AlarmManagerController alloc] init];
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else if (ROle_Pro == self.roleType)
+    {
+        ProAlarmTabBarController *controller = [[ProAlarmTabBarController alloc] init];
+
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else
+    {
+        UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
+        UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"WorkerAlarmList"];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+
 }
 
 - (void)maintenance
 {
-    UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
-    UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"maintenance_page"];
-    controller.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:controller animated:YES];
+    if (Role_Com == self.roleType)
+    {
+        MaintManagerController *controller = [[MaintManagerController alloc] init];
+
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else if (ROle_Pro == self.roleType)
+    {
+        UIStoryboard *board = [UIStoryboard storyboardWithName:@"Property" bundle:nil];
+        UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"mantenanceController"];
+
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+
+    }
+    else
+    {
+        UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
+        UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"maintenance_page"];
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+
 }
 
 - (void)houseRepair
 {
-//    RepairOrderController *controller = [[RepairOrderController alloc] init];
-//
-//    controller.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:controller animated:YES];
+    if (Role_Com == self.roleType)
+    {
+        HouseRepairManagerController *controller = [[HouseRepairManagerController alloc] init];
+
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+
+    }
+    else if (ROle_Pro == self.roleType)
+    {
+        UIStoryboard *board = [UIStoryboard storyboardWithName:@"MyProperty" bundle:nil];
+        UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"around_controller"];
+
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else
+    {
+        RepairOrderController *controller = [[RepairOrderController alloc] init];
+
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 
 
-    HouseRepairManagerController *controller = [[HouseRepairManagerController alloc] init];
-
-    controller.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)houseMaint
 {
-//    MaintOrderController *controller = [[MaintOrderController alloc] init];
-//    controller.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:controller animated:YES];
+    if (Role_Com == self.roleType)
+    {
+        HouseMaintManagerController *controller = [[HouseMaintManagerController alloc] init];
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else if (ROle_Pro == self.roleType)
+    {
+        MarketDetailContrller *contrller = [[MarketDetailContrller alloc] init];
 
-    HouseMaintManagerController *controller = [[HouseMaintManagerController alloc] init];
+        contrller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:contrller animated:YES];
+    }
+    else
+    {
+        MaintOrderController *controller = [[MaintOrderController alloc] init];
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 
-    controller.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:controller animated:YES];
+
+
 }
 
 - (void)QA

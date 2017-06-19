@@ -309,6 +309,10 @@
             <connections>
                 <outlet property="bannerHeight" destination="Obr-Ol-MX1" id="isX-wg-kme"/>
                 <outlet property="bannerView" destination="AmS-yT-xkL" id="Ygi-LX-FwH"/>
+                <outlet property="ivMaint" destination="mLJ-dd-kB4" id="JxD-PV-9Xi"/>
+                <outlet property="ivRepair" destination="sEI-Dw-OLJ" id="qkd-kP-kVa"/>
+                <outlet property="lbMaint" destination="JKW-Sf-tq9" id="C7d-wr-S57"/>
+                <outlet property="lbRepair" destination="hFL-M3-KRY" id="o9s-j0-PcH"/>
                 <outlet property="viewAlarm" destination="YST-YG-nbI" id="OVc-eK-Vav"/>
                 <outlet property="viewFault" destination="jNw-g5-aD5" id="dvx-pU-fBx"/>
                 <outlet property="viewHouseMaint" destination="iRb-zL-T5a" id="NGF-di-R1Q"/>

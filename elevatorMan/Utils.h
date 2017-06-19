@@ -31,6 +31,8 @@
  */
 +(NSString *)getServer;
 
++ (NSString *)getIp;
+
 /**
  *  检测是否为合法的年龄 1-99
  *
