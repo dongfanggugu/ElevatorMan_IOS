@@ -323,43 +323,8 @@
 		65D3449E1EF5221100E75161 /* PersonInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D3449D1EF5221100E75161 /* PersonInfoCell.xib */; };
 		65D344A01EF7A19300E75161 /* icon_market_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D3449F1EF7A19300E75161 /* icon_market_top.png */; };
 		65D344A31EF7C1DF00E75161 /* BackgroundRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D344A21EF7C1DF00E75161 /* BackgroundRunner.m */; };
-		65D348AB1EF90DF500E75161 /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348A81EF90DF500E75161 /* AccountManager.m */; };
-		65D348AC1EF90DF500E75161 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348AA1EF90DF500E75161 /* Device.m */; };
-		65D348CD1EF90E0300E75161 /* hbydtUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348AE1EF90E0300E75161 /* hbydtUI.m */; };
-		65D348CE1EF90E0300E75161 /* ForgetPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348B01EF90E0300E75161 /* ForgetPassWordViewController.m */; };
-		65D348CF1EF90E0300E75161 /* ForgetPassWordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D348B11EF90E0300E75161 /* ForgetPassWordViewController.xib */; };
-		65D348D01EF90E0300E75161 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348B31EF90E0300E75161 /* LoginViewController.m */; };
-		65D348D11EF90E0300E75161 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D348B41EF90E0300E75161 /* LoginViewController.xib */; };
-		65D348D21EF90E0300E75161 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348B61EF90E0300E75161 /* MainViewController.m */; };
-		65D348D31EF90E0300E75161 /* DeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348B81EF90E0300E75161 /* DeviceTableViewCell.m */; };
-		65D348D41EF90E0300E75161 /* DeviceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D348B91EF90E0300E75161 /* DeviceTableViewCell.xib */; };
-		65D348D51EF90E0300E75161 /* DeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348BB1EF90E0300E75161 /* DeviceViewController.m */; };
-		65D348D61EF90E0300E75161 /* DeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D348BC1EF90E0300E75161 /* DeviceViewController.xib */; };
-		65D348D71EF90E0300E75161 /* AddDeviceMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348BE1EF90E0300E75161 /* AddDeviceMainViewController.m */; };
-		65D348D81EF90E0300E75161 /* IPAddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348C01EF90E0300E75161 /* IPAddDeviceViewController.m */; };
-		65D348D91EF90E0300E75161 /* IPAddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D348C11EF90E0300E75161 /* IPAddDeviceViewController.xib */; };
-		65D348DA1EF90E0300E75161 /* AddDeviceBySerialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348C31EF90E0300E75161 /* AddDeviceBySerialViewController.m */; };
-		65D348DB1EF90E0300E75161 /* AddDeviceBySerialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D348C41EF90E0300E75161 /* AddDeviceBySerialViewController.xib */; };
-		65D348DC1EF90E0300E75161 /* AlarmInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348C61EF90E0300E75161 /* AlarmInformationViewController.m */; };
-		65D348DD1EF90E0300E75161 /* AlarmInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D348C71EF90E0300E75161 /* AlarmInformationViewController.xib */; };
-		65D348DE1EF90E0300E75161 /* AlarmInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348C91EF90E0300E75161 /* AlarmInformationTableViewCell.m */; };
-		65D348DF1EF90E0300E75161 /* VideoTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348CB1EF90E0300E75161 /* VideoTestViewController.m */; };
-		65D348E01EF90E0300E75161 /* VideoTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D348CC1EF90E0300E75161 /* VideoTestViewController.xib */; };
-		65D348FE1EF90E1700E75161 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348E31EF90E1700E75161 /* GCDAsyncSocket.m */; };
-		65D348FF1EF90E1700E75161 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348E51EF90E1700E75161 /* GCDAsyncUdpSocket.m */; };
-		65D349001EF90E1700E75161 /* HBSearchDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348E91EF90E1700E75161 /* HBSearchDevice.m */; };
-		65D349011EF90E1700E75161 /* HBSearchedDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348EB1EF90E1700E75161 /* HBSearchedDeviceInfo.m */; };
-		65D349031EF90E1700E75161 /* libHBPlaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D348ED1EF90E1700E75161 /* libHBPlaySDK.a */; };
-		65D349041EF90E1700E75161 /* libt2u.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D348EE1EF90E1700E75161 /* libt2u.a */; };
-		65D349051EF90E1700E75161 /* libydtsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D348F01EF90E1700E75161 /* libydtsdk.a */; };
-		65D349061EF90E1700E75161 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65D348F11EF90E1700E75161 /* Localizable.strings */; };
-		65D349071EF90E1700E75161 /* MapErrorCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348F31EF90E1700E75161 /* MapErrorCode.m */; };
-		65D349081EF90E1700E75161 /* NSError+HbError.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348F51EF90E1700E75161 /* NSError+HbError.m */; };
-		65D349091EF90E1700E75161 /* NSString+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348F71EF90E1700E75161 /* NSString+JSON.m */; };
-		65D3490A1EF90E1700E75161 /* StreamMediaServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D348F91EF90E1700E75161 /* StreamMediaServer.m */; };
 		65D3490C1EF90EA900E75161 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D3490B1EF90EA900E75161 /* OpenAL.framework */; };
 		65D3490E1EF90EC300E75161 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D3490D1EF90EC300E75161 /* libbz2.tbd */; };
-		65D349121EF9181500E75161 /* libNetSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D349111EF9181500E75161 /* libNetSDK.a */; };
 		65D3EACB1CAB6B950079A140 /* icon_query.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D3EACA1CAB6B950079A140 /* icon_query.png */; };
 		65D3EACD1CAB765D0079A140 /* icon_knowledge.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D3EACC1CAB765D0079A140 /* icon_knowledge.png */; };
 		65D6FEDD1CABC08E00CEB203 /* AlarmResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D6FEDC1CABC08E00CEB203 /* AlarmResultViewController.m */; };
@@ -940,73 +905,8 @@
 		65D3449F1EF7A19300E75161 /* icon_market_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_market_top.png; path = ../../../owner_IOS/owner/Resources/icon_market_top.png; sourceTree = "<group>"; };
 		65D344A11EF7C1DF00E75161 /* BackgroundRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundRunner.h; sourceTree = "<group>"; };
 		65D344A21EF7C1DF00E75161 /* BackgroundRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundRunner.m; sourceTree = "<group>"; };
-		65D348A71EF90DF500E75161 /* AccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountManager.h; sourceTree = "<group>"; };
-		65D348A81EF90DF500E75161 /* AccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountManager.m; sourceTree = "<group>"; };
-		65D348A91EF90DF500E75161 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
-		65D348AA1EF90DF500E75161 /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
-		65D348AD1EF90E0300E75161 /* hbydtUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hbydtUI.h; sourceTree = "<group>"; };
-		65D348AE1EF90E0300E75161 /* hbydtUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hbydtUI.m; sourceTree = "<group>"; };
-		65D348AF1EF90E0300E75161 /* ForgetPassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPassWordViewController.h; sourceTree = "<group>"; };
-		65D348B01EF90E0300E75161 /* ForgetPassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPassWordViewController.m; sourceTree = "<group>"; };
-		65D348B11EF90E0300E75161 /* ForgetPassWordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPassWordViewController.xib; sourceTree = "<group>"; };
-		65D348B21EF90E0300E75161 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		65D348B31EF90E0300E75161 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		65D348B41EF90E0300E75161 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		65D348B51EF90E0300E75161 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		65D348B61EF90E0300E75161 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		65D348B71EF90E0300E75161 /* DeviceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceTableViewCell.h; sourceTree = "<group>"; };
-		65D348B81EF90E0300E75161 /* DeviceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceTableViewCell.m; sourceTree = "<group>"; };
-		65D348B91EF90E0300E75161 /* DeviceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceTableViewCell.xib; sourceTree = "<group>"; };
-		65D348BA1EF90E0300E75161 /* DeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceViewController.h; sourceTree = "<group>"; };
-		65D348BB1EF90E0300E75161 /* DeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceViewController.m; sourceTree = "<group>"; };
-		65D348BC1EF90E0300E75161 /* DeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceViewController.xib; sourceTree = "<group>"; };
-		65D348BD1EF90E0300E75161 /* AddDeviceMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceMainViewController.h; sourceTree = "<group>"; };
-		65D348BE1EF90E0300E75161 /* AddDeviceMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeviceMainViewController.m; sourceTree = "<group>"; };
-		65D348BF1EF90E0300E75161 /* IPAddDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAddDeviceViewController.h; sourceTree = "<group>"; };
-		65D348C01EF90E0300E75161 /* IPAddDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPAddDeviceViewController.m; sourceTree = "<group>"; };
-		65D348C11EF90E0300E75161 /* IPAddDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IPAddDeviceViewController.xib; sourceTree = "<group>"; };
-		65D348C21EF90E0300E75161 /* AddDeviceBySerialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceBySerialViewController.h; sourceTree = "<group>"; };
-		65D348C31EF90E0300E75161 /* AddDeviceBySerialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeviceBySerialViewController.m; sourceTree = "<group>"; };
-		65D348C41EF90E0300E75161 /* AddDeviceBySerialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceBySerialViewController.xib; sourceTree = "<group>"; };
-		65D348C51EF90E0300E75161 /* AlarmInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmInformationViewController.h; sourceTree = "<group>"; };
-		65D348C61EF90E0300E75161 /* AlarmInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmInformationViewController.m; sourceTree = "<group>"; };
-		65D348C71EF90E0300E75161 /* AlarmInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarmInformationViewController.xib; sourceTree = "<group>"; };
-		65D348C81EF90E0300E75161 /* AlarmInformationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmInformationTableViewCell.h; sourceTree = "<group>"; };
-		65D348C91EF90E0300E75161 /* AlarmInformationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmInformationTableViewCell.m; sourceTree = "<group>"; };
-		65D348CA1EF90E0300E75161 /* VideoTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoTestViewController.h; sourceTree = "<group>"; };
-		65D348CB1EF90E0300E75161 /* VideoTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoTestViewController.m; sourceTree = "<group>"; };
-		65D348CC1EF90E0300E75161 /* VideoTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoTestViewController.xib; sourceTree = "<group>"; };
-		65D348E11EF90E1700E75161 /* AlarmNetCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmNetCtrl.h; sourceTree = "<group>"; };
-		65D348E21EF90E1700E75161 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
-		65D348E31EF90E1700E75161 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
-		65D348E41EF90E1700E75161 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
-		65D348E51EF90E1700E75161 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
-		65D348E61EF90E1700E75161 /* HBNetSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBNetSDK.h; sourceTree = "<group>"; };
-		65D348E71EF90E1700E75161 /* HBPlaySDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBPlaySDK.h; sourceTree = "<group>"; };
-		65D348E81EF90E1700E75161 /* HBSearchDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBSearchDevice.h; sourceTree = "<group>"; };
-		65D348E91EF90E1700E75161 /* HBSearchDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBSearchDevice.m; sourceTree = "<group>"; };
-		65D348EA1EF90E1700E75161 /* HBSearchedDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBSearchedDeviceInfo.h; sourceTree = "<group>"; };
-		65D348EB1EF90E1700E75161 /* HBSearchedDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBSearchedDeviceInfo.m; sourceTree = "<group>"; };
-		65D348ED1EF90E1700E75161 /* libHBPlaySDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHBPlaySDK.a; sourceTree = "<group>"; };
-		65D348EE1EF90E1700E75161 /* libt2u.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libt2u.a; sourceTree = "<group>"; };
-		65D348EF1EF90E1700E75161 /* libt2u.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libt2u.h; sourceTree = "<group>"; };
-		65D348F01EF90E1700E75161 /* libydtsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libydtsdk.a; sourceTree = "<group>"; };
-		65D348F11EF90E1700E75161 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		65D348F21EF90E1700E75161 /* MapErrorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapErrorCode.h; sourceTree = "<group>"; };
-		65D348F31EF90E1700E75161 /* MapErrorCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapErrorCode.m; sourceTree = "<group>"; };
-		65D348F41EF90E1700E75161 /* NSError+HbError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+HbError.h"; sourceTree = "<group>"; };
-		65D348F51EF90E1700E75161 /* NSError+HbError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+HbError.m"; sourceTree = "<group>"; };
-		65D348F61EF90E1700E75161 /* NSString+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JSON.h"; sourceTree = "<group>"; };
-		65D348F71EF90E1700E75161 /* NSString+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JSON.m"; sourceTree = "<group>"; };
-		65D348F81EF90E1700E75161 /* StreamMediaServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamMediaServer.h; sourceTree = "<group>"; };
-		65D348F91EF90E1700E75161 /* StreamMediaServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamMediaServer.m; sourceTree = "<group>"; };
-		65D348FA1EF90E1700E75161 /* Viewport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Viewport.h; sourceTree = "<group>"; };
-		65D348FB1EF90E1700E75161 /* YdtNetSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YdtNetSdk.h; sourceTree = "<group>"; };
-		65D348FC1EF90E1700E75161 /* YdtSdkError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YdtSdkError.h; sourceTree = "<group>"; };
-		65D348FD1EF90E1700E75161 /* YdtUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YdtUserInfo.h; sourceTree = "<group>"; };
 		65D3490B1EF90EA900E75161 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		65D3490D1EF90EC300E75161 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
-		65D349111EF9181500E75161 /* libNetSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libNetSDK.a; sourceTree = "<group>"; };
 		65D3EACA1CAB6B950079A140 /* icon_query.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_query.png; sourceTree = "<group>"; };
 		65D3EACC1CAB765D0079A140 /* icon_knowledge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_knowledge.png; sourceTree = "<group>"; };
 		65D6FEDC1CABC08E00CEB203 /* AlarmResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmResultViewController.m; sourceTree = "<group>"; };
@@ -1263,9 +1163,6 @@
 				65D3490E1EF90EC300E75161 /* libbz2.tbd in Frameworks */,
 				65D3490C1EF90EA900E75161 /* OpenAL.framework in Frameworks */,
 				657977A91CB14C5A00E9E4BD /* libchorstar.a in Frameworks */,
-				65D349051EF90E1700E75161 /* libydtsdk.a in Frameworks */,
-				65D349031EF90E1700E75161 /* libHBPlaySDK.a in Frameworks */,
-				65D349121EF9181500E75161 /* libNetSDK.a in Frameworks */,
 				3F8B2AD41BFA1D6900FC1CC3 /* AVFoundation.framework in Frameworks */,
 				3FFA612B1B5F470A005C6434 /* libxml2.dylib in Frameworks */,
 				3FFA61291B5F4702005C6434 /* libresolv.dylib in Frameworks */,
@@ -1273,7 +1170,6 @@
 				3FFA61251B5F46E7005C6434 /* libstdc++.6.0.9.dylib in Frameworks */,
 				65FCA4F71E1394270086720D /* libmp3lame.a in Frameworks */,
 				3FFA61231B5F46D5005C6434 /* libsqlite3.dylib in Frameworks */,
-				65D349041EF90E1700E75161 /* libt2u.a in Frameworks */,
 				3FFA611F1B5F4688005C6434 /* MobileCoreServices.framework in Frameworks */,
 				BF0296951AC88E6600ED4AF1 /* MapKit.framework in Frameworks */,
 				BF1887F11AB9DAD000F1C8AF /* Foundation.framework in Frameworks */,
@@ -2107,102 +2003,6 @@
 			name = im_image;
 			sourceTree = "<group>";
 		};
-		65D347371EF90C4600E75161 /* HbSdk */ = {
-			isa = PBXGroup;
-			children = (
-				65D348A61EF90DE600E75161 /* Ydt_Sdk_1.0 */,
-				65D348A51EF90DDD00E75161 /* UI */,
-				65D348A41EF90DD500E75161 /* Model */,
-			);
-			name = HbSdk;
-			sourceTree = "<group>";
-		};
-		65D348A41EF90DD500E75161 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				65D348A71EF90DF500E75161 /* AccountManager.h */,
-				65D348A81EF90DF500E75161 /* AccountManager.m */,
-				65D348A91EF90DF500E75161 /* Device.h */,
-				65D348AA1EF90DF500E75161 /* Device.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		65D348A51EF90DDD00E75161 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				65D348AD1EF90E0300E75161 /* hbydtUI.h */,
-				65D348AE1EF90E0300E75161 /* hbydtUI.m */,
-				65D348AF1EF90E0300E75161 /* ForgetPassWordViewController.h */,
-				65D348B01EF90E0300E75161 /* ForgetPassWordViewController.m */,
-				65D348B11EF90E0300E75161 /* ForgetPassWordViewController.xib */,
-				65D348B21EF90E0300E75161 /* LoginViewController.h */,
-				65D348B31EF90E0300E75161 /* LoginViewController.m */,
-				65D348B41EF90E0300E75161 /* LoginViewController.xib */,
-				65D348B51EF90E0300E75161 /* MainViewController.h */,
-				65D348B61EF90E0300E75161 /* MainViewController.m */,
-				65D348B71EF90E0300E75161 /* DeviceTableViewCell.h */,
-				65D348B81EF90E0300E75161 /* DeviceTableViewCell.m */,
-				65D348B91EF90E0300E75161 /* DeviceTableViewCell.xib */,
-				65D348BA1EF90E0300E75161 /* DeviceViewController.h */,
-				65D348BB1EF90E0300E75161 /* DeviceViewController.m */,
-				65D348BC1EF90E0300E75161 /* DeviceViewController.xib */,
-				65D348BD1EF90E0300E75161 /* AddDeviceMainViewController.h */,
-				65D348BE1EF90E0300E75161 /* AddDeviceMainViewController.m */,
-				65D348BF1EF90E0300E75161 /* IPAddDeviceViewController.h */,
-				65D348C01EF90E0300E75161 /* IPAddDeviceViewController.m */,
-				65D348C11EF90E0300E75161 /* IPAddDeviceViewController.xib */,
-				65D348C21EF90E0300E75161 /* AddDeviceBySerialViewController.h */,
-				65D348C31EF90E0300E75161 /* AddDeviceBySerialViewController.m */,
-				65D348C41EF90E0300E75161 /* AddDeviceBySerialViewController.xib */,
-				65D348C51EF90E0300E75161 /* AlarmInformationViewController.h */,
-				65D348C61EF90E0300E75161 /* AlarmInformationViewController.m */,
-				65D348C71EF90E0300E75161 /* AlarmInformationViewController.xib */,
-				65D348C81EF90E0300E75161 /* AlarmInformationTableViewCell.h */,
-				65D348C91EF90E0300E75161 /* AlarmInformationTableViewCell.m */,
-				65D348CA1EF90E0300E75161 /* VideoTestViewController.h */,
-				65D348CB1EF90E0300E75161 /* VideoTestViewController.m */,
-				65D348CC1EF90E0300E75161 /* VideoTestViewController.xib */,
-			);
-			name = UI;
-			sourceTree = "<group>";
-		};
-		65D348A61EF90DE600E75161 /* Ydt_Sdk_1.0 */ = {
-			isa = PBXGroup;
-			children = (
-				65D348E11EF90E1700E75161 /* AlarmNetCtrl.h */,
-				65D348E21EF90E1700E75161 /* GCDAsyncSocket.h */,
-				65D348E31EF90E1700E75161 /* GCDAsyncSocket.m */,
-				65D348E41EF90E1700E75161 /* GCDAsyncUdpSocket.h */,
-				65D348E51EF90E1700E75161 /* GCDAsyncUdpSocket.m */,
-				65D348E61EF90E1700E75161 /* HBNetSDK.h */,
-				65D348E71EF90E1700E75161 /* HBPlaySDK.h */,
-				65D348E81EF90E1700E75161 /* HBSearchDevice.h */,
-				65D348E91EF90E1700E75161 /* HBSearchDevice.m */,
-				65D348EA1EF90E1700E75161 /* HBSearchedDeviceInfo.h */,
-				65D348EB1EF90E1700E75161 /* HBSearchedDeviceInfo.m */,
-				65D349111EF9181500E75161 /* libNetSDK.a */,
-				65D348ED1EF90E1700E75161 /* libHBPlaySDK.a */,
-				65D348EE1EF90E1700E75161 /* libt2u.a */,
-				65D348EF1EF90E1700E75161 /* libt2u.h */,
-				65D348F01EF90E1700E75161 /* libydtsdk.a */,
-				65D348F11EF90E1700E75161 /* Localizable.strings */,
-				65D348F21EF90E1700E75161 /* MapErrorCode.h */,
-				65D348F31EF90E1700E75161 /* MapErrorCode.m */,
-				65D348F41EF90E1700E75161 /* NSError+HbError.h */,
-				65D348F51EF90E1700E75161 /* NSError+HbError.m */,
-				65D348F61EF90E1700E75161 /* NSString+JSON.h */,
-				65D348F71EF90E1700E75161 /* NSString+JSON.m */,
-				65D348F81EF90E1700E75161 /* StreamMediaServer.h */,
-				65D348F91EF90E1700E75161 /* StreamMediaServer.m */,
-				65D348FA1EF90E1700E75161 /* Viewport.h */,
-				65D348FB1EF90E1700E75161 /* YdtNetSdk.h */,
-				65D348FC1EF90E1700E75161 /* YdtSdkError.h */,
-				65D348FD1EF90E1700E75161 /* YdtUserInfo.h */,
-			);
-			name = Ydt_Sdk_1.0;
-			sourceTree = "<group>";
-		};
 		65FCA4F41E1394270086720D /* lame */ = {
 			isa = PBXGroup;
 			children = (
@@ -2333,7 +2133,6 @@
 		BF36D2E51AB5C13C00A549AF = {
 			isa = PBXGroup;
 			children = (
-				65D347371EF90C4600E75161 /* HbSdk */,
 				65FE08BB1EA9AD61002C9397 /* HandPainter */,
 				6582A4071E24B71B00B75E57 /* CDPGifScrollView */,
 				650B79931C20747A00182D1E /* EGOTableViewPullRefresh */,
@@ -2614,7 +2413,6 @@
 				654B0B9D1D23BEFA00ED0064 /* icon_day.png in Resources */,
 				65FCA4F31E13590F0086720D /* icon_photo_submit.png in Resources */,
 				65A07C771EE952A200EEA262 /* icon_up_new.png in Resources */,
-				65D348CF1EF90E0300E75161 /* ForgetPassWordViewController.xib in Resources */,
 				652545161E23781D0027B28B /* icon_alarm_manager.png in Resources */,
 				650B798F1C20746C00182D1E /* grayArrow.png in Resources */,
 				658559C31C22AF4C004C253F /* lift_filter.png in Resources */,
@@ -2637,7 +2435,6 @@
 				655ADF501E27230100F1F036 /* WRepairCell.xib in Resources */,
 				65FCA4FD1E14D9FE0086720D /* chat_keyboard_normal.png in Resources */,
 				65D1FB191E1238E800F2F6EC /* SenderVoiceNodePlaying@2x.png in Resources */,
-				65D348D41EF90E0300E75161 /* DeviceTableViewCell.xib in Resources */,
 				6547E6861E1DD9BE0075B532 /* Main.storyboard in Resources */,
 				654B0BEC1D250B6400ED0064 /* us.html in Resources */,
 				65D1FAE41E10E2BF00F2F6EC /* icon_more_normal.png in Resources */,
@@ -2669,7 +2466,6 @@
 				65D1FB0E1E1238E800F2F6EC /* ReceiverTextNodeBkg.png in Resources */,
 				658E904C1DC6E3C400B1BD39 /* ExceptionView.xib in Resources */,
 				654B0BD51D250B6400ED0064 /* mtc.css in Resources */,
-				65D348D91EF90E0300E75161 /* IPAddDeviceViewController.xib in Resources */,
 				65D344801EF4F9C100E75161 /* MainpageView.xib in Resources */,
 				654B0BDB1D250B6400ED0064 /* 1.png in Resources */,
 				654B0B731D2101CD00ED0064 /* alarm_history_normal.png in Resources */,
@@ -2687,7 +2483,6 @@
 				65D1FB131E1238E800F2F6EC /* ReceiverVoiceNodePlaying@2x.png in Resources */,
 				65D1FB151E1238E800F2F6EC /* SenderAppNodeBkg_HL@2x.png in Resources */,
 				654B0BD71D250B6400ED0064 /* sign.css in Resources */,
-				65D348DD1EF90E0300E75161 /* AlarmInformationViewController.xib in Resources */,
 				650AFD9B1CAA20030074CC86 /* icon_op.png in Resources */,
 				654B0B911D23727100ED0064 /* icon_lift_plan.png in Resources */,
 				65D3448A1EF5113000E75161 /* icon_maint_link.png in Resources */,
@@ -2706,7 +2501,6 @@
 				654B0B951D23727100ED0064 /* icon_year_check.png in Resources */,
 				652545141E23765D0027B28B /* icon_project.png in Resources */,
 				65FE08B21EA87FEB002C9397 /* DatePickerDialog.xib in Resources */,
-				65D348E01EF90E0300E75161 /* VideoTestViewController.xib in Resources */,
 				65A07DC81EEA87BC00EEA262 /* HouseTitleView.xib in Resources */,
 				658748C51D2CE9EC006406AD /* logo1.png in Resources */,
 				6526F7641C2A700600C9F172 /* icon_operation.png in Resources */,
@@ -2735,7 +2529,6 @@
 				655ADF871E287C9500F1F036 /* icon_repair_history.png in Resources */,
 				65E1FB141CA3C21000D1510E /* history_normal.png in Resources */,
 				658559B31C224B1E004C253F /* device_code.png in Resources */,
-				65D349061EF90E1700E75161 /* Localizable.strings in Resources */,
 				6574F23F1EE57C7400B8F17A /* MaintResultView.xib in Resources */,
 				654B0BEB1D250B6400ED0064 /* sign.html in Resources */,
 				6526F7651C2A700600C9F172 /* icon_pwd_modify.png in Resources */,
@@ -2762,7 +2555,6 @@
 				6574F2531EE6762200B8F17A /* icon_house.png in Resources */,
 				BFD8437F1B317C03008E7118 /* icon_choice.png in Resources */,
 				654B0B7A1D21258400ED0064 /* icon_info_window.png in Resources */,
-				65D348D61EF90E0300E75161 /* DeviceViewController.xib in Resources */,
 				BFD920BA1B39402B00AA5C00 /* icon_logout.png in Resources */,
 				6582A40F1E24BD3500B75E57 /* Launch Screen.storyboard in Resources */,
 				654B0BE21D250B6400ED0064 /* 8.png in Resources */,
@@ -2784,7 +2576,6 @@
 				654B0BE01D250B6400ED0064 /* 6.png in Resources */,
 				65D1FB141E1238E800F2F6EC /* SenderAppNodeBkg_HL.png in Resources */,
 				6576CF651EE7A0FB0046E80F /* RepairPayHeaderView.xib in Resources */,
-				65D348D11EF90E0300E75161 /* LoginViewController.xib in Resources */,
 				BFD920AC1B39139D00AA5C00 /* icon_elevator4.png in Resources */,
 				655ADF6E1E275A6200F1F036 /* guide.gif in Resources */,
 				65D1FAF21E10EC2F00F2F6EC /* icon_search.png in Resources */,
@@ -2800,7 +2591,6 @@
 				699E46586A0AAC3FB70B2AB5 /* knowledge_banner.png in Resources */,
 				699E410E729956BB3266A53B /* CheckResultView.xib in Resources */,
 				65D344821EF4FCE000E75161 /* icon_tmate_maint.png in Resources */,
-				65D348DB1EF90E0300E75161 /* AddDeviceBySerialViewController.xib in Resources */,
 				699E49C3FCFAC48977CFE298 /* KeyValueCell.xib in Resources */,
 				699E4F7EB6FD98756B4BB077 /* OrderMaintCell.xib in Resources */,
 				699E41EEB1BF742DFF56AC76 /* MainOrderDetailCell.xib in Resources */,
@@ -2869,7 +2659,6 @@
 				6547E67B1E1C953B0075B532 /* ProBaseViewController.m in Sources */,
 				658748AB1D2A59C4006406AD /* AlarmViewController.m in Sources */,
 				65C2EE011EE6836A00AF7EDC /* MainTaskCell.m in Sources */,
-				65D3490A1EF90E1700E75161 /* StreamMediaServer.m in Sources */,
 				6526F7691C2A862900C9F172 /* PersonBasicInfoController.m in Sources */,
 				655ADF5E1E272C2D00F1F036 /* WRepairView.m in Sources */,
 				6582A40D1E24B71B00B75E57 /* CDPGifView.m in Sources */,
@@ -2888,11 +2677,8 @@
 				658559C11C228983004C253F /* Utils.m in Sources */,
 				6574F2421EE57C9200B8F17A /* MaintResultView.m in Sources */,
 				658E90511DC6E7A300B1BD39 /* ExceptionView.m in Sources */,
-				65D348D71EF90E0300E75161 /* AddDeviceMainViewController.m in Sources */,
 				65B0A4451C2933F3008E58B8 /* PersonalCenterController.m in Sources */,
-				65D348DC1EF90E0300E75161 /* AlarmInformationViewController.m in Sources */,
 				651B7ED21C23AE7D00D08C9B /* ImageUtils.m in Sources */,
-				65D348CD1EF90E0300E75161 /* hbydtUI.m in Sources */,
 				65FE08C71EA9AD61002C9397 /* Squiggle.m in Sources */,
 				BF3869231B4D1FCC009F6E05 /* HUDClass.m in Sources */,
 				65A07C7B1EE9625100EEA262 /* MaintManagerController.m in Sources */,
@@ -2903,14 +2689,11 @@
 				BFD920B31B393C0700AA5C00 /* WorkerMenuViewController.mm in Sources */,
 				654B0B841D22133600ED0064 /* AlarmInfoView.m in Sources */,
 				65F0680E1C0453F000628BA7 /* UIRegisterOneViewControllor.m in Sources */,
-				65D348DA1EF90E0300E75161 /* AddDeviceBySerialViewController.m in Sources */,
 				65C2EE191EE6B81A00AF7EDC /* RepairOrderDetailController.m in Sources */,
 				6576CF6F1EE7C7AB0046E80F /* RepairPayFooterView.m in Sources */,
 				657E20381CB382B100ED51A9 /* KnTitleListViewController.mm in Sources */,
-				65D349071EF90E1700E75161 /* MapErrorCode.m in Sources */,
 				658748B81D2B98AD006406AD /* LocationViewController.m in Sources */,
 				BF36D2F71AB5C13C00A549AF /* AppDelegate.mm in Sources */,
-				65D348FE1EF90E1700E75161 /* GCDAsyncSocket.m in Sources */,
 				BFD843411B2FC42B008E7118 /* AlarmListElevatorManViewController.m in Sources */,
 				654B0BA01D23C28900ED0064 /* RecordViewController.m in Sources */,
 				6547E68D1E1DE91C0075B532 /* PropertyRegister.m in Sources */,
@@ -2939,14 +2722,12 @@
 				6524623A1C05AEA000E930FC /* UIRegisterTwoViewController.m in Sources */,
 				6574F2471EE64E4F00B8F17A /* ImageOverViewController.m in Sources */,
 				65EA239A1E1E271300F2BE18 /* ProLocationController.m in Sources */,
-				65D348D21EF90E0300E75161 /* MainViewController.m in Sources */,
 				6547E6781E1C94AB0075B532 /* ProBaseTableViewController.m in Sources */,
 				654B0B641D20C62700ED0064 /* MainpageViewController.mm in Sources */,
 				650B797C1C1FF14600182D1E /* ProMaintenancePlan.m in Sources */,
 				650F6D7C1EE8F7A300412C9F /* AlarmBottomView.m in Sources */,
 				650F6D721EE8E33B00412C9F /* AlarmTitleView.m in Sources */,
 				65A98D7B1C19194300BB4674 /* SwipeableCell.m in Sources */,
-				65D349091EF90E1700E75161 /* NSString+JSON.m in Sources */,
 				650B79821C20105E00182D1E /* ProMaintenanceHistory.m in Sources */,
 				BFADFCFC1B3C6B37002664B2 /* AlarmProcessViewController.m in Sources */,
 				65C2EE0A1EE6969F00AF7EDC /* RepairOrderCell.m in Sources */,
@@ -2960,14 +2741,12 @@
 				BF3869201B4CF927009F6E05 /* TrackingViewController.mm in Sources */,
 				BFADFD051B3D1148002664B2 /* FinishedReportViewController.m in Sources */,
 				654D57631C1F078700B0A4DB /* MaintenanceReminder.m in Sources */,
-				65D349001EF90E1700E75161 /* HBSearchDevice.m in Sources */,
 				657C8C8A1CA518FC00288D30 /* AlarmHistoryViewController.m in Sources */,
 				6574F23A1EE5600500B8F17A /* MaintExceptionController.m in Sources */,
 				658559B81C2250FF004C253F /* ProMaintenanceDetail.m in Sources */,
 				65D1FADC1E10ACFD00F2F6EC /* ProjectMainCell.m in Sources */,
 				655053551CCF12B30095FAB3 /* AlarmReceivedViewController.mm in Sources */,
 				6582A40C1E24B71B00B75E57 /* CDPGifScrollView.m in Sources */,
-				65D348D01EF90E0300E75161 /* LoginViewController.m in Sources */,
 				65C2EE051EE684B500AF7EDC /* ListDialogData.m in Sources */,
 				65D6FEDD1CABC08E00CEB203 /* AlarmResultViewController.m in Sources */,
 				6574F2321EE546AA00B8F17A /* MaintInfoController.m in Sources */,
@@ -2995,7 +2774,6 @@
 				BFADFD081B406F0A002664B2 /* location.m in Sources */,
 				6547E6731E1C90AA0075B532 /* PropertyMainPageController.m in Sources */,
 				65D1FAEE1E10E6AD00F2F6EC /* ListDialogView.m in Sources */,
-				65D348DF1EF90E0300E75161 /* VideoTestViewController.m in Sources */,
 				65FE08B51EA87FFB002C9397 /* DatePickerDialog.m in Sources */,
 				650AFDA71CAA72510074CC86 /* KnDetailViewController.m in Sources */,
 				6574F2511EE6760000B8F17A /* MainOrderInfoView.m in Sources */,
@@ -3006,10 +2784,7 @@
 				65EA23971E1E15CE00F2BE18 /* AroundController.m in Sources */,
 				65385F051C16ADD800EAF4EB /* MaintenanceViewController.m in Sources */,
 				6574F24C1EE655AB00B8F17A /* MaintResultShowController.m in Sources */,
-				65D348D31EF90E0300E75161 /* DeviceTableViewCell.m in Sources */,
 				650B797F1C2006D900182D1E /* ProMaintenanceFinish.m in Sources */,
-				65D348CE1EF90E0300E75161 /* ForgetPassWordViewController.m in Sources */,
-				65D349081EF90E1700E75161 /* NSError+HbError.m in Sources */,
 				65C2EE2E1EE6C90C00AF7EDC /* RepairTaskMakeView.m in Sources */,
 				65C2EE261EE6BDAA00AF7EDC /* EvaluateView.m in Sources */,
 				BFD9F45C1B54B66F001A4D29 /* UnderLineLabel.m in Sources */,
@@ -3021,7 +2796,6 @@
 				699E4174C06E0D835AD4C7AB /* HouseTitleView.m in Sources */,
 				699E4939C095CB77796BED95 /* HouseRepairManagerController.m in Sources */,
 				699E4E57F660402D0BE72257 /* HouseMaintManagerController.m in Sources */,
-				65D348DE1EF90E0300E75161 /* AlarmInformationTableViewCell.m in Sources */,
 				699E4C49AA61C5BC9A0C91EF /* HelpController.m in Sources */,
 				699E4B2F36DA2851353BEFDE /* KnowledgeController.m in Sources */,
 				699E4D6D9EB784E4A0A6520A /* HelpContentController.m in Sources */,
@@ -3029,7 +2803,6 @@
 				699E4C4172BD9C9423B3412E /* KnMainCell.m in Sources */,
 				699E43EC33C99B0ABD58FD35 /* KnowledgeDetailController.m in Sources */,
 				699E4DD54898181DFDD467BE /* NSArray+Log.m in Sources */,
-				65D348AB1EF90DF500E75161 /* AccountManager.m in Sources */,
 				699E4ED1056B5D7A3150BEF7 /* MaintAnnotation.m in Sources */,
 				699E423A53F53AABAD39A41E /* RepairResultController.m in Sources */,
 				699E4C6BDB11AE083C3E6CEB /* CheckResultView.m in Sources */,
@@ -3045,23 +2818,18 @@
 				699E4177A67FC68356DA4F28 /* RepairAnnotation.m in Sources */,
 				699E497649569BEFC4FC64F0 /* RepairAnnotationView.m in Sources */,
 				699E49B2AA2580EFA8449C5E /* MaintAnnotationView.m in Sources */,
-				65D348D81EF90E0300E75161 /* IPAddDeviceViewController.m in Sources */,
 				699E44777CB27A6BAD41DDCB /* HouseRepairOrderDetailController.m in Sources */,
 				699E4E812291B8A5D24BDEEA /* TmateMainPageController.m in Sources */,
 				699E44E46C529274F15733DC /* AddBannerView.m in Sources */,
 				699E4662CF7872A0FCE84BBF /* MainPageView.m in Sources */,
 				699E40F6592FE7778B320DDD /* TmateMainTabBarController.m in Sources */,
-				65D348AC1EF90DF500E75161 /* Device.m in Sources */,
 				699E4755441AFDFADD70E907 /* BaseNavigationController.m in Sources */,
 				699E42B189D43A2A2FEDB3B3 /* AddBannerData.m in Sources */,
 				699E4A4A05386D0F27D6AFDB /* MarketDetailController.m in Sources */,
-				65D349011EF90E1700E75161 /* HBSearchedDeviceInfo.m in Sources */,
 				699E4D4EC7D8A9D0B5F6BDE3 /* ElevatorDecorateController.m in Sources */,
 				699E4A59BA73E4D050704A47 /* ElevatorPartsController.m in Sources */,
 				699E4EF409EAFC4216B21A5B /* WebViewController.m in Sources */,
-				65D348D51EF90E0300E75161 /* DeviceViewController.m in Sources */,
 				699E4B3834F9FBC9723BABAA /* ElevatorSellController.m in Sources */,
-				65D348FF1EF90E1700E75161 /* GCDAsyncUdpSocket.m in Sources */,
 				699E4412A5673420D2F67CE8 /* MarketCell.m in Sources */,
 				699E49CEED4F8238B9A7F913 /* UITableView+CoverView.m in Sources */,
 				699E418B1B617FB878CEF28D /* BaseViewController.m in Sources */,
