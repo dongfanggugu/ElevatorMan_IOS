@@ -10,8 +10,9 @@
 #define AlarmTabBarController_h
 
 #import <UIKit/UIKit.h>
+#import "BaseTabBarController.h"
 
-@interface AlarmTabBarController : UITabBarController
+@interface AlarmTabBarController : BaseTabBarController
 
 @end
 

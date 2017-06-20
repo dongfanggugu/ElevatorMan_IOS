@@ -15,6 +15,7 @@
 #import "MaintOrderController.h"
 #import "MarketDetailController.h"
 #import "location.h"
+#import "AlarmTabBarController.h"
 
 @interface TmateMainPageController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -224,8 +225,11 @@
     }
     else
     {
-        UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
-        UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"WorkerAlarmList"];
+        AlarmTabBarController *controller = [[AlarmTabBarController alloc] init];
+        controller.hidesBottomBarWhenPushed = YES;
+
+//        UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
+//        UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"WorkerAlarmList"];
         [self.navigationController pushViewController:controller animated:YES];
     }
 

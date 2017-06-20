@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AlarmTabBarController.h"
+#import "BaseNavigationController.h"
 
 @interface AlarmTabBarController ()
 
@@ -15,47 +16,39 @@
 
 @implementation AlarmTabBarController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    [self initItem];
     [self initTabBar];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
-    [self initNavi];
+    [self setNavTitle:@"应急救援"];
 }
 
-- (void)initNavi {
-    if (!self.navigationController) {
-        return;
-    }
+- (void)initItem
+{
+    UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
 
-    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-    titleLable.text = @"应急救援";
-    titleLable.font = [UIFont systemFontOfSize:15];
-    titleLable.textAlignment = NSTextAlignmentCenter;
-    titleLable.textColor = [UIColor whiteColor];
-    self.navigationItem.titleView = titleLable;
+    UIViewController *received = [board instantiateViewControllerWithIdentifier:@"alarm_received"];
 
-    UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    [backBtn setImage:[UIImage imageNamed:@"back_normal"] forState:UIControlStateNormal];
-    [backBtn addTarget:self action:@selector(popup) forControlEvents:UIControlEventTouchUpInside];
+    UIViewController *process = [board instantiateViewControllerWithIdentifier:@"alarm_assigned_controller"];
 
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
-    self.navigationItem.leftBarButtonItem = backItem;
+    UIViewController *history = [board instantiateViewControllerWithIdentifier:@"alarm_history_controller"];
 
-    self.navigationController.interactivePopGestureRecognizer.delegate = self;
-
+    self.viewControllers = [NSArray arrayWithObjects:received, process, history, nil];
 }
 
-- (void)initTabBar {
-//    [[self.tabBar.items objectAtIndex:0] setSelectedImage:[UIImage imageNamed:@"alarm_received_pressed"]];
-//    [[self.tabBar.items objectAtIndex:1] setSelectedImage:[UIImage imageNamed:@"alarm_assigned_pressed"]];
-//    [[self.tabBar.items objectAtIndex:2] setSelectedImage:[UIImage imageNamed:@"alarm_history_pressed"]];
-}
+- (void)initTabBar
+{
+    self.tabBar.tintColor = RGB(TITLE_COLOR);
 
-- (void)popup {
-    [self.navigationController popViewControllerAnimated:YES];
+    [[self.tabBar.items objectAtIndex:0] setImage:[UIImage imageNamed:@"alarm_received_normal.png"]];
+    [[self.tabBar.items objectAtIndex:1] setImage:[UIImage imageNamed:@"alarm_assigned_normal.png"]];
+    [[self.tabBar.items objectAtIndex:2] setImage:[UIImage imageNamed:@"alarm_history_normal.png"]];
 }
 
 

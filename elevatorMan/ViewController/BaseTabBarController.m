@@ -14,6 +14,12 @@
 
 @implementation BaseTabBarController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self setNavIcon];
+}
+
 
 - (void)setNavIcon
 {

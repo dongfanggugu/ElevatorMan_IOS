@@ -50,7 +50,6 @@
 {
     [super viewDidLoad];
     [self setNavTitle:@"E维保"];
-    // [self initNavRightWithText:@"维保历史"];
     [self initView];
     [self getBranches];
 }
@@ -426,6 +425,7 @@
             if (weakSelf.curAnnView)
             {
                 [weakSelf.curAnnView hideInfoView];
+                weakSelf.curAnnView.selected = NO;
                 weakSelf.curAnnView = nil;
             }
 
@@ -472,6 +472,7 @@
     if (_curAnnView)
     {
         [_curAnnView hideInfoView];
+        _curAnnView.selected = NO;
         _curAnnView = nil;
     }
 }

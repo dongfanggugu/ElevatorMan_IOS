@@ -36,43 +36,54 @@
 
 @implementation AlarmCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
     self.labelIndex.layer.masksToBounds = YES;
     self.labelIndex.layer.cornerRadius = self.labelIndex.frame.size.height / 2;
 }
 
-- (void)setColorWithIndex:(NSInteger)index {
-    switch (index % 8) {
-        case 0: {
+- (void)setColorWithIndex:(NSInteger)index
+{
+    switch (index % 8)
+    {
+        case 0:
+        {
             self.labelIndex.backgroundColor = UIColorFromRGB(0xffbeee78);
             break;
         }
-        case 1: {
+        case 1:
+        {
             self.labelIndex.backgroundColor = UIColorFromRGB(0xffebe084);
             break;
         }
-        case 2: {
+        case 2:
+        {
             self.labelIndex.backgroundColor = UIColorFromRGB(0xffbecccb);
             break;
         }
-        case 3: {
+        case 3:
+        {
             self.labelIndex.backgroundColor = UIColorFromRGB(0xffb2f4b1);
             break;
         }
-        case 4: {
+        case 4:
+        {
             self.labelIndex.backgroundColor = UIColorFromRGB(0xffb6b6fc);
             break;
         }
-        case 5: {
+        case 5:
+        {
             self.labelIndex.backgroundColor = UIColorFromRGB(0xfffecb236);
             break;
         }
-        case 6: {
+        case 6:
+        {
             self.labelIndex.backgroundColor = UIColorFromRGB(0xff99cdff);
             break;
         }
-        case 7: {
+        case 7:
+        {
             self.labelIndex.backgroundColor = UIColorFromRGB(0xff4aeab7);
             break;
         }
@@ -148,19 +159,22 @@
 @implementation AlarmReceivedViewController
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+
     _mAlarmArray = [[NSMutableArray alloc] init];
     [self initView];
-    [self setTitleString:@"应急救援"];
+    [self setNavTitle:@"应急救援"];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     [_mapView setZoomLevel:15];
     [_mapView setMinZoomLevel:10];
     [_mapView setMaxZoomLevel:20];
-    //[_mapView setZoomEnabled:YES];
 
     [self getAlarmInfo];
 
@@ -172,12 +186,14 @@
     [[location sharedLocation] startLocationService];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewDidDisappear:(BOOL)animated
+{
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)getAlarmInfo {
+- (void)getAlarmInfo
+{
     //定位成功再请求报警信息
     __weak AlarmReceivedViewController *weakSelf = self;
     [[HttpClient sharedClient] view:self.view post:@"getAlarmListByReceiveAndUnassign" parameter:nil
@@ -187,8 +203,10 @@
                                 [_mAlarmArray removeAllObjects];
 
                                 //the data received from server is too much, abandon others
-                                if (body && body.count > 0) {
-                                    for (NSDictionary *dic in body) {
+                                if (body && body.count > 0)
+                                {
+                                    for (NSDictionary *dic in body)
+                                    {
                                         [weakSelf.mAlarmArray addObject:dic];
                                     }
 
@@ -207,11 +225,13 @@
                             }];
 }
 
-- (void)onReceivedLocation {
+- (void)onReceivedLocation
+{
 
     //显示维修工位置
 
-    if (_workerAnnotation != nil) {
+    if (_workerAnnotation != nil)
+    {
         [_mapView removeAnnotation:_workerAnnotation];
     }
 
@@ -227,11 +247,13 @@
 //    }
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
 }
 
-- (void)initView {
+- (void)initView
+{
     _mapView.delegate = self;
 
     [_locationBtn addTarget:self action:@selector(location) forControlEvents:UIControlEventTouchUpInside];
@@ -249,12 +271,17 @@
     _btnAccept.layer.borderColor = [Utils getColorByRGB:@"#007e5c"].CGColor;
 }
 
-- (void)location {
+- (void)location
+{
     [[location sharedLocation] startLocationService];
 }
 
-- (void)showAlarms {
-    for (int i = 0; i < _mAlarmArray.count; i++) {
+- (void)showAlarms
+{
+    for (int i = 0;
+            i < _mAlarmArray.count;
+            i++)
+    {
         CGFloat lat = [[[_mAlarmArray[i] objectForKey:@"communityInfo"] objectForKey:@"lat"] floatValue];
         CGFloat lng = [[[_mAlarmArray[i] objectForKey:@"communityInfo"] objectForKey:@"lng"] floatValue];
 
@@ -266,20 +293,13 @@
     }
 }
 
-- (void)setTitleString:(NSString *)title {
-    UILabel *lableTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-    lableTitle.text = title;
-    lableTitle.font = [UIFont fontWithName:@"System" size:17];
-    lableTitle.textColor = [UIColor whiteColor];
-    [self.navigationItem setTitleView:lableTitle];
-
-}
-
-- (AlarmInfo *)alarmReceivedFromDic:(NSDictionary *)dicInfo {
+- (AlarmInfo *)alarmReceivedFromDic:(NSDictionary *)dicInfo
+{
     AlarmInfo *alarmInfo = [[AlarmInfo alloc] init];
     NSDictionary *community = [dicInfo objectForKey:@"communityInfo"];
 
-    if (community) {
+    if (community)
+    {
         alarmInfo.project = [community objectForKey:@"name"];
     }
     alarmInfo.alarmId = [dicInfo objectForKey:@"id"];
@@ -292,22 +312,28 @@
 
 #pragma mark -- BMKMapViewDelegate
 
-- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation {
-    if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
+- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[BMKPointAnnotation class]])
+    {
         BMKAnnotationView *marker = [mapView dequeueReusableAnnotationViewWithIdentifier:@"worker"];
-        if (nil == marker) {
+        if (nil == marker)
+        {
             marker = [[BMKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"worker"];
         }
         [marker setBounds:CGRectMake(0, 0, 30, 30)];
         [marker setBackgroundColor:[UIColor clearColor]];
         marker.image = [UIImage imageNamed:@"marker_worker"];
         return marker;
-    } else if ([annotation isKindOfClass:[CalloutMapAnnotation class]]) {
+    }
+    else if ([annotation isKindOfClass:[CalloutMapAnnotation class]])
+    {
         //CalloutMapAnnotation *ann = (CalloutMapAnnotation *)annotation;
 
         CalloutAnnotationView *calloutView = (CalloutAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:@"calloutview"];
 
-        if (nil == calloutView) {
+        if (nil == calloutView)
+        {
             calloutView = [[CalloutAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"calloutview"];
         }
 
@@ -394,7 +420,8 @@
 }
 
 
-- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
+- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
+{
 //    CalloutAnnotationView *calloutView = (CalloutAnnotationView *)view;
 //    
 //    if (_calloutView == calloutView)
@@ -429,8 +456,10 @@
 //    _calloutView = nil;
 //}
 
-- (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate {
-    if (nil == _calloutView) {
+- (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate
+{
+    if (nil == _calloutView)
+    {
         return;
     }
 
@@ -438,24 +467,29 @@
     _calloutView = nil;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return _mAlarmArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     AlarmReceiveCell *cell = [tableView dequeueReusableCellWithIdentifier:@"alarm_receive_cell"];
 
-    if (nil == cell) {
+    if (nil == cell)
+    {
         cell = [[AlarmReceiveCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"alarm_receive_cell"];
     }
 
@@ -489,7 +523,8 @@
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 
     [self setSelectInfo:_mAlarmArray[indexPath.row] index:indexPath.row];
 
@@ -546,9 +581,11 @@
 }
 
 
-- (void)setSelectInfo:(NSDictionary *)alarmInfo index:(NSInteger)index {
+- (void)setSelectInfo:(NSDictionary *)alarmInfo index:(NSInteger)index
+{
 
-    if (_alarmAnnotation != nil) {
+    if (_alarmAnnotation != nil)
+    {
         [_mapView removeAnnotation:_alarmAnnotation];
     }
     CGFloat lat = [[[alarmInfo objectForKey:@"communityInfo"] objectForKey:@"lat"] floatValue];
@@ -581,10 +618,13 @@
     //报警类型 1:电梯报警 2:项目报警
     NSString *alarmType = [alarmInfo objectForKey:@"type"];
 
-    if ([alarmType isEqualToString:@"1"]) {
+    if ([alarmType isEqualToString:@"1"])
+    {
         NSString *elevator = [NSString stringWithFormat:@"%@%@号楼%@单元%@号电梯", address, buildingCode, unitCode, liftNum];
         _lbAddress.text = [NSString stringWithFormat:@"项目地址: %@", elevator];
-    } else if ([alarmType isEqualToString:@"2"]) {
+    }
+    else if ([alarmType isEqualToString:@"2"])
+    {
         _lbAddress.text = [NSString stringWithFormat:@"项目地址: %@", address];;
     }
 
@@ -592,19 +632,25 @@
     NSString *elevatorType = [elevatorInfo objectForKey:@"elevatorType"];
     NSString *saveNumber = [elevatorInfo objectForKey:@"number"];
 
-    if ([alarmType isEqualToString:@"1"]) {
+    if ([alarmType isEqualToString:@"1"])
+    {
         NSString *info = [NSString stringWithFormat:@"电梯信息: 救援码-%@ 品牌-%@ 梯型-%@", saveNumber, brand, elevatorType];
         _lbElevator.text = info;
-    } else if ([alarmType isEqualToString:@"2"]) {
+    }
+    else if ([alarmType isEqualToString:@"2"])
+    {
         _lbElevator.text = @"电梯信息: 暂无电梯相关信息";
     }
 
 
     NSString *dis = @"--";
-    if (distance > 1000) {
+    if (distance > 1000)
+    {
         CGFloat km = distance / 1000.0;
         dis = [NSString stringWithFormat:@"%.3lf公里", km];
-    } else if (distance > 0) {
+    }
+    else if (distance > 0)
+    {
         dis = [NSString stringWithFormat:@"%ld米", distance];
     }
     _lbDistance.text = [NSString stringWithFormat:@"项目距离 %@", dis];
@@ -622,7 +668,8 @@
     [_btnTel addTarget:self action:@selector(dial:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)acceptAlarm:(UIButton *)sender {
+- (void)acceptAlarm:(UIButton *)sender
+{
 
     NSInteger index = sender.tag;
     NSDictionary *alarmInfo = _mAlarmArray[index];
@@ -657,13 +704,15 @@
     }];
 }
 
-- (void)dial:(UIButton *)sender {
+- (void)dial:(UIButton *)sender
+{
 
     NSInteger index = sender.tag;
     NSDictionary *alarmInfo = _mAlarmArray[index];
 
     NSString *tel = [[alarmInfo objectForKey:@"communityInfo"] objectForKey:@"propertyUtel"];
-    if (0 == tel.length) {
+    if (0 == tel.length)
+    {
         [HUDClass showHUDWithLabel:@"非法的手机号码,无法拨打!" view:self.view];
         return;
     }

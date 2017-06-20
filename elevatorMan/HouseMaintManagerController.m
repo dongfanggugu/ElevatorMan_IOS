@@ -99,7 +99,7 @@ typedef NS_ENUM(NSInteger, FiltState)
     {
         NSMutableDictionary *annInfo = [NSMutableDictionary dictionary];
 
-        annInfo[@"category"] = @"repair";
+        annInfo[@"category"] = @"maint";
 
         NSDictionary *info = array[i];
         RepairAnnotation *ann = nil;

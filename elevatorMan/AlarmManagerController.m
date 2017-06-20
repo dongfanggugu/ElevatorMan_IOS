@@ -34,6 +34,8 @@
 
 @property (strong, nonatomic) NSMutableDictionary *dicAnnView;
 
+@property (weak, nonatomic) MaintAnnotationView *curAnnView;
+
 @end
 
 @implementation AlarmManagerController
@@ -207,6 +209,7 @@
 - (void)markOnMap:(NSArray *)array
 {
     _bottomView.hidden = YES;
+    [self.dicAnnView removeAllObjects];
     [_mapView removeAnnotations:[_mapView annotations]];
 
     for (NSInteger i = 0;
@@ -236,6 +239,8 @@
         annView = [[MaintAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:[MaintAnnotationView identifier]];
     }
 
+    annView.image = [UIImage imageNamed:@"icon_com_project.png"];
+
     annView.info = ann.info;
 
     self.dicAnnView[ann.info[@"alarmId"]] = annView;
@@ -248,6 +253,8 @@
     [self resetAnnViewImage];
 
     MaintAnnotationView *annView = (MaintAnnotationView *) view;
+
+    _curAnnView = annView;
 
     annView.image = [UIImage imageNamed:@"icon_project.png"];
 
@@ -275,6 +282,14 @@
         NSInteger state = [annView.info[@"state"] integerValue];
         _bottomView.lbState.text = [self getStateDes:state];
     }
+}
+
+- (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate
+{
+    [self resetAnnViewImage];
+    _curAnnView.selected = NO;
+    _curAnnView = nil;
+    _bottomView.hidden = YES;
 }
 
 - (NSString *)getStateDes:(NSInteger)state

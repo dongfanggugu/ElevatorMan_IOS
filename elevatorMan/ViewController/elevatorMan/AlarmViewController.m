@@ -38,7 +38,8 @@
 
 @implementation RescuWorkerCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
     _imageIcon.layer.masksToBounds = YES;
     _imageIcon.layer.cornerRadius = 15;
@@ -89,7 +90,8 @@
 
 @implementation AlarmViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavTitle:@"应急救援"];
     [self initNavRight];
@@ -100,7 +102,8 @@
                                                object:nil];
 }
 
-- (void)initView {
+- (void)initView
+{
     _confirmBtn.hidden = YES;
     _cancelBtn.hidden = YES;
 
@@ -144,12 +147,14 @@
 
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     [self getAlarmInfo];
 }
 
-- (void)initNavRight {
+- (void)initNavRight
+{
     //设置标题栏右侧
     UIButton *btnSubmit = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     //[btnSubmit setTitle:@"提交" forState:UIControlStateNormal];
@@ -161,23 +166,27 @@
     self.navigationItem.rightBarButtonItem = rightItem;
 }
 
-- (void)chat {
+- (void)chat
+{
     ChatController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"chat_controller"];
     controller.alarmId = _alarmId;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
 
-- (void)location {
+- (void)location
+{
     [[location sharedLocation] startLocationService];
 }
 
-- (void)showActionSheet {
+- (void)showActionSheet
+{
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self
                                                     cancelButtonTitle:@"取消" destructiveButtonTitle:nil
                                                     otherButtonTitles:nil];
 
-    for (NSString *title in _maps) {
+    for (NSString *title in _maps)
+    {
         [actionSheet addButtonWithTitle:title];
     }
 
@@ -185,7 +194,8 @@
     [actionSheet showInView:self.view];
 }
 
-- (void)getAlarmInfo {
+- (void)getAlarmInfo
+{
     __weak AlarmViewController *weakself = self;
     NSDictionary *dic = [NSDictionary dictionaryWithObject:self.alarmId forKey:@"id"];
 
@@ -207,10 +217,13 @@
         //参与救援的维修工列表
         _workerArray = [dic objectForKey:@"contactList"];
 
-        if (0 == _workerArray.count) {
+        if (0 == _workerArray.count)
+        {
             weakself.tableView.hidden = YES;
             _viewTip.hidden = NO;
-        } else {
+        }
+        else
+        {
             _viewTip.hidden = YES;
             weakself.tableView.hidden = NO;
             [weakself.tableView reloadData];
@@ -224,7 +237,8 @@
     }];
 }
 
-- (void)showAlarmInfo:(NSDictionary *)dic {
+- (void)showAlarmInfo:(NSDictionary *)dic
+{
 
     NSDictionary *communityInfo = [dic objectForKey:@"communityInfo"];
     NSString *project = [communityInfo objectForKey:@"name"];
@@ -247,7 +261,8 @@
 
     //报警已经撤销
     NSString *isCancel = [dic objectForKey:@"isMisinfomation"];
-    if ([isCancel isEqualToString:@"1"]) {
+    if ([isCancel isEqualToString:@"1"])
+    {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"该报警已经撤销，感谢您的参与!"
                                                        delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
@@ -258,7 +273,8 @@
     NSString *userState = [dic objectForKey:@"userState"];
 
     //接收到报警
-    if ([alarmState isEqualToString:@"0"] || 0 == alarmState.length) {
+    if ([alarmState isEqualToString:@"0"] || 0 == alarmState.length)
+    {
         [_confirmBtn setTitle:@"确定" forState:UIControlStateNormal];
         [_cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
 
@@ -267,13 +283,18 @@
 
         _confirmBtn.hidden = NO;
         _cancelBtn.hidden = NO;
-    } else {
+    }
+    else
+    {
         //发给报警，但是并没有指派给当前用户
-        if (0 == userState.length) {
+        if (0 == userState.length)
+        {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"该报警已经无法再次接收报警，感谢你的参与!"
                                                            delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
-        } else if ([userState isEqualToString:@"1"]) {
+        }
+        else if ([userState isEqualToString:@"1"])
+        {
             [_confirmBtn setTitle:@"顺利到达" forState:UIControlStateNormal];
             [_cancelBtn setTitle:@"无法到达" forState:UIControlStateNormal];
             [_confirmBtn addTarget:self action:@selector(arrived) forControlEvents:UIControlEventTouchUpInside];
@@ -289,7 +310,8 @@
 
 }
 
-- (void)arrived {
+- (void)arrived
+{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:[_alarmInfo objectForKey:@"id"] forKey:@"alarmId"];
     [dic setObject:@"2" forKey:@"state"];
@@ -312,14 +334,16 @@
             }];
 }
 
-- (void)unArrived {
+- (void)unArrived
+{
     ExceptionView *exceptionView = [ExceptionView viewFromNib];
     exceptionView.delegate = self;
     [self.view addSubview:exceptionView];
 }
 
 
-- (void)receivedLocation {
+- (void)receivedLocation
+{
     [_mapView removeAnnotations:_mapView.annotations];
 
     //显示维修工当前位置
@@ -339,13 +363,16 @@
     [_mapView addAnnotation:marker];
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
-- (void)accept {
-    if (0 == _distanceLabel.tag) {
+- (void)accept
+{
+    if (0 == _distanceLabel.tag)
+    {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"无法获取您的定位信息,您无法处理此次救援,感谢您的参与!"
                                                        delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
@@ -371,15 +398,18 @@
     }];
 }
 
-- (void)cancel {
+- (void)cancel
+{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您已经拒绝处理此次救援,感谢您的参与!"
                                                    delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
 }
 
-- (void)dialTel {
+- (void)dialTel
+{
     NSString *tel = [[_alarmInfo objectForKey:@"communityInfo"] objectForKey:@"propertyUtel"];
-    if (0 == tel.length) {
+    if (0 == tel.length)
+    {
         [HUDClass showHUDWithLabel:@"非法的手机号码,无法拨打!" view:self.view];
         return;
     }
@@ -393,9 +423,12 @@
 #pragma mark --  UIAlertViewDelegate
 
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (ALARM_RECEIVED == alertView.tag || ALARM_ASSIGNED == alertView.tag) {
-        if (1 == buttonIndex) {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (ALARM_RECEIVED == alertView.tag || ALARM_ASSIGNED == alertView.tag)
+    {
+        if (1 == buttonIndex)
+        {
             UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
             AlarmViewController *controller = [board instantiateViewControllerWithIdentifier:@"alarm_process"];
             controller.alarmId = self.notifyAlarmId;
@@ -411,8 +444,10 @@
 
 #pragma mark -- BMKMapViewDelegate
 
-- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation {
-    if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
+- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[BMKPointAnnotation class]])
+    {
         //填写距离
         CGFloat lat = [[[_alarmInfo objectForKey:@"communityInfo"] objectForKey:@"lat"] floatValue];
         CGFloat lng = [[[_alarmInfo objectForKey:@"communityInfo"] objectForKey:@"lng"] floatValue];
@@ -422,10 +457,13 @@
         NSInteger distance = (NSInteger) [[location sharedLocation] handleDistance:coor];
 
         NSString *dis = @"--";
-        if (distance > 1000) {
+        if (distance > 1000)
+        {
             CGFloat km = distance / 1000.0;
             dis = [NSString stringWithFormat:@"%.3lf公里", km];
-        } else if (distance > 0) {
+        }
+        else if (distance > 0)
+        {
             dis = [NSString stringWithFormat:@"%ld米", distance];
         }
 
@@ -434,7 +472,8 @@
 
         //返回维修工当前位置标记
         BMKAnnotationView *marker = [mapView dequeueReusableAnnotationViewWithIdentifier:@"worker"];
-        if (nil == marker) {
+        if (nil == marker)
+        {
             marker = [[BMKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"worker"];
         }
         [marker setBounds:CGRectMake(0, 0, 30, 30)];
@@ -442,11 +481,14 @@
         marker.image = [UIImage imageNamed:@"marker_worker"];
 
         return marker;
-    } else if ([annotation isKindOfClass:[CalloutMapAnnotation class]]) {
+    }
+    else if ([annotation isKindOfClass:[CalloutMapAnnotation class]])
+    {
 
         CalloutAnnotationView *calloutView = (CalloutAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:@"alarm"];
 
-        if (nil == calloutView) {
+        if (nil == calloutView)
+        {
             calloutView = [[CalloutAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"alarm"];
         }
         return calloutView;
@@ -457,8 +499,10 @@
 
 #pragma mark -- ExceptionDelegate
 
-- (void)onClickConfirm:(NSString *)remark {
-    if (0 == remark.length) {
+- (void)onClickConfirm:(NSString *)remark
+{
+    if (0 == remark.length)
+    {
         [HUDClass showHUDWithLabel:@"请填写无法到达的理由!"];
         return;
     }
@@ -483,18 +527,22 @@
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return _workerArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     RescuWorkerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rescu_worker_cell"];
 
-    if (nil == cell) {
+    if (nil == cell)
+    {
         cell = [[RescuWorkerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"rescu_worker_cell"];
     }
 
@@ -516,7 +564,8 @@
     return cell;
 }
 
-- (void)showImage:(UIGestureRecognizer *)sender {
+- (void)showImage:(UIGestureRecognizer *)sender
+{
     NSInteger tag = [sender view].tag;
     NSString *url = [_workerArray[tag] objectForKey:@"headPic"];
 
@@ -529,18 +578,22 @@
     [_imageViewShow addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endShow)]];
 }
 
-- (void)endShow {
-    if (_imageViewShow && [_imageViewShow superview]) {
+- (void)endShow
+{
+    if (_imageViewShow && [_imageViewShow superview])
+    {
         [_imageViewShow removeFromSuperview];
         _imageViewShow = nil;
     }
 }
 
-- (void)dialTel:(UIGestureRecognizer *)sender {
+- (void)dialTel:(UIGestureRecognizer *)sender
+{
     NSInteger tag = [sender view].tag;
     NSString *tel = [_workerArray[tag] objectForKey:@"tel"];
 
-    if (0 == tel.length) {
+    if (0 == tel.length)
+    {
         [HUDClass showHUDWithLabel:@"非法的手机号码,无法拨打!" view:self.view];
         return;
     }
@@ -554,7 +607,8 @@
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 //    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 //    RescuWorkerCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 //    NSString *tel = cell.lbTel.text;
@@ -573,7 +627,8 @@
 
 #pragma mark - 导航
 
-- (void)initMapAppWithEnd:(CLLocationCoordinate2D)endLocation {
+- (void)initMapAppWithEnd:(CLLocationCoordinate2D)endLocation
+{
     _mapApps = [NSMutableArray array];
     _maps = [NSMutableArray array];
 
@@ -586,7 +641,8 @@
 
 
     //百度地图
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"baidumap://"]]) {
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"baidumap://"]])
+    {
         NSMutableDictionary *baiduMapDic = [NSMutableDictionary dictionary];
         baiduMapDic[@"title"] = @"百度地图";
         NSString *urlString = [[NSString stringWithFormat:@"baidumap://map/direction?origin={{我的位置}}&destination=latlng:%f,%f|name:%@&mode=driving",
@@ -599,7 +655,8 @@
 
 
     //高德地图
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"iosamap://"]]) {
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"iosamap://"]])
+    {
         CLLocationCoordinate2D gcj = [JZLocationConverter bd09ToGcj02:endLocation];
 
         NSMutableDictionary *gaodeMapDic = [NSMutableDictionary dictionary];
@@ -614,7 +671,8 @@
     }
 
     //腾讯地图
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"qqmap://"]]) {
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"qqmap://"]])
+    {
 
         CLLocationCoordinate2D gcj = [JZLocationConverter bd09ToGcj02:endLocation];
         NSMutableDictionary *qqMapDic = [NSMutableDictionary dictionary];
@@ -632,7 +690,8 @@
 
 #pragma mark - UIActionSheetDelegate
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
 
     NSLog(@"index:%ld", buttonIndex);
     CGFloat lat = [[[_alarmInfo objectForKey:@"communityInfo"] objectForKey:@"lat"] floatValue];
@@ -642,11 +701,16 @@
     coorEnd.latitude = lat;
     coorEnd.longitude = lng;
 
-    if (0 == buttonIndex) {
+    if (0 == buttonIndex)
+    {
         //[actionSheet dis]
-    } else if (1 == buttonIndex) {
+    }
+    else if (1 == buttonIndex)
+    {
         [self navAppleMapWithDes:coorEnd];
-    } else {
+    }
+    else
+    {
 
         NSString *urlString = [_mapApps[buttonIndex - 1] objectForKey:@"url"];
         NSLog(@"url:%@", urlString);
@@ -656,7 +720,8 @@
 
 
 //苹果地图
-- (void)navAppleMapWithDes:(CLLocationCoordinate2D)destination {
+- (void)navAppleMapWithDes:(CLLocationCoordinate2D)destination
+{
     CLLocationCoordinate2D gps = [JZLocationConverter bd09ToWgs84:destination];
 
     MKMapItem *currentLoc = [MKMapItem mapItemForCurrentLocation];
@@ -675,7 +740,8 @@
 #pragma mark - deal with the icon image
 
 
-- (void)downloadIconByUrlString:(NSString *)urlString imageView:(UIImageView *)imageView {
+- (void)downloadIconByUrlString:(NSString *)urlString imageView:(UIImageView *)imageView
+{
     NSURL *url = [NSURL URLWithString:urlString];
 
     NSLog(@"pic:%@", url);
@@ -684,19 +750,23 @@
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *_Nullable response, NSData *_Nullable data, NSError *_Nullable connectionError) {
 
-        if (data.length > 0 && nil == connectionError) {
+        if (data.length > 0 && nil == connectionError)
+        {
             NSMutableDictionary *dic = [NSMutableDictionary dictionary];
             [dic setObject:imageView forKey:@"imageView"];
             [dic setObject:data forKey:@"data"];
             [self performSelectorOnMainThread:@selector(setImage:) withObject:dic waitUntilDone:NO];
 
-        } else if (connectionError != nil) {
+        }
+        else if (connectionError != nil)
+        {
             NSLog(@"download picture error = %@", connectionError);
         }
     }];
 }
 
-- (void)setImage:(NSDictionary *)params {
+- (void)setImage:(NSDictionary *)params
+{
     UIImageView *imageView = [params objectForKey:@"imageView"];
     NSData *data = [params objectForKey:@"data"];
     [imageView setImage:[UIImage imageWithData:data]];

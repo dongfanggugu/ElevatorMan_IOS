@@ -100,7 +100,7 @@
 
     if (_infoView)
     {
-        _infoView.lbAddress.text = _maintOrderInfo[@"cellName"];
+        [self showOrderInfo];
     }
 
     [self getTask];
@@ -147,6 +147,15 @@
     }
     self.maintOrderInfo = self.arrayOrder[0];
 
+}
+
+- (void)showOrderInfo
+{
+    if (!_infoView)
+    {
+        return;
+    }
+
     _infoView.lbAddress.text = _maintOrderInfo[@"villaInfo"][@"cellName"];
     _infoView.lbName.text = _maintOrderInfo[@"mainttypeInfo"][@"name"];
 
@@ -159,14 +168,15 @@
             _infoView.lbTag.text = @"一级管家";
 
             NSString *expire = _maintOrderInfo[@"maintOrderInfo"][@"expireTime"];
+            NSArray *array = [expire componentsSeparatedByString:@" "];
 
-            if (0 == expire.length)
+            if (!array || 0 == array.count)
             {
                 _infoView.lbExpire.text = @"无效";
             }
             else
             {
-                _infoView.lbExpire.text = [NSString stringWithFormat:@"%@ 到期", expire];
+                _infoView.lbExpire.text = [NSString stringWithFormat:@"%@ 到期", array[0]];
             }
         }
 
@@ -178,13 +188,15 @@
 
             NSString *expire = _maintOrderInfo[@"maintOrderInfo"][@"expireTime"];
 
-            if (0 == expire.length)
+            NSArray *array = [expire componentsSeparatedByString:@" "];
+
+            if (!array || 0 == array.count)
             {
                 _infoView.lbExpire.text = @"无效";
             }
             else
             {
-                _infoView.lbExpire.text = [NSString stringWithFormat:@"%@ 到期", expire];
+                _infoView.lbExpire.text = [NSString stringWithFormat:@"%@ 到期", array[0]];
             }
         }
 
@@ -192,7 +204,7 @@
 
         case 3:
         {
-             _infoView.lbTag.text = @"三级管家";
+            _infoView.lbTag.text = @"三级管家";
 
             NSInteger frequency = [_maintOrderInfo[@"frequency"] integerValue];
 

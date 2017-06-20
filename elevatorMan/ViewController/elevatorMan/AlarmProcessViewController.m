@@ -15,7 +15,8 @@
 #import "WorkerMenuViewController.h"
 
 
-@interface AlarmProcessViewController () <BMKMapViewDelegate> {
+@interface AlarmProcessViewController () <BMKMapViewDelegate>
+{
     IBOutlet BMKMapView *_mapView;
     BMKPointAnnotation *_alarmAnnotation;
 }
@@ -40,14 +41,17 @@
 @implementation AlarmProcessViewController
 
 
-- (void)dealloc {
+- (void)dealloc
+{
 
-    if (_mapView) {
+    if (_mapView)
+    {
         _mapView = nil;
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
 
     [_mapView viewWillAppear];
@@ -56,7 +60,8 @@
     [self getAlarmInfo];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
 
     [super viewWillDisappear:animated];
     [_mapView viewWillDisappear];
@@ -65,7 +70,8 @@
 }
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.state1.hidden = YES;
@@ -93,14 +99,17 @@
 
 }
 
-- (IBAction)dismiss:(id)sender {
+- (IBAction)dismiss:(id)sender
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)call {
+- (void)call
+{
     NSString *telstringTrim = [self.label_tel.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-    if ([telstringTrim isEqualToString:@""]) {
+    if ([telstringTrim isEqualToString:@""])
+    {
         return;
     }
     NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", telstringTrim]];
@@ -113,7 +122,8 @@
 /**
  *  获取报警信息
  */
-- (void)getAlarmInfo {
+- (void)getAlarmInfo
+{
 
     __weak AlarmProcessViewController *weakself = self;
     NSDictionary *dic = [NSDictionary dictionaryWithObject:self.alarmId forKey:@"id"];
@@ -126,9 +136,11 @@
 
 }
 
-- (void)refresh {
+- (void)refresh
+{
     //如果报警已经撤消，不再显示
-    if ([[_alarmInfo objectForKey:@"isMisinformation"] isEqualToString:@"1"]) {
+    if ([[_alarmInfo objectForKey:@"isMisinformation"] isEqualToString:@"1"])
+    {
         [self onReceiveAlarmCancelMessage];
         return;
     }
@@ -148,10 +160,13 @@
     CLLocationDistance distance = [[location sharedLocation] handleDistance:coor];
 
     NSString *distanceString;
-    if (distance < 1000.f) {
+    if (distance < 1000.f)
+    {
         distanceString = [NSString stringWithFormat:@"%i米", (int) distance];
 
-    } else if (distance >= 1000) {
+    }
+    else if (distance >= 1000)
+    {
 
         distanceString = [NSString stringWithFormat:@"%i千米", (int) (distance / 1000)];
 
@@ -163,22 +178,29 @@
 
 
     //根据state切换界面
-    if ([[_alarmInfo objectForKey:@"state"] isEqualToString:@"0"]) {
+    if ([[_alarmInfo objectForKey:@"state"] isEqualToString:@"0"])
+    {
 
         self.state1.hidden = NO;
         self.state2.hidden = YES;
         self.state3.hidden = YES;
 
-    } else if (1 == self.userState) {
+    }
+    else if (1 == self.userState)
+    {
         self.state1.hidden = YES;
         self.state2.hidden = NO;
         self.state3.hidden = YES;
 
-    } else if (2 == self.userState) {
+    }
+    else if (2 == self.userState)
+    {
         self.state1.hidden = YES;
         self.state2.hidden = YES;
         self.state3.hidden = NO;
-    } else {
+    }
+    else
+    {
         _alarmInfoView.hidden = YES;
     }
 
@@ -186,11 +208,13 @@
 
 }
 
-- (void)addAlarmAnnotation {
+- (void)addAlarmAnnotation
+{
 
     [_mapView removeOverlays:_mapView.overlays];
 
-    if (_alarmAnnotation == nil) {
+    if (_alarmAnnotation == nil)
+    {
         _alarmAnnotation = [[BMKPointAnnotation alloc] init];
         CLLocationCoordinate2D coor;
         coor.latitude = [[[self.alarmInfo objectForKey:@"communityInfo"] objectForKey:@"lat"] floatValue];
@@ -210,10 +234,13 @@
 #pragma mark - BMKMapViewDelegate
 
 // 根据anntation生成对应的View
-- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation {
-    if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
+- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[BMKPointAnnotation class]])
+    {
 
-        if (annotation == _alarmAnnotation) {
+        if (annotation == _alarmAnnotation)
+        {
             BMKAnnotationView *alarmAnnotationView = [[BMKAnnotationView alloc] initWithAnnotation:annotation
                                                                                    reuseIdentifier:@"alarmAnnotation"];
             [alarmAnnotationView setBounds:CGRectMake(0.f, 0.f, 20.f, 25.f)];
@@ -230,10 +257,12 @@
 }
 
 
-- (void)call:(NSString *)telString {
+- (void)call:(NSString *)telString
+{
     NSString *telstringTrim = [telString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-    if ([telstringTrim isEqualToString:@""]) {
+    if ([telstringTrim isEqualToString:@""])
+    {
         return;
     }
     NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", telstringTrim]];
@@ -243,13 +272,15 @@
 
 }
 
-- (IBAction)refuse:(id)sender {
+- (IBAction)refuse:(id)sender
+{
 
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 
 }
 
-- (IBAction)accept:(id)sender {
+- (IBAction)accept:(id)sender
+{
 
     __weak AlarmProcessViewController *weakself = self;
 
@@ -279,7 +310,8 @@
 
 }
 
-- (IBAction)arrive:(id)sender {
+- (IBAction)arrive:(id)sender
+{
 
     __weak AlarmProcessViewController *weakself = self;
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:1];
@@ -301,7 +333,8 @@
 
 }
 
-- (IBAction)unexpect:(id)sender {
+- (IBAction)unexpect:(id)sender
+{
     __weak AlarmProcessViewController *weakself = self;
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:1];
     [dic setObject:self.alarmId forKey:@"alarmId"];
@@ -320,7 +353,8 @@
 
 }
 
-- (IBAction)finish:(id)sender {
+- (IBAction)finish:(id)sender
+{
     FinishedReportViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"finishedReport"];
     vc.alarmId = self.alarmId;
     [self.navigationController pushViewController:vc animated:YES];
@@ -329,7 +363,8 @@
 /**
  *  当报警撤消时，恢复界面
  */
-- (void)onReceiveAlarmCancelMessage {
+- (void)onReceiveAlarmCancelMessage
+{
     self.alarmInfoView.hidden = YES;
     self.state1.hidden = YES;
     self.state2.hidden = YES;

@@ -36,7 +36,8 @@
 
 @implementation ItemInfo
 
-- (instancetype)initWithKey:(NSString *)key value:(NSString *)value {
+- (instancetype)initWithKey:(NSString *)key value:(NSString *)value
+{
     self.key = key;
     self.value = value;
 
@@ -73,7 +74,8 @@
 @synthesize dataArray;
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     [self setNavTitle:@"报警详情"];
@@ -83,12 +85,14 @@
 
 }
 
-- (void)initView {
+- (void)initView
+{
     self.tableView.allowsSelection = NO;
-    self.tableView.bounces = NO;
 
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
-    if (_picUrl) {
+    if (_picUrl)
+    {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 540)];
 
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 20)];
@@ -110,7 +114,8 @@
 }
 
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
 }
 
@@ -118,7 +123,8 @@
 /**
  *  init the data array with the property
  */
-- (void)initDataArray {
+- (void)initDataArray
+{
     dataArray = [[NSMutableArray alloc] init];
     [dataArray addObject:[[ItemInfo alloc] initWithKey:@"项目" value:project]];
     [dataArray addObject:[[ItemInfo alloc] initWithKey:@"地址" value:address]];
@@ -131,15 +137,18 @@
 
 #pragma mark -- UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return dataArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     ItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItemCell"];
 
     ItemInfo *item = dataArray[indexPath.row];
@@ -150,7 +159,8 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 60;
 }
 
@@ -161,7 +171,8 @@
 
 #pragma mark - download picture
 
-- (void)downloadPictrue {
+- (void)downloadPictrue
+{
     NSLog(@"url:%@", _picUrl);
     NSURL *url = [NSURL URLWithString:_picUrl];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0f];
@@ -169,16 +180,20 @@
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *_Nullable response, NSData *_Nullable data, NSError *_Nullable connectionError) {
 
-        if (data.length > 0 && nil == connectionError) {
+        if (data.length > 0 && nil == connectionError)
+        {
             [self performSelectorOnMainThread:@selector(setImage:) withObject:data waitUntilDone:NO];
 
-        } else if (connectionError != nil) {
+        }
+        else if (connectionError != nil)
+        {
             NSLog(@"download picture error = %@", connectionError);
         }
     }];
 }
 
-- (void)setImage:(NSData *)data {
+- (void)setImage:(NSData *)data
+{
     _imageView.image = [UIImage imageWithData:data];
 }
 

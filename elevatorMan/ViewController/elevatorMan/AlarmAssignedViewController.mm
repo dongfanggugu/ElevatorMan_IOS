@@ -32,11 +32,13 @@
 @implementation AlarmInfo (assigned)
 
 
-+ (AlarmInfo *)alarmAssignedFromDic:(NSDictionary *)dicInfo {
++ (AlarmInfo *)alarmAssignedFromDic:(NSDictionary *)dicInfo
+{
     AlarmInfo *alarmInfo = [[AlarmInfo alloc] init];
     NSDictionary *community = [dicInfo objectForKey:@"communityInfo"];
 
-    if (community) {
+    if (community)
+    {
         alarmInfo.project = [community objectForKey:@"name"];
     }
     alarmInfo.alarmId = [dicInfo objectForKey:@"id"];
@@ -60,34 +62,26 @@
 
 @implementation AlarmAssignedViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-
-    //set navigation bar menu
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[UIImage imageNamed:@"icon_menu"] forState:UIControlStateNormal];
-    [button setFrame:CGRectMake(0, 0, 30, 30)];
-    [button addTarget:self action:@selector(presentLeftMenuViewController:)
-     forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-
-
     self.mAlarmArray = [[NSMutableArray alloc] init];
-    [self setTitleString:@"报警管理"];
-    //forbidden bounce
-    self.mTableView.bounces = NO;
+    [self initView];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)initView
+{
+    self.mTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
-    NSLog(@"assigned view did appear");
 }
 
-
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
-
-    NSLog(@"assigned view will appear");
 
     __weak AlarmAssignedViewController *weakSelf = self;
 
@@ -101,10 +95,13 @@
                                 [self.mAlarmArray removeAllObjects];
 
                                 //the data received from server is too much, abandon others
-                                if (body && body.count > 0) {
-                                    for (NSDictionary *dic in body) {
+                                if (body && body.count > 0)
+                                {
+                                    for (NSDictionary *dic in body)
+                                    {
                                         AlarmInfo *alarmInfo = [AlarmInfo alarmAssignedFromDic:dic];
-                                        if (alarmInfo != nil) {
+                                        if (alarmInfo != nil)
+                                        {
                                             [weakSelf.mAlarmArray addObject:alarmInfo];
                                         }
                                     }
@@ -116,31 +113,20 @@
 
 }
 
-/**
- *  set navigation bar title string
- *
- *  @param title 页面标题
- */
-- (void)setTitleString:(NSString *)title {
-    UILabel *lableTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-    lableTitle.text = title;
-    lableTitle.font = [UIFont fontWithName:@"System" size:17];
-    lableTitle.textColor = [UIColor whiteColor];
-    [self.navigationItem setTitleView:lableTitle];
-
-}
-
 #pragma mark -- UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.mAlarmArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     AlarmCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlarmCell"];
 
     AlarmInfo *alarmInfo = self.mAlarmArray[indexPath.row];
@@ -148,10 +134,13 @@
     cell.labelProject.text = alarmInfo.project;
     cell.labelDate.text = alarmInfo.date;
 
-    if (1 == alarmInfo.userState) {
+    if (1 == alarmInfo.userState)
+    {
         cell.labelState.text = @"已出发";
 
-    } else if (2 == alarmInfo.userState) {
+    }
+    else if (2 == alarmInfo.userState)
+    {
         cell.labelState.text = @"已到达";
     }
 
@@ -160,32 +149,35 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 80;
 }
 
 #pragma mark -- UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     AlarmInfo *alarmInfo = self.mAlarmArray[indexPath.row];
 
-    if (1 == alarmInfo.userState) {
+    if (1 == alarmInfo.userState)
+    {
         AlarmViewController *controller = [self.storyboard
                 instantiateViewControllerWithIdentifier:@"alarm_process"];
         controller.alarmId = alarmInfo.alarmId;
 
+        controller.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:controller animated:YES];
-    } else if (2 == alarmInfo.userState) {
+    }
+    else if (2 == alarmInfo.userState)
+    {
         AlarmViewController *controller = [self.storyboard
                 instantiateViewControllerWithIdentifier:@"confirm_process"];
         controller.alarmId = alarmInfo.alarmId;
 
         [self.navigationController pushViewController:controller animated:YES];
     }
-
-
-    //[self presentViewController:nvc animated:YES completion:nil];
 }
 
 
