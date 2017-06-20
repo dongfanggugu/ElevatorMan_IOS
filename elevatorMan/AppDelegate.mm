@@ -16,6 +16,7 @@
 #import "Utils.h"
 #import "GuideViewController.h"
 #import "BackgroundRunner.h"
+#import "libt2u.h"
 
 
 #define BM_APPKEY @"STwt3Ei6SyYPAxMlAOTvGUNS"
@@ -36,6 +37,7 @@ BMKMapManager *_mapManager;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
+    t2u_init("nat.vveye.net",8000, "");
     _mLaunchOptions = launchOptions;
 
     [self startupApplicaiton:application Options:launchOptions];

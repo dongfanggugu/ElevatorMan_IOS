@@ -20,6 +20,7 @@
 #import "TmateMainPageController.h"
 #import "TmateMainTabBarController.h"
 #import "BaseNavigationController.h"
+#import "LoginViewController.h"
 
 #define PROVINCE 1002
 #define CITY 1003
@@ -218,6 +219,11 @@
 
 - (void)userRegister
 {
+
+//    LoginViewController *controller = [[LoginViewController alloc] init];
+//
+//    controller.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:controller animated:YES];
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"用户注册" message:nil delegate:self
                                           cancelButtonTitle:@"取消" otherButtonTitles:@"维修工", @"物业人员", nil];
 
