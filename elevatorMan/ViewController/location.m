@@ -90,7 +90,6 @@
     self.userLocation = userLocation;
 
 
-    //self.currentLocation = userLocation.location.coordinate;
 
     //self.currentLocation = coords;
     //通知更新位置

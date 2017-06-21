@@ -20,7 +20,7 @@
 #import "TmateMainPageController.h"
 #import "TmateMainTabBarController.h"
 #import "BaseNavigationController.h"
-#import "LoginViewController.h"
+//#import "LoginViewController.h"
 
 #define PROVINCE 1002
 #define CITY 1003
@@ -166,19 +166,6 @@
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     self.labelVersion.text = version;
 
-
-    //设置地区
-//    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"])
-//    {
-//        self.labelCity.text = @"北京";
-//        [[NSUserDefaults standardUserDefaults] setObject:@"北京" forKey:@"urlString"];
-//
-//    }
-//    else
-//    {
-//        self.labelCity.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"urlString"];
-//    }
-
     //不显示区域
     self.labelCity.text = @"";
     self.labelCity.userInteractionEnabled = NO;
@@ -195,9 +182,14 @@
     self.view_password.layer.borderWidth = 1;
     self.view_password.layer.borderColor = [[UIColor whiteColor] CGColor];
 
-    self.textField_userPWD.delegate = self;
+
+    [self.textField_userName setValue:[UIColor whiteColor] forKey:@"_placeholderLabel.textColor"];
 
     self.textField_userName.delegate = self;
+
+    [self.textField_userPWD setValue:[UIColor whiteColor] forKey:@"_placeholderLabel.textColor"];
+
+    self.textField_userPWD.delegate = self;
 
     //设置登录按钮
     _button_login.layer.masksToBounds = YES;
@@ -227,7 +219,7 @@
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"用户注册" message:nil delegate:self
                                           cancelButtonTitle:@"取消" otherButtonTitles:@"维修工", @"物业人员", nil];
 
-     alertView.tag = 10001;
+    alertView.tag = 10001;
     [alertView show];
 
 }
@@ -260,8 +252,6 @@
                                                   cancelButtonTitle:@"取消" otherButtonTitles:@"北京", @"全国", @"上海", @"马晓明", @"张明锁", @"Azure", nil];
 
         [alertView show];
-
-        //[self getCityInfoFromFile];
     }
 }
 

@@ -271,7 +271,7 @@
 
         _infoView.frame = frame;
 
-        [_infoView.btnStretch setImage:[UIImage imageNamed:@"icon_maint_down.png"] forState:UIControlStateNormal];
+        [_infoView.btnStretch setImage:[UIImage imageNamed:@"icon_maint_up.png"] forState:UIControlStateNormal];
     }
     else
     {
@@ -279,7 +279,7 @@
 
         _infoView.frame = frame;
 
-        [_infoView.btnStretch setImage:[UIImage imageNamed:@"icon_maint_up.png"] forState:UIControlStateNormal];
+        [_infoView.btnStretch setImage:[UIImage imageNamed:@"icon_maint_down.png"] forState:UIControlStateNormal];
     }
 }
 

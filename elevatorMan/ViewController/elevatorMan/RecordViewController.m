@@ -48,7 +48,8 @@
 
 @implementation RecordViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setNavTitle:@"记录上传"];
     [self initView];
@@ -56,11 +57,13 @@
 }
 
 
-- (void)initView {
+- (void)initView
+{
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
-- (void)getElevatorList {
+- (void)getElevatorList
+{
 
     [[HttpClient sharedClient] view:self.view post:@"getMainElevatorList" parameter:nil
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -68,18 +71,22 @@
                             }];
 }
 
-- (void)dealHttpData:(NSArray *)array {
+- (void)dealHttpData:(NSArray *)array
+{
 
     [_dataArray removeAllObjects];
-    for (NSDictionary *dic in array) {
+    for (NSDictionary *dic in array)
+    {
 
         NSString *flag = [dic objectForKey:@"planMainTime"];
-        if (flag.length > 0) {
+        if (flag.length > 0)
+        {
             [_dataArray addObject:dic];
         }
     }
 
-    if (0 == _dataArray.count) {
+    if (0 == _dataArray.count)
+    {
         CGFloat width = [UIScreen mainScreen].bounds.size.width;
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 50)];
         label.font = [UIFont systemFontOfSize:15];
@@ -91,23 +98,34 @@
     [self.tableView reloadData];
 }
 
-- (NSString *)getDescriptionByType:(NSString *)type {
+- (NSString *)getDescriptionByType:(NSString *)type
+{
     NSString *description = nil;
-    if ([type isEqualToString:@"hm"]) {
+    if ([type isEqualToString:@"hm"])
+    {
         description = @"半月保";
-    } else if ([type isEqualToString:@"m"]) {
+    }
+    else if ([type isEqualToString:@"m"])
+    {
         description = @"月保";
-    } else if ([type isEqualToString:@"s"]) {
+    }
+    else if ([type isEqualToString:@"s"])
+    {
         description = @"季度保";
-    } else if ([type isEqualToString:@"hy"]) {
+    }
+    else if ([type isEqualToString:@"hy"])
+    {
         description = @"半年保";
-    } else if ([type isEqualToString:@"y"]) {
+    }
+    else if ([type isEqualToString:@"y"])
+    {
         description = @"年保";
     }
     return description;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
 
     [self getElevatorList];
@@ -116,11 +134,13 @@
 
 #pragma mark -- UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return _dataArray.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     PlanCell *cell = [tableView dequeueReusableCellWithIdentifier:@"plan_cell"];
 
     NSDictionary *info = _dataArray[indexPath.row];
@@ -133,7 +153,8 @@
 
     NSString *intervalStr = [NSString stringWithFormat:@"%ld", intervalDay];
 
-    if (-1 == intervalDay) {
+    if (-1 == intervalDay)
+    {
         intervalStr = @"过期";
     }
 
@@ -154,10 +175,12 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     NSDictionary *info = _dataArray[indexPath.row];
     NSString *proFlag = [info objectForKey:@"propertyFlg"];
-    if ([proFlag isEqualToString:@"3"]) {
+    if ([proFlag isEqualToString:@"3"])
+    {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"物业已经拒绝，请您和物业沟通，修改维保计划！"
                                                        delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil];
         [alert show];
@@ -177,11 +200,13 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 100;
 }
 
-- (void)editPlan:(UIButton *)button {
+- (void)editPlan:(UIButton *)button
+{
     NSLog(@"edit");
 
     NSDictionary *info = _dataArray[button.tag];
@@ -201,7 +226,8 @@
 
 }
 
-- (void)delPlan:(UIButton *)button {
+- (void)delPlan:(UIButton *)button
+{
     NSLog(@"delete");
 
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您即将删除此条维保计划?" delegate:self
@@ -213,19 +239,27 @@
 
 #pragma mark -- UIAlertViewDelegate
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (ALARM_RECEIVED == alertView.tag || ALARM_ASSIGNED == alertView.tag) {
-        if (1 == buttonIndex) {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (ALARM_RECEIVED == alertView.tag || ALARM_ASSIGNED == alertView.tag)
+    {
+        if (1 == buttonIndex)
+        {
             UIStoryboard *board = [UIStoryboard storyboardWithName:@"Worker" bundle:nil];
             AlarmViewController *controller = [board instantiateViewControllerWithIdentifier:@"alarm_process"];
             controller.alarmId = self.notifyAlarmId;
 
             [self.navigationController pushViewController:controller animated:YES];
         }
-    } else {
-        if (0 == buttonIndex) {
+    }
+    else
+    {
+        if (0 == buttonIndex)
+        {
             return;
-        } else if (1 == buttonIndex) {
+        }
+        else if (1 == buttonIndex)
+        {
             NSInteger tag = alertView.tag;
             NSDictionary *info = _dataArray[tag];
             NSString *liftId = [info objectForKey:@"id"];
@@ -270,11 +304,13 @@
 /**
  删除指定路径下的文件
  **/
-- (void)deleteFileByPath:(NSString *)path {
+- (void)deleteFileByPath:(NSString *)path
+{
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL exist = [fileManager fileExistsAtPath:path];
 
-    if (exist) {
+    if (exist)
+    {
         NSError *error;
         [fileManager removeItemAtPath:path error:&error];
     }

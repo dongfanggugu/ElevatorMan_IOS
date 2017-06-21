@@ -8,14 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "AlarmReceivedViewController.h"
-#import "HttpClient.h"
-#import "AlarmProcessViewController.h"
-#import "../../../chorstar/chorstar/Chorstar.h"
 #import <BaiduMapAPI/BMapKit.h>
 #import "CalloutAnnotationView.h"
 #import "CalloutMapAnnotation.h"
 #import "location.h"
-#import "Utils.h"
 
 
 @interface AlarmInfo ()

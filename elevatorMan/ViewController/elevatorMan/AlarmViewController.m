@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "AlarmViewController.h"
 #import <BaiduMapAPI/BMapKit.h>
-#import "HttpClient.h"
 #import "location.h"
 #import "ConfirmProcessViewController.h"
 #import "CalloutMapAnnotation.h"
@@ -19,7 +18,6 @@
 #import <MapKit/MKMapItem.h>
 #import <MapKit/MKTypes.h>
 #import "ChatController.h"
-#import "FileUtils.h"
 
 
 #pragma mark - RescuWorkerCell
@@ -109,17 +107,17 @@
 
     _confirmBtn.layer.masksToBounds = YES;
     _confirmBtn.layer.cornerRadius = 5;
-    _confirmBtn.layer.borderColor = [UIColor blueColor].CGColor;
+    _confirmBtn.layer.borderColor = RGB(TITLE_COLOR).CGColor;
     _confirmBtn.layer.borderWidth = 1;
 
     _cancelBtn.layer.masksToBounds = YES;
     _cancelBtn.layer.cornerRadius = 5;
-    _cancelBtn.layer.borderColor = [UIColor blueColor].CGColor;
+    _cancelBtn.layer.borderColor = RGB(TITLE_COLOR).CGColor;
     _cancelBtn.layer.borderWidth = 1;
 
     _btnNav.layer.masksToBounds = YES;
     _btnNav.layer.cornerRadius = 5;
-    _btnNav.layer.borderColor = [UIColor blueColor].CGColor;
+    _btnNav.layer.borderColor = RGB(TITLE_COLOR).CGColor;
     _btnNav.layer.borderWidth = 1;
 
 
@@ -157,9 +155,6 @@
 {
     //设置标题栏右侧
     UIButton *btnSubmit = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    //[btnSubmit setTitle:@"提交" forState:UIControlStateNormal];
-    //[btnSubmit setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    //btnSubmit.titleLabel.font = [UIFont fontWithName:@"System" size:17];
     [btnSubmit setImage:[UIImage imageNamed:@"icon_bbs"] forState:UIControlStateNormal];
     [btnSubmit addTarget:self action:@selector(chat) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:btnSubmit];
@@ -170,6 +165,7 @@
 {
     ChatController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"chat_controller"];
     controller.alarmId = _alarmId;
+    controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -196,7 +192,7 @@
 
 - (void)getAlarmInfo
 {
-    __weak AlarmViewController *weakself = self;
+    __weak typeof(self) weakSelf = self;
     NSDictionary *dic = [NSDictionary dictionaryWithObject:self.alarmId forKey:@"id"];
 
     [[HttpClient sharedClient] view:self.view post:@"getAlarmDetail" parameter:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -219,21 +215,20 @@
 
         if (0 == _workerArray.count)
         {
-            weakself.tableView.hidden = YES;
+            weakSelf.tableView.hidden = YES;
             _viewTip.hidden = NO;
         }
         else
         {
             _viewTip.hidden = YES;
-            weakself.tableView.hidden = NO;
-            [weakself.tableView reloadData];
-
+            weakSelf.tableView.hidden = NO;
+            [weakSelf.tableView reloadData];
         }
 
         //启动定位
         [[location sharedLocation] startLocationService];
 
-        [weakself showAlarmInfo:dic];
+        [weakSelf showAlarmInfo:dic];
     }];
 }
 

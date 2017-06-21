@@ -164,14 +164,14 @@
 
         AddressViewController *controller = [self.navigationController.viewControllers objectAtIndex:count - 2];
 
-        controller.latView.hidden = NO;
-        controller.lngView.hidden = NO;
-
-        controller.latValueLabel.hidden = NO;
-        controller.lngValueLabel.hidden = NO;
-
-        controller.lngValueLabel.text = [NSString stringWithFormat:@"%lf", coor.longitude];
-        controller.latValueLabel.text = [NSString stringWithFormat:@"%lf", coor.latitude];
+//        controller.latView.hidden = NO;
+//        controller.lngView.hidden = NO;
+//
+//        controller.latValueLabel.hidden = NO;
+//        controller.lngValueLabel.hidden = NO;
+//
+//        controller.lngValueLabel.text = [NSString stringWithFormat:@"%lf", coor.longitude];
+//        controller.latValueLabel.text = [NSString stringWithFormat:@"%lf", coor.latitude];
     }
     else
     {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,14 +16,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htL-73-vVr">
-                    <rect key="frame" x="37" y="203.5" width="300" height="260"/>
+                    <rect key="frame" x="47" y="218.5" width="280" height="230"/>
                     <subviews>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Yot-BD-S5f">
-                            <rect key="frame" x="10" y="60" width="280" height="140"/>
+                            <rect key="frame" x="0.0" y="55" width="280" height="120"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="140" id="0Wz-wg-XZl"/>
-                                <constraint firstAttribute="width" constant="280" id="QhK-bG-JNI"/>
+                                <constraint firstAttribute="height" constant="120" id="0Wz-wg-XZl"/>
                             </constraints>
                             <date key="date" timeIntervalSinceReferenceDate="503375043.23421502">
                                 <!--2016-12-14 02:24:03 +0000-->
@@ -31,21 +30,24 @@
                             <date key="minimumDate" timeIntervalSinceReferenceDate="-946731600">
                                 <!--1971-01-01 11:00:00 +0000-->
                             </date>
-                            <locale key="locale" localeIdentifier="zh-Hans"/>
+                            <locale key="locale" localeIdentifier="zh_CN"/>
                         </datePicker>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TuZ-dl-oeP">
-                            <rect key="frame" x="60" y="227" width="60" height="25"/>
+                            <rect key="frame" x="60" y="197" width="60" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="Kxr-B7-DQW"/>
                                 <constraint firstAttribute="height" constant="25" id="bCl-fW-ePH"/>
                             </constraints>
-                            <state key="normal" title="取消"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.21176470589999999" green="0.69019607839999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pA-Q2-jQf">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="56"/>
+                            <rect key="frame" x="0.0" y="0.0" width="280" height="51"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日期选择" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQM-rt-oUv">
-                                    <rect key="frame" x="110" y="17" width="80" height="21"/>
+                                    <rect key="frame" x="100" y="14.5" width="80" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="80" id="QNq-4x-aLd"/>
                                         <constraint firstAttribute="height" constant="21" id="crw-Kw-eNo"/>
@@ -55,19 +57,23 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.0" green="0.4941176471" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.21176470589999999" green="0.69019607839999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.21176470589999999" green="0.69019607839999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="RQM-rt-oUv" firstAttribute="centerX" secondItem="6pA-Q2-jQf" secondAttribute="centerX" id="3rw-OC-ahG"/>
                                 <constraint firstItem="RQM-rt-oUv" firstAttribute="centerY" secondItem="6pA-Q2-jQf" secondAttribute="centerY" id="cfa-y9-V6g"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W06-Gp-cyG">
-                            <rect key="frame" x="180" y="227" width="60" height="25"/>
+                            <rect key="frame" x="160" y="197" width="60" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="L7G-SI-aaT"/>
                                 <constraint firstAttribute="height" constant="25" id="pMy-Af-YOb"/>
                             </constraints>
-                            <state key="normal" title="确定"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="确定">
+                                <color key="titleColor" red="0.21176470589999999" green="0.69019607839999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -75,9 +81,11 @@
                         <constraint firstItem="6pA-Q2-jQf" firstAttribute="top" secondItem="htL-73-vVr" secondAttribute="top" id="1i9-pM-emb"/>
                         <constraint firstItem="TuZ-dl-oeP" firstAttribute="leading" secondItem="htL-73-vVr" secondAttribute="leading" constant="60" id="2iL-ti-LhL"/>
                         <constraint firstAttribute="bottom" secondItem="TuZ-dl-oeP" secondAttribute="bottom" constant="8" id="9oe-kR-GEx"/>
-                        <constraint firstAttribute="height" constant="260" id="HZI-eN-Kpd"/>
+                        <constraint firstAttribute="height" constant="230" id="HZI-eN-Kpd"/>
+                        <constraint firstAttribute="trailing" secondItem="Yot-BD-S5f" secondAttribute="trailing" id="Lfr-TV-Ndr"/>
                         <constraint firstAttribute="bottom" secondItem="W06-Gp-cyG" secondAttribute="bottom" constant="8" id="Mgx-mk-1nB"/>
-                        <constraint firstAttribute="width" constant="300" id="PSO-KI-Ftm"/>
+                        <constraint firstAttribute="width" constant="280" id="PSO-KI-Ftm"/>
+                        <constraint firstItem="Yot-BD-S5f" firstAttribute="leading" secondItem="htL-73-vVr" secondAttribute="leading" id="TOb-G1-ehf"/>
                         <constraint firstAttribute="trailing" secondItem="6pA-Q2-jQf" secondAttribute="trailing" id="XTO-fv-FhG"/>
                         <constraint firstAttribute="trailing" secondItem="W06-Gp-cyG" secondAttribute="trailing" constant="60" id="bMn-qf-DON"/>
                         <constraint firstItem="Yot-BD-S5f" firstAttribute="centerY" secondItem="htL-73-vVr" secondAttribute="centerY" id="c1i-4d-Pun"/>

@@ -13,6 +13,18 @@
 
 @implementation Utils
 
++ (NSString *)getServer
+{
+    return [NSString stringWithFormat:@"%@mobile/", [Utils getIp]];
+}
+
++ (NSString *)getIp
+{
+//    return @"http://www.chorstar.com:8081/";
+
+    return @"http://192.168.0.82:8080/";
+}
+
 + (UIColor *)getColorByRGB:(NSString *)RGB
 {
 
@@ -50,17 +62,7 @@
 }
 
 
-+ (NSString *)getServer
-{
-    return [NSString stringWithFormat:@"%@mobile/", [Utils getIp]];
-}
 
-+ (NSString *)getIp
-{
-    return @"http://www.chorstar.com:8081/";
-
-   // return @"http://192.168.0.82:8080/";
-}
 
 
 /**
@@ -119,7 +121,7 @@
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
 
     NSString *destDateString = [dateFormatter stringFromDate:date];
 

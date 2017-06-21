@@ -56,32 +56,8 @@
     }
     else
     {
-
         TmateMainTabBarController *controller = [[TmateMainTabBarController alloc] init];
         self.window.rootViewController = controller;
-
-
-//        if ([[User sharedUser].userType isEqualToString:UserTypeAdmin])//物业
-//        {
-//
-//            UIStoryboard *story = [UIStoryboard storyboardWithName:@"MyProperty" bundle:nil];
-//
-//            [UIApplication sharedApplication].delegate.window.rootViewController =
-//                    [story instantiateViewControllerWithIdentifier:@"property_main_page"];
-//
-//
-//        }
-//        else if ([[User sharedUser].userType isEqualToString:UserTypeWorker])//维修工
-//        {
-//            TmateMainTabBarController *controller = [[TmateMainTabBarController alloc] init];
-//            self.window.rootViewController = controller;
-//
-////            UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-////
-////            //[UIApplication sharedApplication].delegate.window.rootViewController = [story  instantiateViewControllerWithIdentifier:@"workerRootViewController"];
-////            UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"main_page"];
-////            self.window.rootViewController = controller;
-//        }
     }
 
 }
@@ -90,7 +66,7 @@
 {
     NSMutableArray *dataArr = [[NSMutableArray alloc] init];
 
-    NSString *file = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"guide"] ofType:@"gif"];
+    NSString *file = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"gif_welcome_enterprise"] ofType:@"gif"];
 
     [dataArr addObject:file];
 

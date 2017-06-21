@@ -31,6 +31,10 @@
 
 - (void)landscapeRight;
 
+- (void)showMsgAlert:(NSString *)msg;
+
+- (void)onMsgAlertDismiss;
+
 /**
  * 显示未加入怡墅业务信息
  */

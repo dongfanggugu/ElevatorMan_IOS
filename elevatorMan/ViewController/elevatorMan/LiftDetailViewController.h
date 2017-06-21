@@ -20,8 +20,6 @@
 
 @property (strong, nonatomic) NSString *address;
 
-@property (strong, nonatomic) NSString *brand;
-
 @property (strong, nonatomic) NSString *worker;
 
 @property (strong, nonatomic) NSString *tel;

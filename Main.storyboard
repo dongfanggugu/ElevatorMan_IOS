@@ -25,15 +25,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="wOp-7d-efq">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_login_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="K4Y-eM-VVk">
-                                <rect key="frame" x="143" y="70" width="90" height="90"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_enterprise.png" translatesAutoresizingMaskIntoConstraints="NO" id="K4Y-eM-VVk">
+                                <rect key="frame" x="138" y="70" width="100" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="ocy-12-KI8"/>
-                                    <constraint firstAttribute="width" constant="90" id="qeS-vR-HzA"/>
+                                    <constraint firstAttribute="height" constant="100" id="ocy-12-KI8"/>
+                                    <constraint firstAttribute="width" constant="100" id="qeS-vR-HzA"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="CQ5-sn-75C" userLabel="emailView">
-                                <rect key="frame" x="30" y="251" width="315" height="45"/>
+                                <rect key="frame" x="30" y="261" width="315" height="45"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_username.png" translatesAutoresizingMaskIntoConstraints="NO" id="FIf-OR-5q3">
                                         <rect key="frame" x="12" y="11" width="25" height="23"/>
@@ -69,7 +69,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="7ck-Uh-JsM" userLabel="pwdView">
-                                <rect key="frame" x="30" y="311" width="315" height="45"/>
+                                <rect key="frame" x="30" y="321" width="315" height="45"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_password.png" translatesAutoresizingMaskIntoConstraints="NO" id="v39-Hu-gJr">
                                         <rect key="frame" x="12" y="11" width="25" height="23"/>
@@ -105,7 +105,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8a-F0-tdc">
-                                <rect key="frame" x="87.5" y="396" width="200" height="36"/>
+                                <rect key="frame" x="87.5" y="406" width="200" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="4To-Ha-fEv"/>
@@ -120,7 +120,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3G1-nC-t3M">
-                                <rect key="frame" x="10" y="452" width="70" height="15"/>
+                                <rect key="frame" x="10" y="462" width="70" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="LsY-0h-q3Y"/>
                                     <constraint firstAttribute="width" constant="70" id="uAW-CY-RgN"/>
@@ -131,7 +131,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxs-c7-Ylo">
-                                <rect key="frame" x="285" y="452" width="70" height="15"/>
+                                <rect key="frame" x="285" y="462" width="70" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="2Z6-RN-DMi"/>
                                     <constraint firstAttribute="height" constant="15" id="K5n-Uc-ViK"/>
@@ -161,8 +161,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="梯美(管理)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jkv-68-0Z8">
-                                <rect key="frame" x="87.5" y="176" width="200" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jkv-68-0Z8">
+                                <rect key="frame" x="87.5" y="186" width="200" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="11h-7a-CTT"/>
                                     <constraint firstAttribute="height" constant="25" id="30Q-Mg-eEz"/>
@@ -1405,7 +1405,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pG6-Lg-8ae" id="YrR-RS-Yto">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainpage.png" translatesAutoresizingMaskIntoConstraints="NO" id="yjW-4q-HsC">
@@ -1425,7 +1425,7 @@
                                         <rect key="frame" x="0.0" y="120" width="375" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uka-sw-dvf" id="hQb-ET-pRl">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eSS-j9-k2l">
@@ -1555,7 +1555,7 @@
                                         <rect key="frame" x="0.0" y="280" width="375" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YGr-lL-8O4" id="AXc-4m-7j7">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ss8-5i-3u8">
@@ -1675,7 +1675,7 @@
                                         <rect key="frame" x="0.0" y="440" width="375" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n0F-r2-rPE" id="9iL-Yf-53c">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HpE-cl-ywf">
@@ -1850,7 +1850,7 @@
             <objects>
                 <navigationController storyboardIdentifier="signviewcontroller" automaticallyAdjustsScrollViewInsets="NO" id="xa5-o5-0xF" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lZg-jT-vW8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lZg-jT-vW8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.21176470589999999" green="0.69019607839999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1869,7 +1869,6 @@
         <image name="card_id.png" width="300" height="400"/>
         <image name="icon_del_img.png" width="128" height="128"/>
         <image name="icon_help_center.png" width="106" height="106"/>
-        <image name="icon_login_logo.png" width="170" height="170"/>
         <image name="icon_maintenance.png" width="106" height="106"/>
         <image name="icon_password.png" width="40" height="40"/>
         <image name="icon_person_center.png" width="106" height="106"/>
@@ -1878,6 +1877,7 @@
         <image name="icon_username.png" width="40" height="40"/>
         <image name="icon_wiki.png" width="106" height="106"/>
         <image name="login_bg.png" width="720" height="1280"/>
+        <image name="logo_enterprise.png" width="340" height="340"/>
         <image name="mainpage.png" width="720" height="291"/>
         <image name="marker_location.png" width="41" height="41"/>
         <image name="mix.png" width="300" height="400"/>

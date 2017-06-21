@@ -290,7 +290,7 @@
             break;
 
         case 4:
-            res = @"已完成";
+            res = @"待评价";
             break;
 
         case 5:

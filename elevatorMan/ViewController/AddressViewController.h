@@ -24,14 +24,6 @@ typedef NS_ENUM(NSInteger, AddressType)
 
 @property (nonatomic) AddressType addType;
 
-@property (weak, nonatomic) IBOutlet UIView *lngView;
-
-@property (weak, nonatomic) IBOutlet UIView *latView;
-
-@property (weak, nonatomic) IBOutlet UILabel *lngValueLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *latValueLabel;
-
 @end
 
 

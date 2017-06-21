@@ -326,4 +326,27 @@
     [self.view addSubview:webView];
 }
 
+/**
+ * 弹出框提示
+ */
+- (void)showMsgAlert:(NSString *)msg
+{
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
+
+    __weak typeof(self) weakSelf = self;
+
+    [controller addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+
+        [weakSelf onMsgAlertDismiss];
+    }]];
+
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)onMsgAlertDismiss
+{
+
+}
+
+
 @end

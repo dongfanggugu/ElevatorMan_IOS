@@ -220,7 +220,6 @@
     else
     {
         NSString *err = [NSString stringWithFormat:@"%d:注销消息服务器失败，请重新再试", iResCode];
-        NSLog(@"zhenhao:%@", err);
 
         if (_jpushCount < 5)
         {
