@@ -165,6 +165,8 @@
     {
         UIStoryboard *board = [UIStoryboard storyboardWithName:@"Person" bundle:nil];
         UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"PasswordPage"];
+
+        controller.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:controller animated:YES];
 
     }
@@ -176,13 +178,16 @@
     else if (2 == row)
     {
         PersonSignController *controller = [[PersonSignController alloc] init];
-        [self.navigationController pushViewController:controller animated:YES];
 
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
     }
     else if (3 == row)
     {
         UIStoryboard *board = [UIStoryboard storyboardWithName:@"Person" bundle:nil];
         UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"settings_about"];
+
+        controller.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:controller animated:YES];
 
     }
@@ -207,6 +212,7 @@
             AlarmViewController *controller = [board instantiateViewControllerWithIdentifier:@"alarm_process"];
             controller.alarmId = self.notifyAlarmId;
 
+            controller.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:controller animated:YES];
         }
     }
@@ -215,7 +221,6 @@
         if (1 == buttonIndex)
         {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://fir.im/ElevatorMan"]];
-
         }
     }
 }

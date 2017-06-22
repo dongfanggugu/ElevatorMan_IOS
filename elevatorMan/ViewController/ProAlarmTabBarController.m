@@ -45,6 +45,8 @@
 - (void)initTabBar
 {
     UITabBar *tabBar = self.tabBar;
+    tabBar.tintColor = RGB(TITLE_COLOR);
+
     [[tabBar.items objectAtIndex:0] setImage:[UIImage imageNamed:@"pro_alarm_process"]];
     [[tabBar.items objectAtIndex:0] setTitle:@"处理报警"];
 

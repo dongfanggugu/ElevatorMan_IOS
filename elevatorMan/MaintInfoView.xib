@@ -21,7 +21,7 @@
                         <constraint firstAttribute="height" constant="25" id="ehw-yz-uSV"/>
                         <constraint firstAttribute="width" constant="25" id="iJj-ey-11X"/>
                     </constraints>
-                    <state key="normal" image="icon_maint_down.png"/>
+                    <state key="normal" image="icon_maint_up.png"/>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAM-av-GMk">
                     <rect key="frame" x="0.0" y="41" width="375" height="40"/>
@@ -386,7 +386,7 @@
     <resources>
         <image name="icon_maint_address.png" width="180" height="180"/>
         <image name="icon_maint_appoint.png" width="180" height="180"/>
-        <image name="icon_maint_down.png" width="180" height="180"/>
         <image name="icon_maint_link.png" width="180" height="180"/>
+        <image name="icon_maint_up.png" width="180" height="180"/>
     </resources>
 </document>

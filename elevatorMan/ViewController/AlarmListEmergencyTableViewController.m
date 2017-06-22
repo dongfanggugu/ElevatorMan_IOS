@@ -16,11 +16,15 @@
 @interface AlarmListEmergencyCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UIView *indexView;
+
 @property (nonatomic, weak) IBOutlet UILabel *label_project;
+
 @property (nonatomic, weak) IBOutlet UILabel *label_time;
+
 @property (weak, nonatomic) IBOutlet UILabel *label_state;
+
 @property (weak, nonatomic) IBOutlet UILabel *label_index;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintRight;
+
 
 @end
 
@@ -31,10 +35,10 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+
     self.indexView.layer.masksToBounds = YES;
 
-    NSLog(@"size:%lf", self.indexView.frame.size.height / 2);
-    self.indexView.layer.cornerRadius = 30;
+    self.indexView.layer.cornerRadius = 20;
 
 }
 

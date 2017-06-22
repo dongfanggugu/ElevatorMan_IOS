@@ -12,13 +12,13 @@
 
 @interface ReportAlarmViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
-//@property (weak, nonatomic) IBOutlet UITextField *textfield_detail;
-
 @property (nonatomic) BOOL isInjured;
 
-@property (weak, nonatomic) IBOutlet UILabel *AlarmDetail;
+@property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
 
-@property (weak, nonatomic) IBOutlet UITextField *textFiled_remark;
+@property (weak, nonatomic) IBOutlet UILabel *alarmDetail;
+
+@property (weak, nonatomic) IBOutlet UITextView *tvRemark;
 
 @end
 
@@ -28,45 +28,59 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setNavTitle:@"一键报警"];
 
-    // Do any additional setup after loading the view.
-
-    self.title = @"一键报警";
     self.isInjured = NO;
 
     //显示报警位置
     [self showAlarmDetail];
-
+    [self initView];
 }
 
+- (void)initView
+{
+    _tvRemark.layer.masksToBounds = YES;
+
+    _tvRemark.layer.cornerRadius = 5;
+
+    _btnSubmit.layer.masksToBounds = YES;
+
+    _btnSubmit.layer.cornerRadius = 5;
+
+    [_btnSubmit addTarget:self action:@selector(reportAlarm) forControlEvents:UIControlEventTouchUpInside];
+}
 
 - (void)showAlarmDetail
 {
-    self.AlarmDetail.text = [NSString stringWithFormat:@"%@%@号楼%@号电梯", self.projectName, self.buildingNum, [self.liftDic objectForKey:@"number"]];
+    _alarmDetail.text = [NSString stringWithFormat:@"%@%@号楼%@号电梯", self.projectName, self.buildingNum, [self.liftDic objectForKey:@"number"]];
 }
 
 #pragma mark - IBAction
 
-- (IBAction)reportAlarm:(id)sender
+- (IBAction)reportAlarm
 {
+    NSString *remark = _tvRemark.text;
 
+    if (0 == remark)
+    {
+        [self showMsgAlert:@"您需要填写一下情况说明!"];
+    }
     //设置参数
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:1];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:[self.liftDic objectForKey:@"id"] forKey:@"liftId"];
     [dic setObject:[NSString stringWithFormat:@"%@", [NSNumber numberWithBool:self.isInjured]] forKey:@"isInjure"];
-    [dic setObject:self.textFiled_remark.text forKey:@"remark"];
+    [dic setObject:remark forKey:@"remark"];
 
 
-    __weak ReportAlarmViewController *weakself = self;
+    __weak typeof(self) weakSelf = self;
     //请求
     [[HttpClient sharedClient] post:@"alarm" parameter:dic
                             success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
                                 //报警完成后给予提示
                                 UIAlertView *alert;
-                                alert = [[UIAlertView alloc] initWithTitle:@"新消息" message:@"报警成功，系统正在指派最近的维修工前往维修，请耐心等待！如需跟踪报警进度，请进入‘当前报警’查看" delegate:weakself cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+                                alert = [[UIAlertView alloc] initWithTitle:@"新消息" message:@"报警成功，系统正在指派最近的维修工前往维修，请耐心等待！如需跟踪报警进度，请进入‘当前报警’查看" delegate:weakSelf cancelButtonTitle:@"知道了" otherButtonTitles:nil];
                                 [alert show];
-
                             }];
 
 

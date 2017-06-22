@@ -417,6 +417,8 @@
             {
                 UIViewController *destinationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ModifyDetail"];
                 [destinationVC setValue:@"operation" forKey:@"enterType"];
+
+                destinationVC.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:destinationVC animated:YES];
             }
         }
@@ -428,6 +430,8 @@
         {
             UIStoryboard *board = [UIStoryboard storyboardWithName:@"Person" bundle:nil];
             UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"pro_location_controller"];
+
+            controller.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:controller animated:YES];
         }
         else
@@ -443,6 +447,8 @@
             {
                 controller.addType = TYPE_WORK;
             }
+
+            controller.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:controller animated:YES];
         }
     }
@@ -450,6 +456,8 @@
     {
         UIStoryboard *board = [UIStoryboard storyboardWithName:@"Person" bundle:nil];
         UIViewController *controller = [board instantiateViewControllerWithIdentifier:@"settings_controller"];
+
+        controller.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:controller animated:YES];
     }
 

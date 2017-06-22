@@ -814,14 +814,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="SaG-sa-Ceh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_logo_about.png" translatesAutoresizingMaskIntoConstraints="NO" id="SaG-sa-Ceh">
                                 <rect key="frame" x="152.5" y="90" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="GlL-hZ-ma1"/>
                                     <constraint firstAttribute="width" constant="70" id="JwY-OB-9AB"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电梯易管家" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPi-I8-dbS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="梯美(企业)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPi-I8-dbS">
                                 <rect key="frame" x="147.5" y="190" width="80" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="Qhh-2J-21V"/>
@@ -864,7 +864,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_logo_about.png" width="340" height="340"/>
         <image name="login_avatar.png" width="180" height="180"/>
-        <image name="logo.png" width="130" height="130"/>
     </resources>
 </document>

@@ -129,53 +129,26 @@
                                 NSLog(@"responseObject:%@", responseObject);
                                 NSArray *picArray = [[responseObject objectForKey:@"body"] objectForKey:@"mainPics"];
 
-                                if (picArray.count != 3)
-                                {
-                                    return;
-                                }
-
-                                NSString *deviceCodeUrl = picArray[0];
-
-                                [self setImageView:self.imageViewDeviceCode WithUrl:deviceCodeUrl];
-
-                                NSString *beforeMainUrl = picArray[1];
-                                [self setImageView:self.imageViewMainBefore WithUrl:beforeMainUrl];
-
-
-                                NSString *afterMainUrl = picArray[2];
-                                [self setImageView:self.imageViewMainAfter WithUrl:afterMainUrl];
+                                [self showMaintPhoto:picArray];
                             }];
 
 }
 
 
-/**
- *  异步下载图片，并添加到UIImageView，保存到本地缓存目录
- *
- *  @param urlString <#urlString description#>
- *  @param imageView <#imageView description#>
- */
-- (void)getPictureFromUrlString:(NSString *)urlString imageview:(UIImageView *)imageView
-                      cachePath:(NSString *)cachePath fileName:(NSString *)fileName
+- (void)showMaintPhoto:(NSArray *)arrayPhoto
 {
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0f];
+    if (arrayPhoto.count != 3)
+    {
+        return;
+    }
 
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *_Nullable response, NSData *_Nullable data, NSError *_Nullable connectionError) {
+    [_imageViewDeviceCode setImageWithURL:[NSURL URLWithString:arrayPhoto[0]]];
 
-        if (data.length > 0 && nil == connectionError)
-        {
+    [_imageViewMainBefore setImageWithURL:[NSURL URLWithString:arrayPhoto[1]]];
 
-            [self setImageView:imageView data:data url:urlString CachePath:cachePath fileName:fileName];
-
-        }
-        else if (connectionError != nil)
-        {
-            NSLog(@"download picture error = %@", connectionError);
-        }
-    }];
+    [_imageViewMainAfter setImageWithURL:[NSURL URLWithString:arrayPhoto[2]]];
 }
+
 
 /**
  *  根据类型返回维保类型的描述
@@ -352,50 +325,6 @@
     return cacheDir;
 }
 
-/**
- *  设置ImageView显示的图片
- *
- *  @param imageView <#imageView description#>
- *  @param url       <#url description#>
- */
-- (void)setImageView:(UIImageView *)imageView WithUrl:(NSString *)url
-{
-    NSString *fileName = [self getFileNameByUrl:url];
-    NSString *cachePath = [self getLocalCacheDir];
-
-    NSString *filePath = [[NSString alloc] initWithFormat:@"%@%@", cachePath, fileName];
-
-    UIImage *originImage = [self getImageFromLocalByPath:filePath];
-
-    if (originImage != nil)
-    {
-        CGSize size = CGSizeMake(90, 120);
-        UIImage *image = [ImageUtils imageWithImage:originImage scaledToSize:size];
-        imageView.image = image;
-
-        [self.imageViewDic setObject:filePath forKey:[NSNumber numberWithInteger:imageView.tag]];
-
-        imageView.userInteractionEnabled = YES;
-        UITapGestureRecognizer *overView = [[UITapGestureRecognizer alloc]
-                initWithTarget:self action:@selector(showOverView:)];
-        [imageView addGestureRecognizer:overView];
-        return;
-    }
-
-    [self getPictureFromUrlString:url imageview:imageView cachePath:cachePath fileName:fileName];
-}
-
-/**
- *  主线程更新UI回调方法，由于只能传递一个参数，所以，使用dictionary将参数包装一下
- *
- *  @param params <#params description#>
- */
-- (void)setImageViewMainTreadCallbackByParams:(NSDictionary *)params
-{
-    UIImageView *imageView = [params objectForKey:@"view"];
-    NSString *urlString = [params objectForKey:@"url"];
-    [self setImageView:imageView WithUrl:urlString];
-}
 
 /**
  *  现将文件写入到本地缓存，然后设置ImageView显示图像
@@ -406,23 +335,23 @@
  *  @param cachePath <#cachePath description#>
  *  @param fileName  <#fileName description#>
  */
-- (void)setImageView:(UIImageView *)imageView data:(NSData *)data url:(NSString *)urlString
-           CachePath:(NSString *)cachePath fileName:(NSString *)fileName
-{
-    NSFileManager *manager = [NSFileManager defaultManager];
-    [manager createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];
-
-    NSString *filePath = [[NSString alloc] initWithFormat:@"%@%@", cachePath, fileName];
-    BOOL suc = [manager createFileAtPath:filePath contents:data attributes:nil];
-    NSLog(@"write to imge:%@", suc ? @"Successed" : @"Failed");
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:1];
-    [params setObject:imageView forKey:@"view"];
-    [params setObject:urlString forKey:@"url"];
-
-    //将更新ImageView图片的功能放到主线程执行
-    [self performSelectorOnMainThread:@selector(setImageViewMainTreadCallbackByParams:) withObject:params waitUntilDone:NO];
-
-}
+//- (void)setImageView:(UIImageView *)imageView data:(NSData *)data url:(NSString *)urlString
+//           CachePath:(NSString *)cachePath fileName:(NSString *)fileName
+//{
+//    NSFileManager *manager = [NSFileManager defaultManager];
+//    [manager createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];
+//
+//    NSString *filePath = [[NSString alloc] initWithFormat:@"%@%@", cachePath, fileName];
+//    BOOL suc = [manager createFileAtPath:filePath contents:data attributes:nil];
+//    NSLog(@"write to imge:%@", suc ? @"Successed" : @"Failed");
+//    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:1];
+//    [params setObject:imageView forKey:@"view"];
+//    [params setObject:urlString forKey:@"url"];
+//
+//    //将更新ImageView图片的功能放到主线程执行
+//    [self performSelectorOnMainThread:@selector(setImageViewMainTreadCallbackByParams:) withObject:params waitUntilDone:NO];
+//
+//}
 
 /**
  *  显示图片的预览

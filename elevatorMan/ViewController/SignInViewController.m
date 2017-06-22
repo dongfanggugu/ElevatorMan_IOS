@@ -183,11 +183,11 @@
     self.view_password.layer.borderColor = [[UIColor whiteColor] CGColor];
 
 
-    [self.textField_userName setValue:[UIColor whiteColor] forKey:@"_placeholderLabel.textColor"];
+//    [self.textField_userName setValue:[UIColor whiteColor] forKey:@"_placeholderLabel.textColor"];
 
     self.textField_userName.delegate = self;
 
-    [self.textField_userPWD setValue:[UIColor whiteColor] forKey:@"_placeholderLabel.textColor"];
+//    [self.textField_userPWD setValue:[UIColor whiteColor] forKey:@"_placeholderLabel.textColor"];
 
     self.textField_userPWD.delegate = self;
 

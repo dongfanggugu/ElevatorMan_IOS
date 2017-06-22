@@ -135,7 +135,7 @@
         [weakSelf.arrayAlarm addObjectsFromArray:[responseObject objectForKey:@"body"]];
         if (0 == weakSelf.arrayAlarm.count)
         {
-            [HUDClass showHUDWithLabel:@"暂无正在进行中的报警" view:weakSelf.view];
+            [self showMsgAlert:@"暂无正在进行中的报警"];
             weakSelf.tableAlarm.hidden = YES;
             weakSelf.tableWorker.hidden = YES;
             weakSelf.btnConfirm.hidden = YES;

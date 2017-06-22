@@ -9,7 +9,7 @@
 #import "ProjectsTableViewController.h"
 
 #import "BuildingsViewController.h"
-#import "HttpClient.h"
+#import "UIView+CornerRadius.h"
 
 #pragma mark - ProjectsCell
 
@@ -24,6 +24,12 @@
 
 @implementation ProjectsCell
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+
+    [_backColorView clipCornerWithTopLeft:5 andTopRight:5 andBottomLeft:0 andBottomRight:0];
+}
 
 //根据index.row的值%3来设置背景图片、背景颜色和文字颜色
 - (void)setCellContent:(NSInteger)index
@@ -86,6 +92,7 @@
 {
     [super viewDidLoad];
     [self setNavTitle:@"项目"];
+    [self initView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -94,6 +101,10 @@
     [self getProjectsList];
 }
 
+- (void)initView
+{
+    self.tableView.backgroundColor = RGB(@"#F1F1F1");
+}
 
 - (void)getProjectsList
 {
@@ -113,14 +124,12 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    // Return the number of rows in the section.
     return [self.ProjectList count];
 }
 
@@ -128,8 +137,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ProjectsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"projectsCell" forIndexPath:indexPath];
-
-    // Configure the cell...
 
     cell.projectTtle.text = [[self.ProjectList objectAtIndex:indexPath.row] objectForKey:@"name"];
 

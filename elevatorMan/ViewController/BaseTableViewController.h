@@ -13,7 +13,6 @@
 
 @interface BaseTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSString *notifyAlarmId;
 
 - (void)setNavTitle:(NSString *)title;
 
@@ -27,6 +26,7 @@
 
 @property (assign, nonatomic) CGFloat screenHeight;
 
+@property (strong, nonatomic) NSString *notifyAlarmId;
 
 @end
 

@@ -34,10 +34,8 @@
     {
 
         [self initNavRightWithText:@"添加"];
-        [HUDClass showHUDWithLabel:@"您还未添加您的个人手写签名,请录入您的签名"];
-
+        [self showMsgAlert:@"您还未添加您的个人手写签名,请录入您的签名"];
         return;
-
     }
     else
     {
