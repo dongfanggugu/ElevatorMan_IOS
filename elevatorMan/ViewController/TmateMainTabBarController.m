@@ -5,6 +5,7 @@
 #import "TmateMainTabBarController.h"
 #import "PersonalCenterController.h"
 #import "TmateMainPageController.h"
+#import "EAssistViewController.h"
 #import "BaseNavigationController.h"
 
 
@@ -22,17 +23,20 @@
     TmateMainPageController *mainPage = [[TmateMainPageController alloc] init];
 
     BaseNavigationController *navMain = [[BaseNavigationController alloc] initWithRootViewController:mainPage];
-
+    
+    
+    EAssistViewController *eAssist = [[EAssistViewController alloc] init];
+    
+    BaseNavigationController *navE = [[BaseNavigationController alloc] initWithRootViewController:eAssist];
+    
+    
+    
     PersonalCenterController *person = [[PersonalCenterController alloc] init];
-
-//    UIStoryboard *board = [UIStoryboard storyboardWithName:@"Person" bundle:nil];
-//
-//    UIViewController *person = [board instantiateViewControllerWithIdentifier:@"person_center"];
 
     BaseNavigationController *navPerson = [[BaseNavigationController alloc] initWithRootViewController:person];
 
 
-    self.viewControllers = [NSArray arrayWithObjects:navMain, navPerson, nil];
+    self.viewControllers = [NSArray arrayWithObjects:navMain, navE, navPerson, nil];
 }
 
 - (void)initTabBar
@@ -46,7 +50,11 @@
 
     [[tabBar.items objectAtIndex:1] setImage:[UIImage imageNamed:@"icon_person_bottom_normal.png"]];
     [[tabBar.items objectAtIndex:1] setSelectedImage:[UIImage imageNamed:@"icon_person_bottom_sel.png"]];
-    [[tabBar.items objectAtIndex:1] setTitle:@"我的"];
+    [[tabBar.items objectAtIndex:1] setTitle:@"商机"];
+    
+    [[tabBar.items objectAtIndex:2] setImage:[UIImage imageNamed:@"icon_person_bottom_normal.png"]];
+    [[tabBar.items objectAtIndex:2] setSelectedImage:[UIImage imageNamed:@"icon_person_bottom_sel.png"]];
+    [[tabBar.items objectAtIndex:2] setTitle:@"我的"];
 
 }
 

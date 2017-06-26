@@ -372,6 +372,9 @@
     if (0 == iResCode)
     {
         NSLog(@"zhenhao:jpush register successfully!");
+        
+        NSString *rid = [APService registrationID];
+        NSLog(@"register id:%@", rid);
     }
     else
     {

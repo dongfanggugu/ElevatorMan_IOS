@@ -322,7 +322,7 @@
                 <outlet property="viewQa" destination="fmA-8f-nop" id="3GW-Lk-Ck6"/>
                 <outlet property="viewSafety" destination="L1h-zh-2XK" id="Eji-MP-YI9"/>
             </connections>
-            <point key="canvasLocation" x="34.5" y="53.5"/>
+            <point key="canvasLocation" x="34.5" y="53"/>
         </view>
     </objects>
     <resources>

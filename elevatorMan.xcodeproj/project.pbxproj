@@ -189,6 +189,7 @@
 		6576CF721EE7D4520046E80F /* RepairSubmitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576CF711EE7D4520046E80F /* RepairSubmitController.m */; };
 		6576CF741EE7DB7A0046E80F /* ImageViewDelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6576CF731EE7DB7A0046E80F /* ImageViewDelView.xib */; };
 		6576CF771EE7DC890046E80F /* ImageViewDelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576CF761EE7DC890046E80F /* ImageViewDelView.m */; };
+		657783B81F011B7000D506C1 /* EAssistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657783B71F011B7000D506C1 /* EAssistViewController.m */; };
 		657C8C8A1CA518FC00288D30 /* AlarmHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657C8C891CA518FC00288D30 /* AlarmHistoryViewController.m */; };
 		657E20381CB382B100ED51A9 /* KnTitleListViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 657E20371CB382B100ED51A9 /* KnTitleListViewController.mm */; };
 		657E203A1CB6515800ED51A9 /* KnowledgeViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 657E20391CB6515800ED51A9 /* KnowledgeViewController.mm */; };
@@ -744,6 +745,8 @@
 		6576CF731EE7DB7A0046E80F /* ImageViewDelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewDelView.xib; sourceTree = "<group>"; };
 		6576CF751EE7DC890046E80F /* ImageViewDelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewDelView.h; sourceTree = "<group>"; };
 		6576CF761EE7DC890046E80F /* ImageViewDelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewDelView.m; sourceTree = "<group>"; };
+		657783B61F011B7000D506C1 /* EAssistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAssistViewController.h; sourceTree = "<group>"; };
+		657783B71F011B7000D506C1 /* EAssistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAssistViewController.m; sourceTree = "<group>"; };
 		657977A81CB14C5A00E9E4BD /* libchorstar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libchorstar.a; path = "../../Library/Developer/Xcode/DerivedData/elevatorMan-baxotyrsogakzhcsioahocsvfdju/Build/Products/Debug-iphoneos/libchorstar.a"; sourceTree = "<group>"; };
 		657C8C881CA518E400288D30 /* AlarmHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlarmHistoryViewController.h; sourceTree = "<group>"; };
 		657C8C891CA518FC00288D30 /* AlarmHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmHistoryViewController.m; sourceTree = "<group>"; };
@@ -1901,6 +1904,8 @@
 				699E4DD8BDF272329BE28730 /* TmateMainTabBarController.h */,
 				699E4902969B2AE964EE45C6 /* BaseController */,
 				699E4FA5E4AB32A8D7601CC5 /* Market */,
+				657783B61F011B7000D506C1 /* EAssistViewController.h */,
+				657783B71F011B7000D506C1 /* EAssistViewController.m */,
 			);
 			name = Common;
 			path = ViewController;
@@ -2858,6 +2863,7 @@
 				699E45F419A5BC43A1F9C4E0 /* MaintLiftController.m in Sources */,
 				699E4174C06E0D835AD4C7AB /* HouseTitleView.m in Sources */,
 				699E4939C095CB77796BED95 /* HouseRepairManagerController.m in Sources */,
+				657783B81F011B7000D506C1 /* EAssistViewController.m in Sources */,
 				699E4E57F660402D0BE72257 /* HouseMaintManagerController.m in Sources */,
 				699E4C49AA61C5BC9A0C91EF /* HelpController.m in Sources */,
 				699E4B2F36DA2851353BEFDE /* KnowledgeController.m in Sources */,
