@@ -219,7 +219,7 @@
     }
     else
     {
-        NSString *err = [NSString stringWithFormat:@"%d:注销消息服务器失败，请重新再试", iResCode];
+        NSString *err = [NSString stringWithFormat:@"%d:注册消息服务器失败，请重新再试", iResCode];
 
         if (_jpushCount < 5)
         {

@@ -62,6 +62,8 @@
 //是否加入怡墅相关业务
 @property (assign, nonatomic) BOOL joinVilla;
 
+@property (copy, nonatomic) NSString *server;
+
 +(instancetype)sharedUser;
 
 - (void)setUserInfo;

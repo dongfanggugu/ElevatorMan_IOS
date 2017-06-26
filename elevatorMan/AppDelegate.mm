@@ -58,10 +58,10 @@ BMKMapManager *_mapManager;
 
 
 //注册推送通知失败
-- (void)                             application:(UIApplication *)application
+- (void)application:(UIApplication *)application
 didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+    NSLog(@"推送注册失败:%@", error);
 }
 
 //注册推送通知成功
@@ -69,15 +69,13 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
 
-    //NSLog(@"deviceToken：%@",deviceToken);
+    NSLog(@"推送注册成功");
     //获得deviceToken
 
     NSString *token = [[NSString alloc] initWithData:deviceToken encoding:NSUTF8StringEncoding];
     NSLog(@"device token:%@", token);
     [APService registerDeviceToken:deviceToken];
-
     //将deviceToken存入requestHead中
-
 }
 
 
@@ -227,19 +225,9 @@ didReceiveLocalNotification:(UILocalNotification *)notification
 
 
 
-    [[NSUserDefaults standardUserDefaults] setObject:@"123.57.10.16" forKey:@"urlType"];
-
-
-
-    /////-------------设置通知注册相关内容
     // Required
 #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-        //categories
-//        [APService
-//         registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
-//                                             UIUserNotificationTypeSound |
-//                                             UIUserNotificationTypeAlert)
          [APService
           registerForRemoteNotificationTypes:(UIUserNotificationTypeSound |
                                               UIUserNotificationTypeAlert)
@@ -247,7 +235,6 @@ didReceiveLocalNotification:(UILocalNotification *)notification
     }
     else
     {
-        //categories nil
         [APService
          registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
                                              UIRemoteNotificationTypeSound |

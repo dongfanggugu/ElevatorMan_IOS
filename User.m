@@ -56,7 +56,6 @@
     [[NSUserDefaults standardUserDefaults] setObject:_signUrl forKey:@"sign_url"];
 
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:_joinVilla] forKey:@"join_villa"];
-
 }
 
 

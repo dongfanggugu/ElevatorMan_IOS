@@ -11,6 +11,7 @@
 #import "AlarmViewController.h"
 #import "BannerNotice.h"
 #import "ChatController.h"
+#import "BaseAlertController.h"
 
 
 @interface BaseViewController () <UIAlertViewDelegate>
@@ -331,13 +332,17 @@
  */
 - (void)showMsgAlert:(NSString *)msg
 {
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
+    BaseAlertController *controller = [BaseAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
 
     __weak typeof(self) weakSelf = self;
 
     [controller addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+        if ([weakSelf respondsToSelector:@selector(onMsgAlertDismiss)])
+        {
+            [weakSelf onMsgAlertDismiss];
+        }
 
-        [weakSelf onMsgAlertDismiss];
     }]];
 
     [self presentViewController:controller animated:YES completion:nil];
@@ -347,6 +352,32 @@
 {
 
 }
+/**
+ * 弹出框提示
+ */
+- (void)showMsgAlert:(NSString *)msg userInfo:(NSDictionary *)userInfo
+{
+    BaseAlertController *controller = [BaseAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
 
+    __weak typeof(self) weakSelf = self;
+
+    [controller addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+        if ([weakSelf respondsToSelector:@selector(onMsgAlertDismiss:)])
+        {
+            [weakSelf onMsgAlertDismiss:controller];
+        }
+
+    }]];
+
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+
+
+- (void)onMsgAlertDismiss:(BaseAlertController *)controller
+{
+
+}
 
 @end

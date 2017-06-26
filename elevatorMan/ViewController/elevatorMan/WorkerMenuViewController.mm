@@ -15,7 +15,6 @@
 #import "FileUtils.h"
 #import "MaintenanceReminder.h"
 #import "Utils.h"
-#import "../../../chorstar/chorstar/Chorstar.h"
 
 
 #pragma mark - WorkerMenuCell
@@ -136,7 +135,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self hasAlarm];
     [self initMenuItemArray];
 
     BOOL suc = [self copyKnowledge];
@@ -693,23 +691,6 @@
     return [FileUtils copyFilesFrom:sourcePath to:sqlitePath fileName:sqliteName];
 }
 
-/**
- *  请求服务器，看是否有报警未处理
- */
-- (void)hasAlarm {
-    NSString *token = [User sharedUser].accessToken;
-    NSString *userId = [User sharedUser].userId;
-
-    dispatch_queue_t queue = dispatch_queue_create("queue", NULL);
-    dispatch_async(queue, ^{
-        BOOL unassigned = hasAlarmUnassigned([Utils getServer].UTF8String, "1", "", token.UTF8String, userId.UTF8String);
-        BOOL unfinished = hasAlarmUnfinished([Utils getServer].UTF8String, "1", "", token.UTF8String, userId.UTF8String);
-        if (unassigned || unfinished) {
-            [self performSelectorOnMainThread:@selector(showMessage) withObject:nil waitUntilDone:YES];
-        }
-    });
-
-}
 
 /**
  *  显示提示

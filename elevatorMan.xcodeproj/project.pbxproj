@@ -163,6 +163,7 @@
 		655ADF851E287C8200F1F036 /* pro_alarm_project.png in Resources */ = {isa = PBXBuildFile; fileRef = 655ADF831E287C8200F1F036 /* pro_alarm_project.png */; };
 		655ADF871E287C9500F1F036 /* icon_repair_history.png in Resources */ = {isa = PBXBuildFile; fileRef = 655ADF861E287C9500F1F036 /* icon_repair_history.png */; };
 		655ADF891E288F0A00F1F036 /* icon_login_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 655ADF881E288F0A00F1F036 /* icon_login_logo.png */; };
+		655FD7A71F00D6B0003F9158 /* BaseAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 655FD7A61F00D6B0003F9158 /* BaseAlertController.m */; };
 		6574F2291EE5308700B8F17A /* MaintInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6574F2281EE5308700B8F17A /* MaintInfoView.xib */; };
 		6574F22F1EE5462D00B8F17A /* MaintInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F22E1EE5462D00B8F17A /* MaintInfoView.m */; };
 		6574F2321EE546AA00B8F17A /* MaintInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6574F2311EE546AA00B8F17A /* MaintInfoController.m */; };
@@ -188,7 +189,6 @@
 		6576CF721EE7D4520046E80F /* RepairSubmitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576CF711EE7D4520046E80F /* RepairSubmitController.m */; };
 		6576CF741EE7DB7A0046E80F /* ImageViewDelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6576CF731EE7DB7A0046E80F /* ImageViewDelView.xib */; };
 		6576CF771EE7DC890046E80F /* ImageViewDelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576CF761EE7DC890046E80F /* ImageViewDelView.m */; };
-		657977A91CB14C5A00E9E4BD /* libchorstar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 657977A81CB14C5A00E9E4BD /* libchorstar.a */; };
 		657C8C8A1CA518FC00288D30 /* AlarmHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657C8C891CA518FC00288D30 /* AlarmHistoryViewController.m */; };
 		657E20381CB382B100ED51A9 /* KnTitleListViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 657E20371CB382B100ED51A9 /* KnTitleListViewController.mm */; };
 		657E203A1CB6515800ED51A9 /* KnowledgeViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 657E20391CB6515800ED51A9 /* KnowledgeViewController.mm */; };
@@ -240,6 +240,8 @@
 		65A07C7B1EE9625100EEA262 /* MaintManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A07C7A1EE9625100EEA262 /* MaintManagerController.m */; };
 		65A07DC61EEA757600EEA262 /* ComMaintInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65A07DC51EEA757600EEA262 /* ComMaintInfoCell.xib */; };
 		65A07DC81EEA87BC00EEA262 /* HouseTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65A07DC71EEA87BC00EEA262 /* HouseTitleView.xib */; };
+		65A823EE1EFCCCF100D61B76 /* KeyEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65A823ED1EFCCCF100D61B76 /* KeyEditCell.xib */; };
+		65A823F11EFCCCFD00D61B76 /* KeyEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A823F01EFCCCFD00D61B76 /* KeyEditCell.m */; };
 		65A98D7B1C19194300BB4674 /* SwipeableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A98D7A1C19194300BB4674 /* SwipeableCell.m */; };
 		65A98D7E1C192ACE00BB4674 /* PlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A98D7D1C192ACE00BB4674 /* PlanViewController.m */; };
 		65B0A4451C2933F3008E58B8 /* PersonalCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B0A4441C2933F3008E58B8 /* PersonalCenterController.m */; };
@@ -399,6 +401,7 @@
 		699E4B3834F9FBC9723BABAA /* ElevatorSellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E48940FE5B77FE5EC6D80 /* ElevatorSellController.m */; };
 		699E4B6642369FCADA3C260C /* MaintLiftHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E47F8E99D6AD0FDAC1990 /* MaintLiftHistoryController.m */; };
 		699E4BCB629A2AF5F761C817 /* gif_welcome_enterprise.gif in Resources */ = {isa = PBXBuildFile; fileRef = 699E4FFE73D00072E2424BC2 /* gif_welcome_enterprise.gif */; };
+		699E4BD2EF60E0EFBD95E6CC /* EnterManagerRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E495B973FFDC9EA2331E4 /* EnterManagerRegisterController.m */; };
 		699E4C0BA4908730A21D21B6 /* KeyValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E48C4237D23C7AAA65A83 /* KeyValueCell.m */; };
 		699E4C17C0F0D2A6F4FA9F3B /* OrderMaintCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E49DC6802143399A99229 /* OrderMaintCell.m */; };
 		699E4C4172BD9C9423B3412E /* KnMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 699E4A895F2CCB1420573DED /* KnMainCell.m */; };
@@ -697,6 +700,8 @@
 		655ADF831E287C8200F1F036 /* pro_alarm_project.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pro_alarm_project.png; sourceTree = "<group>"; };
 		655ADF861E287C9500F1F036 /* icon_repair_history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_repair_history.png; sourceTree = "<group>"; };
 		655ADF881E288F0A00F1F036 /* icon_login_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_login_logo.png; sourceTree = "<group>"; };
+		655FD7A51F00D6B0003F9158 /* BaseAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseAlertController.h; sourceTree = "<group>"; };
+		655FD7A61F00D6B0003F9158 /* BaseAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseAlertController.m; sourceTree = "<group>"; };
 		6574F2281EE5308700B8F17A /* MaintInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaintInfoView.xib; sourceTree = "<group>"; };
 		6574F22D1EE5462D00B8F17A /* MaintInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintInfoView.h; sourceTree = "<group>"; };
 		6574F22E1EE5462D00B8F17A /* MaintInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintInfoView.m; sourceTree = "<group>"; };
@@ -807,6 +812,9 @@
 		65A07C7A1EE9625100EEA262 /* MaintManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintManagerController.m; sourceTree = "<group>"; };
 		65A07DC51EEA757600EEA262 /* ComMaintInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComMaintInfoCell.xib; sourceTree = "<group>"; };
 		65A07DC71EEA87BC00EEA262 /* HouseTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HouseTitleView.xib; sourceTree = "<group>"; };
+		65A823ED1EFCCCF100D61B76 /* KeyEditCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyEditCell.xib; sourceTree = "<group>"; };
+		65A823EF1EFCCCFD00D61B76 /* KeyEditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyEditCell.h; sourceTree = "<group>"; };
+		65A823F01EFCCCFD00D61B76 /* KeyEditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyEditCell.m; sourceTree = "<group>"; };
 		65A98D791C19192100BB4674 /* SwipeableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeableCell.h; sourceTree = "<group>"; };
 		65A98D7A1C19194300BB4674 /* SwipeableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeableCell.m; sourceTree = "<group>"; };
 		65A98D7C1C192A9700BB4674 /* PlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanViewController.h; sourceTree = "<group>"; };
@@ -1002,6 +1010,7 @@
 		699E4543EE913D61D581CCDF /* CheckResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckResultView.m; sourceTree = "<group>"; };
 		699E45516D59988D7F89A098 /* ElevatorSellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElevatorSellController.h; sourceTree = "<group>"; };
 		699E456BBC4AEB97E9F51549 /* HelpContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpContentController.h; sourceTree = "<group>"; };
+		699E4590D72A90099FE916D3 /* EnterManagerRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterManagerRegisterController.h; sourceTree = "<group>"; };
 		699E45DF1F3B7ABFE761D27B /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		699E45E2945ECA37A5C310CF /* ResetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPwdViewController.h; sourceTree = "<group>"; };
 		699E45E31460E986F9853C79 /* ComMaintInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComMaintInfoCell.h; sourceTree = "<group>"; };
@@ -1025,6 +1034,7 @@
 		699E48D490E1C6ABC0253AF4 /* ComMaintInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComMaintInfoCell.m; sourceTree = "<group>"; };
 		699E4915A23B454894A0F6C0 /* ContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentCell.m; sourceTree = "<group>"; };
 		699E494A05E7391775586F8D /* HouseRepairManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseRepairManagerController.h; sourceTree = "<group>"; };
+		699E495B973FFDC9EA2331E4 /* EnterManagerRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterManagerRegisterController.m; sourceTree = "<group>"; };
 		699E49719B26B094A33C6068 /* TmateMainPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmateMainPageController.h; sourceTree = "<group>"; };
 		699E497F3FF7E3ED4EF1BC54 /* MaintAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintAnnotationView.m; sourceTree = "<group>"; };
 		699E49842B688B09BEF7A2A5 /* DistributeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistributeController.m; sourceTree = "<group>"; };
@@ -1186,7 +1196,6 @@
 			files = (
 				65D3490E1EF90EC300E75161 /* libbz2.tbd in Frameworks */,
 				65D3490C1EF90EA900E75161 /* OpenAL.framework in Frameworks */,
-				657977A91CB14C5A00E9E4BD /* libchorstar.a in Frameworks */,
 				3F8B2AD41BFA1D6900FC1CC3 /* AVFoundation.framework in Frameworks */,
 				3FFA612B1B5F470A005C6434 /* libxml2.dylib in Frameworks */,
 				3FFA61291B5F4702005C6434 /* libresolv.dylib in Frameworks */,
@@ -1668,6 +1677,7 @@
 		658E904D1DC6E76400B1BD39 /* nib */ = {
 			isa = PBXGroup;
 			children = (
+				65A823ED1EFCCCF100D61B76 /* KeyEditCell.xib */,
 				650F6D731EE8E83A00412C9F /* AlarmBottomView.xib */,
 				654B0B851D22136300ED0064 /* AlarmInfoView.xib */,
 				650F6D6E1EE8E1DD00412C9F /* AlarmTitleView.xib */,
@@ -1717,6 +1727,8 @@
 		658E904E1DC6E76D00B1BD39 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				65A823EF1EFCCCFD00D61B76 /* KeyEditCell.h */,
+				65A823F01EFCCCFD00D61B76 /* KeyEditCell.m */,
 				654B0B821D22132300ED0064 /* AlarmInfoView.h */,
 				654B0B831D22133600ED0064 /* AlarmInfoView.m */,
 				654B0B7F1D2212BF00ED0064 /* CalloutAnnotationView.h */,
@@ -1905,6 +1917,8 @@
 				65F0680D1C0453F000628BA7 /* UIRegisterOneViewControllor.m */,
 				65FC13AE1C114255005B3B86 /* UIRegisterThreeViewController.h */,
 				65FC13AF1C1142C3005B3B86 /* UIRegisterThreeViewController.m */,
+				699E495B973FFDC9EA2331E4 /* EnterManagerRegisterController.m */,
+				699E4590D72A90099FE916D3 /* EnterManagerRegisterController.h */,
 			);
 			name = Register;
 			sourceTree = "<group>";
@@ -2112,6 +2126,8 @@
 				699E431E84C176B4B9A58FF2 /* BaseTableViewController.m */,
 				699E41BD77812F0B310404B4 /* BaseTableViewController.h */,
 				699E4E6F6F0D8C6EED6A0540 /* BaseTabBarController.m */,
+				655FD7A51F00D6B0003F9158 /* BaseAlertController.h */,
+				655FD7A61F00D6B0003F9158 /* BaseAlertController.m */,
 			);
 			name = BaseController;
 			sourceTree = "<group>";
@@ -2634,6 +2650,7 @@
 				699E49C3FCFAC48977CFE298 /* KeyValueCell.xib in Resources */,
 				699E4F7EB6FD98756B4BB077 /* OrderMaintCell.xib in Resources */,
 				699E41EEB1BF742DFF56AC76 /* MainOrderDetailCell.xib in Resources */,
+				65A823EE1EFCCCF100D61B76 /* KeyEditCell.xib in Resources */,
 				65D344981EF512B500E75161 /* icon_person_bottom_sel.png in Resources */,
 				699E49F78335D6923362E0BB /* ProcessCell.xib in Resources */,
 				699E4D15BA094C2D9EE33738 /* icon_tmate_alarm.png in Resources */,
@@ -2751,6 +2768,7 @@
 				BF0296A01ACBFE1B00ED4AF1 /* ElevatorManViewController.m in Sources */,
 				654B0B8B1D236DE400ED0064 /* MaintenancePageViewController.m in Sources */,
 				658748C11D2CE480006406AD /* SettingsViewController.m in Sources */,
+				655FD7A71F00D6B0003F9158 /* BaseAlertController.m in Sources */,
 				65C065761C2BD959007EA068 /* PersonPasswordController.m in Sources */,
 				653922871E948CEF00A8B69A /* ChatRightController.m in Sources */,
 				651A0F721DC86B150042E51B /* PersonHeaderView.m in Sources */,
@@ -2836,6 +2854,7 @@
 				65C2EE211EE6BCE300AF7EDC /* EvaluateController.m in Sources */,
 				65FE08BA1EA89F62002C9397 /* MaintInfoCell.m in Sources */,
 				699E49F712E1A14AEF971182 /* ComMaintInfoCell.m in Sources */,
+				65A823F11EFCCCFD00D61B76 /* KeyEditCell.m in Sources */,
 				699E45F419A5BC43A1F9C4E0 /* MaintLiftController.m in Sources */,
 				699E4174C06E0D835AD4C7AB /* HouseTitleView.m in Sources */,
 				699E4939C095CB77796BED95 /* HouseRepairManagerController.m in Sources */,
@@ -2887,6 +2906,7 @@
 				699E4250460ACB75FE6F7C4E /* ContentCell.m in Sources */,
 				699E4376D51CECA278594639 /* DistributeController.m in Sources */,
 				699E486BFAE0383FC6D85BEE /* UIView+CornerRadius.m in Sources */,
+				699E4BD2EF60E0EFBD95E6CC /* EnterManagerRegisterController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3020,7 +3040,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.chorstar.elevatorMan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chorstar.enterOwner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3073,7 +3093,7 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.chorstar.elevatorMan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chorstar.enterOwner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

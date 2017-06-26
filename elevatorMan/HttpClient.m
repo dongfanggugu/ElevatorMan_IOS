@@ -97,7 +97,8 @@
             && ![URLString isEqualToString:@"checkVersion"]
             && ![URLString isEqualToString:@"getBranchs"]
             && ![URLString isEqualToString:@"resetPWD"]
-            && ![URLString isEqualToString:@"propertyRegist"])
+            && ![URLString isEqualToString:@"propertyRegist"]
+            && ![URLString isEqualToString:@"registerMaintUser"])
     {
         [head setObject:[User sharedUser].accessToken forKey:@"accessToken"];
         [head setObject:[User sharedUser].userId forKey:@"userId"];

@@ -20,6 +20,7 @@
 #import "TmateMainPageController.h"
 #import "TmateMainTabBarController.h"
 #import "BaseNavigationController.h"
+#import "EnterManagerRegisterController.h"
 //#import "LoginViewController.h"
 
 #define PROVINCE 1002
@@ -211,30 +212,49 @@
 
 - (void)userRegister
 {
-
-//    LoginViewController *controller = [[LoginViewController alloc] init];
-//
-//    controller.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:controller animated:YES];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"用户注册" message:nil delegate:self
-                                          cancelButtonTitle:@"取消" otherButtonTitles:@"维修工", @"物业人员", nil];
-
-    alertView.tag = 10001;
-    [alertView show];
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"用户注册" message:@"请选择您的角色进行注册" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"企业管理人员" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self enterManagerRegister];
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"维修工" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self workerRegister];
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"物业人员" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self proRegister];
+    }]];
+    
+    [controller addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    
+    [self presentViewController:controller animated:YES completion:nil];
 
 }
 
 - (void)workerRegister
 {
     UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"register_one"];
-    controller.navigationController.navigationBar.hidden = NO;
+    
+    controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)proRegister
 {
     UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"pro_register"];
-    controller.navigationController.navigationBar.hidden = NO;
+    
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)enterManagerRegister
+{
+    EnterManagerRegisterController *controller = [[EnterManagerRegisterController alloc] init];
+    
+    controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -273,7 +293,6 @@
 //点击登录按钮
 - (IBAction)onLogin:(id)sender
 {
-
     //判断用户名和密码不能为空
     if ([[self.textField_userName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""] ||
             [[self.textField_userPWD.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""])
@@ -419,30 +438,11 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-
-    if (0 == buttonIndex)
-    {
-        return;
-    }
-
-    if (10001 == alertView.tag)
-    {
-        if (1 == buttonIndex)
-        {
-            [self workerRegister];
-        }
-        else if (2 == buttonIndex)
-        {
-            [self proRegister];
-        }
-    }
-    else
-    {
-        NSString *content = [alertView buttonTitleAtIndex:buttonIndex];
-        [[NSUserDefaults standardUserDefaults] setObject:content forKey:@"urlString"];
-        [[HttpClient sharedClient] resetUrl];
-        self.labelCity.text = content;
-    }
+    
+    NSString *content = [alertView buttonTitleAtIndex:buttonIndex];
+    [[NSUserDefaults standardUserDefaults] setObject:content forKey:@"urlString"];
+    [[HttpClient sharedClient] resetUrl];
+    self.labelCity.text = content;
 }
 
 

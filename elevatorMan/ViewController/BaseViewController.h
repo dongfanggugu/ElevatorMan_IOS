@@ -15,6 +15,8 @@
 #define ALARM_ASSIGNED 1002
 #define ALARM_CANCEL 1003
 
+@class BaseAlertController;
+
 @interface BaseViewController : UIViewController
 
 @property (strong, nonatomic) NSString *notifyAlarmId;
@@ -34,6 +36,13 @@
 - (void)showMsgAlert:(NSString *)msg;
 
 - (void)onMsgAlertDismiss;
+
+/**
+ * 弹出框提示
+ */
+- (void)showMsgAlert:(NSString *)msg userInfo:(NSDictionary *)userInfo;
+
+- (void)onMsgAlertDismiss:(BaseAlertController *)controller;
 
 /**
  * 显示未加入怡墅业务信息
