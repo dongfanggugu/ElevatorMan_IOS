@@ -20,6 +20,43 @@
 
 - (void)initItem
 {
+    if (Role_Pro == [self roleType])
+    {
+        [self initPropertyItem];
+    }
+    else
+    {
+        [self initCompanyItem];
+    }
+}
+
+- (void)initTabBar
+{
+    if (Role_Pro == [self roleType])
+    {
+        [self initPropertyTabBar];
+    }
+    else
+    {
+        [self initCompanyTabBar];
+    }
+}
+
+- (void)initPropertyItem
+{
+    TmateMainPageController *mainPage = [[TmateMainPageController alloc] init];
+
+    BaseNavigationController *navMain = [[BaseNavigationController alloc] initWithRootViewController:mainPage];
+    
+    PersonalCenterController *person = [[PersonalCenterController alloc] init];
+
+    BaseNavigationController *navPerson = [[BaseNavigationController alloc] initWithRootViewController:person];
+
+    self.viewControllers = [NSArray arrayWithObjects:navMain, navPerson, nil];
+}
+
+- (void)initCompanyItem
+{
     TmateMainPageController *mainPage = [[TmateMainPageController alloc] init];
 
     BaseNavigationController *navMain = [[BaseNavigationController alloc] initWithRootViewController:mainPage];
@@ -39,7 +76,22 @@
     self.viewControllers = [NSArray arrayWithObjects:navMain, navE, navPerson, nil];
 }
 
-- (void)initTabBar
+- (void)initPropertyTabBar
+{
+    
+    UITabBar *tabBar = self.tabBar;
+
+    tabBar.tintColor = [Utils getColorByRGB:TITLE_COLOR];
+    [[tabBar.items objectAtIndex:0] setImage:[UIImage imageNamed:@"icon_main_page_bottom_normal.png"]];
+    [[tabBar.items objectAtIndex:0] setSelectedImage:[UIImage imageNamed:@"icon_main_page_bottom_sel.png"]];
+    [[tabBar.items objectAtIndex:0] setTitle:@"首页"];
+
+    [[tabBar.items objectAtIndex:1] setImage:[UIImage imageNamed:@"icon_person_bottom_normal.png"]];
+    [[tabBar.items objectAtIndex:1] setSelectedImage:[UIImage imageNamed:@"icon_person_bottom_sel.png"]];
+    [[tabBar.items objectAtIndex:1] setTitle:@"我的"];
+}
+
+- (void)initCompanyTabBar
 {
     UITabBar *tabBar = self.tabBar;
 
@@ -71,6 +123,11 @@
     label.textColor = [UIColor whiteColor];
     [label setTextAlignment:NSTextAlignmentCenter];
     [self.navigationItem setTitleView:label];
+}
+
+- (RoleType)roleType
+{
+    return [User sharedUser].userType.integerValue;
 }
 
 #pragma mark -- 设置状态栏字体为白色
