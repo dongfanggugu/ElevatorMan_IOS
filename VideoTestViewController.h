@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface VideoTestViewController : UIViewController
+@interface VideoTestViewController : BaseViewController
+
+@property (nonatomic, strong) Device *currentDevice;
 
 @end

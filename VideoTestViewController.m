@@ -27,7 +27,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *deviceLoginButton;
 @property (nonatomic, strong) UIActivityIndicatorView *videoViewIndicatorView;
 @property (nonatomic, strong) Viewport *viewPort;
-@property (nonatomic, strong) Device *currentDevice;
 @property (nonatomic, strong) YdtDeviceParam *chooseDeviceParam;
 @property (nonatomic, assign) BOOL isInquiryVideoHistoyFile;
 @property (nonatomic, assign) BOOL isPlayBack;
@@ -48,11 +47,14 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    _videoTestBgView.center = CGPointMake(HB_WIDTH/2.,HB_HEIGHT/2.);
+    _videoTestBgView.frame = CGRectMake(0, 64, self.screenWidth, self.screenHeight - 64 - 49);
+//    _videoTestBgView.center = CGPointMake(HB_WIDTH/2.,HB_HEIGHT/2.);
      _deviceListArray = [NSMutableArray arrayWithArray:[[AccountManager sharedManager]getdeviceListFromLocal]];
     _deviceListTableView.hidden = YES;
     _videoFileOfHistoryTableView.hidden = YES;
 //    _playBackTImePickerBgView.center = CGPointMake(HB_WIDTH/2., HB_HEIGHT/2.);
+    
+    [self deviceRegister];
 }
 - (void)createUI {
     
@@ -61,7 +63,7 @@
     [_playView addSubview:_viewPort];
     
     _videoViewIndicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    _videoViewIndicatorView.center = CGPointMake(HB_WIDTH/2., HB_HEIGHT/2.);
+    _videoViewIndicatorView.center = CGPointMake(self.screenWidth / 2., (self.screenHeight - 64 - 49) / 2.);
     [_videoViewIndicatorView hidesWhenStopped];
     _videoViewIndicatorView.color = [UIColor blueColor];
     [self.view addSubview:_videoViewIndicatorView];
@@ -303,7 +305,7 @@
         [self showAlertViewWithString:@"请选择设备"];
         
     } else {
-        
+    
         if (_currentDevice.isLogin && [_deviceLoginButton.titleLabel.text isEqualToString:@"注销登录"]) {
             
             [_currentDevice logout];
@@ -340,6 +342,75 @@
         });
     }
   }
+}
+
+- (void)deviceRegister
+{
+    [self startAnimation];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        [_currentDevice loginWithBlick:^(BOOL loginStatus) {
+            
+            if (loginStatus) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self stopAnimation];
+                    _deviceLoginButton.titleLabel.text = @"注销登录";
+                    //[self showAlertViewWithString:@"登录成功"];
+                    [self playVideo];
+                    
+                });
+                
+            } else {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self stopAnimation];
+                    [self showAlertViewWithString:@"登录失败"];
+                    
+                });
+            }
+        }];
+    });
+    
+}
+
+- (void)playVideo
+{
+    if (_currentDevice.deviceLoginType == smsLogin) {
+        
+        [_currentDevice smsRealplay:self.viewPort];
+        
+        
+    } else {
+        
+        [self startAnimation];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            [_currentDevice realplay:self.viewPort completedHandle:^(NSError *error) {
+                
+                if ([error code] == ErrorSuccess) {
+                    _isRealPlay = YES;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        [self stopAnimation];
+                        _previewButton.titleLabel.text = @"停止";
+                    });
+                    
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        [self stopAnimation];
+                        [self showAlertViewWithString:[error.userInfo
+                                                       objectForKey:@"NSLocalizedDescription"]];
+                    });
+                }
+            }];
+        });
+    }
 }
 
 - (IBAction)openPreviewClick:(id)sender {
@@ -484,14 +555,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)dealloc
+{
+    [_currentDevice logout];
 }
-*/
 
 @end

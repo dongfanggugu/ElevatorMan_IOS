@@ -21,6 +21,8 @@
 #import "TmateMainTabBarController.h"
 #import "BaseNavigationController.h"
 #import "LoginViewController.h"
+#import "Device.h"
+#import "VideoTestViewController.h"
 
 #define PROVINCE 1002
 #define CITY 1003
@@ -219,17 +221,18 @@
 
 - (void)userRegister
 {
+    [self getDeviceInfo];
 
 //    LoginViewController *controller = [[LoginViewController alloc] init];
 //
 //    controller.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:controller animated:YES];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"用户注册" message:nil delegate:self
-                                          cancelButtonTitle:@"取消" otherButtonTitles:@"维修工", @"物业人员", nil];
-
-     alertView.tag = 10001;
-    [alertView show];
-
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"用户注册" message:nil delegate:self
+//                                          cancelButtonTitle:@"取消" otherButtonTitles:@"维修工", @"物业人员", nil];
+//
+//     alertView.tag = 10001;
+//    [alertView show];
+//
 }
 
 - (void)workerRegister
@@ -795,5 +798,35 @@
 
     return NO;
 }
+
+- (void)getDeviceInfo
+{
+    
+    [[AccountManager sharedManager].ydtNetSdk getSpecifiedDeviceWithoutLoginWithDeviceSn:@"5a088189" completionHandler:^(YdtDeviceInfo *deviceInfo) {
+        
+        if (deviceInfo.errorCode == 0) {
+            
+            YdtDeviceParam *deviceParam = deviceInfo.deviceArray[0];
+            Device *deviceInfo = [[Device alloc] init];
+            deviceInfo.serialNO = deviceParam.deviceSn;
+            deviceInfo.userName = deviceParam.deviceUser;
+            deviceInfo.deviceID = deviceParam.deviceId;
+            deviceInfo.domain = deviceParam.deviceDomain;
+            deviceInfo.domainPort = deviceParam.deviceDomainPort;
+            deviceInfo.vveyeID = deviceParam.deviceVNIp;
+            deviceInfo.password = deviceParam.devicePassword;
+            deviceInfo.vveyeRemotePort = deviceParam.deviceVNPort;
+            
+            VideoTestViewController *controller = [[VideoTestViewController alloc] init];
+            
+            controller.currentDevice = deviceInfo;
+            [self.navigationController pushViewController:controller animated:YES];
+            
+            NSLog(@"number:%@", deviceInfo.serialNO);
+        }
+        
+    }];
+}
+
 
 @end
