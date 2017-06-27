@@ -19,7 +19,7 @@
 //#import "libt2u.h"
 
 
-#define BM_APPKEY @"STwt3Ei6SyYPAxMlAOTvGUNS"
+#define BM_APPKEY @"0txmEIlRlzIIRpr7asPx8PL3PzAb0ne5"
 
 
 BMKMapManager *_mapManager;

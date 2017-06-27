@@ -139,6 +139,7 @@
     _personHeader.frame = CGRectMake(0, 0, self.screenWidth, 200);
 
     _personHeader.delegate = self;
+    
     _tableView.tableHeaderView = _personHeader;
 }
 
@@ -157,7 +158,7 @@
     btnLogOff.titleLabel.font = [UIFont systemFontOfSize:13];
 
     //设置frame
-    btnLogOff.frame = CGRectMake(0, 0, 120, 26);
+    btnLogOff.frame = CGRectMake(0, 0, 180, 36);
 
     [btnLogOff addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
 
